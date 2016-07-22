@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "cac68369_bbee0f85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-07-22T19:17:36Z",
+      "side": 1,
+      "message": "That’s not very gittish, for the first (short) line anyway.",
+      "parentUuid": "6a1e77f5_9d8bc76d",
+      "revId": "c7ec5b815d84a995cb5eb676d5335968bceb6aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cac68369_7bc63715",
         "filename": "README.md",
         "patchSetId": 1
