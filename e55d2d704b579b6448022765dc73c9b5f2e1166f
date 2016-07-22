@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cac68369_3b6e7f33",
+        "filename": "codereview.settings",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1115495
+      },
+      "writtenOn": "2016-07-22T17:56:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea03478f_863a6a7d",
+      "revId": "e55d2d704b579b6448022765dc73c9b5f2e1166f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a1037cf_ad242918",
         "filename": "codereview.settings",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "cac68369_5b733b1a",
+        "filename": "codereview.settings",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115495
+      },
+      "writtenOn": "2016-07-22T17:56:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a1037cf_ad242918",
+      "revId": "e55d2d704b579b6448022765dc73c9b5f2e1166f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4aec530a_34399e3f",
         "filename": "codereview.settings",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2016-07-22T12:27:38Z",
       "side": 1,
       "message": "remove this line, it\u0027s a dup of #2.",
+      "revId": "e55d2d704b579b6448022765dc73c9b5f2e1166f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cac68369_7b78f7f5",
+        "filename": "codereview.settings",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115495
+      },
+      "writtenOn": "2016-07-22T17:56:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aec530a_34399e3f",
       "revId": "e55d2d704b579b6448022765dc73c9b5f2e1166f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
