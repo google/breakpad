@@ -22,6 +22,30 @@
       "revId": "bfe2af71c1d18cd5b2611e878dd8fec4ea4aa0fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa6dcf44_67ba2c28",
+        "filename": "codereview.settings",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1141499
+      },
+      "writtenOn": "2016-07-22T12:30:43Z",
+      "side": 1,
+      "message": "i don\u0027t know. \n\nIf their remote \"origin\" has the same URL as view_vc above, it\u0027s not needed. This covers 99% of devs.\n\nBut sometimes people\u0027s remotes are different. For exampke, they might be using git-cache (as our bots do) or by cloning from some other mirror. In this case, i think this is useful, but this isn\u0027t actually covered with tests in depot_tools, so it could be broken.",
+      "parentUuid": "cac68369_98b959cb",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 52
+      },
+      "revId": "bfe2af71c1d18cd5b2611e878dd8fec4ea4aa0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
