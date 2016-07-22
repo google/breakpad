@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea03478f_863a6a7d",
+        "filename": "codereview.settings",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1141499
+      },
+      "writtenOn": "2016-07-22T12:27:38Z",
+      "side": 1,
+      "message": "remove this, project is already set correctly and automatically in and by Gerrit itself.",
+      "revId": "e55d2d704b579b6448022765dc73c9b5f2e1166f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a1037cf_ad242918",
+        "filename": "codereview.settings",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1141499
+      },
+      "writtenOn": "2016-07-22T12:27:38Z",
+      "side": 1,
+      "message": "i don\u0027t think this works, at least depot_tools isn\u0027t reading this anyway.",
+      "revId": "e55d2d704b579b6448022765dc73c9b5f2e1166f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4aec530a_34399e3f",
+        "filename": "codereview.settings",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1141499
+      },
+      "writtenOn": "2016-07-22T12:27:38Z",
+      "side": 1,
+      "message": "remove this line, it\u0027s a dup of #2.",
+      "revId": "e55d2d704b579b6448022765dc73c9b5f2e1166f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
