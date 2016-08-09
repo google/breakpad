@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "599ef77d_84a5c8fe",
+        "filename": "src/tools/mac/symupload/symupload.m",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-08-09T19:39:04Z",
+      "side": 1,
+      "message": "Instead: if (S_ISREG(statbuf.st_mode)) {",
+      "revId": "23f752a9541ccd2566c71f6930428eabb09e439a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "599ef77d_64a2c4f6",
+        "filename": "src/tools/mac/symupload/symupload.m",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-08-09T19:39:04Z",
+      "side": 1,
+      "message": "Move this close up above the S_ISREG test so that you don’t have to do it in the S_ISREG conditional and here.",
+      "revId": "23f752a9541ccd2566c71f6930428eabb09e439a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
