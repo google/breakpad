@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "599ef77d_24595c2f",
+        "filename": "src/tools/mac/symupload/symupload.m",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-08-09T18:32:58Z",
+      "side": 1,
+      "message": "I think this can all be much simpler:\n\n  int fd \u003d open(argv[optind], O_RDONLY);\n  if (fd \u003c 0) {\n    fprintf(stderr, \"%s: %s: %s\\n\", argv[0], argv[optind], strerror(errno));\n    exit(1);\n  }\n  close(fd);",
+      "revId": "810ea9522b8dedf23911df714349626a8d72b20e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
