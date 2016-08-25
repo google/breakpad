@@ -88,6 +88,41 @@
       "revId": "36f4d53166758ed8c1253c515755158e084df5ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "056ed60d_76d470f1",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-08-25T21:27:17Z",
+      "side": 1,
+      "message": "For single-use constants, I’d just stick them inline, or have a constant right next to the point of use if doing so has documentary value.",
+      "parentUuid": "a546ea69_03ccae8f",
+      "revId": "36f4d53166758ed8c1253c515755158e084df5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "056ed60d_56d97425",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-08-25T21:27:17Z",
+      "side": 1,
+      "message": "Like this, for example.",
+      "revId": "36f4d53166758ed8c1253c515755158e084df5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
