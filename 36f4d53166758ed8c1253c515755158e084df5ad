@@ -34,6 +34,42 @@
       "revId": "36f4d53166758ed8c1253c515755158e084df5ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a546ea69_03ccae8f",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1165449
+      },
+      "writtenOn": "2016-08-25T21:22:51Z",
+      "side": 1,
+      "message": "I\u0027m quite used to having constants at the top of the file, but will do as suggested.",
+      "parentUuid": "45d9ae0c_90c79443",
+      "revId": "36f4d53166758ed8c1253c515755158e084df5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e550e21d_a84493a7",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1165449
+      },
+      "writtenOn": "2016-08-25T21:22:51Z",
+      "side": 1,
+      "message": "Do you want me to move other constants too? I feel it\u0027s quite typical to define constants at the top of the file to have clear overview of them. At least I\u0027m used to that from working on Chromium code.",
+      "parentUuid": "653cf2c0_85abf21f",
+      "revId": "36f4d53166758ed8c1253c515755158e084df5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
