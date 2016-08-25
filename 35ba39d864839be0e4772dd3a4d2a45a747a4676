@@ -16,6 +16,24 @@
       "revId": "35ba39d864839be0e4772dd3a4d2a45a747a4676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "250afa5d_4f872d0f",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1165449
+      },
+      "writtenOn": "2016-08-25T21:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "056ed60d_f6c7e041",
+      "revId": "35ba39d864839be0e4772dd3a4d2a45a747a4676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
