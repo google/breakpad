@@ -70,6 +70,24 @@
       "revId": "36f4d53166758ed8c1253c515755158e084df5ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e550e21d_e8c3ab07",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1165449
+      },
+      "writtenOn": "2016-08-25T21:23:47Z",
+      "side": 1,
+      "message": "BTW. All constants are used. Clang would catch that if they wouldn\u0027t.",
+      "parentUuid": "653cf2c0_85abf21f",
+      "revId": "36f4d53166758ed8c1253c515755158e084df5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
