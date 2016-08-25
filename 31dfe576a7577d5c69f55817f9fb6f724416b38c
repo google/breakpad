@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "056ed60d_361cb8d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-08-25T21:40:05Z",
+      "side": 1,
+      "message": "Re-wrap to 72 columns as is the norm for git commit messages.\n\n(80 minus 8 columns that the tab eats when you use “git log”)",
+      "revId": "31dfe576a7577d5c69f55817f9fb6f724416b38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
