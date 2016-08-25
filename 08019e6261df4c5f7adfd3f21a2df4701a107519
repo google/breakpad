@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "056ed60d_96e30ccc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-08-25T21:37:11Z",
+      "side": 1,
+      "message": "Revise, since you’re not #ifdef-ing the variable now.",
+      "revId": "08019e6261df4c5f7adfd3f21a2df4701a107519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
