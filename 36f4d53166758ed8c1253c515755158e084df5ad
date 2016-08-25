@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45d9ae0c_90c79443",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1144260
+      },
+      "writtenOn": "2016-08-25T15:49:47Z",
+      "side": 1,
+      "message": "I\u0027d probably move it here rather than having it at file scope with a second set of #if.",
+      "revId": "36f4d53166758ed8c1253c515755158e084df5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
