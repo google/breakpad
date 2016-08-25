@@ -16,6 +16,24 @@
       "revId": "36f4d53166758ed8c1253c515755158e084df5ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "653cf2c0_85abf21f",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-08-25T16:13:44Z",
+      "side": 1,
+      "message": "I’d prefer that.\n\nActually, neither of two file-level constants in this file need to be at that scope, and the third file-level constant doesn’t seem to be used at all.",
+      "parentUuid": "45d9ae0c_90c79443",
+      "revId": "36f4d53166758ed8c1253c515755158e084df5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
