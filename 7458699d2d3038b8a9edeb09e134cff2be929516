@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45ed2e06_c27604e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-29T18:35:29Z",
+      "side": 1,
+      "message": "commit messages should be wrapped to at least \u003c80 cols\n\nyou can fix this in the gerrit web interface if you prefer",
+      "revId": "7458699d2d3038b8a9edeb09e134cff2be929516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
