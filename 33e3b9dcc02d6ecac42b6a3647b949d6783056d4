@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "057a5668_96e36c09",
+        "filename": "src/tools/mac/crash_report/on_demand_symbol_supplier.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-08-30T19:17:43Z",
+      "side": 1,
+      "message": "Sort this with the C system headers, above \u003csys/stat.h\u003e. #import it instead of #include, it’s an Objective-C header.",
+      "revId": "33e3b9dcc02d6ecac42b6a3647b949d6783056d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "057a5668_7626d063",
+        "filename": "src/tools/mac/crash_report/on_demand_symbol_supplier.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-08-30T19:17:43Z",
+      "side": 1,
+      "message": "This should be fileSystemRepresentation instead.",
+      "range": {
+        "startLine": 289,
+        "startChar": 30,
+        "endLine": 289,
+        "endChar": 40
+      },
+      "revId": "33e3b9dcc02d6ecac42b6a3647b949d6783056d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
