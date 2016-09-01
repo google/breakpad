@@ -63,6 +63,24 @@
       "revId": "33e3b9dcc02d6ecac42b6a3647b949d6783056d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d14e450b_5c70dd9b",
+        "filename": "src/tools/mac/crash_report/on_demand_symbol_supplier.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-09-01T14:35:42Z",
+      "side": 1,
+      "message": "Absolutely. It looks like module_str isn’t really necessary here at all.",
+      "parentUuid": "111c5dae_a6108608",
+      "revId": "33e3b9dcc02d6ecac42b6a3647b949d6783056d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
