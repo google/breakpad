@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1efc9c0_903e5ac7",
+        "filename": "src/client/linux/log/log.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-09-01T13:46:05Z",
+      "side": 1,
+      "message": "ehm I think you forgot to put this back as it was.",
+      "revId": "87a2093a0dd72d8cb8253e331107e9445556da05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d163a525_f7dcfadc",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-09-01T13:46:05Z",
+      "side": 1,
+      "message": "Hmm if somebody is using microdump on Linux this will break it. For backwards comapt this should be:\n\nif (fd_ \u003c 0) {\n#if ...android\n  writeToCrashLog\n#else\n  logger::write...\n  logger::write(\\n)\n#endif\n  return;\n}",
+      "range": {
+        "startLine": 194,
+        "startChar": 4,
+        "endLine": 197,
+        "endChar": 5
+      },
+      "revId": "87a2093a0dd72d8cb8253e331107e9445556da05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91ff6d6b_b5e42a37",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-09-01T13:46:05Z",
+      "side": 1,
+      "message": "Yeah here I was saying, instead of returning quietly log a message.\nAlso I\u0027d treat 0 as an error here. write returning 0 is very obscure. POSIX specs say that it could return zero (without clarifying the semantic), but all known error condition return -1.\nIn case of something returning 0 (I can see custom kernels doing odd things) I\u0027d just bail out, instead of having this code looping forever and burning the battery.\n\nI\u0027d do something like this:\n\nbool write_failed \u003d false;\nwhile (completed \u003c msglen) {\n  ssize_t written \u003d HANDLE_EINTR(sys_write(fd_, msg + completed, msglen - completed));\n  if (written \u003c\u003d 0) {\n    write_failed \u003d true;\n    break;\n  }\n  completed +\u003d written;\n}\n\nif (!write_failed)\n  write_failed \u003d 1 !\u003d HANDLE_EINTR(sys_write(fd_, \"\\n\", 1))\n\nif (write_failed) {\n  const char kMsg[] \u003d \"Microdump write to fd failed\\n\"\n  logger::write(kMsgt, sizeof(kMsg) - 1);\n}",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 5
+      },
+      "revId": "87a2093a0dd72d8cb8253e331107e9445556da05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
