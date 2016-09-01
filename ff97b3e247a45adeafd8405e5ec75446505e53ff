@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "11f37dac_31616a3a",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-09-01T09:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d163a525_d4757cc2",
+      "range": {
+        "startLine": 133,
+        "startChar": 22,
+        "endLine": 133,
+        "endChar": 24
+      },
+      "revId": "ff97b3e247a45adeafd8405e5ec75446505e53ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "312321ee_472d4e9b",
         "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2016-08-31T13:04:14Z",
       "side": 1,
       "message": "yeah here i\u0027d just do sys_write(...).\nOne thing that comes to my mind is that depending on the underlying impl of the FD and the IO buffer, sys_write might actually write less bytes, so you might need to check for the ret value and write the remaining part.\nAlso HANDLE_EINTR\nAlso if the write somehow fails, I think would be still useful to use the logger to write to the android log the failure. Can help debugging cases in future where the microdump file is empty / corrupted.",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 17
+      },
+      "revId": "ff97b3e247a45adeafd8405e5ec75446505e53ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11f37dac_b1543a55",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-09-01T09:52:19Z",
+      "side": 1,
+      "message": "I\u0027ve done the first part of this.\n\nNot sure what the best plan is wrt. writing to the log as well. If we unconditionally do that, we end up in the two microdumps situation again. If we log only when writing causes an error (or switch to the android log at the first error) we would end up with a partial microdump in both places (unless the error occurred immediately) because we don\u0027t hold on to previous log lines. We could log an error to the android log, but that wouldn\u0027t get processed correctly by the crash pipeline as it stands.\n\nWDYT?",
+      "parentUuid": "312321ee_472d4e9b",
       "range": {
         "startLine": 190,
         "startChar": 4,
@@ -88,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "11f37dac_910ade7c",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-09-01T09:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "312321ee_8717464f",
+      "revId": "ff97b3e247a45adeafd8405e5ec75446505e53ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1efc9c0_2d5bcd5a",
         "filename": "src/client/linux/microdump_writer/microdump_writer.h",
         "patchSetId": 1
@@ -99,6 +165,30 @@
       "writtenOn": "2016-08-31T13:04:14Z",
       "side": 1,
       "message": "for consistency with the WriteMinidump API, can you have two overloads of this, where one doesn\u0027t take fd and the other does (in the impl you can just return WriteMicrodump(-1, ...)) ?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "ff97b3e247a45adeafd8405e5ec75446505e53ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11f37dac_f107e272",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-09-01T09:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1efc9c0_2d5bcd5a",
       "range": {
         "startLine": 57,
         "startChar": 0,
