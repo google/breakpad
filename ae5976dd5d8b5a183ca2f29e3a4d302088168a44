@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d14e450b_fcdc4969",
+        "filename": "src/tools/mac/crash_report/crash_report.xcodeproj/project.pbxproj",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-09-01T17:08:07Z",
+      "side": 1,
+      "message": "c++11 is a more usual name for this, does that work here?",
+      "range": {
+        "startLine": 547,
+        "startChar": 35,
+        "endLine": 547,
+        "endChar": 40
+      },
+      "revId": "ae5976dd5d8b5a183ca2f29e3a4d302088168a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d14e450b_1cefb512",
+        "filename": "src/tools/mac/crash_report/on_demand_symbol_supplier.mm",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-09-01T17:08:07Z",
+      "side": 1,
+      "message": "Remove this.",
+      "revId": "ae5976dd5d8b5a183ca2f29e3a4d302088168a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
