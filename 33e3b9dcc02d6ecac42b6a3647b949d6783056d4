@@ -39,6 +39,30 @@
       "revId": "33e3b9dcc02d6ecac42b6a3647b949d6783056d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "111c5dae_a6108608",
+        "filename": "src/tools/mac/crash_report/on_demand_symbol_supplier.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1166654
+      },
+      "writtenOn": "2016-09-01T12:41:58Z",
+      "side": 1,
+      "message": "If I\u0027d use fileSystemRepresentationWithPath:module_str wouldn\u0027t the result be module_path again?\nSo can\u0027t module_path be used here directly without the stringWithFileSystemRepresentation conversion?",
+      "parentUuid": "057a5668_7626d063",
+      "range": {
+        "startLine": 289,
+        "startChar": 30,
+        "endLine": 289,
+        "endChar": 40
+      },
+      "revId": "33e3b9dcc02d6ecac42b6a3647b949d6783056d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
