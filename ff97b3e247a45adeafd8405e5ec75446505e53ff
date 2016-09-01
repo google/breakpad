@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "f1efc9c0_10338a04",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-09-01T13:46:05Z",
+      "side": 1,
+      "message": "Oops just realized that the way I worded my comment was very misleading.\nYeah when I said \"I think would be still useful to use the logger to write to the android log the failure\" I meant just log the failure (\"Could not write the microdump to fd because... whatever. Bailing out, thanks for the fish.\") not falling back and write the microdump there.",
+      "parentUuid": "11f37dac_b1543a55",
+      "revId": "ff97b3e247a45adeafd8405e5ec75446505e53ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "312321ee_8717464f",
         "filename": "src/client/linux/microdump_writer/microdump_writer.h",
         "patchSetId": 1
