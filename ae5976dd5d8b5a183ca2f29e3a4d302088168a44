@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "91668dcf_da97c538",
+        "filename": "src/tools/mac/crash_report/crash_report.xcodeproj/project.pbxproj",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1166654
+      },
+      "writtenOn": "2016-09-02T06:56:43Z",
+      "side": 1,
+      "message": "When setting this in Xcode the setting gets displayed as \"-std\u003dc++11\". Looking into the project file and seeing \"c++0x\" there did confuse me as well. I don\u0027t know why this is different.\nHowever writing \"c++11\" directly into the project file works. But it will get displayed as a custom setting in Xcode.\n\nWhich way should we go here?",
+      "parentUuid": "d14e450b_fcdc4969",
+      "range": {
+        "startLine": 547,
+        "startChar": 35,
+        "endLine": 547,
+        "endChar": 40
+      },
+      "revId": "ae5976dd5d8b5a183ca2f29e3a4d302088168a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d14e450b_1cefb512",
         "filename": "src/tools/mac/crash_report/on_demand_symbol_supplier.mm",
         "patchSetId": 2
