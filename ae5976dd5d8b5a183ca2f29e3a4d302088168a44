@@ -49,6 +49,24 @@
     },
     {
       "key": {
+        "uuid": "914bed45_32c9d0a2",
+        "filename": "src/tools/mac/crash_report/crash_report.xcodeproj/project.pbxproj",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-09-02T14:24:58Z",
+      "side": 1,
+      "message": "OK, in that case, let’s just go with what Xcode does. Xcode is weird, but it’s fine.",
+      "parentUuid": "91668dcf_da97c538",
+      "revId": "ae5976dd5d8b5a183ca2f29e3a4d302088168a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d14e450b_1cefb512",
         "filename": "src/tools/mac/crash_report/on_demand_symbol_supplier.mm",
         "patchSetId": 2
