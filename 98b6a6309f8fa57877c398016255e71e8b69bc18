@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c546836b_668ed08d",
+        "filename": "src/common/language.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1144674
+      },
+      "writtenOn": "2016-09-26T15:42:48Z",
+      "side": 1,
+      "message": "I would consider merging this with status \u003d\u003d 0 case.\nNow it looks like they (*demangled_c and status) are not related, while they really are - there is no point in checking demangled_c when status !\u003d 0. \nJust an idea :)",
+      "revId": "98b6a6309f8fa57877c398016255e71e8b69bc18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
