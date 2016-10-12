@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c64320a_477f1800",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-10-12T15:17:12Z",
+      "side": 1,
+      "message": "Use BUG\u003dchromium:645146 for these cross-project ones.",
+      "revId": "0ccdc90793895c17a383d9f7ac87b6fd0565d0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
