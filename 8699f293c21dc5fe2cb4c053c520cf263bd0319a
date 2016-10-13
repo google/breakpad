@@ -88,6 +88,24 @@
       "revId": "8699f293c21dc5fe2cb4c053c520cf263bd0319a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c899276_33619232",
+        "filename": "src/processor/stackwalker_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1144260
+      },
+      "writtenOn": "2016-10-13T22:42:49Z",
+      "side": 1,
+      "message": "\u003e ... I wonder if windbg walks the stack correctly without the dll file. I will test that.\n\nIt does work OK. That could be because it just passes through EBX even if it doesn\u0027t have information on the correctness of doing so though. Presumably (?) a subframe wouldn\u0027t use it as part of its stackwalking program if it didn\u0027t know it was safe to do so.",
+      "parentUuid": "5c899276_b37ee201",
+      "revId": "8699f293c21dc5fe2cb4c053c520cf263bd0319a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
