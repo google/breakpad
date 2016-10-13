@@ -70,6 +70,24 @@
       "revId": "8699f293c21dc5fe2cb4c053c520cf263bd0319a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcf16614_1ddcb303",
+        "filename": "src/processor/stackwalker_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-10-13T22:39:56Z",
+      "side": 1,
+      "message": "\u003e Yeah, I wrote the code to walk the disassembly in the stackwalker which wasn\u0027t too bad (since\n\u003e we have libdis already nearby), but then I realized that of course we won\u0027t naturally or\n\u003e normally have the code bytes for, say, ntdll.dll.\n\nOr anything else, for that matter. The crash processor only has dumped sym files, not pdbs or code.\n\nWe’d have to disassemble (everything?) at dump_syms time, which is also pretty not great.\n\n\u003e I will also have a look into DIA\u0027s data. I suspect get_type() is about as good as just adding\n\u003e \"$ebx $ebx \u003d\" to the end of the non-EBP-using program string.\n\nYeah, I was thinking that if there are certain frame types where we’ll know that this would always be valid, we could just append that tweak to the program string in those cases. That would let us fix this without a breaking dump_syms format change.",
+      "parentUuid": "5c899276_b37ee201",
+      "revId": "8699f293c21dc5fe2cb4c053c520cf263bd0319a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
