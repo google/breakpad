@@ -16,6 +16,24 @@
       "revId": "8699f293c21dc5fe2cb4c053c520cf263bd0319a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cf21ee7_afc1b9fc",
+        "filename": "src/processor/stackwalker_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1144260
+      },
+      "writtenOn": "2016-10-13T18:47:03Z",
+      "side": 1,
+      "message": "Hmm, I wondered about that. The problem then is that the top two stack frames use the non-EBP-using artificial program string from here: https://cs.chromium.org/chromium/src/breakpad/src/processor/stackwalker_x86.cc?rcl\u003d0\u0026l\u003d317 . It doesn\u0027t explicitly say \"ebx_new \u003d ebx_old\", so we don\u0027t treat the value of EBX as valid by the time we\u0027ve come down the stack through a couple of those.\n\nI\u0027m not sure what we should do here. We don\u0027t know that EBX hasn\u0027t been modified. It\u0027s non-volatile across calls, but we don\u0027t have a way of knowing that it hasn\u0027t been saved and modified during the body of the function.\n\nWe could attempt to disassemble and scan for modifications to ebx from the function entry point to the EIP for the frame, I guess. That would work for this particular stack and likely many ntdll calls (as they\u0027re often simple forwards to kernel), but it\u0027s pretty tricksy.",
+      "parentUuid": "5c64320a_bf1dd871",
+      "revId": "8699f293c21dc5fe2cb4c053c520cf263bd0319a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
