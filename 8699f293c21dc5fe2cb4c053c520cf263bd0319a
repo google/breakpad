@@ -34,6 +34,24 @@
       "revId": "8699f293c21dc5fe2cb4c053c520cf263bd0319a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcf16614_3dad2f88",
+        "filename": "src/processor/stackwalker_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-10-13T22:20:18Z",
+      "side": 1,
+      "message": "\u003e Hmm, I wondered about that. The problem then is that the top two stack frames use the\n\u003e non-EBP-using artificial program string from here:\n\u003e https://cs.chromium.org/chromium/src/breakpad/src/processor/stackwalker_x86.cc?rcl\u003d0\u0026l\u003d317 .\n\u003e It doesn\u0027t explicitly say \"ebx_new \u003d ebx_old\", so we don\u0027t treat the value of EBX as valid by\n\u003e the time we\u0027ve come down the stack through a couple of those.\n\nOh, this is a mess, then.\n\nIs there anything else that DIA can tell us about whether ebx is untouched that we can expose via dump_syms? There may be some useful information in the .pdb that we’re missing, like an “I don’t touch %ebp” bit. Maybe we can make that leap based on IDiaFrameData::get_type()?\n\n(Looking at the DIA docs today, I see that they’ve gotten slightly better. Ten years ago, the format of “program string” wasn’t explained at all.)\n\n\u003e We could attempt to disassemble and scan for modifications to ebx from the function entry\n\u003e point to the EIP for the frame, I guess.\n\nUgh, I don’t want to go down that road.",
+      "parentUuid": "3cf21ee7_afc1b9fc",
+      "revId": "8699f293c21dc5fe2cb4c053c520cf263bd0319a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
