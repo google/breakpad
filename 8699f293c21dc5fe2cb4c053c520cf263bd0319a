@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c64320a_bf1dd871",
+        "filename": "src/processor/stackwalker_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-10-13T18:13:56Z",
+      "side": 1,
+      "message": "We should only do this if we know the value of %ebx. Otherwise, we’ll be populating the postfix evaluator with garbage, and garbage in, garbage out.\n\nWe can do provide %ebx here when we’re trying to backtrack from the context frame (line 128 above), or when we know that we have recovered a valid %ebx value based on prior recovery from a PDB program string or DWARF CFI (see the chunk beginning at line 489 below). Check last_frame-\u003econtext_validity \u0026 CONTEXT_VALID_EBX.",
+      "revId": "8699f293c21dc5fe2cb4c053c520cf263bd0319a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
