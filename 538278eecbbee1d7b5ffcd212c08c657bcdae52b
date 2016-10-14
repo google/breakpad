@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcf16614_e0983c25",
+        "filename": "src/processor/stackwalker_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-10-14T17:24:44Z",
+      "side": 1,
+      "message": "// if available",
+      "revId": "538278eecbbee1d7b5ffcd212c08c657bcdae52b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
