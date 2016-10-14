@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcf16614_dd988b25",
+        "filename": "src/processor/stackwalker_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-10-14T00:11:11Z",
+      "side": 1,
+      "message": "Add a note saying that we have less than 1.0 certainty that this does the right thing in all cases.",
+      "revId": "4174c93fb4c1e8c612431469f56e159c9ca8dfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcf16614_7d8857d2",
+        "filename": "src/processor/stackwalker_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-10-14T00:11:11Z",
+      "side": 1,
+      "message": "Now we’ll get into a different awkward situation where if one of these “$ebx $ebx \u003d” program strings shows up on a parent frame of something that had its own program string and didn’t recover %ebx, evaluating this program string will fail. :(",
+      "revId": "4174c93fb4c1e8c612431469f56e159c9ca8dfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
