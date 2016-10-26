@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c17d9c54_286a2f9b",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-10-26T17:43:44Z",
+      "side": 1,
+      "message": "OK, but i was just copying existing style used in other tools",
+      "parentUuid": "a6eefe70_61991655",
+      "revId": "1c71d5ab9e8ed00b161e81dc46b70fd1badcd681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6eefe70_418e1211",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-10-26T14:13:44Z",
       "side": 1,
       "message": "??? Was this for testing?",
+      "revId": "1c71d5ab9e8ed00b161e81dc46b70fd1badcd681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c17d9c54_88717b90",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-10-26T17:43:44Z",
+      "side": 1,
+      "message": "yeah, squashed in by accident while testing a follow up CL",
+      "parentUuid": "a6eefe70_418e1211",
       "revId": "1c71d5ab9e8ed00b161e81dc46b70fd1badcd681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
