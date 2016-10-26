@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6eefe70_61991655",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-10-26T14:13:44Z",
+      "side": 1,
+      "message": "const Options\u0026 for all of these. Google style normally passes const structs that don’t need to be null by reference instead of pointer.",
+      "revId": "1c71d5ab9e8ed00b161e81dc46b70fd1badcd681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6eefe70_418e1211",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1143760
+      },
+      "writtenOn": "2016-10-26T14:13:44Z",
+      "side": 1,
+      "message": "??? Was this for testing?",
+      "revId": "1c71d5ab9e8ed00b161e81dc46b70fd1badcd681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
