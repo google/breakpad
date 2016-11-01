@@ -16,6 +16,24 @@
       "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46db8268_dd80371d",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1410,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-11-01T21:08:00Z",
+      "side": 1,
+      "message": "i tried that originally, but the class inheritance made it not as easy\n\nif i do just:\n\n void Print(bool hexdump\u003dtrue, unsigned int width\u003d16) const;\n\nit fails because of the MemoryRegion class that we inherit from:\n\n ../src/google_breakpad/processor/memory_region.h:72:16: error:\n     ‘virtual void google_breakpad::MemoryRegion::Print() const’ was hidden [-Werror\u003doverloaded-virtual]\n   virtual void Print() const \u003d 0;\n\nIn file included from ../src/google_breakpad/processor/exploitability.h:44:0,\n                 from ../src/processor/exploitability.cc:40:\n../src/google_breakpad/processor/minidump.h:239:8: error:\n     by ‘void google_breakpad::MinidumpMemoryRegion::Print(bool, unsigned int) const’ [-Werror\u003doverloaded-virtual]\n   void Print(bool hexdump\u003dtrue, unsigned int width\u003d16) const;\n\nif i try to add a second prototype like:\n\n void Print() const;\n void Print(bool hexdump\u003dtrue, unsigned int width\u003d16) const;\n\nit fails because the two are not unambiguous:\n\n../src/processor/minidump.cc: In member function ‘void google_breakpad::MinidumpThread::Print()’:\n../src/processor/minidump.cc:1580:19: error: call of overloaded ‘Print()’ is ambiguous\n     memory-\u003ePrint();\n\ni\u0027m open to other ideas :)",
+      "parentUuid": "06fa6aca_44a58e89",
+      "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
