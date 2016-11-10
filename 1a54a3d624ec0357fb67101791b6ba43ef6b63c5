@@ -16,6 +16,24 @@
       "revId": "1a54a3d624ec0357fb67101791b6ba43ef6b63c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b749742_420b20d2",
+        "filename": "src/google_breakpad/common/minidump_exception_win32.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1174230
+      },
+      "writtenOn": "2016-11-10T14:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b749742_814b4acb",
+      "revId": "1a54a3d624ec0357fb67101791b6ba43ef6b63c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
