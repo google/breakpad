@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b749742_814b4acb",
+        "filename": "src/google_breakpad/common/minidump_exception_win32.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2016-11-10T00:07:51Z",
+      "side": 1,
+      "message": "This one’s a static method in a class, so you should write CrashpadClient::DumpWithoutCrash to help people find it.\n\nThe Mac one’s an un-class-y function, so its description is OK as-is.",
+      "revId": "1a54a3d624ec0357fb67101791b6ba43ef6b63c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
