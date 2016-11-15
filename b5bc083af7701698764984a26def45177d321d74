@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9036940e_635dd198",
+        "filename": "docs/stack_walking.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-11-15T18:45:59Z",
+      "side": 1,
+      "message": "write this as one line:\n\n [MinidumpProcessor](/src/processor/minidump_processor.cc)\n\nwith that example, you should be able to update many of the other source path links",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 98
+      },
+      "revId": "b5bc083af7701698764984a26def45177d321d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
