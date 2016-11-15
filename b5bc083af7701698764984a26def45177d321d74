@@ -22,6 +22,24 @@
       "revId": "b5bc083af7701698764984a26def45177d321d74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9036940e_c3613d2a",
+        "filename": "docs/stack_walking.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2016-11-15T18:55:12Z",
+      "side": 1,
+      "message": "\u003e write this as one line:\n \u003e \n \u003e  [MinidumpProcessor](/src/processor/minidump_processor.cc)\n \u003e \n \u003e with that example, you should be able to update many of the other source path links\n\nEven better, go relative (no leading /, and ..s to move up) so that things line up nicely if this gets exported into someone else’s repository.",
+      "parentUuid": "9036940e_635dd198",
+      "revId": "b5bc083af7701698764984a26def45177d321d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
