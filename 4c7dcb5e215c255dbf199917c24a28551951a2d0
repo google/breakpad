@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9036940e_8369ecd8",
+        "filename": "docs/getting_started_with_breakpad.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2016-11-16T12:28:29Z",
+      "side": 1,
+      "message": "These should be relative Markdown links, not HTML \u003ca\u003e links.",
+      "revId": "4c7dcb5e215c255dbf199917c24a28551951a2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
