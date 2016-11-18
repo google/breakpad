@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70eda006_30c1a8ec",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1109505
+      },
+      "writtenOn": "2016-11-18T14:29:38Z",
+      "side": 1,
+      "message": "What does the caller use this bool for? It\u0027s always true now.",
+      "range": {
+        "startLine": 165,
+        "startChar": 13,
+        "endLine": 165,
+        "endChar": 17
+      },
+      "revId": "53de71f53891a7221fa4149c40e3cb207c62d4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70eda006_50b42c82",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1109505
+      },
+      "writtenOn": "2016-11-18T14:29:38Z",
+      "side": 1,
+      "message": "Do we need to call ThreadsResume in the early-out case?",
+      "range": {
+        "startLine": 181,
+        "startChar": 13,
+        "endLine": 181,
+        "endChar": 26
+      },
+      "revId": "53de71f53891a7221fa4149c40e3cb207c62d4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
