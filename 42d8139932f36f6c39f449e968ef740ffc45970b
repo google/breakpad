@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90a054a7_13c0c735",
+        "filename": "Makefile.am",
+        "patchSetId": 1
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-11-18T17:14:19Z",
+      "side": 1,
+      "message": "drop the double slash here and below",
+      "revId": "42d8139932f36f6c39f449e968ef740ffc45970b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
