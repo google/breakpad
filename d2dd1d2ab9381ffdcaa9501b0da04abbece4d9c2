@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70eda006_306768fe",
+        "filename": "src/processor/synth_minidump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1002385
+      },
+      "writtenOn": "2016-11-19T18:52:21Z",
+      "side": 1,
+      "message": "Do you prefer a new global function that accepts Section * and test_assembler::Section * instead of these 2 separate conditions?",
+      "revId": "d2dd1d2ab9381ffdcaa9501b0da04abbece4d9c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
