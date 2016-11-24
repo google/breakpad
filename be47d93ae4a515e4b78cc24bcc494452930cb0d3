@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b04b9845_d23b24de",
+        "filename": "src/processor/microdump_stackwalk_machine_readable_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-24T12:56:39Z",
+      "side": 1,
+      "message": "HA. TIL that if you source (via dot) a non existing file:\nsh will implicitly bail out with retcode 1\nbash will keep going.\nand this || exit 1 correctly brings them back to do the same.\n\nshell script, gh.",
+      "range": {
+        "startLine": 32,
+        "startChar": 42,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "be47d93ae4a515e4b78cc24bcc494452930cb0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_f2402855",
+        "filename": "src/processor/microdump_stackwalk_machine_readable_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-24T12:56:39Z",
+      "side": 1,
+      "message": "HA. TIL that if you source (via dot) a non existing file:\nsh will implicitly bail out with retcode 1\nbash will keep going.\nand this || exit 1 correctly brings them back to do the same.\n\nshell script, gh.",
+      "range": {
+        "startLine": 32,
+        "startChar": 42,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "be47d93ae4a515e4b78cc24bcc494452930cb0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
