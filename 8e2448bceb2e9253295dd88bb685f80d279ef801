@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b04b9845_b25780e6",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-24T17:43:38Z",
+      "side": 0,
+      "message": "I think you accidentally ate this line, which I expect is going to leave the crashing process there forever in a stopped state (unless debuggerd kills it)",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 29
+      },
+      "revId": "8e2448bceb2e9253295dd88bb685f80d279ef801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_f22f484e",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-24T17:43:38Z",
+      "side": 0,
+      "message": "yeah I see. This for loop was really totally nonsense (like the MDRawThread below)",
+      "range": {
+        "startLine": 367,
+        "startChar": 4,
+        "endLine": 367,
+        "endChar": 48
+      },
+      "revId": "8e2448bceb2e9253295dd88bb685f80d279ef801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
