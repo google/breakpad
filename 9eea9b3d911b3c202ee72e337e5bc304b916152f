@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b04b9845_f246681e",
+        "filename": "src/client/linux/handler/microdump_extra_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-25T10:39:21Z",
+      "side": 1,
+      "message": "Done. I named the bool slightly differently, but hopefully the comments explain the intent.",
+      "parentUuid": "b04b9845_521f3423",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "9eea9b3d911b3c202ee72e337e5bc304b916152f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b04b9845_12e84cf6",
         "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-24T17:43:38Z",
       "side": 1,
       "message": "If you truncate the stack like this by keeping only the \"oldest\" part of the stack you\u0027ll lose the ability to unwind it properly then.\nYou really need the most fresh part of the stack, as that contains the context.\n\nAnyways, as discussed offline I\u0027d make the first iteration simple (i.e. don\u0027t have this extra truncation logic) because as-is this code can\u0027t be shared with the minidump. We can add the extra truncation logic afterwards when we\u0027ll necessarily have to move this code somewhere else in ../common",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 27
+      },
+      "revId": "9eea9b3d911b3c202ee72e337e5bc304b916152f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_523654a3",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-25T10:39:21Z",
+      "side": 1,
+      "message": "This was actually just a mistake (forgot that the stack was growing down); corrected in a later PS.",
+      "parentUuid": "b04b9845_12e84cf6",
       "range": {
         "startLine": 243,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b04b9845_723358b2",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-25T10:39:21Z",
+      "side": 1,
+      "message": "Irrelevant now, but because I wanted the possibility that the range was [0, end_addr].",
+      "parentUuid": "b04b9845_d25c040d",
+      "range": {
+        "startLine": 252,
+        "startChar": 55,
+        "endLine": 252,
+        "endChar": 57
+      },
+      "revId": "9eea9b3d911b3c202ee72e337e5bc304b916152f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b04b9845_5271f488",
         "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2016-11-24T17:43:38Z",
       "side": 1,
       "message": "should this just be:\n\nfor (sp \u003d cast(stack_); sp \u003c stack_ + stack_len_ - sizeof(uintptr_t); sp +\u003d sizeof(uintptr_t) ?\n\nIn other words:\nstack_[0] is the most \"fresh\" part of the stack, you should start looking from there.\n\nThe good news is that stack_ which comes from GetStackInfo is guaranteed to be page-aligned, so is also aligned to sizeof(void*).\nMaybe add a comment here, otherwise my first reacation reading this code would be:\n\"wait, the sp might be misaligned (which would be the cause of the crash itself), if that happens all this searching logic is broken here\"",
+      "range": {
+        "startLine": 255,
+        "startChar": 6,
+        "endLine": 257,
+        "endChar": 59
+      },
+      "revId": "9eea9b3d911b3c202ee72e337e5bc304b916152f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_329d5054",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-25T10:39:21Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "b04b9845_5271f488",
       "range": {
         "startLine": 255,
         "startChar": 6,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b04b9845_529ad45c",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-25T10:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b04b9845_9220bc63",
+      "range": {
+        "startLine": 576,
+        "startChar": 11,
+        "endLine": 576,
+        "endChar": 17
+      },
+      "revId": "9eea9b3d911b3c202ee72e337e5bc304b916152f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b04b9845_72851826",
         "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2016-11-24T17:43:38Z",
       "side": 1,
       "message": "the description here is misleading (or I am misunderstanding something):\nstack_addr_ is the real, absolute,  address of the stack aligned to a page boundary.\nIn other words:\n- stack_addr_ \u003c\u003d stackpointer.\n- specifically stack_addr_ \u003d\u003d stackpointer iff stackpointer is page-aligned (very rare)\n- stack_addr_ - stackpointer \u003c 4096 (page size)\n\nIn other words, stack_addr here is an arbitrary, page-aligned, address which guarantees to contain the stack pointer.\nThe all point of that is to try capture something which is *before* the current frame at the time of the crash (even if not strictly needed to unwind the crash itself)\n\nSo I think this should be:\nstack_lowerbound_  ; // Absolute, page-aligned, addr \u003c\u003d SP of the crashed process.",
+      "range": {
+        "startLine": 578,
+        "startChar": 32,
+        "endLine": 578,
+        "endChar": 80
+      },
+      "revId": "9eea9b3d911b3c202ee72e337e5bc304b916152f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_7297d831",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-25T10:39:21Z",
+      "side": 1,
+      "message": "Improved the comments here.",
+      "parentUuid": "b04b9845_72851826",
       "range": {
         "startLine": 578,
         "startChar": 32,
