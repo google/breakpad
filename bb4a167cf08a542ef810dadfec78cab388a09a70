@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b04b9845_d889857a",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-29T17:50:51Z",
+      "side": 1,
+      "message": "plz initialize the new fields you introduced in order, or very likely this is going to hit  a compiler warning in the chrome tree.\nalso, helps debugging",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 23
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_9868ddd4",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-29T17:50:51Z",
+      "side": 1,
+      "message": "this is not used anywhere. Don\u0027t you have to use it to max out the stack_len before line 240?",
+      "range": {
+        "startLine": 232,
+        "startChar": 47,
+        "endLine": 232,
+        "endChar": 60
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_b86da1e3",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-29T17:50:51Z",
+      "side": 1,
+      "message": "honestly using a lambda for two cases within the same funciton check IMHO hurts a bit readability. From a more concrete viewpoint I\u0027m not 100% sure that pod-capturing lambdas don\u0027t end up calling some stdlib function.\nI think it would be more readable (and I would feel safer) by just doing:\n\nconst uintptr_t instruction_pointer \u003d UContextReader::GetIP(...);\nif (ip \u003e\u003d low_addr \u0026\u0026 ip \u003c\u003d high_addr)\n  return CAPTURE_OK\n\nand same thing below in the for loop",
+      "range": {
+        "startLine": 251,
+        "startChar": 4,
+        "endLine": 255,
+        "endChar": 67
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_185dcd34",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-29T17:50:51Z",
+      "side": 1,
+      "message": "another thing I\u0027d add to this comment is:\n|stack_lower_bound_| is guaranteed to be aligned at a page boundary, hence at a pointer size.",
+      "range": {
+        "startLine": 263,
+        "startChar": 41,
+        "endLine": 263,
+        "endChar": 42
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_f87729af",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-29T17:50:51Z",
+      "side": 1,
+      "message": "this is still a positive number, so use uintptr_t here or you can get weird signed vs unsigned warnings down the road",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 13
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_988ffd7e",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-29T17:50:51Z",
+      "side": 1,
+      "message": "careful with this, use my_memcmp instead, this is very likely to crash on arm as-is.\nAt a quick glance Alloc() doesn\u0027t seem to give any alignment guarantee (is just a bump-pointer allocator). Which means that your stack_copy_ is not guaranteed to be aligned at a pointer boundary.\nIn turn dereferencing a non-aligned pointer-size word on arm causes an exception.",
+      "range": {
+        "startLine": 269,
+        "startChar": 19,
+        "endLine": 269,
+        "endChar": 53
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_98be1d08",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-29T17:50:51Z",
+      "side": 1,
+      "message": "instead of doing all this just use a std::vector\u003cchar\u003e and insert into it. You\u0027ll get all this copy and expansion logic for free.",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 146,
+        "endChar": 19
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_587e7584",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-29T17:50:51Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be a +?\nYou are passing an invalid range. Not sure what you expect here.\nAlso technically deadbeef can be a valid address (I\u0027ve seen at least a bug in the past where a test was flaky because of relying on 0xdeadbeef being invalid).\n so probably safer to:\nmalloc a big region here and check that you don\u0027t have any pointer inside there.",
+      "range": {
+        "startLine": 257,
+        "startChar": 58,
+        "endLine": 257,
+        "endChar": 59
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
