@@ -45,6 +45,30 @@
       "revId": "a2c127f870db5566e086a21c94e010e2597e90be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dde43f8_0fc2a525",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-30T16:47:21Z",
+      "side": 1,
+      "message": "Done, but it was unsigned int in the code that I moved from line 340. So I take no responsibility :)",
+      "parentUuid": "4dde43f8_efa3a180",
+      "range": {
+        "startLine": 245,
+        "startChar": 33,
+        "endLine": 245,
+        "endChar": 45
+      },
+      "revId": "a2c127f870db5566e086a21c94e010e2597e90be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
