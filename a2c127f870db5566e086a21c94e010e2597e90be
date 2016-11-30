@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dde43f8_cfa6dd93",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-30T16:39:11Z",
+      "side": 1,
+      "message": "s/unsigned int/size_t/",
+      "range": {
+        "startLine": 245,
+        "startChar": 33,
+        "endLine": 245,
+        "endChar": 45
+      },
+      "revId": "a2c127f870db5566e086a21c94e010e2597e90be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dde43f8_efa3a180",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2016-11-30T16:39:11Z",
+      "side": 1,
+      "message": "s/unsigned int/size_t/",
+      "range": {
+        "startLine": 245,
+        "startChar": 33,
+        "endLine": 245,
+        "endChar": 45
+      },
+      "revId": "a2c127f870db5566e086a21c94e010e2597e90be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
