@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b04b9845_bbbd9b9d",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-30T14:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b04b9845_d889857a",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 23
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b04b9845_9868ddd4",
         "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-29T17:50:51Z",
       "side": 1,
       "message": "this is not used anywhere. Don\u0027t you have to use it to max out the stack_len before line 240?",
+      "range": {
+        "startLine": 232,
+        "startChar": 47,
+        "endLine": 232,
+        "endChar": 60
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_dbc25f24",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-30T14:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b04b9845_9868ddd4",
       "range": {
         "startLine": 232,
         "startChar": 47,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b04b9845_5bb74fb6",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-30T14:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b04b9845_b86da1e3",
+      "range": {
+        "startLine": 251,
+        "startChar": 4,
+        "endLine": 255,
+        "endChar": 67
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b04b9845_185dcd34",
         "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2016-11-29T17:50:51Z",
       "side": 1,
       "message": "another thing I\u0027d add to this comment is:\n|stack_lower_bound_| is guaranteed to be aligned at a page boundary, hence at a pointer size.",
+      "range": {
+        "startLine": 263,
+        "startChar": 41,
+        "endLine": 263,
+        "endChar": 42
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d90030a_c5624eec",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-30T14:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b04b9845_185dcd34",
       "range": {
         "startLine": 263,
         "startChar": 41,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b04b9845_7bb413b1",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-30T14:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b04b9845_f87729af",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 13
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b04b9845_988ffd7e",
         "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
         "patchSetId": 8
@@ -128,6 +248,30 @@
       "writtenOn": "2016-11-29T17:50:51Z",
       "side": 1,
       "message": "careful with this, use my_memcmp instead, this is very likely to crash on arm as-is.\nAt a quick glance Alloc() doesn\u0027t seem to give any alignment guarantee (is just a bump-pointer allocator). Which means that your stack_copy_ is not guaranteed to be aligned at a pointer boundary.\nIn turn dereferencing a non-aligned pointer-size word on arm causes an exception.",
+      "range": {
+        "startLine": 269,
+        "startChar": 19,
+        "endLine": 269,
+        "endChar": 53
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_9bdff7f8",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-30T14:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b04b9845_988ffd7e",
       "range": {
         "startLine": 269,
         "startChar": 19,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "b04b9845_5b2d8f03",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-30T14:33:12Z",
+      "side": 1,
+      "message": "Made more sense just to build directly into a string. CrashAndGetMicrodump can\u0027t return the string directly though, because then whatever ASSERT_NE expands to doesn\u0027t compile if the return value is not void.",
+      "parentUuid": "b04b9845_98be1d08",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 146,
+        "endChar": 19
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b04b9845_587e7584",
         "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
         "patchSetId": 8
@@ -174,6 +342,30 @@
       "writtenOn": "2016-11-29T17:50:51Z",
       "side": 1,
       "message": "shouldn\u0027t this be a +?\nYou are passing an invalid range. Not sure what you expect here.\nAlso technically deadbeef can be a valid address (I\u0027ve seen at least a bug in the past where a test was flaky because of relying on 0xdeadbeef being invalid).\n so probably safer to:\nmalloc a big region here and check that you don\u0027t have any pointer inside there.",
+      "range": {
+        "startLine": 257,
+        "startChar": 58,
+        "endLine": 257,
+        "endChar": 59
+      },
+      "revId": "bb4a167cf08a542ef810dadfec78cab388a09a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b9845_78da597c",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-11-30T14:33:12Z",
+      "side": 1,
+      "message": "It\u0027s deliberately an invalid range, because that will never pass lo \u003c\u003d addr \u003c hi (because hi \u003c lo).",
+      "parentUuid": "b04b9845_587e7584",
       "range": {
         "startLine": 257,
         "startChar": 58,
