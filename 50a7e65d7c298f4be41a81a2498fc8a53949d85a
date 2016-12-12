@@ -22,6 +22,30 @@
       "revId": "50a7e65d7c298f4be41a81a2498fc8a53949d85a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aef3f70_40ff2e8a",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2016-12-12T13:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aef3f70_a034ba97",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 1
+      },
+      "revId": "50a7e65d7c298f4be41a81a2498fc8a53949d85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
