@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "f7634a25_7ba450ee",
+        "filename": "src/google_breakpad/processor/minidump.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-01-04T21:58:56Z",
+      "side": 1,
+      "message": "This is only effective when hexdump_ is true, so hexdump_width_?",
+      "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7634a25_bbb54818",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-01-04T21:58:56Z",
+      "side": 1,
+      "message": "The structure here is a little “meh”. You’re looping by bytes, then you have a special-case for EOL, and then in that special case you loop by bytes again. Harder to follow. I think it’d be easier if the outer loop was going by line, and it contained a pair of inner loops dealing with bytes. Or a single inner loop that prints the bytes and builds up the ASCII-decoded representation.",
+      "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7634a25_9b9fac9c",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-01-04T21:58:56Z",
+      "side": 1,
+      "message": "80 columns",
+      "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06fa6aca_44a58e89",
         "filename": "src/processor/minidump.cc",
         "patchSetId": 2
@@ -31,6 +82,23 @@
       "side": 1,
       "message": "i tried that originally, but the class inheritance made it not as easy\n\nif i do just:\n\n void Print(bool hexdump\u003dtrue, unsigned int width\u003d16) const;\n\nit fails because of the MemoryRegion class that we inherit from:\n\n ../src/google_breakpad/processor/memory_region.h:72:16: error:\n     ‘virtual void google_breakpad::MemoryRegion::Print() const’ was hidden [-Werror\u003doverloaded-virtual]\n   virtual void Print() const \u003d 0;\n\nIn file included from ../src/google_breakpad/processor/exploitability.h:44:0,\n                 from ../src/processor/exploitability.cc:40:\n../src/google_breakpad/processor/minidump.h:239:8: error:\n     by ‘void google_breakpad::MinidumpMemoryRegion::Print(bool, unsigned int) const’ [-Werror\u003doverloaded-virtual]\n   void Print(bool hexdump\u003dtrue, unsigned int width\u003d16) const;\n\nif i try to add a second prototype like:\n\n void Print() const;\n void Print(bool hexdump\u003dtrue, unsigned int width\u003d16) const;\n\nit fails because the two are not unambiguous:\n\n../src/processor/minidump.cc: In member function ‘void google_breakpad::MinidumpThread::Print()’:\n../src/processor/minidump.cc:1580:19: error: call of overloaded ‘Print()’ is ambiguous\n     memory-\u003ePrint();\n\ni\u0027m open to other ideas :)",
       "parentUuid": "06fa6aca_44a58e89",
+      "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7634a25_dbb80410",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1414,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-01-04T21:58:56Z",
+      "side": 1,
+      "message": "Things are better when string literals continue instead of being broken up with \u003c\u003c as you’ve done between \"8, \" and \"not\".",
       "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
