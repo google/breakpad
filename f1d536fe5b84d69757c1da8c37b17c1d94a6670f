@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "835bb13e_87d2e63b",
+        "filename": "src/client/linux/handler/minidump_descriptor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-01-11T21:07:35Z",
+      "side": 1,
+      "message": "\"key mapping\" is a bit obscure here, let\u0027s find a better name tomorrow (apologies for the lack of suggestion but my brain is fried right now)",
+      "range": {
+        "startLine": 111,
+        "startChar": 7,
+        "endLine": 111,
+        "endChar": 37
+      },
+      "revId": "f1d536fe5b84d69757c1da8c37b17c1d94a6670f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a356f512_0b8de117",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-01-11T21:07:35Z",
+      "side": 1,
+      "message": "One thing that I don\u0027t remember that would be nice to check, is whether the various successions of relro, guard regions and hacks is going to break this in some cases (when I say break I really mean a false positive).\nI collected some historical context here:\nhttps://docs.google.com/presentation/d/1zhdACWvOwRMx3bJ4-3zRy2RzmFNaf-kq8eUVqEIRMVI/edit\nMaybe take a look and see if you can figue out what\u0027s going to happen here.",
+      "range": {
+        "startLine": 259,
+        "startChar": 4,
+        "endLine": 260,
+        "endChar": 68
+      },
+      "revId": "f1d536fe5b84d69757c1da8c37b17c1d94a6670f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6354fd0e_26e21615",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-01-11T21:07:35Z",
+      "side": 1,
+      "message": "I\u0027d say: test whether the |stack_copy| contains any pointer-aligned word which looks like an address that lies within the given |mapping|.\nI initially found confusing to see \"a word\" because I was expecting a word to be pass as argument.",
+      "range": {
+        "startLine": 114,
+        "startChar": 18,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "f1d536fe5b84d69757c1da8c37b17c1d94a6670f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "032ee190_0e8ccbd2",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-01-11T21:07:35Z",
+      "side": 1,
+      "message": "Maybe StackHasPointersToMapping is a bit more explicative",
+      "range": {
+        "startLine": 123,
+        "startChar": 7,
+        "endLine": 123,
+        "endChar": 29
+      },
+      "revId": "f1d536fe5b84d69757c1da8c37b17c1d94a6670f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
