@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "233125ed_6f17cd65",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-12T16:43:25Z",
+      "side": 1,
+      "message": "What do you think of keeping the original mapping around for address range tests?",
+      "range": {
+        "startLine": 535,
+        "startChar": 10,
+        "endLine": 535,
+        "endChar": 50
+      },
+      "revId": "cf6fed4597c8a8fba8a04c3e526c5918847a0e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6354fd0e_89c9dd09",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-12T16:43:25Z",
+      "side": 1,
+      "message": "Particularly it seems like FindMapping should always have been using the unmodified address range.",
+      "range": {
+        "startLine": 735,
+        "startChar": 4,
+        "endLine": 736,
+        "endChar": 46
+      },
+      "revId": "cf6fed4597c8a8fba8a04c3e526c5918847a0e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
