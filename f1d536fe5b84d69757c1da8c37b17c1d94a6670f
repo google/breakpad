@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c365a9f6_ace38b83",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-12T13:36:29Z",
+      "side": 1,
+      "message": "You\u0027re right, I think this is an issue. I decided that the right thing was to remember the unmodified mapping ranges as well, because we should be checking against those whenever we want to know when an address is within a mapping. I think this means that old code was wrong, strictly speaking (although it was only ever used to look up mappings like the stack, which won\u0027t have biases) so I fixed that too.",
+      "parentUuid": "a356f512_0b8de117",
+      "range": {
+        "startLine": 259,
+        "startChar": 4,
+        "endLine": 260,
+        "endChar": 68
+      },
+      "revId": "f1d536fe5b84d69757c1da8c37b17c1d94a6670f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6354fd0e_26e21615",
         "filename": "src/client/linux/minidump_writer/linux_dumper.h",
         "patchSetId": 2
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "835bb13e_a7184a2f",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-12T13:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6354fd0e_26e21615",
+      "range": {
+        "startLine": 114,
+        "startChar": 18,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "f1d536fe5b84d69757c1da8c37b17c1d94a6670f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "032ee190_0e8ccbd2",
         "filename": "src/client/linux/minidump_writer/linux_dumper.h",
         "patchSetId": 2
@@ -82,6 +130,30 @@
       "writtenOn": "2017-01-11T21:07:35Z",
       "side": 1,
       "message": "Maybe StackHasPointersToMapping is a bit more explicative",
+      "range": {
+        "startLine": 123,
+        "startChar": 7,
+        "endLine": 123,
+        "endChar": 29
+      },
+      "revId": "f1d536fe5b84d69757c1da8c37b17c1d94a6670f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "835bb13e_871546f7",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-12T13:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "032ee190_0e8ccbd2",
       "range": {
         "startLine": 123,
         "startChar": 7,
