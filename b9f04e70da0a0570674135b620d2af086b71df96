@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e360ede6_b018802f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-16T17:32:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e360ede6_3005b0c8",
+      "range": {
+        "startLine": 7,
+        "startChar": 44,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "b9f04e70da0a0570674135b620d2af086b71df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e360ede6_100aacd8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-16T15:52:52Z",
       "side": 1,
       "message": "Eh this should really have a tracking bug",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 4
+      },
+      "revId": "b9f04e70da0a0570674135b620d2af086b71df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e360ede6_90157cf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-16T17:32:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e360ede6_100aacd8",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e360ede6_d0f2d4b2",
+        "filename": "src/client/linux/dump_writer_common/mapping_info.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-16T17:32:56Z",
+      "side": 1,
+      "message": "Added the comment and crbug link.\n\nI can\u0027t ifdef this code (or other places) because the tests that run on linux exercise it.",
+      "parentUuid": "e360ede6_d044140b",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 10
+      },
+      "revId": "b9f04e70da0a0570674135b620d2af086b71df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e360ede6_b041a0f9",
         "filename": "src/client/linux/handler/minidump_descriptor.h",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e360ede6_70b0c8e7",
+        "filename": "src/client/linux/handler/minidump_descriptor.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-16T17:32:56Z",
+      "side": 1,
+      "message": "I added an explicit flag for this.",
+      "parentUuid": "e360ede6_b041a0f9",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 3
+      },
+      "revId": "b9f04e70da0a0570674135b620d2af086b71df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e360ede6_903e9c85",
         "filename": "src/client/linux/minidump_writer/linux_dumper.h",
         "patchSetId": 7
@@ -105,6 +201,30 @@
       "writtenOn": "2017-01-16T15:52:52Z",
       "side": 1,
       "message": "#if defined(__ANDROID__)\nalso can you add a comment explaining why this is needed? Something like \"on android the mapping addresses are adjusted to compensate the load bias (which is 0 on other platforms) due to relro packing, in order to match the math in the processor. However that can lead to overlapping mappings as discussed in crbug.com/....",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 66
+      },
+      "revId": "b9f04e70da0a0570674135b620d2af086b71df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e360ede6_30aa5076",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-16T17:32:56Z",
+      "side": 1,
+      "message": "Added the comment, but can\u0027t ifdef because of tests.",
+      "parentUuid": "e360ede6_903e9c85",
       "range": {
         "startLine": 106,
         "startChar": 2,
