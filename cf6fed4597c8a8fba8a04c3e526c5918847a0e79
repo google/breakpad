@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e360ede6_b0fe40b6",
+        "filename": "src/client/linux/dump_writer_common/mapping_info.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-01-16T12:01:49Z",
+      "side": 1,
+      "message": "Uhm, I haven\u0027t looked at the rest of the code, but this is really confusing.\nWe have a MappingInfo, which has a |start_addr| and now a |mapping_start_addr|. \nAt very least these deserve some better name.",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "cf6fed4597c8a8fba8a04c3e526c5918847a0e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "233125ed_6f17cd65",
         "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
         "patchSetId": 4
@@ -42,6 +65,24 @@
         "endLine": 736,
         "endChar": 46
       },
+      "revId": "cf6fed4597c8a8fba8a04c3e526c5918847a0e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e360ede6_70e8c8f6",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-01-16T12:01:49Z",
+      "side": 1,
+      "message": "Hmm wait why are you changing this logic? Given the amount of headaches we had in the past, I would be very careful about changin the existing logic. What is the rationale behind this change?",
+      "parentUuid": "6354fd0e_89c9dd09",
       "revId": "cf6fed4597c8a8fba8a04c3e526c5918847a0e79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
