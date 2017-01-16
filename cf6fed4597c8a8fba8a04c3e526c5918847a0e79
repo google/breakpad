@@ -86,6 +86,24 @@
       "revId": "cf6fed4597c8a8fba8a04c3e526c5918847a0e79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e360ede6_3037f0b8",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-16T14:10:48Z",
+      "side": 1,
+      "message": "As discussed offline, PS5 reverts changes to existing behaviour.",
+      "parentUuid": "e360ede6_70e8c8f6",
+      "revId": "cf6fed4597c8a8fba8a04c3e526c5918847a0e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
