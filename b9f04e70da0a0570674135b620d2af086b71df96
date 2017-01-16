@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e360ede6_3005b0c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-01-16T15:52:52Z",
+      "side": 1,
+      "message": "I\u0027d remove webview from the description as nothing in this implementation is webview-specific really.\nis up to the caller to use the new api\n\nInstead I\u0027d say:\nAdd an API to skip the dump if the crashing thread doesn\u0027t reference a given module\n\nThis CL makes it possible to skip a dump if the crashing thread doesn\u0027t have any pointers\nto a given module. The concrete use case is WebView where .... yada yada.\n\nRest of the CL description as below",
+      "range": {
+        "startLine": 7,
+        "startChar": 44,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "b9f04e70da0a0570674135b620d2af086b71df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e360ede6_100aacd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-01-16T15:52:52Z",
+      "side": 1,
+      "message": "Eh this should really have a tracking bug",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 4
+      },
+      "revId": "b9f04e70da0a0570674135b620d2af086b71df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e360ede6_d044140b",
+        "filename": "src/client/linux/dump_writer_common/mapping_info.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-01-16T15:52:52Z",
+      "side": 1,
+      "message": "can you please add a comment explaining the fact that on Android we tweak them because of ...reasons (or if you find a crbug.com/NNN is even better, or just the link to my slides in lack of that)\nAlso I think this should be #if defined(__ANDROID__) to make it clearer",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 10
+      },
+      "revId": "b9f04e70da0a0570674135b620d2af086b71df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e360ede6_b041a0f9",
+        "filename": "src/client/linux/handler/minidump_descriptor.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-01-16T15:52:52Z",
+      "side": 1,
+      "message": "just naming: since this is a API that will change significantly the behavior of the dumper, should this give a stronger clue about what it does? something like\nset_skip_dump_if_outside_main_module(uintptr_t address_within_main_module)",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 3
+      },
+      "revId": "b9f04e70da0a0570674135b620d2af086b71df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e360ede6_903e9c85",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-01-16T15:52:52Z",
+      "side": 1,
+      "message": "#if defined(__ANDROID__)\nalso can you add a comment explaining why this is needed? Something like \"on android the mapping addresses are adjusted to compensate the load bias (which is 0 on other platforms) due to relro packing, in order to match the math in the processor. However that can lead to overlapping mappings as discussed in crbug.com/....",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 66
+      },
+      "revId": "b9f04e70da0a0570674135b620d2af086b71df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
