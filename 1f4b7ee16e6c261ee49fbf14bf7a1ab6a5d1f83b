@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "8319f110_d766fc91",
+        "filename": "src/client/linux/handler/minidump_descriptor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-17T20:51:53Z",
+      "side": 1,
+      "message": "what about principal_mapping? I think it probably should be mapping rather than module, on reflection.",
+      "range": {
+        "startLine": 112,
+        "startChar": 27,
+        "endLine": 112,
+        "endChar": 38
+      },
+      "revId": "1f4b7ee16e6c261ee49fbf14bf7a1ab6a5d1f83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c0454e_6c67518f",
         "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
         "patchSetId": 8
@@ -48,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "e360ede6_33693aa1",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-17T20:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23c0454e_6c67518f",
+      "range": {
+        "startLine": 727,
+        "startChar": 46,
+        "endLine": 727,
+        "endChar": 47
+      },
+      "revId": "1f4b7ee16e6c261ee49fbf14bf7a1ab6a5d1f83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c0454e_2c9c794a",
         "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
         "patchSetId": 8
@@ -59,6 +106,30 @@
       "writtenOn": "2017-01-17T20:01:23Z",
       "side": 1,
       "message": "Why does this take a void* when the caller of this has a uintpr_t and this method turns it back into a uintptr_t?",
+      "range": {
+        "startLine": 748,
+        "startChar": 50,
+        "endLine": 748,
+        "endChar": 61
+      },
+      "revId": "1f4b7ee16e6c261ee49fbf14bf7a1ab6a5d1f83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e360ede6_136e36a9",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-17T20:51:53Z",
+      "side": 1,
+      "message": "It was a straight copy of FindMapping, and so inherited FindMapping quirks. I\u0027ve cleaned it up.",
+      "parentUuid": "23c0454e_2c9c794a",
       "range": {
         "startLine": 748,
         "startChar": 50,
@@ -128,6 +199,30 @@
       "writtenOn": "2017-01-17T20:01:23Z",
       "side": 1,
       "message": "This implies that the stack will be modified, but it\u0027s const.",
+      "range": {
+        "startLine": 121,
+        "startChar": 39,
+        "endLine": 121,
+        "endChar": 50
+      },
+      "revId": "1f4b7ee16e6c261ee49fbf14bf7a1ab6a5d1f83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e360ede6_5364aec8",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-17T20:51:53Z",
+      "side": 1,
+      "message": "You\u0027re right, that\u0027s the next CL. I meant /to check/",
+      "parentUuid": "23c0454e_a94ebb2b",
       "range": {
         "startLine": 121,
         "startChar": 39,
