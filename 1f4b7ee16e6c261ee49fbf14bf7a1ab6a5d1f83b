@@ -48,6 +48,24 @@
     },
     {
       "key": {
+        "uuid": "236e8540_edc6fd1e",
+        "filename": "src/client/linux/handler/minidump_descriptor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-17T21:29:53Z",
+      "side": 1,
+      "message": "\u003e what about principal_mapping? I think it probably should be mapping rather than module, on reflection.\n\nSGTM",
+      "parentUuid": "8319f110_d766fc91",
+      "revId": "1f4b7ee16e6c261ee49fbf14bf7a1ab6a5d1f83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c0454e_6c67518f",
         "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
         "patchSetId": 8
