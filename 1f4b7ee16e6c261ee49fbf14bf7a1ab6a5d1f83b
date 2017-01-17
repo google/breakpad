@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23c0454e_ec58c13a",
+        "filename": "src/client/linux/handler/minidump_descriptor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-17T20:01:23Z",
+      "side": 1,
+      "message": "Don\u0027t mean to bikeshed the name, but generally the \"main module\" is the thing the loader first loaded (i.e., app_process on Android, chrome the executable on Desktop). Presumably this is set to something within lib{mono,}chrome.so, and that\u0027s not strictly speaking the main module. It\u0027s more like the \"interesting\" module, but I\u0027m not actually sure that\u0027s a better name.",
+      "range": {
+        "startLine": 112,
+        "startChar": 27,
+        "endLine": 112,
+        "endChar": 38
+      },
+      "revId": "1f4b7ee16e6c261ee49fbf14bf7a1ab6a5d1f83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c0454e_6c67518f",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-17T20:01:23Z",
+      "side": 1,
+      "message": "I\u0027m not really a fan of single-line returns, even though they\u0027re technically allowed in the C++ guide. I don\u0027t think they\u0027re used in Breakpad code.",
+      "range": {
+        "startLine": 727,
+        "startChar": 46,
+        "endLine": 727,
+        "endChar": 47
+      },
+      "revId": "1f4b7ee16e6c261ee49fbf14bf7a1ab6a5d1f83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c0454e_2c9c794a",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-17T20:01:23Z",
+      "side": 1,
+      "message": "Why does this take a void* when the caller of this has a uintpr_t and this method turns it back into a uintptr_t?",
+      "range": {
+        "startLine": 748,
+        "startChar": 50,
+        "endLine": 748,
+        "endChar": 61
+      },
+      "revId": "1f4b7ee16e6c261ee49fbf14bf7a1ab6a5d1f83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c0454e_eca1a186",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-17T20:01:23Z",
+      "side": 1,
+      "message": "This should be a reinterpret_cast.",
+      "range": {
+        "startLine": 749,
+        "startChar": 25,
+        "endLine": 749,
+        "endChar": 36
+      },
+      "revId": "1f4b7ee16e6c261ee49fbf14bf7a1ab6a5d1f83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c0454e_2c8559f4",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-17T20:01:23Z",
+      "side": 1,
+      "message": "Needs braces since it\u0027s multi-line condition.",
+      "range": {
+        "startLine": 753,
+        "startChar": 57,
+        "endLine": 753,
+        "endChar": 58
+      },
+      "revId": "1f4b7ee16e6c261ee49fbf14bf7a1ab6a5d1f83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c0454e_a94ebb2b",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-17T20:01:23Z",
+      "side": 1,
+      "message": "This implies that the stack will be modified, but it\u0027s const.",
+      "range": {
+        "startLine": 121,
+        "startChar": 39,
+        "endLine": 121,
+        "endChar": 50
+      },
+      "revId": "1f4b7ee16e6c261ee49fbf14bf7a1ab6a5d1f83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
