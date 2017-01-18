@@ -49,6 +49,24 @@
     },
     {
       "key": {
+        "uuid": "63915dce_217b282b",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-18T15:17:06Z",
+      "side": 1,
+      "message": "Ah, that\u0027d do it. I\u0027m guessing git cl format stops at .git boundaries, so it wasn\u0027t picking up .clang-format in src/.",
+      "parentUuid": "e37d4d54_62b376d7",
+      "revId": "730db2b36a8d71b5d1e55967967ef0a46f9e6970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "631ebd19_d6306427",
         "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
         "patchSetId": 10
