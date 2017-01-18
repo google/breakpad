@@ -16,6 +16,24 @@
       "revId": "dbc79edf278cc65c70f0149b9e9ccd45a7e0a036",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e37d4d54_a27c9ed5",
+        "filename": "src/client/linux/handler/minidump_descriptor.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-18T15:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63915dce_c1ee0492",
+      "revId": "dbc79edf278cc65c70f0149b9e9ccd45a7e0a036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
