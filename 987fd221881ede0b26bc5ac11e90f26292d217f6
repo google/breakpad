@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0847de68_7b941a28",
+        "filename": "src/client/linux/handler/minidump_descriptor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-19T21:10:54Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 132,
+        "startChar": 24,
+        "endLine": 132,
+        "endChar": 25
+      },
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0847de68_dbcaee23",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-19T21:10:54Z",
+      "side": 1,
+      "message": "Can this be const char kIdentifiableString[] \u003d \"_IDENTIFIABLE_\";?",
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0847de68_9beb5682",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-19T21:10:54Z",
+      "side": 1,
+      "message": "And if you use a const char it shouldn\u0027t be necessary to strcpy.",
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0847de68_9b023682",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-19T21:10:54Z",
+      "side": 1,
+      "message": "nit: 80cols",
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0847de68_3bbd8275",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-19T21:10:54Z",
+      "side": 1,
+      "message": "Can you comment what these are used for?",
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0847de68_1b7086f3",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-19T21:10:54Z",
+      "side": 1,
+      "message": "And some commentary about what these two loops do.",
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0847de68_fb6c8a1e",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-19T21:10:54Z",
+      "side": 1,
+      "message": "Make this a constant?",
+      "range": {
+        "startLine": 756,
+        "startChar": 38,
+        "endLine": 756,
+        "endChar": 43
+      },
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0847de68_3bd6a2a7",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-19T21:10:54Z",
+      "side": 1,
+      "message": "Would it be better to use a bit pattern instead of zeroing, so it\u0027s obvious that data have been redacted?",
+      "range": {
+        "startLine": 119,
+        "startChar": 37,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
