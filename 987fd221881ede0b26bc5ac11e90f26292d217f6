@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a88b32df_a3caa422",
+        "filename": "src/client/linux/handler/minidump_descriptor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-20T16:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0847de68_7b941a28",
+      "range": {
+        "startLine": 132,
+        "startChar": 24,
+        "endLine": 132,
+        "endChar": 25
+      },
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0847de68_dbcaee23",
         "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
         "patchSetId": 6
@@ -36,6 +60,24 @@
       "writtenOn": "2017-01-19T21:10:54Z",
       "side": 1,
       "message": "Can this be const char kIdentifiableString[] \u003d \"_IDENTIFIABLE_\";?",
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a88b32df_c3c7a81b",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-20T16:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0847de68_dbcaee23",
       "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "a88b32df_63025c85",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-20T16:00:49Z",
+      "side": 1,
+      "message": "I\u0027m not sure I follow. It needs to be copied so that it appears on the stack?",
+      "parentUuid": "0847de68_9beb5682",
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0847de68_9b023682",
         "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
         "patchSetId": 6
@@ -70,6 +130,24 @@
       "writtenOn": "2017-01-19T21:10:54Z",
       "side": 1,
       "message": "nit: 80cols",
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a88b32df_83076092",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-20T16:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0847de68_9b023682",
       "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -144,6 +222,30 @@
       "writtenOn": "2017-01-19T21:10:54Z",
       "side": 1,
       "message": "Would it be better to use a bit pattern instead of zeroing, so it\u0027s obvious that data have been redacted?",
+      "range": {
+        "startLine": 119,
+        "startChar": 37,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a88b32df_431158cc",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-20T16:00:49Z",
+      "side": 1,
+      "message": "Done. It\u0027s implemented this way in the code, but the comment wasn\u0027t changed to reflect that.",
+      "parentUuid": "0847de68_3bd6a2a7",
       "range": {
         "startLine": 119,
         "startChar": 37,
