@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0847de68_d04f5627",
+        "filename": "src/google_breakpad/processor/minidump.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-01-21T06:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7634a25_7ba450ee",
+      "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7634a25_bbb54818",
         "filename": "src/processor/minidump.cc",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0847de68_9b2d7ffc",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-01-21T06:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7634a25_bbb54818",
+      "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7634a25_9b9fac9c",
         "filename": "src/processor/minidump.cc",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2017-01-04T21:58:56Z",
       "side": 1,
       "message": "80 columns",
+      "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0847de68_7b2ac3e2",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-01-21T06:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7634a25_9b9fac9c",
       "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -99,6 +153,24 @@
       "writtenOn": "2017-01-04T21:58:56Z",
       "side": 1,
       "message": "Things are better when string literals continue instead of being broken up with \u003c\u003c as you’ve done between \"8, \" and \"not\".",
+      "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0847de68_5b27071a",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1414,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-01-21T06:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7634a25_dbb80410",
       "revId": "8fe55dbd46a391a7785b5d9771b11dff061ab992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
