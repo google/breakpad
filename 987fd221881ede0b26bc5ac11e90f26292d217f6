@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "6845ba83_27ff5889",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-24T17:10:31Z",
+      "side": 1,
+      "message": "Ah, sorry, misinterpreted what was happening in this function (fork was hidden below the fold).",
+      "parentUuid": "a88b32df_63025c85",
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0847de68_9b023682",
         "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
         "patchSetId": 6
@@ -148,6 +166,23 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "0847de68_9b023682",
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d7e01ed_bd9f6836",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-01-24T17:10:31Z",
+      "side": 1,
+      "message": "These comments didn\u0027t get addressed (ps6).",
       "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
