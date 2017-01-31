@@ -206,6 +206,23 @@
     },
     {
       "key": {
+        "uuid": "2d2abb69_30885530",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-31T13:43:40Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0847de68_1b7086f3",
         "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
         "patchSetId": 6
@@ -223,6 +240,23 @@
     },
     {
       "key": {
+        "uuid": "ab8ca9f4_e761a13a",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-31T13:43:40Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0847de68_fb6c8a1e",
         "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
         "patchSetId": 6
@@ -234,6 +268,29 @@
       "writtenOn": "2017-01-19T21:10:54Z",
       "side": 1,
       "message": "Make this a constant?",
+      "range": {
+        "startLine": 756,
+        "startChar": 38,
+        "endLine": 756,
+        "endChar": 43
+      },
+      "revId": "987fd221881ede0b26bc5ac11e90f26292d217f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "196c5cd1_bd0ef0a8",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-01-31T13:43:40Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 756,
         "startChar": 38,
