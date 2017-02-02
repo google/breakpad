@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "309123d4_837436f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-02T22:11:11Z",
+      "side": 1,
+      "message": "This is all one long line. Wrap git commit messages at 72 characters.",
+      "revId": "17d2a3c53ae88306c8b968e52c510ebef480a2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6342e25d_cfab7380",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-02T22:11:11Z",
+      "side": 1,
+      "message": "This comment will be (already is, in fact) publicly visible. It gives away internal information that’s not necessary or desirable to share in this way. Please revise without mentioning “quotas” and without saying “Crash” which doesn’t make sense outside of Google.",
+      "revId": "17d2a3c53ae88306c8b968e52c510ebef480a2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3158d8de_037e2bb6",
+        "filename": "src/client/mac/sender/uploader.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-02T22:11:11Z",
+      "side": 1,
+      "message": "We follow Chrome style. Observe the 80-column limit. This applies to this line, the comment above it, and the rest of the changes you’re making in this file.",
+      "revId": "17d2a3c53ae88306c8b968e52c510ebef480a2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5837f702_30b5bd50",
+        "filename": "src/client/mac/sender/uploader.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-02T22:11:11Z",
+      "side": 1,
+      "message": "-empty instead of -length \u003d\u003d 0",
+      "revId": "17d2a3c53ae88306c8b968e52c510ebef480a2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "937dc3a3_98d0ab7c",
+        "filename": "src/client/mac/sender/uploader.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-02T22:11:11Z",
+      "side": 1,
+      "message": "Meaningless outside of Google. Be less specific.",
+      "revId": "17d2a3c53ae88306c8b968e52c510ebef480a2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa11bcd6_adc51197",
+        "filename": "src/client/mac/sender/uploader.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-02T22:11:11Z",
+      "side": 1,
+      "message": "Align properly.",
+      "revId": "17d2a3c53ae88306c8b968e52c510ebef480a2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28fbbfcf_35764e50",
+        "filename": "src/client/mac/sender/uploader.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-02T22:11:11Z",
+      "side": 1,
+      "message": "Can’t you just use -mutableCopy?",
+      "revId": "17d2a3c53ae88306c8b968e52c510ebef480a2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
