@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ce5ff7f_3c533056",
+        "filename": "src/google_breakpad/processor/minidump.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-02T22:04:34Z",
+      "side": 1,
+      "message": "Negative. C++11 permits what was here before.",
+      "revId": "e439982a19cb72e6c46759535b0dba0f267cb9e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ea1fda_613a4618",
+        "filename": "src/tools/mac/dump_syms/macho_dump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-02T22:04:34Z",
+      "side": 1,
+      "message": "This does the same thing each time, why did you move it inside the loop?",
+      "revId": "e439982a19cb72e6c46759535b0dba0f267cb9e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
