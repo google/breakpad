@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1327f9ea_f214eabe",
+        "filename": "src/google_breakpad/processor/minidump.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1181779
+      },
+      "writtenOn": "2017-02-05T00:05:45Z",
+      "side": 1,
+      "message": "Good to know. The project must still be set up for older standard then, it won\u0027t compile. All other definitions in minidump.cc use a space in between.",
+      "parentUuid": "2ce5ff7f_3c533056",
+      "revId": "e439982a19cb72e6c46759535b0dba0f267cb9e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43ea1fda_613a4618",
         "filename": "src/tools/mac/dump_syms/macho_dump.cc",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "e439982a19cb72e6c46759535b0dba0f267cb9e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c58b7fc_3afea959",
+        "filename": "src/tools/mac/dump_syms/macho_dump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1181779
+      },
+      "writtenOn": "2017-02-05T00:05:45Z",
+      "side": 1,
+      "message": "Good catch, it was supposed to be called on an ith element. I\u0027ll resubmit.",
+      "parentUuid": "43ea1fda_613a4618",
+      "revId": "e439982a19cb72e6c46759535b0dba0f267cb9e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
