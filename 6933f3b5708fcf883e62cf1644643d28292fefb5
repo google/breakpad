@@ -22,6 +22,24 @@
       "revId": "6933f3b5708fcf883e62cf1644643d28292fefb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc7ae398_86138971",
+        "filename": "src/client/linux/minidump_writer/minidump_writer_unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-02-06T17:18:51Z",
+      "side": 1,
+      "message": "The CL that introduced this is: https://chromium-review.googlesource.com/c/430050/\n\nWhen a pointer aligned word on the stack is erased, it\u0027s replaced with 0x0defaced on 32 bit architectures, and 0x0defaced0defaced on 64 bit architectures. The truncation is ok.\n\nThe test relies on the fact that there will be at least one word that gets erased like this, which is true, empirically.",
+      "parentUuid": "12f703e1_3d98eea0",
+      "revId": "6933f3b5708fcf883e62cf1644643d28292fefb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
