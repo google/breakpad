@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13c5971b_4ec871d3",
+        "filename": "src/client/linux/handler/minidump_descriptor.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-02-06T18:11:32Z",
+      "side": 1,
+      "message": "you forgot to initialize the sanitize_stacks_ here, which might end up causing random behaviors if this ctor is ever used",
+      "range": {
+        "startLine": 58,
+        "startChar": 62,
+        "endLine": 58,
+        "endChar": 64
+      },
+      "revId": "7c2799f3ba6f8a8186c8883b213c3e59768b1287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2ed5324_02823c46",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-02-06T18:11:32Z",
+      "side": 1,
+      "message": "+volatile here. strcpy is a builtin in most modern compilers, which means that the compiler can be *really* smart about that and do escape analysis + const propagation ,  optimizing this as: write(STDOUT_FILENO, kIdentifiableString, 0)\nI recently saw a similar subtle case (about malloc, not strcpy) in https://bugs.chromium.org/p/chromium/issues/detail?id\u003d681218#c17",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 7
+      },
+      "revId": "7c2799f3ba6f8a8186c8883b213c3e59768b1287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4923c212_fd48097b",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-02-06T18:11:32Z",
+      "side": 1,
+      "message": "for the same reason of above I\u0027d replace 0 with sizeof(kIdentifiableString).\nI don\u0027t know if write is a builtin, but if it is the compiler will realize that you are trolling it and be evil",
+      "range": {
+        "startLine": 98,
+        "startChar": 44,
+        "endLine": 98,
+        "endChar": 45
+      },
+      "revId": "7c2799f3ba6f8a8186c8883b213c3e59768b1287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "917d07d9_f9af939f",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper_unittest.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-02-06T18:11:32Z",
+      "side": 1,
+      "message": "I think you want to exit(1) here (or _exit(1) even better). isn\u0027t this what the original code was doing?\nIf you hit this failure, now you will end up with two concurrent instances of gtest runining at the same time and producing double output (the child process here will go back to the test fixture and hitting the ASSERT_NE)",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "7c2799f3ba6f8a8186c8883b213c3e59768b1287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
