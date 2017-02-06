@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12f703e1_3d98eea0",
+        "filename": "src/client/linux/minidump_writer/minidump_writer_unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-02-06T17:09:59Z",
+      "side": 1,
+      "message": "how does this test work? (I think this was introduced in some CL i missed)\nthis does assert_true that DEFACED0DEF is found in memory. who writes it and how?\nI am asking because on 32-bit architecture this variable will be truncated at 32 bit. does the test still make sense in that case?",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 290,
+        "endChar": 74
+      },
+      "revId": "6933f3b5708fcf883e62cf1644643d28292fefb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
