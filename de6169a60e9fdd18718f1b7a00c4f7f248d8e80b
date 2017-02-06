@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40208936_4e1bcf40",
+        "filename": "src/google_breakpad/processor/minidump.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-06T19:48:13Z",
+      "side": 1,
+      "message": "we don\u0027t do this is in any other classes, and the commit message doesn\u0027t seem to cover it",
+      "revId": "de6169a60e9fdd18718f1b7a00c4f7f248d8e80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
