@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "af1e8721_94b0ab36",
+        "filename": "src/client/linux/handler/minidump_descriptor.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-02-07T14:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13c5971b_4ec871d3",
+      "revId": "7c2799f3ba6f8a8186c8883b213c3e59768b1287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2ed5324_02823c46",
         "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
         "patchSetId": 10
@@ -42,6 +60,24 @@
         "endLine": 92,
         "endChar": 7
       },
+      "revId": "7c2799f3ba6f8a8186c8883b213c3e59768b1287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb668f6_6d64a239",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-02-07T14:38:47Z",
+      "side": 1,
+      "message": "strcpy and write won\u0027t take volatile pointers as arguments. And I believe that if I cast it away, then it will have had no effect.",
+      "parentUuid": "f2ed5324_02823c46",
       "revId": "7c2799f3ba6f8a8186c8883b213c3e59768b1287",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "2b6c5293_5de343b5",
+        "filename": "src/client/linux/microdump_writer/microdump_writer_unittest.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-02-07T14:38:47Z",
+      "side": 1,
+      "message": "Per the discussion offline, the intent is to alias the local variable, so that the compiler can\u0027t optimize it away. Passing 0 is intentional to provide this effect without actually writing anything.",
+      "parentUuid": "4923c212_fd48097b",
+      "revId": "7c2799f3ba6f8a8186c8883b213c3e59768b1287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "917d07d9_f9af939f",
         "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper_unittest.cc",
         "patchSetId": 10
@@ -88,6 +142,24 @@
         "endLine": 84,
         "endChar": 16
       },
+      "revId": "7c2799f3ba6f8a8186c8883b213c3e59768b1287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9aee1f8_8af1be25",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper_unittest.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-02-07T14:38:47Z",
+      "side": 1,
+      "message": "This is an interesting one. Yes, you\u0027re right, however I think the original code had a problem. FAIL() hides a return (https://github.com/google/googletest/blob/master/googletest/docs/AdvancedGuide.md#assertion-placement) and so you can\u0027t use it in a function that doesn\u0027t return void. The implication being that the original exit() didn\u0027t ever get reached, AFAIK.",
+      "parentUuid": "917d07d9_f9af939f",
       "revId": "7c2799f3ba6f8a8186c8883b213c3e59768b1287",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
