@@ -16,6 +16,24 @@
       "revId": "2ff2a5500c3fdeee9157b1c94f49e36ab89d08b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dbd1fa2_d99ba825",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-11T18:11:37Z",
+      "side": 1,
+      "message": "the internet says this define is 0x4001000A, so i\u0027ll use that",
+      "parentUuid": "549d66bd_bccb99ba",
+      "revId": "2ff2a5500c3fdeee9157b1c94f49e36ab89d08b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
