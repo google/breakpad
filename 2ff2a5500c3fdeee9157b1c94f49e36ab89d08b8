@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "549d66bd_bccb99ba",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-11T17:55:43Z",
+      "side": 1,
+      "message": "I’d rather say #ifndef, #define it.\n\nSomeone (some other module) may have been built with a newer SDK with access to OutputDebugStringW() and might raise this sort of exception regardless of the SDK used to build Breakpad.",
+      "revId": "2ff2a5500c3fdeee9157b1c94f49e36ab89d08b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
