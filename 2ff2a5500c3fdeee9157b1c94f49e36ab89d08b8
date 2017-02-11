@@ -52,6 +52,24 @@
       "revId": "2ff2a5500c3fdeee9157b1c94f49e36ab89d08b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d598ce_2beda8b0",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-11T22:36:13Z",
+      "side": 1,
+      "message": "thanks.  the mingw project hasn\u0027t caught up yet with that define, so i couldn\u0027t check that.",
+      "parentUuid": "648a819c_37785ea5",
+      "revId": "2ff2a5500c3fdeee9157b1c94f49e36ab89d08b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
