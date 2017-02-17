@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40cba014_4f608268",
+        "filename": ".travis.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1134731
+      },
+      "writtenOn": "2017-02-17T11:09:09Z",
+      "side": 1,
+      "message": "This comment seems out-of-date now.",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "66b961f1b5c5668bc2c38ec0491ce8c963b367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
