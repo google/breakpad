@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "b39f4daa_d6d08da5",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1144260
+      },
+      "writtenOn": "2017-02-23T01:55:36Z",
+      "side": 1,
+      "message": "It didn\u0027t seem to take an appreciable amount of time on ntdll, but it\u0027s pretty small, so it\u0027s possible it\u0027ll add some time to overall symbol processing.",
+      "parentUuid": "1d2e52b5_4b0b8cc0",
+      "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f435e97_a9573674",
         "filename": "src/common/windows/pdb_source_line_writer.cc",
         "patchSetId": 5
@@ -53,6 +71,24 @@
       "writtenOn": "2017-02-23T01:38:14Z",
       "side": 1,
       "message": "The sucky thing here is that we’ll output multiple PUBLICs with the same name. That might confuse the processor (or at least it could in theory, but it may not in practice). It’ll certainly confuse humans, though: if you thought you knew what RtlCaptureContext + 9 meant, think again. I wonder if we should introduce our own mangling, like ${reserved_or_unlikely_char}${original_symbol_name}_block_${number}.",
+      "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff33c40_b6b7a9c1",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1144260
+      },
+      "writtenOn": "2017-02-23T01:55:36Z",
+      "side": 1,
+      "message": "I wondered about that. We do currently emit multiple FUNC entries when there\u0027s actually SymFunctions in the PDB, for example from Win7 we now emit:\n\nPUBLIC 00030b8d 8 TppWaitComplete\nPUBLIC 00030bab 8 TppWaitComplete\nPUBLIC 00030baf 8 TppWaitComplete\nPUBLIC 00030bc1 8 TppWaitComplete\nPUBLIC 00030bc5 8 TppWaitComplete\nPUBLIC 00030bcb 8 TppWaitComplete\nPUBLIC 00030bd4 8 TppWaitComplete\nPUBLIC 00030bd8 8 TppWaitComplete\nPUBLIC 00030bdf 8 TppWaitComplete\n\nPUBLIC 00097d55 8 TppWaitComplete\nPUBLIC 00097d5a 8 TppWaitComplete\nPUBLIC 00097d5e 8 TppWaitComplete\nPUBLIC 00097d62 8 TppWaitComplete\nPUBLIC 00097d7b 8 TppWaitComplete\nPUBLIC 00097d83 8 TppWaitComplete\nPUBLIC 00097d88 8 TppWaitComplete\nPUBLIC 00097d8c 8 TppWaitComplete\nPUBLIC 00097d90 8 TppWaitComplete\nPUBLIC 00097da6 8 TppWaitComplete\nPUBLIC 00097dae 8 TppWaitComplete\nPUBLIC 00097db3 8 TppWaitComplete\nPUBLIC 00097db7 8 TppWaitComplete\nPUBLIC 00097dbb 8 TppWaitComplete\nPUBLIC 00097dd0 8 TppWaitComplete\n\n\nvs. Win10 emits:\n\nFUNC 262c0 c6 10 TppWaitCompletion\n\nFUNC 86fdc 2f 10 TppWaitCompletion\n\nThere doesn\u0027t seem to be any PUBLIC (or OMAP data) at all in the Win10 symbols, so perhaps FUNC is primarily the \"new\" version, at least when it comes to real function exports as opposed to exported data.\n\n\nI was hoping the multiple PUBLICs wouldn\u0027t be a problem because we already emit multiple locations sometimes. For example for \"sin\" before this change we emitted:\n\nPUBLIC 33d40 0 sin\nPUBLIC 4689e 0 sin\n\n(This is why the PUBLICs are emitted in a loop.)\n\nIt could be possible to emit fake FUNC entries instead of PUBLICs, I think, but that\u0027d be a larger change. I think if instead of emitting PUBLICs I buffered them and inserted them into a range map then I could grow each range to approximate the size of each part of the function. Seems a bit tricky to split old entries as new ones are inserted and so on. What do you think, necessary?",
+      "parentUuid": "8f435e97_a9573674",
       "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
