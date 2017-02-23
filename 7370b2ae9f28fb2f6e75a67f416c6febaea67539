@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d7cb39a_aa15c86a",
+        "filename": "src/common/windows/omap.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-23T01:38:14Z",
+      "side": 1,
+      "message": "Express this in a CHECK() or assert()?",
+      "range": {
+        "startLine": 461,
+        "startChar": 5,
+        "endLine": 461,
+        "endChar": 31
+      },
+      "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d2e52b5_4b0b8cc0",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-23T01:38:14Z",
+      "side": 1,
+      "message": "Is this slow? It’s OK if it is, I’m just curious. I guess that the “skip to next block” optimization and “if it’s a different symbol” check would keep things from getting too bad.",
+      "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f435e97_a9573674",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-23T01:38:14Z",
+      "side": 1,
+      "message": "The sucky thing here is that we’ll output multiple PUBLICs with the same name. That might confuse the processor (or at least it could in theory, but it may not in practice). It’ll certainly confuse humans, though: if you thought you knew what RtlCaptureContext + 9 meant, think again. I wonder if we should introduce our own mangling, like ${reserved_or_unlikely_char}${original_symbol_name}_block_${number}.",
+      "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
