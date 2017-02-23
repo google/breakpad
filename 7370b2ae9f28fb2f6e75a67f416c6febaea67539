@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a1f82cf7_fef83031",
+        "filename": "src/common/windows/omap.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-23T02:07:31Z",
+      "side": 1,
+      "message": "I’d still like to see this one. LGTM otherwise.",
+      "parentUuid": "6d7cb39a_aa15c86a",
+      "range": {
+        "startLine": 461,
+        "startChar": 5,
+        "endLine": 461,
+        "endChar": 31
+      },
+      "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d2e52b5_4b0b8cc0",
         "filename": "src/common/windows/pdb_source_line_writer.cc",
         "patchSetId": 5
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "0379623d_76d0aff4",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-23T02:07:31Z",
+      "side": 1,
+      "message": "I can’t click “Resolved” without saying anything. Gerrit, you old rascal, you.",
+      "parentUuid": "b39f4daa_d6d08da5",
+      "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f435e97_a9573674",
         "filename": "src/common/windows/pdb_source_line_writer.cc",
         "patchSetId": 5
@@ -92,6 +134,24 @@
       "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e2eecd_7ea0e3aa",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-02-23T02:07:31Z",
+      "side": 1,
+      "message": "\u003e I wondered about that. We do currently emit multiple FUNC entries when there\u0027s actually SymFunctions in the PDB, for example from Win7 we now emit:\n\nHm. I can make multiple FUNCs work a bit better in my mind. I’m just surprised about multiple PUBLICs, but maybe I shouldn‘t be.\n\n\u003e PUBLIC 00030b8d 8 TppWaitComplete\n\u003e PUBLIC 00030bab 8 TppWaitComplete\n\u003e PUBLIC 00030baf 8 TppWaitComplete\n\u003e PUBLIC 00030bc1 8 TppWaitComplete\n\u003e PUBLIC 00030bc5 8 TppWaitComplete\n\u003e PUBLIC 00030bcb 8 TppWaitComplete\n\u003e PUBLIC 00030bd4 8 TppWaitComplete\n\u003e PUBLIC 00030bd8 8 TppWaitComplete\n\u003e PUBLIC 00030bdf 8 TppWaitComplete\n\u003e \n\u003e PUBLIC 00097d55 8 TppWaitComplete\n\u003e PUBLIC 00097d5a 8 TppWaitComplete\n\u003e PUBLIC 00097d5e 8 TppWaitComplete\n\u003e PUBLIC 00097d62 8 TppWaitComplete\n\u003e PUBLIC 00097d7b 8 TppWaitComplete\n\u003e PUBLIC 00097d83 8 TppWaitComplete\n\u003e PUBLIC 00097d88 8 TppWaitComplete\n\u003e PUBLIC 00097d8c 8 TppWaitComplete\n\u003e PUBLIC 00097d90 8 TppWaitComplete\n\u003e PUBLIC 00097da6 8 TppWaitComplete\n\u003e PUBLIC 00097dae 8 TppWaitComplete\n\u003e PUBLIC 00097db3 8 TppWaitComplete\n\u003e PUBLIC 00097db7 8 TppWaitComplete\n\u003e PUBLIC 00097dbb 8 TppWaitComplete\n\u003e PUBLIC 00097dd0 8 TppWaitComplete\n\u003e \n\u003e \n\u003e vs. Win10 emits:\n\u003e \n\u003e FUNC 262c0 c6 10 TppWaitCompletion\n\u003e \n\u003e FUNC 86fdc 2f 10 TppWaitCompletion\n\u003e \n\u003e There doesn\u0027t seem to be any PUBLIC (or OMAP data) at all in the Win10 symbols, so perhaps FUNC is primarily the \"new\" version, at least when it comes to real function exports as opposed to exported data.\n\nI guess the difference is that we’re getting all of this from ntdll.pdb and not ntdll.dll. I have a mental concept that says (simplified and roughly) that “PUBLIC” means the stuff that the loader sees and it’s in the .dll, and “FUNC” means stuff that the debugger sees and it’s in the .pdb. But I know that on Windows, that’s not really where we get PUBLICs from.\n\n\u003e I was hoping the multiple PUBLICs wouldn\u0027t be a problem because we already emit multiple locations sometimes. For example for \"sin\" before this change we emitted:\n\u003e \n\u003e PUBLIC 33d40 0 sin\n\u003e PUBLIC 4689e 0 sin\n\u003e \n\u003e (This is why the PUBLICs are emitted in a loop.)\n\nOK, you’ve convinced me that the ship has sailed (and it might even be my fault).\n\n\u003e It could be possible to emit fake FUNC entries instead of PUBLICs, I think, but that\u0027d be a larger change. I think if instead of emitting PUBLICs I buffered them and inserted them into a range map then I could grow each range to approximate the size of each part of the function. Seems a bit tricky to split old entries as new ones are inserted and so on. What do you think, necessary?\n\nNot until proven necessary. If this works for our purposes, I’d prefer to leave it and invest more in building the processing infrastructure up enough to make this dumped symbol format obsolete.",
+      "parentUuid": "9ff33c40_b6b7a9c1",
+      "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
