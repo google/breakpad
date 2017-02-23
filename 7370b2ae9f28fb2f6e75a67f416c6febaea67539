@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "db994c2e_53251041",
+        "filename": "src/common/windows/omap.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1144260
+      },
+      "writtenOn": "2017-02-23T18:27:09Z",
+      "side": 1,
+      "message": "I made it abort and return an empty map if it finds the OMAP \"from\" table is unsorted. This will cause reversion to previous behaviour.",
+      "parentUuid": "a1f82cf7_fef83031",
+      "range": {
+        "startLine": 461,
+        "startChar": 5,
+        "endLine": 461,
+        "endChar": 31
+      },
+      "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d2e52b5_4b0b8cc0",
         "filename": "src/common/windows/pdb_source_line_writer.cc",
         "patchSetId": 5
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "I can’t click “Resolved” without saying anything. Gerrit, you old rascal, you.",
       "parentUuid": "b39f4daa_d6d08da5",
+      "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91d9a87a_4cfc3171",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1144260
+      },
+      "writtenOn": "2017-02-23T18:27:09Z",
+      "side": 1,
+      "message": "For the record, I checked the times for ntdll.dll, an average of 5 runs:\nbefore: avg \u003d 0m0.331s\nafter: avg \u003d 0m0.600s\n\nThis worried me a little, so I checked chrome.dll:\nbefore: avg \u003d 0m22.781s\nafter: avg \u003d 0m22.250s\n\nThis is because the \"disjoint public symbols\" case isn\u0027t even hit for our binaries. So I don\u0027t think there\u0027ll be any perf penalty here (and this makes me less nervous about the change in general).",
+      "parentUuid": "0379623d_76d0aff4",
       "revId": "7370b2ae9f28fb2f6e75a67f416c6febaea67539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
