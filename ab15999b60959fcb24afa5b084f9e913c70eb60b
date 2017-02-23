@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41725a81_14e6e41e",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-23T20:01:21Z",
+      "side": 1,
+      "message": "do you really need to protect these standard header files ?  it\u0027s cleaner to just always include them as part of the list above.",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dcd66c4_64ab12f5",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-23T20:01:21Z",
+      "side": 1,
+      "message": "we should check for sys/random.h and the random() func before falling back to /dev/urandom",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b20cb6a7_508bc843",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-23T20:01:21Z",
+      "side": 1,
+      "message": "use // C++ comments\n\nand put a period at the end\n\nwould be helpful to say \"according to RFC 4122\" at the end of the comment",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516ede9e_274b7c4b",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-23T20:01:21Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45ac7f5a_d326b140",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-23T20:01:21Z",
+      "side": 1,
+      "message": "use static_cast here\n\nalso, we use the name \"buf\" rather than \"buff\" in the code base",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdf02d2b_b7f4430f",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-23T20:01:21Z",
+      "side": 1,
+      "message": "the inner parens aren\u0027t needed\n\n ((uintptr_t)\u0026once_control \u003e\u003e 4)\n\ni\u0027m guessing the 4 bit shift is due to alignment of pthread_once_t ?  would be helpful to document that here.",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "300d5469_fa1be6a8",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-23T20:01:21Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e65ff5_b21ea67d",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-23T20:01:21Z",
+      "side": 1,
+      "message": "same comments here",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d71e459_9ce7fe04",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-23T20:01:21Z",
+      "side": 1,
+      "message": "needs O_CLOEXEC",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1107185_89172ee4",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-23T20:01:21Z",
+      "side": 1,
+      "message": "if fd \u003d\u003d -1, we should return immediately imo to make the error path clearer",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7057aae9_d7501d99",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-23T20:01:21Z",
+      "side": 1,
+      "message": "instead of a do loop, use HANDLE_EINTR and a single read() call",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43151fc6_37bcb54d",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-23T20:01:21Z",
+      "side": 1,
+      "message": "read returns a ssize_t, not an int",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
