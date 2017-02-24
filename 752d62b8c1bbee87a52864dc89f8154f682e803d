@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c656b069_64a4dfcc",
+        "filename": "src/client/linux/minidump_writer/linux_dumper_unittest_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-02-24T19:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32286f37_f033f304",
+      "range": {
+        "startLine": 60,
+        "startChar": 39,
+        "endLine": 60,
+        "endChar": 42
+      },
+      "revId": "752d62b8c1bbee87a52864dc89f8154f682e803d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4a1335d_c632e77f",
         "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper_unittest.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "752d62b8c1bbee87a52864dc89f8154f682e803d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b8321f7_b89b13d4",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-02-24T19:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4a1335d_c632e77f",
+      "range": {
+        "startLine": 502,
+        "startChar": 5,
+        "endLine": 502,
+        "endChar": 6
+      },
+      "revId": "752d62b8c1bbee87a52864dc89f8154f682e803d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
