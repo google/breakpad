@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "6a3042ab_876e4e8a",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-24T14:48:04Z",
+      "side": 1,
+      "message": "yeah, i meant getrandom",
+      "parentUuid": "5e535baa_3ed0dabb",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b20cb6a7_508bc843",
         "filename": "src/common/linux/guid_creator.cc",
         "patchSetId": 1
