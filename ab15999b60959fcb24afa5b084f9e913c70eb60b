@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "071a79b5_855406bf",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1168100
+      },
+      "writtenOn": "2017-02-24T14:05:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41725a81_14e6e41e",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dcd66c4_64ab12f5",
         "filename": "src/common/linux/guid_creator.cc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-23T20:01:21Z",
       "side": 1,
       "message": "we should check for sys/random.h and the random() func before falling back to /dev/urandom",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e535baa_3ed0dabb",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1168100
+      },
+      "writtenOn": "2017-02-24T14:05:18Z",
+      "side": 1,
+      "message": "Do you mean using getrandom()? random() is just the non-standard version of rand() IIRC.",
+      "parentUuid": "7dcd66c4_64ab12f5",
       "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ce880e31_e4f0dee4",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1168100
+      },
+      "writtenOn": "2017-02-24T14:05:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b20cb6a7_508bc843",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "516ede9e_274b7c4b",
         "filename": "src/common/linux/guid_creator.cc",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6b71773_2c570dee",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1168100
+      },
+      "writtenOn": "2017-02-24T14:05:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "516ede9e_274b7c4b",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "49328e44_1616bb1c",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1168100
+      },
+      "writtenOn": "2017-02-24T14:05:18Z",
+      "side": 1,
+      "message": "Done, but static_cast\u003cchar *\u003e() doesn\u0027t cut it, I need to use reinterpret_cast\u003cchar *\u003e() since it\u0027s different pointers.",
+      "parentUuid": "45ac7f5a_d326b140",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdf02d2b_b7f4430f",
         "filename": "src/common/linux/guid_creator.cc",
         "patchSetId": 1
@@ -101,6 +191,24 @@
       "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d32a4fd_50338cc8",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1168100
+      },
+      "writtenOn": "2017-02-24T14:05:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdf02d2b_b7f4430f",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "ab1e407f_2d9469f6",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1168100
+      },
+      "writtenOn": "2017-02-24T14:05:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "300d5469_fa1be6a8",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86e65ff5_b21ea67d",
         "filename": "src/common/linux/guid_creator.cc",
         "patchSetId": 1
@@ -135,6 +261,24 @@
       "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58e04b2b_ae51d7b3",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1168100
+      },
+      "writtenOn": "2017-02-24T14:05:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86e65ff5_b21ea67d",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "9227b540_162814b2",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1168100
+      },
+      "writtenOn": "2017-02-24T14:05:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d71e459_9ce7fe04",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1107185_89172ee4",
         "filename": "src/common/linux/guid_creator.cc",
         "patchSetId": 1
@@ -169,6 +331,24 @@
       "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2467172f_c9ee4161",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1168100
+      },
+      "writtenOn": "2017-02-24T14:05:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1107185_89172ee4",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "cc8791d4_3b67a2ca",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1168100
+      },
+      "writtenOn": "2017-02-24T14:05:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7057aae9_d7501d99",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43151fc6_37bcb54d",
         "filename": "src/common/linux/guid_creator.cc",
         "patchSetId": 1
@@ -203,6 +401,24 @@
       "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15ad7901_8a23e668",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1168100
+      },
+      "writtenOn": "2017-02-24T14:05:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43151fc6_37bcb54d",
+      "revId": "ab15999b60959fcb24afa5b084f9e913c70eb60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
