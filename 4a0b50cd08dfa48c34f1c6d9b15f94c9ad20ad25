@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7769d05f_e1c3005f",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-02-27T14:31:48Z",
+      "side": 1,
+      "message": "can you please add a comment here explaining that you use the main thread stack as a upper bound on the memory addressable by userspace, based on your observation on /proc/.../maps?\nThere is no way to reconstruct all this heuristic by just looking at the code :)",
+      "range": {
+        "startLine": 524,
+        "startChar": 6,
+        "endLine": 524,
+        "endChar": 8
+      },
+      "revId": "4a0b50cd08dfa48c34f1c6d9b15f94c9ad20ad25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
