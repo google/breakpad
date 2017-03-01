@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84175506_6dd124d0",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-03-01T15:00:11Z",
+      "side": 1,
+      "message": "I believe that this should be %lx %lx %lu %lu.",
+      "revId": "abb765c0b356a701ff4942f7da98ab835ae16e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d706c95d_53c761d0",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-03-01T15:00:11Z",
+      "side": 1,
+      "message": "Leave this one as %x and leave the corresponding parameter as 0. That makes it a convenient “anchor” to figure out which %lx corresponds to which parameter.",
+      "range": {
+        "startLine": 676,
+        "startChar": 52,
+        "endLine": 676,
+        "endChar": 55
+      },
+      "revId": "abb765c0b356a701ff4942f7da98ab835ae16e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c842387_ca59abae",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-03-01T15:00:11Z",
+      "side": 1,
+      "message": "Properly %lu. DWORD is unsigned, and I don’t see a way for it to be negative given the logic above.",
+      "range": {
+        "startLine": 822,
+        "startChar": 66,
+        "endLine": 822,
+        "endChar": 69
+      },
+      "revId": "abb765c0b356a701ff4942f7da98ab835ae16e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36b3f575_d2d56c04",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-03-01T15:00:11Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 825,
+        "startChar": 47,
+        "endLine": 825,
+        "endChar": 50
+      },
+      "revId": "abb765c0b356a701ff4942f7da98ab835ae16e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5102b8d_9142460b",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-03-01T15:00:11Z",
+      "side": 1,
+      "message": "stack_param_size is an int, let’s leave the second one as %x and change 0l back to 0.",
+      "range": {
+        "startLine": 865,
+        "startChar": 33,
+        "endLine": 865,
+        "endChar": 36
+      },
+      "revId": "abb765c0b356a701ff4942f7da98ab835ae16e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd1a6f34_55e8a312",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-03-01T15:00:11Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 897,
+        "startChar": 35,
+        "endLine": 897,
+        "endChar": 38
+      },
+      "revId": "abb765c0b356a701ff4942f7da98ab835ae16e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
