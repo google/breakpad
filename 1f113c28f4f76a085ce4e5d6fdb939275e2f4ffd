@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "648a49ee_020ca14a",
+        "filename": "src/processor/stackwalker_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-03-06T12:40:18Z",
+      "side": 1,
+      "message": "This was protecting against the \u003d\u003d case that could cause the processor to spin on the same frame forever. Is there any mitigation for that?",
+      "revId": "1f113c28f4f76a085ce4e5d6fdb939275e2f4ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
