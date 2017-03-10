@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b61e77a9_300d1938",
+        "filename": "src/client/windows/crash_generation/minidump_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-03-10T22:47:14Z",
+      "side": 1,
+      "message": "shouldn\u0027t this logic be under the uuid_generated_ check ?",
+      "revId": "fb3a81d92d98f57afb75967b3a86b05731e08853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14cfb547_642fcd4d",
+        "filename": "src/client/windows/crash_generation/minidump_generator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-03-10T22:47:14Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "fb3a81d92d98f57afb75967b3a86b05731e08853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
