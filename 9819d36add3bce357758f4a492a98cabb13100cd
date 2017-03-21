@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c52bd4d_8b8bd8fc",
+        "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-03-21T22:22:50Z",
+      "side": 1,
+      "message": "80cols (and on line 192)",
+      "revId": "9819d36add3bce357758f4a492a98cabb13100cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c1127a1_c4e45001",
+        "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-03-21T22:22:50Z",
+      "side": 1,
+      "message": "The check on line 197 isn\u0027t enough I\u0027m assuming because of the bias?",
+      "revId": "9819d36add3bce357758f4a492a98cabb13100cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6792205_476e15dc",
+        "filename": "src/client/linux/minidump_writer/minidump_writer_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-03-21T22:22:50Z",
+      "side": 1,
+      "message": "Capitalize.",
+      "range": {
+        "startLine": 286,
+        "startChar": 5,
+        "endLine": 286,
+        "endChar": 6
+      },
+      "revId": "9819d36add3bce357758f4a492a98cabb13100cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e01b15a0_939ef830",
+        "filename": "src/client/linux/minidump_writer/minidump_writer_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-03-21T22:22:50Z",
+      "side": 1,
+      "message": "nit: remove extra blank lines",
+      "revId": "9819d36add3bce357758f4a492a98cabb13100cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
