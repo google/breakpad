@@ -52,6 +52,24 @@
       "revId": "07c59f384c5fed4bf2cc3b5fe440d6a9400e133e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "191e1488_4ad725ea",
+        "filename": "src/processor/minidump_dump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-03-24T16:21:45Z",
+      "side": 1,
+      "message": "the windows CI will show us soon enough :)",
+      "parentUuid": "10cb8b03_badbdffd",
+      "revId": "07c59f384c5fed4bf2cc3b5fe440d6a9400e133e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
