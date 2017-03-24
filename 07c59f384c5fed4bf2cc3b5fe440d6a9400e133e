@@ -16,6 +16,24 @@
       "revId": "07c59f384c5fed4bf2cc3b5fe440d6a9400e133e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "324000a0_1e08dc0b",
+        "filename": "src/processor/minidump_dump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-03-24T16:16:56Z",
+      "side": 1,
+      "message": "break why ?  because of getopt usage ?  i don\u0027t think we should restrict ourselves from using getopt.  if Windows needs a replacement, we can figure out how to provide that for all tools.",
+      "parentUuid": "2974d0a3_22480a4c",
+      "revId": "07c59f384c5fed4bf2cc3b5fe440d6a9400e133e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
