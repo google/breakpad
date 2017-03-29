@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e1372710_8d13961e",
+        "filename": "src/tools/windows/dump_syms/dump_syms.gyp",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137144
+      },
+      "writtenOn": "2017-03-29T16:38:03Z",
+      "side": 1,
+      "message": "\u003e you should move this to src/build/common.gypi under a OS\u003d\u003dwin section\n\u003e and probably use the name \"srcdir\"\n\nNice idea, but I can\u0027t see how to make that work.\n\nThe current directory for \u0027\u003c!(command)\u0027  execution seems to be the directory of the .gyp file (presumably processing that takes place after any include processing)\n\n\u003e i don\u0027t think we need an external script for this.  can\u0027t we write:\n\u003e  \u0027srcdir\u0027: \u0027\u003c!(python -c \"import os; print(os.getcwd())\"\u0027\n\nThat works as far as it goes, but doesn\u0027t escape any backslashes in the windows path.\n\ngyp doesn\u0027t seem to handle that for us, because it\u0027s not aware that this define is a path.\n\nThere doesn\u0027t seem to be any defined mechanism for escaping characters in .gyp files, so writing the python to do that inline seems intractable, especially since it also needs to be protected against the shell.",
+      "parentUuid": "2985f79d_1b23b02f",
+      "revId": "b7022d4da50a93223926ed95dd1f7cf98239f23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b282836f_56551550",
         "filename": "src/tools/windows/dump_syms/dump_syms.gyp",
         "patchSetId": 3
