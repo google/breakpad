@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2985f79d_1b23b02f",
+        "filename": "src/tools/windows/dump_syms/dump_syms.gyp",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-03-29T07:10:17Z",
+      "side": 1,
+      "message": "you should move this to src/build/common.gypi under a OS\u003d\u003dwin section\n\nand probably use the name \"srcdir\"\n\ni don\u0027t think we need an external script for this.  can\u0027t we write:\n\n \u0027srcdir\u0027: \u0027\u003c!(python -c \"import os; print(os.getcwd())\"\u0027",
+      "revId": "b7022d4da50a93223926ed95dd1f7cf98239f23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b282836f_56551550",
+        "filename": "src/tools/windows/dump_syms/dump_syms.gyp",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-03-29T07:10:17Z",
+      "side": 1,
+      "message": "move this to the common build gypi too",
+      "revId": "b7022d4da50a93223926ed95dd1f7cf98239f23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
