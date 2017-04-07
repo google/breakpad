@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "844c3ef3_9c85bef7",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-04-07T14:12:25Z",
+      "side": 1,
+      "message": "i\u0027m surprised this didn\u0027t trigger a signed compare warning",
+      "revId": "6f75688501cdbd6aa25823aabfaea73b8dc8695a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "637d628c_45df336b",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-04-07T14:12:25Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "6f75688501cdbd6aa25823aabfaea73b8dc8695a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76686651_7523589a",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-04-07T14:12:25Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "6f75688501cdbd6aa25823aabfaea73b8dc8695a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
