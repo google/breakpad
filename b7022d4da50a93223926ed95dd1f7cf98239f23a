@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b079f7e3_8345f52b",
+        "filename": "src/tools/windows/dump_syms/dump_syms.gyp",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137144
+      },
+      "writtenOn": "2017-04-19T12:35:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1372710_8d13961e",
+      "revId": "b7022d4da50a93223926ed95dd1f7cf98239f23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b282836f_56551550",
         "filename": "src/tools/windows/dump_syms/dump_syms.gyp",
         "patchSetId": 3
@@ -51,6 +69,24 @@
       "revId": "b7022d4da50a93223926ed95dd1f7cf98239f23a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5cb4d8a_3c1f22c6",
+        "filename": "src/tools/windows/dump_syms/dump_syms.gyp",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1137144
+      },
+      "writtenOn": "2017-04-19T12:35:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b282836f_56551550",
+      "revId": "b7022d4da50a93223926ed95dd1f7cf98239f23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
