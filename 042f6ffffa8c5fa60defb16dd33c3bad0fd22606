@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2627044f_671ae703",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1200587
+      },
+      "writtenOn": "2017-04-21T17:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07ce4b46_939ff3a3",
+      "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19dfd69a_22b2e0d5",
         "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.cc",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe3c3e3_1f4d0ee0",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1200587
+      },
+      "writtenOn": "2017-04-21T17:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19dfd69a_22b2e0d5",
+      "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4f1a026f_c192b376",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1200587
+      },
+      "writtenOn": "2017-04-21T17:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f78678b7_07e24ae9",
+      "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ba319a6_5503e287",
         "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.h",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57fb4081_85e58512",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1200587
+      },
+      "writtenOn": "2017-04-21T17:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ba319a6_5503e287",
+      "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "b722ff8e_5df92e67",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1200587
+      },
+      "writtenOn": "2017-04-21T17:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d29a124_9ede8f20",
+      "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2e725b5_bcc3c85e",
         "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.h",
         "patchSetId": 1
@@ -101,6 +191,24 @@
       "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57ab1375_888b0ae8",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1200587
+      },
+      "writtenOn": "2017-04-21T17:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2e725b5_bcc3c85e",
+      "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
