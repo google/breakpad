@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07ce4b46_939ff3a3",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-04-21T14:51:42Z",
+      "side": 1,
+      "message": "fix the API and you don\u0027t need this ifdef check",
+      "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19dfd69a_22b2e0d5",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-04-21T14:51:42Z",
+      "side": 1,
+      "message": "missing space before the (\n\n if (...",
+      "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f78678b7_07e24ae9",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-04-21T14:51:42Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba319a6_5503e287",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-04-21T14:51:42Z",
+      "side": 1,
+      "message": "this func should always be defined.  just have it return false if this PTRACE doesn\u0027t exist, and document that behavior in the comment.",
+      "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d29a124_9ede8f20",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-04-21T14:51:42Z",
+      "side": 1,
+      "message": "comments are full sentences, so this should have a period at the end",
+      "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2e725b5_bcc3c85e",
+        "filename": "src/client/linux/minidump_writer/linux_ptrace_dumper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-04-21T14:51:42Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "042f6ffffa8c5fa60defb16dd33c3bad0fd22606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
