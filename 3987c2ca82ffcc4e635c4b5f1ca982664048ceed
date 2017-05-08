@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f243be3e_548a483f",
+        "filename": "src/common/linux/dump_symbols.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-08T19:51:09Z",
+      "side": 1,
+      "message": "should add a comment here that we explicitly accept symlinks as it\u0027s common for distros to symlink the build id to the debug file name",
+      "revId": "3987c2ca82ffcc4e635c4b5f1ca982664048ceed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7204247c_6e957759",
+        "filename": "src/common/linux/dump_symbols.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-08T19:51:09Z",
+      "side": 1,
+      "message": "use S_ISREG() instead please",
+      "range": {
+        "startLine": 545,
+        "startChar": 51,
+        "endLine": 545,
+        "endChar": 72
+      },
+      "revId": "3987c2ca82ffcc4e635c4b5f1ca982664048ceed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ca57014_d05d2a49",
+        "filename": "src/common/linux/dump_symbols.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-08T19:51:09Z",
+      "side": 1,
+      "message": "can we use the style used elsewhere ?  specifically, move the %s to the start of the error message.\n\n fprintf(stderr, \"%s: ....\", obj_file.c_str());",
+      "revId": "3987c2ca82ffcc4e635c4b5f1ca982664048ceed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa7430b_ba4c2cfa",
+        "filename": "src/common/linux/dump_symbols.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-08T19:51:09Z",
+      "side": 1,
+      "message": "not a new issue, but moving filename to the start of the string would be nice to match the rest of the code paths",
+      "revId": "3987c2ca82ffcc4e635c4b5f1ca982664048ceed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "316f747b_63af8821",
+        "filename": "src/common/linux/dump_symbols_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-08T19:51:09Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "3987c2ca82ffcc4e635c4b5f1ca982664048ceed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "766a39fe_6138c550",
+        "filename": "src/common/linux/dump_symbols_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-08T19:51:09Z",
+      "side": 1,
+      "message": "long line",
+      "revId": "3987c2ca82ffcc4e635c4b5f1ca982664048ceed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5457955b_143fe581",
+        "filename": "src/common/linux/file_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-08T19:51:09Z",
+      "side": 1,
+      "message": "it might be premature, but is there some common header we can put this type instead ?\n\ni grepped the source but couldn\u0027t find any existing logic that allowed upper/lower case selection ...",
+      "revId": "3987c2ca82ffcc4e635c4b5f1ca982664048ceed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe9b094_a2976166",
+        "filename": "src/common/linux/file_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-08T19:51:09Z",
+      "side": 1,
+      "message": "can you add a default arg here so the callers don\u0027t have to always pass in upper/lower pref ?",
+      "revId": "3987c2ca82ffcc4e635c4b5f1ca982664048ceed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
