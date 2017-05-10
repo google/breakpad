@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a6911456_f891407d",
+        "filename": "configure.ac",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-10T20:09:06Z",
+      "side": 1,
+      "message": "works fine for me.  i deleted these two lines, re-ran autoconf, and the only thing it deleted was the push/pop logic.\n\nchecking for O_CLOEXEC defined in fcntl.h... yes",
+      "parentUuid": "4d28b2a9_0a754e48",
+      "revId": "f5cd9a8ecadf1594c435effe1089425428b9755b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3100b21_aa53689f",
         "filename": "configure.ac",
         "patchSetId": 4
