@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "21b1a2f7_a3b58b7e",
+        "filename": "configure.ac",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1145599
+      },
+      "writtenOn": "2017-05-10T20:51:35Z",
+      "side": 1,
+      "message": "I tried it again and it looks like I misinterpreted the generated output. It\u0027s my first time fiddling with autoconf, but I should have looked better. Apologies.",
+      "parentUuid": "a6911456_f891407d",
+      "revId": "f5cd9a8ecadf1594c435effe1089425428b9755b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3100b21_aa53689f",
         "filename": "configure.ac",
         "patchSetId": 4
