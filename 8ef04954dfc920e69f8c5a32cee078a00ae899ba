@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb78d167_7fd8e409",
+        "filename": "configure.ac",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-10T17:36:08Z",
+      "side": 1,
+      "message": "why test with C++ ?  the default C lang should be fine.",
+      "revId": "8ef04954dfc920e69f8c5a32cee078a00ae899ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b9f9d01_bcb3a4f5",
+        "filename": "configure.ac",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-10T17:36:08Z",
+      "side": 1,
+      "message": "the wrapping here is weird.  just move AC_DEFINE down to the next line so it stays together\n\n AX_CHECK_DEFINE([fcntl.h], [O_CLOEXEC], [],\n                 [AC_DEFINE([O_CLOEXEC], [0],  ...)])",
+      "revId": "8ef04954dfc920e69f8c5a32cee078a00ae899ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
