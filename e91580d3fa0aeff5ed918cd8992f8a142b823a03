@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "54b4f610_17bd9f0c",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1145599
+      },
+      "writtenOn": "2017-05-10T12:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "897c0a9d_ae0a5550",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 21
+      },
+      "revId": "e91580d3fa0aeff5ed918cd8992f8a142b823a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6634856_235205df",
         "filename": "src/client/linux/handler/exception_handler.cc",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "e91580d3fa0aeff5ed918cd8992f8a142b823a03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7698db74_3c2c492a",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1145599
+      },
+      "writtenOn": "2017-05-10T12:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6634856_235205df",
+      "revId": "e91580d3fa0aeff5ed918cd8992f8a142b823a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
