@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18ef22f6_cf6619bb",
+        "filename": "configure.ac",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-10T17:57:58Z",
+      "side": 1,
+      "message": "i\u0027m suggesting you shouldn\u0027t need this at all.  just delete the PUSH/POP statements altogether here.",
+      "revId": "f5cd9a8ecadf1594c435effe1089425428b9755b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3100b21_aa53689f",
+        "filename": "configure.ac",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-10T17:57:58Z",
+      "side": 1,
+      "message": "this message implies it\u0027s a bool flag to test for its existence (guessing it\u0027s copy \u0026 pasted from a HAVE_xxx knob).  use:\n\n Fallback definition for old systems",
+      "range": {
+        "startLine": 107,
+        "startChar": 46,
+        "endLine": 107,
+        "endChar": 85
+      },
+      "revId": "f5cd9a8ecadf1594c435effe1089425428b9755b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
