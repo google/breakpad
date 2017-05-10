@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a64e4703_56687b6b",
+        "filename": "configure.ac",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1145599
+      },
+      "writtenOn": "2017-05-10T17:43:25Z",
+      "side": 1,
+      "message": "I followed the code above, change it to C.",
+      "parentUuid": "bb78d167_7fd8e409",
+      "revId": "8ef04954dfc920e69f8c5a32cee078a00ae899ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b9f9d01_bcb3a4f5",
         "filename": "configure.ac",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "8ef04954dfc920e69f8c5a32cee078a00ae899ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbd0a342_a51c7b80",
+        "filename": "configure.ac",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1145599
+      },
+      "writtenOn": "2017-05-10T17:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b9f9d01_bcb3a4f5",
+      "revId": "8ef04954dfc920e69f8c5a32cee078a00ae899ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
