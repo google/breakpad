@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "897c0a9d_ae0a5550",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-10T05:59:44Z",
+      "side": 1,
+      "message": "this logic looks like it\u0027d be better in ExceptionHandler::ThreadEntry",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 21
+      },
+      "revId": "e91580d3fa0aeff5ed918cd8992f8a142b823a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6634856_235205df",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-10T05:59:44Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "e91580d3fa0aeff5ed918cd8992f8a142b823a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
