@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4d28b2a9_0a754e48",
+        "filename": "configure.ac",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1145599
+      },
+      "writtenOn": "2017-05-10T18:30:32Z",
+      "side": 1,
+      "message": "I tried removing it, but without it autoconf does not generate the required test code.",
+      "parentUuid": "18ef22f6_cf6619bb",
+      "revId": "f5cd9a8ecadf1594c435effe1089425428b9755b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3100b21_aa53689f",
         "filename": "configure.ac",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "f5cd9a8ecadf1594c435effe1089425428b9755b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93b57264_95dca99c",
+        "filename": "configure.ac",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1145599
+      },
+      "writtenOn": "2017-05-10T18:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3100b21_aa53689f",
+      "range": {
+        "startLine": 107,
+        "startChar": 46,
+        "endLine": 107,
+        "endChar": 85
+      },
+      "revId": "f5cd9a8ecadf1594c435effe1089425428b9755b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
