@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e123fe1_75a9fd47",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-05-24T10:33:49Z",
+      "side": 1,
+      "message": "if I am reading this correctly this will as a side effect collapse together all the adjacent maps, so when we have something like:\n\nLINK1: 75d50000-75d65000 r-xp 00000000 b3:1c 1638413 /data/app-lib/com.chrome.beta-1/libchromium_android_linker.so \nLINK2: 75d65000-75d66000 r--p 00014000 b3:1c 1638413 /data/app-lib/com.chrome.beta-1/libchromium_android_linker.so \nLINK3: 75d66000-75d67000 rw-p 00015000 b3:1c 1638413 /data/app-lib/com.chrome.beta-1/libchromium_android_linker.so \n\nthis will be rendererd as \n75d50000-75d67000 rwxp /data/app-lib/com.chrome.beta-1/libchromium_android_linker.so \n\ndoesn\u0027t this create side-effects. I\u0027d probably be more conservative and add a logic that reflects your specifric use case (i.e. merge only if the previous region was r-- and the next one is r-x)",
+      "range": {
+        "startLine": 530,
+        "startChar": 13,
+        "endLine": 532,
+        "endChar": 35
+      },
+      "revId": "7ef09c07331a046834419ada8ebf288f4dc6d4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
