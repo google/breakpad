@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58bb3db1_f2a5c55f",
+        "filename": "src/common/linux/elfutils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-05-24T10:10:25Z",
+      "side": 1,
+      "message": "the client library code can\u0027t use any c or c++ library function. This code runs in a compromised context and the allocator heap can be  holding a lock, or the heap can be just corrupted.\nAll this code uses only pods and the home-brewed  my_XXX (e.g., my_strcmp, my_strcpy, etc).\ncan you avoid using a vector here?",
+      "range": {
+        "startLine": 114,
+        "startChar": 21,
+        "endLine": 114,
+        "endChar": 45
+      },
+      "revId": "21c84eccc1de5dfe603bf13270896d97f282c516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
