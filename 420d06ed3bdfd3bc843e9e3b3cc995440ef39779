@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9ac79dd_15bc7ec4",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-05-24T20:05:15Z",
+      "side": 1,
+      "message": "Don’t we want to end up in here on Android?",
+      "revId": "420d06ed3bdfd3bc843e9e3b3cc995440ef39779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db7fa41f_3ffa8388",
+        "filename": "src/common/linux/guid_creator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-05-24T20:05:15Z",
+      "side": 1,
+      "message": "And we probably want to wind up here on non-Android…",
+      "revId": "420d06ed3bdfd3bc843e9e3b3cc995440ef39779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
