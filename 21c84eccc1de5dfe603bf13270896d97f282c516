@@ -22,6 +22,30 @@
       "revId": "21c84eccc1de5dfe603bf13270896d97f282c516",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ea5cb65_1aac5bf5",
+        "filename": "src/common/linux/elfutils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1125980
+      },
+      "writtenOn": "2017-05-24T16:30:30Z",
+      "side": 1,
+      "message": "I changed this code to use a wasteful_vector instead. This type of vector is backed by a PageAllocator which appears to be how we allocate memory safely here.",
+      "parentUuid": "58bb3db1_f2a5c55f",
+      "range": {
+        "startLine": 114,
+        "startChar": 21,
+        "endLine": 114,
+        "endChar": 45
+      },
+      "revId": "21c84eccc1de5dfe603bf13270896d97f282c516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
