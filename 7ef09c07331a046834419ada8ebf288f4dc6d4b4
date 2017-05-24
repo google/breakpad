@@ -22,6 +22,30 @@
       "revId": "7ef09c07331a046834419ada8ebf288f4dc6d4b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4efd0d2_4c8f8204",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1125980
+      },
+      "writtenOn": "2017-05-24T17:37:13Z",
+      "side": 1,
+      "message": "Done, also redid the tests in my commit message and verified that things still work",
+      "parentUuid": "4e123fe1_75a9fd47",
+      "range": {
+        "startLine": 530,
+        "startChar": 13,
+        "endLine": 532,
+        "endChar": 35
+      },
+      "revId": "7ef09c07331a046834419ada8ebf288f4dc6d4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
