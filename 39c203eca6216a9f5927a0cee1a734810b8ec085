@@ -16,6 +16,24 @@
       "revId": "39c203eca6216a9f5927a0cee1a734810b8ec085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecf008c8_085fb557",
+        "filename": "src/common/linux/elfutils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1125980
+      },
+      "writtenOn": "2017-05-25T00:11:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6de1c305_f68e41b0",
+      "revId": "39c203eca6216a9f5927a0cee1a734810b8ec085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
