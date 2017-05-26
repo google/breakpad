@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "90a55d78_e42b6e1f",
+        "filename": "src/common/linux/file_id.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1134731
+      },
+      "writtenOn": "2017-05-26T16:00:04Z",
+      "side": 1,
+      "message": "If lld emits a fixed number of note segments in the common case then you can use `auto_wasteful_vector` to stack-allocate that many vector elements for the common case (it\u0027ll fall back to using `PageAllocator` if it needs more space):\nhttps://chromium.googlesource.com/breakpad/breakpad/+/97483928ccc8b979466f504e08ecb67ed0f6f711/src/client/linux/minidump_writer/minidump_writer.cc#635",
+      "revId": "a9176464d4c2685e126bcfd7855c3c78a76a69fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59732348_7b009bd8",
         "filename": "src/common/linux/file_id.cc",
         "patchSetId": 5
@@ -41,6 +58,29 @@
         "startChar": 2,
         "endLine": 116,
         "endChar": 1
+      },
+      "revId": "a9176464d4c2685e126bcfd7855c3c78a76a69fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d68fa48_b9648ff7",
+        "filename": "src/common/linux/file_id_unittest.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1134731
+      },
+      "writtenOn": "2017-05-26T16:00:04Z",
+      "side": 1,
+      "message": "Thanks for adding a test!",
+      "range": {
+        "startLine": 281,
+        "startChar": 6,
+        "endLine": 281,
+        "endChar": 10
       },
       "revId": "a9176464d4c2685e126bcfd7855c3c78a76a69fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
