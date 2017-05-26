@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "86057948_eb310c28",
+        "filename": "src/common/linux/elfutils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1125980
+      },
+      "writtenOn": "2017-05-26T16:20:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ab54472_52e9cde1",
+      "range": {
+        "startLine": 98,
+        "startChar": 17,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "a9176464d4c2685e126bcfd7855c3c78a76a69fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90a55d78_e42b6e1f",
         "filename": "src/common/linux/file_id.cc",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "a9176464d4c2685e126bcfd7855c3c78a76a69fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d63e0797_3d17b43f",
+        "filename": "src/common/linux/file_id.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1125980
+      },
+      "writtenOn": "2017-05-26T16:20:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90a55d78_e42b6e1f",
+      "revId": "a9176464d4c2685e126bcfd7855c3c78a76a69fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
