@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ab54472_52e9cde1",
+        "filename": "src/common/linux/elfutils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-05-26T15:59:31Z",
+      "side": 1,
+      "message": "maybe add \u003d {}; so if somebody else adds a new field at some point we don\u0027t leave it uninitialized.",
+      "range": {
+        "startLine": 98,
+        "startChar": 17,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "a9176464d4c2685e126bcfd7855c3c78a76a69fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59732348_7b009bd8",
+        "filename": "src/common/linux/file_id.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-05-26T15:59:31Z",
+      "side": 1,
+      "message": "thanks this feels way more readable than the original",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 1
+      },
+      "revId": "a9176464d4c2685e126bcfd7855c3c78a76a69fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
