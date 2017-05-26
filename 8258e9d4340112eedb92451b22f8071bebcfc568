@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac3196cf_4d47605a",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2017-05-26T15:36:28Z",
+      "side": 1,
+      "message": "maybe expand a bit more this comment to reflect this change, something like:\nMerge adjacent mappings..... into one module if their name matches and either they have the same +x protection flag, or if the previous mapping is not executable and the new one is, to cover the case of crbug.com/XXXX .",
+      "range": {
+        "startLine": 523,
+        "startChar": 10,
+        "endLine": 523,
+        "endChar": 72
+      },
+      "revId": "8258e9d4340112eedb92451b22f8071bebcfc568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
