@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c908b6b9_56bed330",
+        "filename": "src/google_breakpad/processor/stackwalker.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1131115
+      },
+      "writtenOn": "2017-07-07T22:38:29Z",
+      "side": 1,
+      "message": "Maybe: callee_sp?  For consistency with other methods.",
+      "range": {
+        "startLine": 135,
+        "startChar": 30,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "cbad05731174033dc7d431c13d9a2311eb49b86f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
