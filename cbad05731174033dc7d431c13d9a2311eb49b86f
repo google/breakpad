@@ -22,6 +22,30 @@
       "revId": "cbad05731174033dc7d431c13d9a2311eb49b86f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4250835_f83abd51",
+        "filename": "src/google_breakpad/processor/stackwalker.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1223274
+      },
+      "writtenOn": "2017-07-07T23:12:01Z",
+      "side": 1,
+      "message": "A quick search suggests that last_xxx is more common in the stack walking code, but I\u0027m fine changing it if you prefer (another reason I didn\u0027t use \"callee\" is because it\u0027s only one letter away from \"caller\")",
+      "parentUuid": "c908b6b9_56bed330",
+      "range": {
+        "startLine": 135,
+        "startChar": 30,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "cbad05731174033dc7d431c13d9a2311eb49b86f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
