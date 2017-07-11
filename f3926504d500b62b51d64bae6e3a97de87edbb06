@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f13cf68_270b9333",
+        "filename": "src/processor/stackwalker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-07-11T18:38:12Z",
+      "side": 1,
+      "message": "nit: two spaces between the last non-comment thing on a line and the //. https://google.github.io/styleguide/cppguide.html#Implementation_Comments",
+      "revId": "f3926504d500b62b51d64bae6e3a97de87edbb06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
