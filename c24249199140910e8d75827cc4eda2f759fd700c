@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0446ab1_f3fb07f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-07-28T22:05:34Z",
+      "side": 1,
+      "message": "should omit the bug line if it\u0027s blank",
+      "revId": "c24249199140910e8d75827cc4eda2f759fd700c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
