@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "577e2358_591906e1",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1144624
+      },
+      "writtenOn": "2017-08-11T20:18:28Z",
+      "side": 1,
+      "message": "It\u0027d be kind of nice if this weren\u0027t duplicated from the processor, but I don\u0027t see an obvious file to place it in in common/, and I\u0027m not sure it\u0027s worth creating a new file...",
+      "revId": "159370c74308d50a2197f5125fcb1a5a7ad93273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
