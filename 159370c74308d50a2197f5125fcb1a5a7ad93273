@@ -16,6 +16,24 @@
       "revId": "159370c74308d50a2197f5125fcb1a5a7ad93273",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ac85df2_6aaa282a",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-08-14T09:48:55Z",
+      "side": 1,
+      "message": "I agree. I can look at cleaning it up in a followup CL, if you want?",
+      "parentUuid": "577e2358_591906e1",
+      "revId": "159370c74308d50a2197f5125fcb1a5a7ad93273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
