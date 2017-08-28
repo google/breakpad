@@ -82,7 +82,7 @@ void ExceptionHandlerDeathTest::SetUp() {
   // The test case name is exposed as a c-style string,
   // convert it to a wchar_t string.
   int dwRet = MultiByteToWideChar(CP_ACP, 0, test_info->name(),
-                                  strlen(test_info->name()),
+                                  int(strlen(test_info->name())),
                                   test_name_wide,
                                   MAX_PATH);
   if (!dwRet) {
@@ -293,8 +293,8 @@ wstring find_minidump_in_directory(const wstring &directory) {
   wstring filename;
   do {
     const wchar_t extension[] = L".dmp";
-    const int extension_length = sizeof(extension) / sizeof(extension[0]) - 1;
-    const int filename_length = wcslen(find_data.cFileName);
+    const size_t extension_length = sizeof(extension) / sizeof(extension[0]) - 1;
+    const size_t filename_length = wcslen(find_data.cFileName);
     if (filename_length > extension_length &&
     wcsncmp(extension,
             find_data.cFileName + filename_length - extension_length,

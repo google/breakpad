@@ -93,7 +93,7 @@ class MinidumpTest: public testing::Test {
         STATUS_ACCESS_VIOLATION,  // ExceptionCode
         0,  // ExceptionFlags
         NULL,  // ExceptionRecord;
-        reinterpret_cast<void*>(0xCAFEBABE),  // ExceptionAddress;
+        reinterpret_cast<void*>(size_t(0xCAFEBABE)),  // ExceptionAddress;
         2,  // NumberParameters;
         { EXCEPTION_WRITE_FAULT, reinterpret_cast<ULONG_PTR>(this) }
     };
