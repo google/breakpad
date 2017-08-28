@@ -380,7 +380,7 @@ string TimeTToUTCString(time_t tt) {
 #endif
 
   char timestr[20];
-  int rv = strftime(timestr, 20, "%Y-%m-%d %H:%M:%S", &timestruct);
+  size_t rv = strftime(timestr, 20, "%Y-%m-%d %H:%M:%S", &timestruct);
   if (rv == 0) {
     return string();
   }
@@ -2034,10 +2034,10 @@ string MinidumpModule::debug_file() const {
         // that this method (and all other methods in the Minidump family)
         // return.
 
-        unsigned int bytes =
+        size_t bytes =
             module_.misc_record.data_size - MDImageDebugMisc_minsize;
         if (bytes % 2 == 0) {
-          unsigned int utf16_words = bytes / 2;
+          size_t utf16_words = bytes / 2;
 
           // UTF16ToUTF8 expects a vector<uint16_t>, so create a temporary one
           // and copy the UTF-16 data into it.
@@ -2392,8 +2392,8 @@ const MDImageDebugMisc* MinidumpModule::GetMiscRecord(uint32_t* size) {
         // There is a potential alignment problem, but shouldn't be a problem
         // in practice due to the layout of MDImageDebugMisc.
         uint16_t* data16 = reinterpret_cast<uint16_t*>(&(misc_record->data));
-        unsigned int dataBytes = module_.misc_record.data_size -
-                                 MDImageDebugMisc_minsize;
+        size_t dataBytes = module_.misc_record.data_size -
+                           MDImageDebugMisc_minsize;
         Swap(data16, dataBytes);
       }
     }
@@ -4004,7 +4004,7 @@ bool MinidumpMiscInfo::Read(uint32_t expected_size) {
       return false;
     }
 
-    if (!minidump_->SeekSet(saved_position + padding)) {
+    if (!minidump_->SeekSet(saved_position + off_t(padding))) {
       BPLOG(ERROR) << "MinidumpMiscInfo could not seek past the miscellaneous "
                    << "info structure";
       return false;
@@ -4538,7 +4538,7 @@ bool MinidumpMemoryInfoList::Read(uint32_t expected_size) {
     infos_ = infos.release();
   }
 
-  info_count_ = header_number_of_entries;
+  info_count_ = uint32_t(header_number_of_entries);
 
   valid_ = true;
   return true;
@@ -4730,7 +4730,7 @@ bool MinidumpLinuxMapsList::Read(uint32_t expected_size) {
 
   // Set instance variables.
   maps_ = maps.release();
-  maps_count_ = maps_->size();
+  maps_count_ = uint32_t(maps_->size());
   valid_ = true;
   return true;
 }

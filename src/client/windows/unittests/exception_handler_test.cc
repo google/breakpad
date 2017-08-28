@@ -120,7 +120,7 @@ void ExceptionHandlerTest::SetUp() {
   // THe test case name is exposed to use as a c-style string,
   // But we might be working in UNICODE here on Windows.
   int dwRet = MultiByteToWideChar(CP_ACP, 0, test_info->name(),
-                                  strlen(test_info->name()),
+                                  int(strlen(test_info->name())),
                                   test_name_wide,
                                   MAX_PATH);
   if (!dwRet) {
