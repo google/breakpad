@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49222526_18af2652",
+        "filename": "src/client/windows/unittests/exception_handler_death_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-28T13:59:00Z",
+      "side": 1,
+      "message": "are you sure this works ?  looks like a syntax error to me.  don\u0027t you want a static_cast instead ?",
+      "revId": "e7bc2d84b0feabbbd784ac8c244ef6c2c90a4955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "043fd6ff_2939c674",
+        "filename": "src/client/windows/unittests/minidump_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-28T13:59:00Z",
+      "side": 1,
+      "message": "you want uintptr_t here (or maybe ULONG_PTR), not size_t\n\nand i\u0027m fairly certain the syntax is wrong and you want to use a _cast instead",
+      "revId": "e7bc2d84b0feabbbd784ac8c244ef6c2c90a4955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48859079_a9a1557a",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4007,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-28T13:59:00Z",
+      "side": 1,
+      "message": "bad syntax",
+      "revId": "e7bc2d84b0feabbbd784ac8c244ef6c2c90a4955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01c1ab95_d5a9890c",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4541,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-28T13:59:00Z",
+      "side": 1,
+      "message": "bad syntax",
+      "revId": "e7bc2d84b0feabbbd784ac8c244ef6c2c90a4955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74916682_fc4728b6",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4733,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-28T13:59:00Z",
+      "side": 1,
+      "message": "bad syntax",
+      "revId": "e7bc2d84b0feabbbd784ac8c244ef6c2c90a4955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2627474_67a283da",
+        "filename": "src/processor/range_map-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-28T13:59:00Z",
+      "side": 1,
+      "message": "bad syntax",
+      "revId": "e7bc2d84b0feabbbd784ac8c244ef6c2c90a4955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a56d0ae8_c20ccad2",
+        "filename": "src/tools/windows/converter/ms_symbol_server_converter.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-28T13:59:00Z",
+      "side": 1,
+      "message": "can\u0027t you use %08hX above instead ?",
+      "revId": "e7bc2d84b0feabbbd784ac8c244ef6c2c90a4955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
