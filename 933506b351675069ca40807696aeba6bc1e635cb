@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb8e592d_b5fddac8",
+        "filename": "src/build/common.gypi",
+        "patchSetId": 3
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-30T19:57:50Z",
+      "side": 1,
+      "message": "can we start documenting what these opaque numbers mean ?  maybe something like:\n\n \u0027msvs_disabled_warnings\u0027: [\n   4091,  # blah blah\n   4100,  # foo bar\n   ...\n ],\n\ni won\u0027t make you document all the existing ones, just the two new ones you\u0027re adding.  although if you wanted to fill it out, i wouldn\u0027t say no :).",
+      "revId": "933506b351675069ca40807696aeba6bc1e635cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

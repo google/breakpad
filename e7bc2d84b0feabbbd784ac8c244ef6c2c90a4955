@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "16a14844_84a52061",
+        "filename": "src/client/windows/unittests/exception_handler_death_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-30T19:57:50Z",
+      "side": 1,
+      "message": "thanks for the reference ... i wasn\u0027t aware of that.  it\u0027s def an error in C which is my obvious background ;).  this cast style is discouraged by the Google C++ style guide though.\n\nhttps://google.github.io/styleguide/cppguide.html#Casting",
+      "parentUuid": "40a83edd_384592fe",
+      "revId": "e7bc2d84b0feabbbd784ac8c244ef6c2c90a4955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "043fd6ff_2939c674",
         "filename": "src/client/windows/unittests/minidump_test.cc",
         "patchSetId": 1
