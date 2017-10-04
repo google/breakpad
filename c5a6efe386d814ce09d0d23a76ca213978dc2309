@@ -1,0 +1,578 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fe21c06_b596293e",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "C++ headers should go after C headers.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be92f81e_3a218697",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "Don’t indent within a namespace.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df392748_5adb011f",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "This should be scoped to the LongStringDictionary class, not out here.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "178ee179_e27e4524",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "Stay within 80 columns on each line.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4928745a_9c9d97f0",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "the above",
+      "range": {
+        "startLine": 48,
+        "startChar": 30,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9e87dfb_4cfbcb21",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "We always put the public: section first and the private: section last. You should be familiar with Google’s C++ style guide.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9513b1d_881601aa",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "1. Naming: this should be kMaxSegmentCount.\n\n2. Don’t hard-code 10, use arraysize(kSuffixes).\n\n3. Actually, you may not need this to exist as an independent variable at all, you can just write arraysize(kSuffixes) at the point of use.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0106a2b3_63f4976e",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "1. Naming again.\n\n2. I feel like this should be computed (at runtime if necessary). You can store the result in a static variable if you don’t want to have to recompute it each time through.\n\nWhere you compute it, you can also assert somehow that kMaxSuffixLength does leave enough room in the chosen key_size to allow keys to be stored at all. (It’d be bad if key_size was 4, for example.)",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c02284f_49772946",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "The -1 is to leave room for the NUL terminator, right?",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0c193e4_4128e53b",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "The * should be nestled up against the type name or the variable name. Google’s guide doesn’t take a stance on which side, as long as you’re consistent with code around you. Breakpad doesn’t really care as long as you’re consistent within the file, but Chromium requires the * to be on the type, like “const char* key”. Again, this is in the style guide.",
+      "range": {
+        "startLine": 59,
+        "startChar": 22,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fde1246_ba4d82bb",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "doesn\u0027t",
+      "range": {
+        "startLine": 68,
+        "startChar": 48,
+        "endLine": 68,
+        "endChar": 53
+      },
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86334365_4562b3c5",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "This isn’t a great name. The function isn’t about validity, it’s about whether the value needs to be segmented.\n\nAlso on naming, I understand “main key” but I don’t think that there’s any concept of “main value” here.",
+      "range": {
+        "startLine": 70,
+        "startChar": 9,
+        "endLine": 70,
+        "endChar": 23
+      },
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6394610_bea8d043",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "Don’t bother computing things like this until you need them. I don’t think you actually need value_length at all, you can probably get by with just remaining_value_length, and avoid calculating its value until you need it right at its declaration below. You can don’t have to calculate key_length for each pass through the loop, but you can defer declaring and initializing it until just outside the loop where you use it.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d747b6_5801e66a",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "Is this the best interface? If the user provides a key that’s too long, it’ll silently degrade to only storing the first chunk of data instead of segmenting it?\n\nI think it’d be better to just impose a requirement here that all keys be within the proper key size, even when the value can be stored without segmentation.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0624b9d_9cc5b89e",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "This whole thing breaks down if you make these calls in sequence:\n\nSetKeyValue(\"k\", \"short\");\nSetKeyValue(\"k\", \"aVeryLongNameRequiringSegmentation\");\n\nNow the dictionary has all of (k) and (k__0, k__1, k__2), etc. SetKeyValue() is supposed to supersede older values for the same key, but in this case, it’s not clear which value is current.\n\nThe same happens in reverse, by the way:\n\nSetKeyValue(\"k\", \"short\");\nSetKeyValue(\"k\", \"aVeryLongNameRequiringSegmentation\");\n\nYour test should check that both of these behave correctly.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3c5264_dd9b5d47",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "Why static?\n\nI see “static char” several times in this file, and none seem appropriate.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29c4e08a_2269a72a",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "Throughout, I think that the “temporary” naming is confusing. It doesn’t tell enough about what these things are used for. They’re segment keys and values, so let’s use that naming.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aabdc27e_a3e18137",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "This is unsafe. key may be longer than the size of the temporary_key buffer. The same thing happens elsewhere in your code. Please audit all uses of strcpy() and strcat() to ensure that they’re safe.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5fcd11_0dcc21ce",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "Just have a const char* pointing within |value|, rather than indexing it repeatedly.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0de7accc_74059f01",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "You already know temporary_key[key_length], why are you wasting time starting from temporary_key looking for the \\0 byte that you just wrote?",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b46efac5_f5a675e8",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "This whole if-else if-else cascade is unnecessarily complex. All you care about is max(remain_value_length, value_size). You can use std::max from \u003calgorithm\u003e.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e018e2d_61b87e26",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "This isn’t really what the implementation does.",
+      "range": {
+        "startLine": 142,
+        "startChar": 13,
+        "endLine": 142,
+        "endChar": 36
+      },
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dcc56c5_a03f4a5d",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "As before.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3b6a1a6_41ba5be9",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "This could easily just be a GetValueForKey() call, you don’t need to fetch the whole Entry* via the private/protected interface. But…",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f4fee39_39761938",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "It’d also be sensible to have the base version of RemoveKey return bool instead of void, to signal whether it did anything. That’d be useful because it’d be able to look through the map just one time, instead of having to make two passes: “look through the map, is the key there?” if yes: “look through the map again, remove it”. If you make this change, you should adapt this class’ version of RemoveKey to also return a bool, for consistency.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f34b5266_2211e491",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e610ae1_a4ec8bca",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "Again, this doesn’t need an Entry*, it can just call the base GetValueForKey().",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d133168_aaaf7034",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "(Here, for the “get” operation, “temporary” doesn’t mean “segment”, it means the full reconstructed unsegmented value.)",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c3a44b_2dadb787",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "As before.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e5d1523_31e2dda0",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "This too. The base GetValueForKey() is fine.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a8c71ad_b36f01d1",
+        "filename": "src/common/simple_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "The base implementation has these nice debug-only checks that I think your adaptation could benefit from.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "714a189f_45d4195d",
+        "filename": "src/common/simple_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-04T21:08:37Z",
+      "side": 1,
+      "message": "Just because you made GetConstEntryForKey() protected doesn’t mean that any of the rest of these need to be protected. Keep ’em private.\n\nBut according to my comments in the other file, I don’t think you need to call GetConstEntryForKey() from there at all.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
