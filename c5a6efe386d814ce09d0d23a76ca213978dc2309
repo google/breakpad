@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "123275bd_f7ac3234",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fe21c06_b596293e",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be92f81e_3a218697",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f95550b_d184643f",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be92f81e_3a218697",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "beab3060_9ef9a954",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Put them into a anonymous namespace.\n\nDon\u0027t want to put it in the class as in that way, we need to create an initializer to initialize it.\n\nlinux/tests/crash_generator.cc does created similar array.",
+      "parentUuid": "df392748_5adb011f",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "178ee179_e27e4524",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -67,6 +121,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9acc2941_467f9156",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "178ee179_e27e4524",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "47e239e6_bf59bee8",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4928745a_9c9d97f0",
+      "range": {
+        "startLine": 48,
+        "startChar": 30,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9e87dfb_4cfbcb21",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -107,6 +203,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcbf4bd6_f508b8cf",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9e87dfb_4cfbcb21",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "6973a04e_bfff372e",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9513b1d_881601aa",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0106a2b3_63f4976e",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -144,6 +276,24 @@
     },
     {
       "key": {
+        "uuid": "f8b0e6d7_324ff516",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Don\u0027t think we should calculate it since the suffixes are fixed.",
+      "parentUuid": "0106a2b3_63f4976e",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c02284f_49772946",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -158,6 +308,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac80fa50_95002603",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "0c02284f_49772946",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -184,6 +352,30 @@
     },
     {
       "key": {
+        "uuid": "920f88f6_0a997304",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0c193e4_4128e53b",
+      "range": {
+        "startLine": 59,
+        "startChar": 22,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fde1246_ba4d82bb",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -204,6 +396,30 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0920857_eaf3409c",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fde1246_ba4d82bb",
+      "range": {
+        "startLine": 68,
+        "startChar": 48,
+        "endLine": 68,
+        "endChar": 53
+      },
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -230,6 +446,30 @@
     },
     {
       "key": {
+        "uuid": "00b5727c_362135bd",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Changed to ValidKeyForSegment and ValidValueForSegment",
+      "parentUuid": "86334365_4562b3c5",
+      "range": {
+        "startLine": 70,
+        "startChar": 9,
+        "endLine": 70,
+        "endChar": 23
+      },
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6394610_bea8d043",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -244,6 +484,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d944808b_67192793",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6394610_bea8d043",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -264,6 +522,24 @@
     },
     {
       "key": {
+        "uuid": "ea3ee5e9_65d59bac",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8d747b6_5801e66a",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0624b9d_9cc5b89e",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -278,6 +554,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a3788af_93c57aaf",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Sure. I added more test cases. We called RemoveKey at the very beginning of this method which will remove both case.",
+      "parentUuid": "e0624b9d_9cc5b89e",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -298,6 +592,24 @@
     },
     {
       "key": {
+        "uuid": "cb5f2c84_28a5f837",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Remove all the static instead the one in GetValueForKey which will be returned.",
+      "parentUuid": "2d3c5264_dd9b5d47",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29c4e08a_2269a72a",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -312,6 +624,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "864fc29a_2099c04c",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29c4e08a_2269a72a",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -332,6 +662,24 @@
     },
     {
       "key": {
+        "uuid": "46156efc_a9d16187",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "The key is verified in ValidMainKey so that it won\u0027t longer than (key_size - 1) - kMaxSuffixLength.",
+      "parentUuid": "aabdc27e_a3e18137",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e5fcd11_0dcc21ce",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -346,6 +694,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5672e7ec_ed936c73",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e5fcd11_0dcc21ce",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -366,6 +732,24 @@
     },
     {
       "key": {
+        "uuid": "aed9ce88_cee031f7",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0de7accc_74059f01",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b46efac5_f5a675e8",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -380,6 +764,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a08adbb0_6c86317b",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b46efac5_f5a675e8",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -406,6 +808,30 @@
     },
     {
       "key": {
+        "uuid": "5784e594_435ab172",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e018e2d_61b87e26",
+      "range": {
+        "startLine": 142,
+        "startChar": 13,
+        "endLine": 142,
+        "endChar": 36
+      },
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dcc56c5_a03f4a5d",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -420,6 +846,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0de8986_13ec4e60",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dcc56c5_a03f4a5d",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -440,6 +884,24 @@
     },
     {
       "key": {
+        "uuid": "1fc1fe7f_339fc37a",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3b6a1a6_41ba5be9",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f4fee39_39761938",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -454,6 +916,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa448008_67e7e85c",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f4fee39_39761938",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -474,6 +954,24 @@
     },
     {
       "key": {
+        "uuid": "f0b7aab6_26e21f10",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f34b5266_2211e491",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e610ae1_a4ec8bca",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -488,6 +986,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82498bba_88ebbb4e",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e610ae1_a4ec8bca",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -508,6 +1024,24 @@
     },
     {
       "key": {
+        "uuid": "70089d38_c77b18b4",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d133168_aaaf7034",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8c3a44b_2dadb787",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 9
@@ -519,6 +1053,24 @@
       "writtenOn": "2017-10-04T21:08:37Z",
       "side": 1,
       "message": "As before.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a35bfa55_116e272f",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "You mean the name of temporary_key?",
+      "parentUuid": "a8c3a44b_2dadb787",
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -542,6 +1094,24 @@
     },
     {
       "key": {
+        "uuid": "016ed094_ab0e4a82",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e5d1523_31e2dda0",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a8c71ad_b36f01d1",
         "filename": "src/common/simple_string_dictionary.h",
         "patchSetId": 9
@@ -553,6 +1123,24 @@
       "writtenOn": "2017-10-04T21:08:37Z",
       "side": 1,
       "message": "The base implementation has these nice debug-only checks that I think your adaptation could benefit from.",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cafe21f9_46ace10a",
+        "filename": "src/common/simple_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Can\u0027t find good places to add these checks and put some in RemoveKey feel like redundant.",
+      "parentUuid": "5a8c71ad_b36f01d1",
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -573,6 +1161,24 @@
       "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a123667_662a58a9",
+        "filename": "src/common/simple_string_dictionary.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-05T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "714a189f_45d4195d",
+      "revId": "c5a6efe386d814ce09d0d23a76ca213978dc2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
