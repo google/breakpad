@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25e57740_50a4b2be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-06T17:51:49Z",
+      "side": 1,
+      "message": "the commit messages is missing the \"why\".  we can this \"what\" by looking at the one line diff already.",
+      "revId": "0600693ecbc027c8dec2028d7323c417584b6cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
