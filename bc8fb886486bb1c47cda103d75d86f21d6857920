@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee310722_fbe03cb1",
+        "filename": "src/processor/microdump_stackwalk.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-13T15:34:21Z",
+      "side": 0,
+      "message": "shouldn\u0027t this be part of Options instead of symbol_path_arg ?",
+      "revId": "bc8fb886486bb1c47cda103d75d86f21d6857920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

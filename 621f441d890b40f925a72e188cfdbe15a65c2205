@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd870b3a_fbed9045",
+        "filename": "src/processor/microdump_stackwalk.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-13T15:34:21Z",
+      "side": 1,
+      "message": "include unistd.h for getopt() prototype",
+      "revId": "621f441d890b40f925a72e188cfdbe15a65c2205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5fe1bf7_808c744f",
+        "filename": "src/processor/microdump_stackwalk.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-13T15:34:21Z",
+      "side": 1,
+      "message": "tweak this slightly ... see src/processor/minidump_dump.cc",
+      "revId": "621f441d890b40f925a72e188cfdbe15a65c2205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5f5871d_5253d77e",
+        "filename": "src/processor/microdump_stackwalk.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-13T15:34:21Z",
+      "side": 1,
+      "message": "let\u0027s stop doing this",
+      "revId": "621f441d890b40f925a72e188cfdbe15a65c2205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
