@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a738940_3de5cf6d",
+        "filename": "src/google_breakpad/processor/microdump_processor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-10-16T09:37:27Z",
+      "side": 1,
+      "message": "This is going to require a change to Processor::ProcessMicrodump before it can be rolled in g3.",
+      "range": {
+        "startLine": 56,
+        "startChar": 41,
+        "endLine": 56,
+        "endChar": 61
+      },
+      "revId": "f02a86ac371e557ec371068656035a93dc7f8834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
