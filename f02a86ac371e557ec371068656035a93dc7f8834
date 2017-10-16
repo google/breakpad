@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d1cee26_9faa0614",
+        "filename": "src/google_breakpad/processor/microdump_processor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1131115
+      },
+      "writtenOn": "2017-10-16T22:01:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6a738940_3de5cf6d",
+      "range": {
+        "startLine": 56,
+        "startChar": 41,
+        "endLine": 56,
+        "endChar": 61
+      },
+      "revId": "f02a86ac371e557ec371068656035a93dc7f8834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df0baeff_df3bb9bd",
         "filename": "src/processor/microdump_processor_unittest.cc",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2017-10-16T09:39:24Z",
       "side": 1,
       "message": "I think you need to copy back the\n\nif (microdump_contents.empty()) {\n    BPLOG(ERROR) \u003c\u003c \"Microdump is empty.\";\n    return PROCESS_ERROR_MINIDUMP_NOT_FOUND;\n  }\n\nhere. Because there is code in crash/ that hooks up to PROCESS_ERROR_MINIDUMP_NOT_FOUND to do stats/grouping on the backend",
+      "revId": "f02a86ac371e557ec371068656035a93dc7f8834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6104d45c_1241b2a7",
+        "filename": "src/processor/microdump_processor_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1131115
+      },
+      "writtenOn": "2017-10-16T22:01:40Z",
+      "side": 1,
+      "message": "I don\u0027t think it matters much on the backend, but it is probably better to keep this consistent with what is done for minidumps.",
+      "parentUuid": "df0baeff_df3bb9bd",
       "revId": "f02a86ac371e557ec371068656035a93dc7f8834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
