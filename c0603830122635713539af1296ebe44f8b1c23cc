@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "416ffdab_a63dc136",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1125980
+      },
+      "writtenOn": "2017-10-17T17:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c3f91ce_fd35bc2c",
+      "revId": "c0603830122635713539af1296ebe44f8b1c23cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91a517a5_88f6afde",
         "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
         "patchSetId": 1
