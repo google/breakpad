@@ -33,6 +33,24 @@
       "revId": "c0603830122635713539af1296ebe44f8b1c23cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cd8702d_d6ddac9f",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-10-17T09:40:41Z",
+      "side": 1,
+      "message": "I\u0027d agree, but seeing as we already know that entry_point_loc \u003e\u003d start_addr, the second condition should reasonably be entry_point_loc - start_addr \u003c size and then there\u0027s no overflow potential.",
+      "parentUuid": "91a517a5_88f6afde",
+      "revId": "c0603830122635713539af1296ebe44f8b1c23cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
