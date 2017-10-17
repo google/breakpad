@@ -16,6 +16,23 @@
       "revId": "c0603830122635713539af1296ebe44f8b1c23cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91a517a5_88f6afde",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-17T06:00:35Z",
+      "side": 1,
+      "message": "I guess it’s reasonable to assume that we’d never see a module ending at the highest possible address.",
+      "revId": "c0603830122635713539af1296ebe44f8b1c23cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
