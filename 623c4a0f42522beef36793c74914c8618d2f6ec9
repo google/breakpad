@@ -16,6 +16,24 @@
       "revId": "623c4a0f42522beef36793c74914c8618d2f6ec9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d278dd9e_d0a1ccd4",
+        "filename": "src/processor/microdump_stackwalk.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-17T21:49:36Z",
+      "side": 1,
+      "message": "\u003cunistd.h\u003e is for getopt()",
+      "parentUuid": "bf59620f_56d2e02d",
+      "revId": "623c4a0f42522beef36793c74914c8618d2f6ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
