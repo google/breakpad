@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c3f91ce_fd35bc2c",
+        "filename": "src/client/linux/minidump_writer/linux_dumper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-17T03:41:41Z",
+      "side": 1,
+      "message": "while it works, shouldn\u0027t this be \u003c rather than !\u003d ?  \u003c is a much more common pattern ...",
+      "revId": "c0603830122635713539af1296ebe44f8b1c23cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
