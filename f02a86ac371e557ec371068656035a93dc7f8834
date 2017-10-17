@@ -81,6 +81,24 @@
       "revId": "f02a86ac371e557ec371068656035a93dc7f8834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f079109a_d242e667",
+        "filename": "src/processor/microdump_processor_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-10-17T10:22:39Z",
+      "side": 1,
+      "message": "I think this is actually more consistent with the minidump processor (which takes a Minidump* which has already been read successfully with Minidump::Read()).",
+      "parentUuid": "6104d45c_1241b2a7",
+      "revId": "f02a86ac371e557ec371068656035a93dc7f8834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
