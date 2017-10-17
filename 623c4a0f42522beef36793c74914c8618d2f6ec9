@@ -34,6 +34,24 @@
       "revId": "623c4a0f42522beef36793c74914c8618d2f6ec9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd5de008_34779e09",
+        "filename": "src/processor/microdump_stackwalk.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-17T21:53:57Z",
+      "side": 1,
+      "message": "\u003e \u003cunistd.h\u003e is for getopt()\n\nOK, then we need \u003clibgen.h\u003e too for this.",
+      "parentUuid": "d278dd9e_d0a1ccd4",
+      "revId": "623c4a0f42522beef36793c74914c8618d2f6ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
