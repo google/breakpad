@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d5e7c6c8_464eecf8",
+        "filename": "src/common/path_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-18T14:31:08Z",
+      "side": 1,
+      "message": "The consolidation is fine, but did we really need our own implementation instead of leaving this to the system’s functions?\n\nMost of the old code that used basename(), aware of the non-const argument, made a copy of path either with a temporary std::string, or with strdup()/free(). I still think that’s fine. Pass-by-value strings would do the trick in the fewest lines of code, but I think it’d be so unexpected that you’d have to write a comment justifying it (otherwise someone would be tempted to make ’em const refs), and at that point, passing a const ref and making a temporary copy in the function seems better.\n\nI can’t spot anything wrong with this implementation per se (although there are things that http://pubs.opengroup.org/onlinepubs/9699919799/functions/basename.html says are implementation-defined that you can’t possibly know in your generic implementation), but it’s a little tricky and since libc knows how to do this already, just with a terrible interface, why not use its implementation and hide the interface behind wrappers?",
+      "revId": "455238b809a338eb4690d725ad6c3d6677cddbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c538921_217a20a2",
         "filename": "src/common/path_helper.cc",
         "patchSetId": 2
@@ -34,6 +51,23 @@
       "revId": "455238b809a338eb4690d725ad6c3d6677cddbb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a79a890_a00aca38",
+        "filename": "src/common/path_helper_unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-18T14:31:08Z",
+      "side": 1,
+      "message": "Otherwise, the test data should be a little more complete. Double trailing slash, for example.",
+      "revId": "455238b809a338eb4690d725ad6c3d6677cddbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
