@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08252395_1518994c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-18T15:10:44Z",
+      "side": 1,
+      "message": "Revise this slightly to reflect what it’s doing now.",
+      "revId": "4e0d5236cb82f4ca899ce9bb73bcd8ccaefb8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f0915fc_a8b7bfbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-18T15:10:44Z",
+      "side": 1,
+      "message": "No need for Bug: when there’s no bug on file.",
+      "revId": "4e0d5236cb82f4ca899ce9bb73bcd8ccaefb8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e58bfe72_8dd21e1b",
+        "filename": "src/common/path_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-18T15:10:44Z",
+      "side": 1,
+      "message": "There’s no way that we’d get anything right in this case. Just assert(path_tmp) (#include \u003cassert.h\u003e) or similar. Same on line 48.",
+      "revId": "4e0d5236cb82f4ca899ce9bb73bcd8ccaefb8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
