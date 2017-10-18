@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "323ddf0a_69343a4c",
+        "filename": "src/common/path_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-10-18T14:20:15Z",
+      "side": 1,
+      "message": "Done. clang-format wanted to join them, but it doesn\u0027t appear as if there\u0027s a defined style for this repo. git cl format makes quite a mess.",
+      "parentUuid": "8c538921_217a20a2",
+      "revId": "455238b809a338eb4690d725ad6c3d6677cddbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "368ce4ba_e2f78ca8",
         "filename": "src/tools/windows/symupload/symupload.cc",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "455238b809a338eb4690d725ad6c3d6677cddbb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8a6e5a9_38b33ca0",
+        "filename": "src/tools/windows/symupload/symupload.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-10-18T14:20:15Z",
+      "side": 1,
+      "message": "Sorry; I was searching for /basename/i and saw an opportunity to clean up trailing whitespace, but didn\u0027t otherwise touch this file.",
+      "parentUuid": "368ce4ba_e2f78ca8",
+      "revId": "455238b809a338eb4690d725ad6c3d6677cddbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
