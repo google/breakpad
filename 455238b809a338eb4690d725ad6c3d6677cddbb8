@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c538921_217a20a2",
+        "filename": "src/common/path_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-18T14:13:11Z",
+      "side": 1,
+      "message": "personally i prefer to avoid one-lining if statements",
+      "revId": "455238b809a338eb4690d725ad6c3d6677cddbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "368ce4ba_e2f78ca8",
+        "filename": "src/tools/windows/symupload/symupload.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-18T14:13:11Z",
+      "side": 1,
+      "message": "unrelated change",
+      "revId": "455238b809a338eb4690d725ad6c3d6677cddbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
