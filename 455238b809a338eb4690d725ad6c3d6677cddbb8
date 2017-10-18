@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c53a40ca_c1067ed7",
+        "filename": "src/common/path_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1133706
+      },
+      "writtenOn": "2017-10-18T14:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c30e4f7f_0c3fd698",
+      "revId": "455238b809a338eb4690d725ad6c3d6677cddbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c538921_217a20a2",
         "filename": "src/common/path_helper.cc",
         "patchSetId": 2
