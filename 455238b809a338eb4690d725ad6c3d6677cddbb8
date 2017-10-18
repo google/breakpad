@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c30e4f7f_0c3fd698",
+        "filename": "src/common/path_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-18T14:32:32Z",
+      "side": 1,
+      "message": "\u003e The consolidation is fine, but did we really need our own implementation instead of leaving this to the system’s functions?\n\u003e \n\u003e Most of the old code that used basename(), aware of the non-const argument, made a copy of path either with a temporary std::string, or with strdup()/free(). I still think that’s fine.\n\nClarification: when I say “that’s fine”, I’m referring to the implementation strategy. Like I said, I do think that consolidating the implementation into a function or pair of functions is a good change.",
+      "parentUuid": "d5e7c6c8_464eecf8",
+      "revId": "455238b809a338eb4690d725ad6c3d6677cddbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c538921_217a20a2",
         "filename": "src/common/path_helper.cc",
         "patchSetId": 2
