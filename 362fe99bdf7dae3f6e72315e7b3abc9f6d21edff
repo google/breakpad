@@ -1,0 +1,333 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98c5600d_861d798b",
+        "filename": "src/common/common.gyp",
+        "patchSetId": 16
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "These three lines are wrong. They should be testing.gyp.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae9fe70d_d2bd71f8",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "Are all accesses to an object of this class always protected by a mutex?",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d326d74_9ba8e99c",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "What’s this for?",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45bb8181_e4db923f",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "This should be more const. The pointer itself, not just the pointed-to char data, should be const.\n\nIt should also be less static, because it’s in an unnamed namespace already, so the “static” here is redundant.\n\nconst char* const kSuffixes[] \u003d {…};\n\nI’m not so happy about having this be defined in a header file, though. Why haven’t you split long_string_dictionary.h into long_string_dictionary.h and long_string_dictionary.cc? That wasn’t really a possibility with simple_string_dictionary.h because of its templated nature, but there’s no reason that you can’t do it for this class.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "160dab54_eedefa48",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "longer",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d91a707_fe0f7613",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "One-space indent on public: and private:.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cad58d4_43d069ab",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "The code only considers the value now, not the key.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cad40a4_a4411a97",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "key may be longer than key_size.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7753699_d1b59931",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "This doesn’t look like proper NUL-termination. segment_value_length never accounts for a trailing NUL, so the strncpy() won’t ever write a NUL. The NUL termination on this line is only valid if you fully filled segment_value with value_size - 1 bytes. Otherwise, the remainder of segment_value between the last byte of your actual value and the end of the buffer will be filled with garbage, and it’ll be interpreted as valid data.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3183d8d3_f605ea5a",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "The trailing ; is not needed.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cde2a93_91e5f24d",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "This shouldn’t be static. I also see this elsewhere in the file. I know that I mentioned this during the last review pass too.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "072295b9_e33b5a55",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "Why is this back to using strcat() and starting at the beginning of segment_key, when you already know key_length and can just do a strcpy() from there? The strcpy() is what you did on line 107.\n\nI see this pattern repeated throughout this file. I also see other patterns I’m commenting on throughout the file. I’m not going to call out each individual use site of any of these patterns anymore. When you improve a particular pattern in one function, I expect you to find that same pattern used elsewhere and fix those too.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd1d5a8_f1f352a6",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "I would say: break here, and then move the “return i !\u003d 0” to line 148. That means that you have to declare i outside of the for loop, but I think that’s fine. It’s cleaner in my mind to have all of the returns for the same condition (say, returning “true” when i is nonzero and at least one value was removed from the dictionary) share a “return.”",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52d0c7a5_5f453b7c",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "This shouldn’t be static, because a caller won’t be able to call GetValueForKey() twice and use both of the returned values. That’s a very significant limitation. At the very least, you’d need to document that limitation, but it’s better to lift it entirely.\n\nFor the “get” side, it’s fine to assemble the value into a proper C++ string. A std::string owns, sizes, and disposes of its own buffer properly.\n\nYou should alter this function to return a std::string. Here, you should build up a std::string. Rather than having to deal with explicit sizing or all of these strcats, you can do return_value.append(segment_value). (std::string::append, because it knows the size of the string, also doesn’t need to start at the beginning of the buffer and look for a NUL terminator for each append operation.)\n\nFor the easy case above where the value is “small” and stored unsplit in a single key, you can simply return a std::string constructed from the const char* that the base class has. Because this interface has already defined that empty values are not supported and are used to mean “no key”, you can return an empty std::string() where you’re currently returning NULL.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b84e8a_c47b963c",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "Again.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bae0e55_faffce17",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "One-space indent on public: and private.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb60ca22_e6564185",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "It would be best to keep this with kSuffixes, either by moving kSuffixes here, or by moving this up to live with kSuffixes.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "919de9f9_18009c13",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "This method should be static.",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45426de9_14b25162",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-20T22:33:06Z",
+      "side": 1,
+      "message": "If it’s larger than the maximum, you’re going to truncate the value. Why are you truncating it to the shorter unsplit maximum length rather than splitting it and allowing it to use all 10 slots before truncating?",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
