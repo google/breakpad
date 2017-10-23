@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4e462d83_f3e33bc3",
+        "filename": "src/common/common.gyp",
+        "patchSetId": 16
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98c5600d_861d798b",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae9fe70d_d2bd71f8",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 16
@@ -33,6 +51,24 @@
       "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5128facf_33d19569",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "You are suggesting that we should add some comments here (maybe also the simple_string_dictionary) to declare that this class is not thread safe?",
+      "parentUuid": "ae9fe70d_d2bd71f8",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "f5c8c607_91d47db6",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d326d74_9ba8e99c",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45bb8181_e4db923f",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 16
@@ -67,6 +121,24 @@
       "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ffd229a_873de6a2",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45bb8181_e4db923f",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "6959eab0_2167e4aa",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "160dab54_eedefa48",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d91a707_fe0f7613",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 16
@@ -107,6 +203,24 @@
       "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fc3cff4_3a3396d9",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d91a707_fe0f7613",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "38dd1511_e0907182",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cad58d4_43d069ab",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cad40a4_a4411a97",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 16
@@ -141,6 +273,24 @@
       "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5911cfbe_a586f6d4",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cad40a4_a4411a97",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -161,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "c9827205_8b412ef8",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "I don\u0027t understand here. In line 109, min(remain_value_length, value_size - 1) is assigned to segment_value_length. In either case, segment_value_length will be the final length of the segment value.",
+      "parentUuid": "b7753699_d1b59931",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3183d8d3_f605ea5a",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 16
@@ -175,6 +343,24 @@
       "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e898728c_1720805b",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3183d8d3_f605ea5a",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -195,6 +381,24 @@
     },
     {
       "key": {
+        "uuid": "8e20a239_188e6099",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done.\n\nThe reason I want to make it static is that in the original design, no memory is alloced in all operations and I want to keep that behavior. But it seems I misunderstand the importance of that behavior.",
+      "parentUuid": "5cde2a93_91e5f24d",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "072295b9_e33b5a55",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 16
@@ -209,6 +413,24 @@
       "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f911824_efe42cce",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "072295b9_e33b5a55",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -229,6 +451,24 @@
     },
     {
       "key": {
+        "uuid": "bf6d495d_17f8807d",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fd1d5a8_f1f352a6",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52d0c7a5_5f453b7c",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 16
@@ -243,6 +483,24 @@
       "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7da2ad9_54bfe996",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52d0c7a5_5f453b7c",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -263,6 +521,24 @@
     },
     {
       "key": {
+        "uuid": "bc10cabd_75a07558",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02b84e8a_c47b963c",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bae0e55_faffce17",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 16
@@ -277,6 +553,24 @@
       "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2c995c0_89366448",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bae0e55_faffce17",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -297,6 +591,24 @@
     },
     {
       "key": {
+        "uuid": "eec69c9a_f9ac7afd",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb60ca22_e6564185",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "919de9f9_18009c13",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 16
@@ -314,6 +626,24 @@
     },
     {
       "key": {
+        "uuid": "1db8aef3_176903dc",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "919de9f9_18009c13",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45426de9_14b25162",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 16
@@ -328,6 +658,24 @@
       "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61afe678_f4585751",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-23T20:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45426de9_14b25162",
+      "revId": "362fe99bdf7dae3f6e72315e7b3abc9f6d21edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
