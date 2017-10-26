@@ -34,6 +34,24 @@
       "revId": "3c1ce5b3c047aeafdb0be5f7ec62192ebed2c0b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dec763e_f942fc4b",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-26T19:36:15Z",
+      "side": 1,
+      "message": "\u003e This is defined by the user when importing breakpad into another build system. As far as I can tell there is no expressive define already in existence. This way there are no changes to the current Android.mk build system which works fine, but it does allow external build systems like CMake with ninja to build breakpad as a submodule.\n\nIt’s possible to fix this without requiring cooperation from any surrounding build system.\n\ntgkill() is present as early as API 16, and I don’t think we care to support anything earlier. We can simply provide a declaration of tgkill() on our own.\n\ntgkill() is also always a simple system call wrapper like this. We can always use our own copy, simply by renaming it here.\n\nAlternatively, we can use a hybrid approach: use the system’s tgkill() if it declares one, otherwise provide this copy.\n\nThe availability of tgkill() in the NDK can be inferred based on whether traditional (deprecated) or unified headers are in use. You can test for defined(__ANDROID_API_N__) as a proxy for determining whether unified headers are in use. Look for __ANDROID_API_N__ in src/common/android/include[/sys] for examples of how we do this.",
+      "parentUuid": "5c036dbc_5074df09",
+      "revId": "3c1ce5b3c047aeafdb0be5f7ec62192ebed2c0b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
