@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ef461f7_25d2bcef",
+        "filename": "src/common/long_string_dictionary_unittest.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-27T17:35:39Z",
+      "side": 1,
+      "message": "2017",
+      "revId": "b83676c175d799d56319859bcfb5ad30666b6e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
