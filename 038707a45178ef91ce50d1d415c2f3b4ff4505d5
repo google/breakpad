@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "674b7b62_d4519193",
+        "filename": "src/common/long_string_dictionary.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-27T17:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3b8e803_7aa21f17",
+      "revId": "038707a45178ef91ce50d1d415c2f3b4ff4505d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a47c0ee7_55c44ef8",
         "filename": "src/common/long_string_dictionary.cc",
         "patchSetId": 18
@@ -33,6 +51,24 @@
       "revId": "038707a45178ef91ce50d1d415c2f3b4ff4505d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab05026_3da2397b",
+        "filename": "src/common/long_string_dictionary.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-27T17:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a47c0ee7_55c44ef8",
+      "revId": "038707a45178ef91ce50d1d415c2f3b4ff4505d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "17331039_3db7628d",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-27T17:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9cf5fad_be8043a1",
+      "revId": "038707a45178ef91ce50d1d415c2f3b4ff4505d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e71718f_a8cc0b9e",
         "filename": "src/common/long_string_dictionary.h",
         "patchSetId": 18
@@ -67,6 +121,24 @@
       "revId": "038707a45178ef91ce50d1d415c2f3b4ff4505d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26fb454a_529789ce",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1149804
+      },
+      "writtenOn": "2017-10-27T17:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e71718f_a8cc0b9e",
+      "revId": "038707a45178ef91ce50d1d415c2f3b4ff4505d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
