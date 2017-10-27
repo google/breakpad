@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea798c2b_39d3a0d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-27T17:56:48Z",
+      "side": 1,
+      "message": "Revise the change description so that it matches the code change.",
+      "revId": "e59481675205863ca0284dc512243e661e1ed6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da0ecdfb_6a554085",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-27T17:56:48Z",
+      "side": 1,
+      "message": "Leaving this alone and just saying “tgkill” is OK, since we’re talking about the syscall itself, not any particular library interface to it.",
+      "revId": "e59481675205863ca0284dc512243e661e1ed6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
