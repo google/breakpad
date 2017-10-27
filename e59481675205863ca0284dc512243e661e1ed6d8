@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "994009d3_ad7124a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-27T19:46:10Z",
+      "side": 1,
+      "message": "i just don\u0027t use `git cl`.  it follows chromium standards relative to their old system and doesn\u0027t really align well with standard git behavior.  it\u0027s like living in a svn world and wishing git wasn\u0027t a thing.",
+      "parentUuid": "a0ffb3c6_ed728ff0",
+      "revId": "e59481675205863ca0284dc512243e661e1ed6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da0ecdfb_6a554085",
         "filename": "src/client/linux/handler/exception_handler.cc",
         "patchSetId": 3
