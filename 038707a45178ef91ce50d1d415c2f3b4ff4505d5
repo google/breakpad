@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3b8e803_7aa21f17",
+        "filename": "src/common/long_string_dictionary.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-27T16:25:12Z",
+      "side": 1,
+      "message": "This can never be negative, because it’s a size_t, which is unsigned. You should just write \u003d\u003d 0.",
+      "revId": "038707a45178ef91ce50d1d415c2f3b4ff4505d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a47c0ee7_55c44ef8",
+        "filename": "src/common/long_string_dictionary.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-27T16:25:12Z",
+      "side": 1,
+      "message": "}  // namespace google_breakpad",
+      "revId": "038707a45178ef91ce50d1d415c2f3b4ff4505d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9cf5fad_be8043a1",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-27T16:25:12Z",
+      "side": 1,
+      "message": "You’re talking about value_size in this header, but nothing says what value_size is or where to find it.",
+      "revId": "038707a45178ef91ce50d1d415c2f3b4ff4505d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e71718f_a8cc0b9e",
+        "filename": "src/common/long_string_dictionary.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-10-27T16:25:12Z",
+      "side": 1,
+      "message": "Or kMaxSuffixLength. You shouldn’t be talking about internal implementation names out here, it forces the reader to have to go and hunt down other information.",
+      "revId": "038707a45178ef91ce50d1d415c2f3b4ff4505d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
