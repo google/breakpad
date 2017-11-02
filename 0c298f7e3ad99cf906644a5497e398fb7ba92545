@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e37d95e5_d9b48344",
+        "filename": "src/common/long_string_dictionary.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-02T18:40:50Z",
+      "side": 1,
+      "message": "You should also take care to #include \u003cassert.h\u003e here, since you use assert() in this file.",
+      "revId": "0c298f7e3ad99cf906644a5497e398fb7ba92545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
