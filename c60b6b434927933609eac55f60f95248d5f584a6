@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "522964bb_4d571fc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-02T18:27:20Z",
+      "side": 1,
+      "message": "This is hard to understand.\n\nCan you copy and paste your original change’s description here, and tack on a note saying something like “relands hash1 which was reverted in hash2, with a fix for $STUV which broke $WXYZ.” ?",
+      "revId": "c60b6b434927933609eac55f60f95248d5f584a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b0847c_891b3e50",
+        "filename": "src/common/long_string_dictionary.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-02T18:27:20Z",
+      "side": 1,
+      "message": "It’s still used here.",
+      "revId": "c60b6b434927933609eac55f60f95248d5f584a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
