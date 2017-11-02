@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "3c31b720_3b827b09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-02T19:09:17Z",
+      "side": 1,
+      "message": "\u003e Done\n\nThat wasn’t really what I meant, and you got the hashes wrong.\n\nIt’s fine. I updated it myself.",
+      "parentUuid": "07c65320_45122d83",
+      "revId": "c60b6b434927933609eac55f60f95248d5f584a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d46235f2_995ee57d",
         "filename": "src/common/long_string_dictionary.cc",
         "patchSetId": 1
