@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "d46235f2_995ee57d",
+        "filename": "src/common/long_string_dictionary.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-02T18:27:44Z",
+      "side": 1,
+      "message": "While we’re looking at this: don’t indent within a namespace.",
+      "revId": "c60b6b434927933609eac55f60f95248d5f584a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77b0847c_891b3e50",
         "filename": "src/common/long_string_dictionary.cc",
         "patchSetId": 1
