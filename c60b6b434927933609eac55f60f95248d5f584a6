@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "0e2570b9_a1298a51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-02T19:01:43Z",
+      "side": 1,
+      "message": "\u003e Copied and pasted the original description here.\n\nBut you didn’t take care of the first line, which I asked for.",
+      "parentUuid": "11e69ce9_af04b32e",
+      "revId": "c60b6b434927933609eac55f60f95248d5f584a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d46235f2_995ee57d",
         "filename": "src/common/long_string_dictionary.cc",
         "patchSetId": 1
