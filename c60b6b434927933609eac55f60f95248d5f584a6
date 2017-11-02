@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8573576e_7ae4063b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-02T18:53:34Z",
+      "side": 1,
+      "message": "\u003e This is hard to understand.\n\u003e \n\u003e Can you copy and paste your original change’s description here, and tack on a note saying something like “relands hash1 which was reverted in hash2, with a fix for $STUV which broke $WXYZ.” ?\n\nYou partially did this, but you didn’t do the part where you copy and paste the original change description.\n\nA main thing that I’m going for is for the first line to be meaningful, because it shows up in the “shortlog”. “Revert Revert X” isn’t very meaningful. But also, since this is (hopefully) the last time you have to land it, this is the change that anyone who ever tries to figure out what long_string_dictionary.cc is all about will wind up coming back to, so it’s important for the message associated with it to be as complete as possible. You should cite the original landing and the revert, sure, but you should also provide all of the information necessary to make sense of this change right here in the description.",
+      "parentUuid": "522964bb_4d571fc8",
+      "revId": "c60b6b434927933609eac55f60f95248d5f584a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d46235f2_995ee57d",
         "filename": "src/common/long_string_dictionary.cc",
         "patchSetId": 1
