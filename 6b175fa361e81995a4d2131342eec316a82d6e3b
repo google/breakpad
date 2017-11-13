@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84408288_daef4065",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-13T22:32:30Z",
+      "side": 1,
+      "message": "Have you observed memory usage of dump_syms before and after? Hanging on to all IDiaSymbol objects may not be the cheapest. It may be better to just grab the names. (It may also be worse.)",
+      "range": {
+        "startLine": 112,
+        "startChar": 29,
+        "endLine": 112,
+        "endChar": 48
+      },
+      "revId": "6b175fa361e81995a4d2131342eec316a82d6e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66186998_378cb3df",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-13T22:32:30Z",
+      "side": 1,
+      "message": "This comment doesn’t tell the whole story anymore. It should be revised.",
+      "revId": "6b175fa361e81995a4d2131342eec316a82d6e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "468c9cd9_737662b0",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-13T22:32:30Z",
+      "side": 1,
+      "message": "Without having the iterator side here, this is dissimilar enough to a typical for loop that I think we’d be better off just writing it as a while.",
+      "revId": "6b175fa361e81995a4d2131342eec316a82d6e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3534857c_e2b52842",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-13T22:32:30Z",
+      "side": 1,
+      "message": "I wish there was a more meaningful comparison to make than “lexicographically smallest” such as perhaps “most referenced”, but that’d probably be difficult, expensive, or both. And anyway, something deterministic is better than nothing.",
+      "revId": "6b175fa361e81995a4d2131342eec316a82d6e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
