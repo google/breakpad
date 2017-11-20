@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd9155f4_6d88e188",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-20T23:16:04Z",
+      "side": 1,
+      "message": "This doesn’t really match the style guide.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "1b4f11cd118d56c4b5895f7c44af40137ff4339e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de4dd691_f63b5cf4",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-20T23:16:04Z",
+      "side": 1,
+      "message": "This might be better if we had a comparator that accepted (IDiaSymbol, is_public) and compared based on is_public and the symbols’s name. SelectedSymbol is already (IDiaSymbol, is_public), so you could recycle it, or you could rig it up as SelectedSymbol { FuncOrPublic { IDiaSymbol; is_public; }; is_multiple; };.\n\nIt’s also fine as-is, but it might be more robust/readable with a little extra attention here.",
+      "revId": "1b4f11cd118d56c4b5895f7c44af40137ff4339e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a84336d5_7f616ebe",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-11-20T23:16:04Z",
+      "side": 1,
+      "message": "Same here. There are supposed to be four spaces before the colon.",
+      "revId": "1b4f11cd118d56c4b5895f7c44af40137ff4339e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
