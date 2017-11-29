@@ -16,6 +16,24 @@
       "revId": "683f1ba514216ca94093834d3227990e709b070a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24bb2565_3ec1324c",
+        "filename": "src/tools/windows/dump_syms/dump_syms.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002120
+      },
+      "writtenOn": "2017-11-29T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1655b9ed_8a63ab27",
+      "revId": "683f1ba514216ca94093834d3227990e709b070a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
