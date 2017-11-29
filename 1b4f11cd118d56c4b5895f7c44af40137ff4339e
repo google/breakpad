@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "840493a4_ce1a059e",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002120
+      },
+      "writtenOn": "2017-11-29T00:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd9155f4_6d88e188",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "1b4f11cd118d56c4b5895f7c44af40137ff4339e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de4dd691_f63b5cf4",
         "filename": "src/common/windows/pdb_source_line_writer.cc",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "0c40a019_a9a33e67",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002120
+      },
+      "writtenOn": "2017-11-29T00:48:37Z",
+      "side": 1,
+      "message": "I don\u0027t think a single comparator across both the symbol and the public state will support the required logic here -- we need to set the is_multiple field conditionally on the public state comparison, but independent of the symbol name comparison.",
+      "parentUuid": "de4dd691_f63b5cf4",
+      "revId": "1b4f11cd118d56c4b5895f7c44af40137ff4339e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a84336d5_7f616ebe",
         "filename": "src/common/windows/pdb_source_line_writer.cc",
         "patchSetId": 4
@@ -56,6 +98,24 @@
       "revId": "1b4f11cd118d56c4b5895f7c44af40137ff4339e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "066460da_2d9a9724",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1002120
+      },
+      "writtenOn": "2017-11-29T00:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a84336d5_7f616ebe",
+      "revId": "1b4f11cd118d56c4b5895f7c44af40137ff4339e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
