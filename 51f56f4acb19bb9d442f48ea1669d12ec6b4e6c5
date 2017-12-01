@@ -16,6 +16,24 @@
       "revId": "51f56f4acb19bb9d442f48ea1669d12ec6b4e6c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49c9eb2e_140a7caf",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1002120
+      },
+      "writtenOn": "2017-12-01T18:52:44Z",
+      "side": 1,
+      "message": "This is actually relying on an implicit conversion from std::string to ::string when both are defined.",
+      "parentUuid": "b84cb96d_d4154664",
+      "revId": "51f56f4acb19bb9d442f48ea1669d12ec6b4e6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
