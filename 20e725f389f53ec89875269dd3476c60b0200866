@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21976c2d_73fe56b2",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-12T03:59:48Z",
+      "side": 1,
+      "message": "should be \"const void* idata\"",
+      "range": {
+        "startLine": 223,
+        "startChar": 37,
+        "endLine": 223,
+        "endChar": 54
+      },
+      "revId": "20e725f389f53ec89875269dd3476c60b0200866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dad83f6f_730bec8c",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-12T03:59:48Z",
+      "side": 1,
+      "message": "\"writeb\" is a common name for doing writes to memory mapped registers.  can you use a diff name ?  \"vector_append\" or something ?",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 6
+      },
+      "revId": "20e725f389f53ec89875269dd3476c60b0200866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b41a7ac_32f092aa",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-12T03:59:48Z",
+      "side": 1,
+      "message": "are these fields document as size_t in the output format ?  or are they actually uint32_t/uint64_t/long/something else ?",
+      "revId": "20e725f389f53ec89875269dd3476c60b0200866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f155cce_b6e75d1c",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-12T03:59:48Z",
+      "side": 1,
+      "message": "couldn\u0027t you write:\n\n for (auto filename : crashinfo-\u003emappings)\n\nor something similar ?",
+      "revId": "20e725f389f53ec89875269dd3476c60b0200866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
