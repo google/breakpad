@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "09344897_67692658",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-12T16:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21976c2d_73fe56b2",
+      "range": {
+        "startLine": 223,
+        "startChar": 37,
+        "endLine": 223,
+        "endChar": 54
+      },
+      "revId": "20e725f389f53ec89875269dd3476c60b0200866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77baf54b_fd9c8e93",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-12T16:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad83f6f_730bec8c",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 6
+      },
+      "revId": "20e725f389f53ec89875269dd3476c60b0200866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b41a7ac_32f092aa",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 1
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "73b595c8_060771c5",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-12T16:07:06Z",
+      "side": 1,
+      "message": "They are 4 or 8 bytes in readelf[1] and \u0027user_long_t\u0027 in the kernel[2]. There\u0027s not even a struct for all these :(\n\n1: https://sourceware.org/git/gitweb.cgi?p\u003dbinutils-gdb.git;a\u003dblob;f\u003dbinutils/readelf.c;h\u003d8a31ebbd07a4adf85316a326138471e159a763e4;hb\u003drefs/heads/master#l16608\n2: http://elixir.free-electrons.com/linux/v4.14.5/source/fs/binfmt_elf.c#L1585",
+      "parentUuid": "9b41a7ac_32f092aa",
+      "revId": "20e725f389f53ec89875269dd3476c60b0200866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f155cce_b6e75d1c",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "20e725f389f53ec89875269dd3476c60b0200866",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d62c1aa2_3ee886d0",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-12T16:07:06Z",
+      "side": 1,
+      "message": "I aimed for consistency with the rest of the file, but I also prefer the range-for. Done.",
+      "parentUuid": "8f155cce_b6e75d1c",
+      "revId": "20e725f389f53ec89875269dd3476c60b0200866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
