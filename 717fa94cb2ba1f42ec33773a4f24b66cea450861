@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "798feb06_a577c43b",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1361,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-13T20:23:21Z",
+      "side": 1,
+      "message": "Ah I wrote that based on the generic ELF ABI. Let\u0027s use uint32_t for consistency in that case. It seems I was also lucky so far with the 8-byte alignment.",
+      "parentUuid": "fc4e0eeb_10a5e932",
+      "range": {
+        "startLine": 1361,
+        "startChar": 53,
+        "endLine": 1361,
+        "endChar": 70
+      },
+      "revId": "717fa94cb2ba1f42ec33773a4f24b66cea450861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57113e20_11049ce6",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "717fa94cb2ba1f42ec33773a4f24b66cea450861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8644aa9_d02dfcf6",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1370,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-13T20:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57113e20_11049ce6",
+      "revId": "717fa94cb2ba1f42ec33773a4f24b66cea450861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
