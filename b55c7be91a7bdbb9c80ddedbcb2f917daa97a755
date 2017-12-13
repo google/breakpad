@@ -16,6 +16,24 @@
       "revId": "b55c7be91a7bdbb9c80ddedbcb2f917daa97a755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "802f6835_0c4a05e9",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-13T21:04:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "353116ea_4951880a",
+      "revId": "b55c7be91a7bdbb9c80ddedbcb2f917daa97a755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
