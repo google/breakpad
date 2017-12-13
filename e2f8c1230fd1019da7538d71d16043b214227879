@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b98ea34b_5a12905a",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-13T19:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38ff4289_0b107b60",
+      "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39b1f2f0_9a6d292c",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdf9faf2_acd29b2d",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-13T19:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39b1f2f0_9a6d292c",
+      "range": {
+        "startLine": 1071,
+        "startChar": 23,
+        "endLine": 1071,
+        "endChar": 32
+      },
+      "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1b4c2b07_68fb51a9",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-13T19:25:54Z",
+      "side": 1,
+      "message": "Saw a mix of both and chose the most frequent. Changed to static_casts.",
+      "parentUuid": "a43947ab_15d3432b",
+      "range": {
+        "startLine": 1088,
+        "startChar": 30,
+        "endLine": 1088,
+        "endChar": 41
+      },
+      "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc2bad7d_794a7e5e",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 3
@@ -85,6 +151,30 @@
       "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "968afb5b_f511b841",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-13T19:25:54Z",
+      "side": 1,
+      "message": "Replaced it with vector\u003c\u003e::insert(Iterator, count, value);",
+      "parentUuid": "cc2bad7d_794a7e5e",
+      "range": {
+        "startLine": 1106,
+        "startChar": 0,
+        "endLine": 1107,
+        "endChar": 41
+      },
+      "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "27ec1b7e_55c04898",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1365,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-13T19:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "787cedf0_8555a794",
+      "range": {
+        "startLine": 1365,
+        "startChar": 33,
+        "endLine": 1365,
+        "endChar": 34
+      },
+      "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b10fdcdc_43be87dc",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 3
@@ -125,6 +239,24 @@
       "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a482e35c_60dadbf4",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1420,
+      "author": {
+        "id": 1003166
+      },
+      "writtenOn": "2017-12-13T19:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b10fdcdc_43be87dc",
+      "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
