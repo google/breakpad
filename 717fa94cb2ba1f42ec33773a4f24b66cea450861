@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc4e0eeb_10a5e932",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1361,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-12-13T20:06:58Z",
+      "side": 1,
+      "message": "This is sneaky. This is what the generic ELF ABI says, but it’s not how Linux (or a handful of other systems) or GNU tools like readelf implement it. They always use 4.\n\nI do wonder about your use of sizeof(uintptr_t). Perhaps it doesn’t matter, because we always get lucky and anything that needs to be aligned winds up in the same spot whether 4-byte or 8-byte alignment is specified. Or perhaps your use of it for alignment doesn’t throw a note reader off because there aren’t any other notes that follow it (yet).\n\nI’ve been looking at this from the ET_REL perspective quite a bit over the past week or two. It’s possible that conventions differ for ET_CORE, but it would be unlikely. writenote() in Linux fs/binfmt_elf.c() and storenote() in fs/proc/kcore.c both align to 4 bytes regardless of process or native word size. BFD’s elf.c has elfcore_write_note() that does the same, and its reader in elf_parse_note() similarly expects 4-byte alignment.\n\nCan you speak to the use of sizeof(uintptr_t) for note alignment for purposes of core files? This is even more important at line 1104 above.\n\nhttps://groups.google.com/d/topic/generic-abi/TRJYlEklEfM\nhttps://groups.google.com/d/topic/generic-abi/vT-_QVcckXo\n\n(On the binutils/gdb side, some recent changes have muddied things a bit, although there isn’t firm consensus according to the threads above. The changes are https://sourceware.org/git/gitweb.cgi?p\u003dbinutils-gdb.git;a\u003dcommit;h\u003d276da9b31bd6e3eb8d1dd814c867266f59f29093 and https://sourceware.org/git/gitweb.cgi?p\u003dbinutils-gdb.git;a\u003dcommitdiff;h\u003d82ed9683ec099d8205dc499ac84febc975235af6).",
+      "range": {
+        "startLine": 1361,
+        "startChar": 53,
+        "endLine": 1361,
+        "endChar": 70
+      },
+      "revId": "717fa94cb2ba1f42ec33773a4f24b66cea450861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57113e20_11049ce6",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1370,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-12-13T20:06:58Z",
+      "side": 1,
+      "message": "There’s an 80-column limit. Same on lines 1374 and 1377.",
+      "revId": "717fa94cb2ba1f42ec33773a4f24b66cea450861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
