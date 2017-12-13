@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38ff4289_0b107b60",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-12-13T18:47:13Z",
+      "side": 1,
+      "message": "What you’ve written amounts to memset(data + offset, 0, length) (in the resize()) followed by memcpy(data + offset, idata, length), and what resize() does may even be less efficient than memset().\n\nInstead, why not use the std::vector\u003c\u003e::insert\u003cInputIterator\u003e(iterator, InputIterator, InputIterator) form?",
+      "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39b1f2f0_9a6d292c",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-12-13T18:47:13Z",
+      "side": 1,
+      "message": "clear() is more concise.",
+      "range": {
+        "startLine": 1071,
+        "startChar": 23,
+        "endLine": 1071,
+        "endChar": 32
+      },
+      "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a43947ab_15d3432b",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-12-13T18:47:13Z",
+      "side": 1,
+      "message": "We generally prefer C++-style casts.",
+      "range": {
+        "startLine": 1088,
+        "startChar": 30,
+        "endLine": 1088,
+        "endChar": 41
+      },
+      "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc2bad7d_794a7e5e",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-12-13T18:47:13Z",
+      "side": 1,
+      "message": "This is just a string(note_align, \u0027\\0\u0027).\n\nIn that case, the next line would be better off with (scratch.data(), scratch.size()).",
+      "range": {
+        "startLine": 1106,
+        "startChar": 0,
+        "endLine": 1107,
+        "endChar": 41
+      },
+      "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "787cedf0_8555a794",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1365,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-12-13T18:47:13Z",
+      "side": 1,
+      "message": "These 8s are opaque magic without familiarity with ELF notes, but we can make this a little more self-documenting.\n\nCan we drag \"CORE\\0\\0\\0\\0\" up above this as static constexpr char[] kCoreName, so that we can use sizeof(kCoreName) here instead of 8, and kCoreName and sizeof(kCoreName) in the writea() calls below?\n\n1. constexpr if C++11 is tolerable here, otherwise, const. I don’t know if it’s tolerable, I don’t see any constexpr in this file yet.\n\n2. Initialize as \"CORE\\0\\0\\0\" to let the \u0027\\0\u0027 terminator implied by a double-quoted string round it out to the 8 bytes that we need, but add a comment because it’s a little non-obvious. Or initialize as {\u0027C\u0027, \u0027O\u0027, \u0027R\u0027, \u0027E\u0027, \u0027\\0\u0027, \u0027\\0\u0027, \u0027\\0\u0027, \u0027\\0\u0027}, which looks weird so it may want a comment too.",
+      "range": {
+        "startLine": 1365,
+        "startChar": 33,
+        "endLine": 1365,
+        "endChar": 34
+      },
+      "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b10fdcdc_43be87dc",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1420,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-12-13T18:47:13Z",
+      "side": 1,
+      "message": "Then this magic 5 can become\n\n  strlen(kCoreName) + 1;  // Include NUL terminator",
+      "revId": "e2f8c1230fd1019da7538d71d16043b214227879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
