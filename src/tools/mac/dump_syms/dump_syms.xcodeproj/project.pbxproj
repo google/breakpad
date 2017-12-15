@@ -33,6 +33,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		027F95191FE3E18F004EB15B /* path_helper.cc in Sources */ = {isa = PBXBuildFile; fileRef = 027F95171FE3E18D004EB15B /* path_helper.cc */; };
 		162F64FA161C591500CD68D5 /* arch_utilities.cc in Sources */ = {isa = PBXBuildFile; fileRef = 162F64F8161C591500CD68D5 /* arch_utilities.cc */; };
 		162F6500161C5F2200CD68D5 /* arch_utilities.cc in Sources */ = {isa = PBXBuildFile; fileRef = 162F64F8161C591500CD68D5 /* arch_utilities.cc */; };
 		4D72CAF513DFBAC2006CABE3 /* md5.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4D72CAF413DFBAC2006CABE3 /* md5.cc */; };
@@ -272,6 +273,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		027F95171FE3E18D004EB15B /* path_helper.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = path_helper.cc; path = ../../../common/path_helper.cc; sourceTree = "<group>"; };
+		027F95181FE3E18E004EB15B /* path_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = path_helper.h; path = ../../../common/path_helper.h; sourceTree = "<group>"; };
 		08FB7796FE84155DC02AAC07 /* dump_syms.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = dump_syms.cc; path = ../../../common/mac/dump_syms.cc; sourceTree = "<group>"; };
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		162F64F8161C591500CD68D5 /* arch_utilities.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = arch_utilities.cc; path = ../../../common/mac/arch_utilities.cc; sourceTree = "<group>"; };
@@ -496,6 +499,8 @@
 				B8E8CA0C1156C854009E61B2 /* byteswap.h */,
 				9BE650410B52F6D800611104 /* file_id.cc */,
 				9BE650420B52F6D800611104 /* file_id.h */,
+				027F95171FE3E18D004EB15B /* path_helper.cc */,
+				027F95181FE3E18E004EB15B /* path_helper.h */,
 				9BDF186D0B1BB43700F8391B /* dump_syms.h */,
 				08FB7796FE84155DC02AAC07 /* dump_syms.cc */,
 				9BDF186E0B1BB43700F8391B /* dump_syms_tool.cc */,
@@ -1082,6 +1087,7 @@
 				B88FAE2C1166606200407530 /* macho_reader.cc in Sources */,
 				8BCAAA4C1CE3A7980046090B /* elf_reader.cc in Sources */,
 				B8C5B5171166534700D34F4E /* dwarf2reader.cc in Sources */,
+				027F95191FE3E18F004EB15B /* path_helper.cc in Sources */,
 				B8C5B5181166534700D34F4E /* bytereader.cc in Sources */,
 				B8C5B5191166534700D34F4E /* macho_utilities.cc in Sources */,
 				B8C5B51A1166534700D34F4E /* file_id.cc in Sources */,
