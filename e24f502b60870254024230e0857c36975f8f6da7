@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f64bbdc3_b2a4948c",
+        "filename": "src/common/android/include/asm/README",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-12-21T23:12:54Z",
+      "side": 1,
+      "message": "Edit for grammar (missing “were?”) Same in the other README.",
+      "revId": "e24f502b60870254024230e0857c36975f8f6da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf663b9_c149cfc4",
+        "filename": "src/common/android/include/asm/asm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-12-21T23:12:54Z",
+      "side": 1,
+      "message": "Keep this inside the __has_include_next so that all of the file content that you cribbed from the old NDK stays together. The same applies in some of the other headers.",
+      "revId": "e24f502b60870254024230e0857c36975f8f6da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edd91da3_e2547a23",
+        "filename": "src/common/android/include/asm/fpregdef.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2017-12-21T23:12:54Z",
+      "side": 1,
+      "message": "I’d say do the same at the tops of the files too.",
+      "revId": "e24f502b60870254024230e0857c36975f8f6da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
