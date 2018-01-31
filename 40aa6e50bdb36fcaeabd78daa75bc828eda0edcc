@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea18450d_e72bdf67",
+        "filename": "src/client/linux/handler/exception_handler_unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1001629
+      },
+      "writtenOn": "2018-01-31T20:31:32Z",
+      "side": 1,
+      "message": "there\u0027s a use here that\u0027s not protected",
+      "revId": "40aa6e50bdb36fcaeabd78daa75bc828eda0edcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
