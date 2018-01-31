@@ -52,6 +52,24 @@
       "revId": "72690f512936cc2614ead533c80f89a5295e2ce8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d961d3_351686df",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001629
+      },
+      "writtenOn": "2018-01-31T16:38:44Z",
+      "side": 1,
+      "message": "Sure, done.",
+      "parentUuid": "c20ae9ee_063c3b23",
+      "revId": "72690f512936cc2614ead533c80f89a5295e2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
