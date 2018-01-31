@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5feba2bc_a617b638",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-01-31T16:24:24Z",
+      "side": 1,
+      "message": "how about making this fallback to:\n\n /* fallthrough */\n\nin the hopes that, for toolchains that do, this will help\n\ncoverity vaguely comes to mind",
+      "revId": "72690f512936cc2614ead533c80f89a5295e2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
