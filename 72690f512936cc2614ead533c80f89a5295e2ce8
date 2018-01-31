@@ -16,6 +16,24 @@
       "revId": "72690f512936cc2614ead533c80f89a5295e2ce8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d224ae0d_aa3f8ab4",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001629
+      },
+      "writtenOn": "2018-01-31T16:27:07Z",
+      "side": 1,
+      "message": "comment removal happens in phase 3, preprocessing in phase 4. so after preprocessing the current patch will have the same appearance to the compiler as your proposed change.\n\n(http://en.cppreference.com/w/cpp/language/translation_phases)\n\nnote that [[fallthrough]] is in c++17, so we could do the more elaborate macro here https://cs.chromium.org/chromium/src/third_party/boringssl/src/crypto/internal.h?type\u003dcs\u0026q\u003d%5C%5B%5C%5Bfallthrough\u0026sq\u003dpackage:chromium\u0026l\u003d177 but i\u0027d prefer to leave that to people who need it.",
+      "parentUuid": "5feba2bc_a617b638",
+      "revId": "72690f512936cc2614ead533c80f89a5295e2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
