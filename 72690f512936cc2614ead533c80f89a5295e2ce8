@@ -34,6 +34,24 @@
       "revId": "72690f512936cc2614ead533c80f89a5295e2ce8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c20ae9ee_063c3b23",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-01-31T16:31:05Z",
+      "side": 1,
+      "message": "can you drop a note here pointing people to the C++17 style ?  that way if we revisit, we can make them write that variant.",
+      "parentUuid": "d224ae0d_aa3f8ab4",
+      "revId": "72690f512936cc2614ead533c80f89a5295e2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
