@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bbb9ac8_fb7ce4a4",
+        "filename": "src/client/ios/exception_handler_no_mach.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2018-02-02T20:13:37Z",
+      "side": 1,
+      "message": "Same as in UninstallHandlers(), keep this close to the mprotect() that locks it down.",
+      "revId": "00ee0a3a5f3aa1f442c227e7dd266ae95a92cf69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
