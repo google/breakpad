@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "183f798e_10c9f975",
+        "filename": "src/client/ios/exception_handler_no_mach.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2018-02-02T19:34:42Z",
+      "side": 1,
+      "message": "We should apply a similar treatment to this one. No sense in repeating the mprotect() during each pass through the loop.",
+      "revId": "1bd2c6bf8c9ad671dd43fe92bcbaac4c616f9a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba36a05_5f980e68",
+        "filename": "src/client/ios/exception_handler_no_mach.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2018-02-02T19:34:42Z",
+      "side": 1,
+      "message": "The mprotect() only applies to gProtectedData, so let’s keep them together. Either move the mprotect() down here, or move this up there.",
+      "revId": "1bd2c6bf8c9ad671dd43fe92bcbaac4c616f9a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
