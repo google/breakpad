@@ -16,6 +16,24 @@
       "revId": "00ee0a3a5f3aa1f442c227e7dd266ae95a92cf69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a672ee2_c7e580ec",
+        "filename": "src/client/ios/exception_handler_no_mach.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1247039
+      },
+      "writtenOn": "2018-02-02T20:19:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bbb9ac8_fb7ce4a4",
+      "revId": "00ee0a3a5f3aa1f442c227e7dd266ae95a92cf69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
