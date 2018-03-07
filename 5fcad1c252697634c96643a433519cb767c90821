@@ -1,0 +1,429 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f09d498a_f0673f8f",
+        "filename": "src/client/linux/dump_writer_common/raw_context_cpu.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "how about using __powerpc64__ and __powerpc__ defines instead",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21ca06c5_81c4aa43",
+        "filename": "src/client/linux/dump_writer_common/raw_context_cpu.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "should delete this.  you can mention this info in the commit message itself.",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "570c0cb3_873b7c04",
+        "filename": "src/client/linux/dump_writer_common/thread_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "blank line above this",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e82ee4_829bceb8",
+        "filename": "src/client/linux/dump_writer_common/thread_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "blank line above this\n\nno space before the )",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ab4cc4_532f680b",
+        "filename": "src/client/linux/dump_writer_common/thread_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "delete this blank line",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8277ab52_bba77cec",
+        "filename": "src/client/linux/dump_writer_common/ucontext_reader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "delete leading indentation",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "309e7300_78b83012",
+        "filename": "src/client/linux/dump_writer_common/ucontext_reader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "delete leading indentation",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26dfe0ad_e2b2986c",
+        "filename": "src/client/linux/dump_writer_common/ucontext_reader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "delete leading indentation",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ceabd4_27663ae6",
+        "filename": "src/client/linux/dump_writer_common/ucontext_reader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "delete leading indentation",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e629e2_bf7d92b9",
+        "filename": "src/client/linux/dump_writer_common/ucontext_reader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "delete leading indentation",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4eb1116_1fe9ae26",
+        "filename": "src/client/linux/dump_writer_common/ucontext_reader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "only indent w/4 spaces",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2138454_1cfe10c7",
+        "filename": "src/client/linux/dump_writer_common/ucontext_reader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "only indent w/4 spaces",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1571f7da_07b83908",
+        "filename": "src/client/linux/dump_writer_common/ucontext_reader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "looks like you could re-use the x86 one above",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e115be4a_2b7beeb7",
+        "filename": "src/client/linux/handler/exception_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "i don\u0027t think this include is necessary\n\nalso it\u0027s in the wrong location order-wise",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9abe129f_6e60fe69",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "what about ppc64 ?  shouldn\u0027t we cover both ?",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23e56bfb_85585233",
+        "filename": "src/client/linux/minidump_writer/linux_dumper_unittest_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "create a new section even though the ISAs happen to use the same naming",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "079db772_d7b15180",
+        "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "this func hasn\u0027t really been ported to ppc.  seems like if you want to make it more general/generic, then it should drop all cpu checks entirely here.",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f7a5f20_a4a827a8",
+        "filename": "src/client/linux/minidump_writer/minidump_writer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "why ?  is fpstate_t already being declared somewhere ?",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b830e35_ccf80bd3",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "don\u0027t use tabs",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da0b8757_8da1ad76",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "delete the leading whitespace",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38884573_1f5b56f2",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7264ad8c_113ced4a",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "only one space after the \u003d",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8511a09c_f69a3e0f",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "delete this blank line",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e91adaaa_ceb581f5",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be MD_CPU_ARCHITECTURE_PPC64 ?",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc38b2d_efb7e1cf",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 1,
+      "message": "indentation is slightly off",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

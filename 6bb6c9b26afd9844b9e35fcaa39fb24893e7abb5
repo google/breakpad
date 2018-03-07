@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e24700a0_ab67ec66",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 0,
+      "message": "seems like you could just typedef pt_regs to user_regs_struct at the top of this file to avoid any of this indirection",
+      "revId": "6bb6c9b26afd9844b9e35fcaa39fb24893e7abb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fee573e1_cce73498",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-07T10:01:30Z",
+      "side": 0,
+      "message": "changes this to sizeof(pr.pr_reg) and you don\u0027t need the ifdef",
+      "revId": "6bb6c9b26afd9844b9e35fcaa39fb24893e7abb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
