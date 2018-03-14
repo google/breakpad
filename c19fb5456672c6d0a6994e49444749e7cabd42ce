@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5eda620d_5eb606ec",
+        "filename": "src/client/linux/dump_writer_common/thread_info.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-14T20:58:01Z",
+      "side": 1,
+      "message": "one too many _ :)",
+      "range": {
+        "startLine": 293,
+        "startChar": 20,
+        "endLine": 293,
+        "endChar": 23
+      },
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7384b59f_7bf19749",
+        "filename": "src/client/linux/dump_writer_common/thread_info.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-14T20:58:01Z",
+      "side": 1,
+      "message": "is this correct ?  this func is about getting the floating point regs, but you\u0027re passing up the general purpose regs.  ppc has sep PTRACE_SETREGS/pt_regs and PTRACE_GETFPREGS/elf_fpregset_t code paths.",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3285011d_7dd24773",
+        "filename": "src/client/linux/dump_writer_common/ucontext_reader.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-14T20:58:01Z",
+      "side": 1,
+      "message": "use the style:\n\n struct _libc_fpstate {\n   double ...;\n   ...\n };",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a461605b_f60aa631",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-14T20:58:01Z",
+      "side": 1,
+      "message": "don\u0027t indent the # block.  you don\u0027t really share any code here, so just create a dedicated ppc path here.\n\n#if defined(__aarch64__)\n ...\n#elif defined(__powerpc64__)\n ...\n#elif !defined(__ARM_EABI__) \u0026\u0026 !defined(__mips__)\n ...",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f622350e_a972e834",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-14T20:58:01Z",
+      "side": 1,
+      "message": "same comment here as above",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a3de7f_6aa4ae17",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-14T20:58:01Z",
+      "side": 1,
+      "message": "you\u0027ll need to invert this order.  ppc64 targets define both __powerpc__ and __powerpc64__.",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b877d99_a437450e",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-14T20:58:01Z",
+      "side": 1,
+      "message": "just move this above to avoid checking the define twice",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5945bca5_cace5a8f",
+        "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-14T20:58:01Z",
+      "side": 1,
+      "message": "this block is entirely arm specific.  if you want to start a powerpc section, define it completely by itself.",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84b28de7_d8e91088",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-14T20:58:01Z",
+      "side": 1,
+      "message": "indent is incorrect",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
