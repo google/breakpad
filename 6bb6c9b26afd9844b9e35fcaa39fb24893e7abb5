@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f9405c9f_5b84592a",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1266792
+      },
+      "writtenOn": "2018-03-14T10:24:39Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "e24700a0_ab67ec66",
+      "revId": "6bb6c9b26afd9844b9e35fcaa39fb24893e7abb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fee573e1_cce73498",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "6bb6c9b26afd9844b9e35fcaa39fb24893e7abb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad28ce4c_ed3577a1",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1266792
+      },
+      "writtenOn": "2018-03-14T10:24:39Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "fee573e1_cce73498",
+      "revId": "6bb6c9b26afd9844b9e35fcaa39fb24893e7abb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
