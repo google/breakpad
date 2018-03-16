@@ -615,6 +615,24 @@
     },
     {
       "key": {
+        "uuid": "e3cf1b43_64215a19",
+        "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1266792
+      },
+      "writtenOn": "2018-03-16T09:37:48Z",
+      "side": 1,
+      "message": "added a dummy function for now, needs to be implemented",
+      "parentUuid": "be940a3a_ad4cea41",
+      "revId": "5fcad1c252697634c96643a433519cb767c90821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f7a5f20_a4a827a8",
         "filename": "src/client/linux/minidump_writer/minidump_writer.h",
         "patchSetId": 1

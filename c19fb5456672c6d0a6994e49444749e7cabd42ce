@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5458dc91_5db86950",
+        "filename": "src/client/linux/dump_writer_common/thread_info.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1266792
+      },
+      "writtenOn": "2018-03-16T09:37:48Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "5eda620d_5eb606ec",
+      "range": {
+        "startLine": 293,
+        "startChar": 20,
+        "endLine": 293,
+        "endChar": 23
+      },
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7384b59f_7bf19749",
         "filename": "src/client/linux/dump_writer_common/thread_info.cc",
         "patchSetId": 7
@@ -39,6 +63,24 @@
       "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "616ecca3_3a9b4bf1",
+        "filename": "src/client/linux/dump_writer_common/thread_info.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1266792
+      },
+      "writtenOn": "2018-03-16T09:37:48Z",
+      "side": 1,
+      "message": "corrected this, added elf_fpregset_t to ThreadInfo for ppc and pass that to syscall",
+      "parentUuid": "7384b59f_7bf19749",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "79210c86_0a0179b2",
+        "filename": "src/client/linux/dump_writer_common/ucontext_reader.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1266792
+      },
+      "writtenOn": "2018-03-16T09:37:48Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "3285011d_7dd24773",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a461605b_f60aa631",
         "filename": "src/client/linux/handler/exception_handler.cc",
         "patchSetId": 7
@@ -79,6 +145,24 @@
       "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec2740fb_7c133a3f",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1266792
+      },
+      "writtenOn": "2018-03-16T09:37:48Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "a461605b_f60aa631",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "64b738ac_6c52f926",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1266792
+      },
+      "writtenOn": "2018-03-16T09:37:48Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "f622350e_a972e834",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7a3de7f_6aa4ae17",
         "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
         "patchSetId": 7
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "51f26081_cb6c74dc",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1266792
+      },
+      "writtenOn": "2018-03-16T09:37:48Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "d7a3de7f_6aa4ae17",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b877d99_a437450e",
         "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
         "patchSetId": 7
@@ -130,6 +250,24 @@
       "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "402fdecf_d5c60a95",
+        "filename": "src/client/linux/microdump_writer/microdump_writer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1266792
+      },
+      "writtenOn": "2018-03-16T09:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b877d99_a437450e",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +302,24 @@
       "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f804fe1e_48fc0d09",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1266792
+      },
+      "writtenOn": "2018-03-16T09:37:48Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "84b28de7_d8e91088",
+      "revId": "c19fb5456672c6d0a6994e49444749e7cabd42ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
