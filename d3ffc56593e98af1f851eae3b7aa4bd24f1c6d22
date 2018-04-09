@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a27e486_cadce5ea",
+        "filename": "src/client/linux/handler/exception_handler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2018-04-09T17:54:26Z",
+      "side": 1,
+      "message": "This initializes |fdes| to [0, 0], right? File descriptor is potentially valid. Please initialize to [-1, -1] instead.",
+      "revId": "d3ffc56593e98af1f851eae3b7aa4bd24f1c6d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
