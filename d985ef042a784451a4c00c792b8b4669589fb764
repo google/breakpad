@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6da75c36_ac073c58",
+        "filename": "src/processor/logging.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1160859
+      },
+      "writtenOn": "2018-05-25T15:55:26Z",
+      "side": 1,
+      "message": "please add BPLOG_CRITICAL macros",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 20
+      },
+      "revId": "d985ef042a784451a4c00c792b8b4669589fb764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
