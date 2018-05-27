@@ -22,6 +22,30 @@
       "revId": "d985ef042a784451a4c00c792b8b4669589fb764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faa3ef03_a2d26c0b",
+        "filename": "src/processor/logging.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1149974
+      },
+      "writtenOn": "2018-05-27T21:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6da75c36_ac073c58",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 20
+      },
+      "revId": "d985ef042a784451a4c00c792b8b4669589fb764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
