@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bba0a81b_e13b5524",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1134731
+      },
+      "writtenOn": "2018-08-13T19:08:59Z",
+      "side": 1,
+      "message": "Seems a little silly to add this only to immediately subtract it back out, but oh well.",
+      "revId": "7cb7b69c9635e4fd420e5a355a05b5fe00af0ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebc8247e_b1134d3c",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1134731
+      },
+      "writtenOn": "2018-08-13T19:08:59Z",
+      "side": 1,
+      "message": "Reading this function really makes me want to stop using this code and just use native DWARF symbols directly... (Not your fault, naturally!)",
+      "revId": "7cb7b69c9635e4fd420e5a355a05b5fe00af0ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4ef0e88_cc439e69",
+        "filename": "src/common/module.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1134731
+      },
+      "writtenOn": "2018-08-13T19:08:59Z",
+      "side": 1,
+      "message": "This winds up being a little awkward, but there\u0027s probably not much we can do about it without reworking things significantly.",
+      "revId": "7cb7b69c9635e4fd420e5a355a05b5fe00af0ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
