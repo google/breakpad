@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40cf093e_e1f52745",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-08-27T19:46:15Z",
+      "side": 1,
+      "message": "there should be a space before the (",
+      "revId": "21c9874722e9b0f6b788b362eda66d843d9497ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
