@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6943b561_16b52a35",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-08-27T20:58:35Z",
+      "side": 1,
+      "message": "i just don\u0027t want to get into the situation where we throw random mechanical changes into the code base with no understanding of why the warnings are showing up.  that\u0027s unmanagable.\n\nalthough i tend to care a lot less about windows-specific code :p.",
+      "parentUuid": "3240fd39_ef93cca1",
+      "revId": "21c9874722e9b0f6b788b362eda66d843d9497ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40cf093e_e1f52745",
         "filename": "src/client/windows/handler/exception_handler.cc",
         "patchSetId": 4
