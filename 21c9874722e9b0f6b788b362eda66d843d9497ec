@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6dc512b6_7de40128",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-08-27T19:47:27Z",
+      "side": 1,
+      "message": "this doesn\u0027t really make sense.  that article explicitly states:\n\n Because of their common idiomatic usage, trivial constants such as 1 or true do not trigger the warning, [...]\n\nand that\u0027s precisely what we\u0027re doing in this code.",
+      "revId": "21c9874722e9b0f6b788b362eda66d843d9497ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40cf093e_e1f52745",
         "filename": "src/client/windows/handler/exception_handler.cc",
         "patchSetId": 4
