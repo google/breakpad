@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3240fd39_ef93cca1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2018-08-27T20:03:44Z",
+      "side": 1,
+      "message": "Yeah, I wasn\u0027t sure what to make of that. The warning/fix were reported to me and it didn\u0027t seem worth digging into given the triviality of the change.",
+      "parentUuid": "6dc512b6_7de40128",
+      "revId": "21c9874722e9b0f6b788b362eda66d843d9497ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40cf093e_e1f52745",
         "filename": "src/client/windows/handler/exception_handler.cc",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "21c9874722e9b0f6b788b362eda66d843d9497ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cdca1bc_50955ffd",
+        "filename": "src/client/windows/handler/exception_handler.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2018-08-27T20:03:44Z",
+      "side": 1,
+      "message": "Fixed here:https://chromium-review.googlesource.com/c/breakpad/breakpad/+/1191671",
+      "parentUuid": "40cf093e_e1f52745",
+      "revId": "21c9874722e9b0f6b788b362eda66d843d9497ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
