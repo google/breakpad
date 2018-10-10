@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3522a704_62b35f5d",
+        "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1306352
+      },
+      "writtenOn": "2018-10-10T15:27:22Z",
+      "side": 1,
+      "message": "I only focused on the current problem and did not modify the original code.",
+      "parentUuid": "abbb2915_dc3ec355",
+      "range": {
+        "startLine": 319,
+        "startChar": 37,
+        "endLine": 319,
+        "endChar": 54
+      },
+      "revId": "b1467fa6f913084772f1024e46bde7aa1b3b6e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d76acc5_db024313",
         "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "917eeb82_1e43fa60",
+        "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1306352
+      },
+      "writtenOn": "2018-10-10T15:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d76acc5_db024313",
+      "revId": "b1467fa6f913084772f1024e46bde7aa1b3b6e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45e469d0_40b9d474",
         "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2018-10-01T16:54:50Z",
       "side": 1,
       "message": "This winds up always capturing the bottom-most portion of the stack (highest addresses), but that’s not the most useful portion of the stack. The top-most portion (lowest addresses) are much more valuable, because that’s got all of the valuable information about what was going on when the crash occurred, and in fact has all of the return addresses and saved frame pointers necessary to even walk the stack at all given a crash context.",
+      "revId": "b1467fa6f913084772f1024e46bde7aa1b3b6e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e936190e_b736f7be",
+        "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1306352
+      },
+      "writtenOn": "2018-10-10T15:27:22Z",
+      "side": 1,
+      "message": "Thanks for your reminder. It is not considered here that on some systems the stack grows from a low address to a high address. I have tested my code on several Android phones. Because the stack grows from a high address to a low address on Android, I can get the correct results. I think I can learn from the code of src/src/testing/googletest/src/gtest-death-test.cc:1006 (function StackGrowsDown) to detect the direction the stack grows and then resubmit the code. Do you agree with me?",
+      "parentUuid": "45e469d0_40b9d474",
       "revId": "b1467fa6f913084772f1024e46bde7aa1b3b6e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
