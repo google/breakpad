@@ -116,6 +116,24 @@
       "revId": "b1467fa6f913084772f1024e46bde7aa1b3b6e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67172091_eb279cdc",
+        "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2018-10-10T16:04:15Z",
+      "side": 1,
+      "message": "\u003e Thanks for your reminder. It is not considered here that on some systems the stack grows from a low address to a high address. I have tested my code on several Android phones. Because the stack grows from a high address to a low address on Android, I can get the correct results.\n\nPerhaps you should clarify what you expect the “correct results” to be.",
+      "parentUuid": "e936190e_b736f7be",
+      "revId": "b1467fa6f913084772f1024e46bde7aa1b3b6e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
