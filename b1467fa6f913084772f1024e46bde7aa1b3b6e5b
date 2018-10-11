@@ -134,6 +134,24 @@
       "revId": "b1467fa6f913084772f1024e46bde7aa1b3b6e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b847c26_1165888d",
+        "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1306352
+      },
+      "writtenOn": "2018-10-11T10:02:28Z",
+      "side": 1,
+      "message": "The correct result is that by analyzing this result minidump_stackwalk can get more stack frames than by analyzing the previous result with the same ‘max_stack_len\u0027. \n\nIn my opinion, if the stack grows from a high address to a low address, the most useful data for stack-walking is those whose address is greater than or equal to ’stack_pointer\u0027, and if the stack grows from a low address to a high address, the most useful data is those whose address is less than or equal to ’stack_pointer’. \n\nThe last change of here code is at git version f25a4112004efca7065068e87155757ef821d1e9 fixing the bug https://bugs.chromium.org/p/google-breakpad/issues/detail?id\u003d695.  I have read the changes and descriptions there many times. I think my modification is correct.\n\nCould you please explain to me more clearer...",
+      "parentUuid": "67172091_eb279cdc",
+      "revId": "b1467fa6f913084772f1024e46bde7aa1b3b6e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
