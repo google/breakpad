@@ -65,7 +65,7 @@ dependent repos are up-to-date.
 
 ## To request change review
 
-1.  Follow the steps above to get the source and build it.
+1.  Follow the above steps to get the source and build it.
 
 2.  Make changes. Build and test your changes.
     For core code like processor use methods above.
