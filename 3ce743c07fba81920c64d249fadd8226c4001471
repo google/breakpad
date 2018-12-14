@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fd5f6d7_239d04aa",
+        "filename": "src/client/linux/dump_writer_common/thread_info.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-14T23:55:56Z",
+      "side": 1,
+      "message": "no space before the (",
+      "revId": "3ce743c07fba81920c64d249fadd8226c4001471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15fdedbd_80a2e5cf",
+        "filename": "src/client/linux/dump_writer_common/thread_info.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-14T23:55:56Z",
+      "side": 1,
+      "message": "iiuc, this is OK for ppc32 \u0026 ppc64 ...",
+      "revId": "3ce743c07fba81920c64d249fadd8226c4001471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "340a69cd_9fa1a205",
+        "filename": "src/client/linux/dump_writer_common/thread_info.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-14T23:55:56Z",
+      "side": 1,
+      "message": "but this only works for ppc64 ?  so i think you want to be checking __powerpc64__ above.",
+      "revId": "3ce743c07fba81920c64d249fadd8226c4001471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9f495fb_dadb8ff0",
+        "filename": "src/client/linux/dump_writer_common/thread_info.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-14T23:55:56Z",
+      "side": 1,
+      "message": "is this a case where we can use __powerpc__ ?",
+      "revId": "3ce743c07fba81920c64d249fadd8226c4001471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c749fd18_1d807d9f",
+        "filename": "src/client/linux/dump_writer_common/thread_info.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-14T23:55:56Z",
+      "side": 1,
+      "message": "iirc, the ptrace/coredump logic is the same on 32-bit \u0026 64-bit ppc.  can you confirm ?",
+      "revId": "3ce743c07fba81920c64d249fadd8226c4001471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac653fb_d50dda9b",
+        "filename": "src/client/linux/dump_writer_common/ucontext_reader.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-14T23:55:56Z",
+      "side": 1,
+      "message": "drop trailing whitespace",
+      "revId": "3ce743c07fba81920c64d249fadd8226c4001471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7348dfef_7228fc2a",
+        "filename": "src/client/linux/dump_writer_common/ucontext_reader.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-14T23:55:56Z",
+      "side": 1,
+      "message": "this is the same on 32-bit \u0026 64-bit ?\n\ncould you add a comment above it saying so ?",
+      "revId": "3ce743c07fba81920c64d249fadd8226c4001471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb9dc02_2f6882ad",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-14T23:55:56Z",
+      "side": 1,
+      "message": "would this work for both 32-bit \u0026 64-bit ?  if so, use __powerpc__.",
+      "revId": "3ce743c07fba81920c64d249fadd8226c4001471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7037f92e_fc8a1a95",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-14T23:55:56Z",
+      "side": 1,
+      "message": "would this work for both 32-bit \u0026 64-bit ?  if so, use __powerpc__.",
+      "revId": "3ce743c07fba81920c64d249fadd8226c4001471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa5b66dc_474fa6d8",
+        "filename": "src/client/linux/minidump_writer/minidump_writer.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-14T23:55:56Z",
+      "side": 1,
+      "message": "change this to __powerpc64__ ?",
+      "revId": "3ce743c07fba81920c64d249fadd8226c4001471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "736993b2_ae666f0e",
+        "filename": "src/processor/stackwalk_common.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-14T23:55:56Z",
+      "side": 1,
+      "message": "this block is indented by 2 too many spaces",
+      "revId": "3ce743c07fba81920c64d249fadd8226c4001471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "333e86a0_a57767de",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-14T23:55:56Z",
+      "side": 1,
+      "message": "no space before the (",
+      "revId": "3ce743c07fba81920c64d249fadd8226c4001471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
