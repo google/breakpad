@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e67bec3_f7a09684",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-01-29T21:39:34Z",
+      "side": 1,
+      "message": "i think you want to write now:\n\n Bug: google-breakpad:780",
+      "revId": "dfc6d3746818aa81ac97c26c247fb70f26e4086b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
