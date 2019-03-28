@@ -22,6 +22,30 @@
       "revId": "66855517ec5bf495e5d38481222e7273b67bc859",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfe7f31c_60984035",
+        "filename": "src/common/mac/macho_reader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2019-03-28T19:52:15Z",
+      "side": 1,
+      "message": "\u003e what is clearing the high 32bits ?  do you need offset\u003d0 above ?\n\u003e \n\u003e doesn\u0027t this assume endianness of the runtime ?\n\nIt’s fine as written, although Read\u003c\u003e() usage is perhaps a bit subtle. Read\u003c\u003e() is templatized on the type of the third argument’s pointee. Paraphrasing:\n\n  template\u003ctypename T\u003e\n  ByteCursor \u0026Read(size_t size, bool is_signed, T *result) {\n    T v \u003d 0;\n    // OR |size| bytes into v, one byte at a time, endian-sensitive\n    *result \u003d v;\n    return *this;\n  }\n\nThis is why Read() accepts its first |size| parameter: it’s not always appropriate to read sizeof(T) bytes. Accordingly, it always zeroes untouched bits.\n\nYou’ll see that on lines 471 and 472 above, the reads into section.address and size work the same way. Both of those are uint64_t and their sizeof is always 8, but word_size will be either 4 or 8 depending on segment.bits_64 (see line 460). If sizeof(T) would always work, it’d be fine to just use operator\u003e\u003e\u003c\u003e() instead of the underlying Read\u003c\u003e().\n\n\u003e seems like you should have an offset32 variable that you \u003e\u003eoffset32 into, and then do offset\u003doffset32 after this to make sure those issues are all accounted for.\n\nI can refactor it that way if you’re still unconvinced, but I didn’t see the need for a separate variable just for this, particularly when the fact that Read\u003c\u003e() works well for mismatched sizeof(T) and word_size was established by the preceding two lines.",
+      "parentUuid": "a114fab6_d6e00f8a",
+      "range": {
+        "startLine": 473,
+        "startChar": 32,
+        "endLine": 473,
+        "endChar": 37
+      },
+      "revId": "66855517ec5bf495e5d38481222e7273b67bc859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
