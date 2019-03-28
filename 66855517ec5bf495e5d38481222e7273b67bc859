@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a114fab6_d6e00f8a",
+        "filename": "src/common/mac/macho_reader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-03-28T18:11:32Z",
+      "side": 1,
+      "message": "what is clearing the high 32bits ?  do you need offset\u003d0 above ?\n\ndoesn\u0027t this assume endianness of the runtime ?\n\nseems like you should have an offset32 variable that you \u003e\u003eoffset32 into, and then do offset\u003doffset32 after this to make sure those issues are all accounted for.",
+      "range": {
+        "startLine": 473,
+        "startChar": 32,
+        "endLine": 473,
+        "endChar": 37
+      },
+      "revId": "66855517ec5bf495e5d38481222e7273b67bc859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
