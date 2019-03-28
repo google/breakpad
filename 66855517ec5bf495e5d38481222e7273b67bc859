@@ -46,6 +46,30 @@
       "revId": "66855517ec5bf495e5d38481222e7273b67bc859",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6831bec_ef9ef119",
+        "filename": "src/common/mac/macho_reader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-03-28T19:56:23Z",
+      "side": 1,
+      "message": "if it works correctly, that\u0027s fine.  to the lay reader, this looks like a lower level memcpy/etc... that would be wrong.\n\nsuggest just adding a // comment above the line noting that things are handled OK.",
+      "parentUuid": "dfe7f31c_60984035",
+      "range": {
+        "startLine": 473,
+        "startChar": 32,
+        "endLine": 473,
+        "endChar": 37
+      },
+      "revId": "66855517ec5bf495e5d38481222e7273b67bc859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
