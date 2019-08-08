@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5406fc2c_aed31d71",
+        "filename": "src/common/mac/dump_syms.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1001629
+      },
+      "writtenOn": "2019-08-08T02:17:36Z",
+      "side": 1,
+      "message": "FWIW chrome isn\u0027t a fan of non-critical, non-silenceable output from tools. It looks like we\u0027re changing the chrome build to no longer hit that, so it doesn\u0027t _really_ matter, but could this stay an error?",
+      "revId": "01dfa81f1b4becb157ed9ccc9277f6eac1de67e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
