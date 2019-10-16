@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfbda4d3_71242862",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-16T03:21:53Z",
+      "side": 1,
+      "message": "make it clear these take arguments.  as written, it sounds like a boolean flag.\n\n  -n \u003cname\u003e\n  -o \u003cos\u003e\n\nyou prob have to realign the options above",
+      "revId": "51990735d029a2f5dfc1cd975b33ebbfd0a41d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68698ee7_6cb84842",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-16T03:21:53Z",
+      "side": 1,
+      "message": "use a std::string here (and below)\n\nthen just test via .is_empty().  i know people could do `-n \"\"` and thus they explicitly made a choice, but that\u0027s a nonsense value, so we don\u0027t need to support it.",
+      "revId": "51990735d029a2f5dfc1cd975b33ebbfd0a41d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37c3866a_a6b95a7a",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-16T03:21:53Z",
+      "side": 1,
+      "message": "the arg_index check should be inside the if otherwise we change behavior if e.g. -n is the last argument\n\n } else if (strcmp(\"-n\", argv[arg_index]) \u003d\u003d 0) {\n   if (arg_index + 1 \u003d\u003d argc) {\n     \u003cerror out\u003e",
+      "revId": "51990735d029a2f5dfc1cd975b33ebbfd0a41d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
