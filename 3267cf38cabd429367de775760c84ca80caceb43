@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "079b1956_11c58ec2",
+        "filename": "src/common/linux/dump_symbols.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-18T05:26:05Z",
+      "side": 1,
+      "message": "missing space before the {",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08efc675_391562ce",
+        "filename": "src/common/linux/elfutils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-18T05:26:05Z",
+      "side": 1,
+      "message": "there\u0027s no need to do this as it\u0027s already provided by the elf.h include above",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "036947ca_df898035",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-18T05:26:05Z",
+      "side": 1,
+      "message": "line is too long now",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8658bfe1_37568d78",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-18T05:26:05Z",
+      "side": 1,
+      "message": "the arg_index check is no longer needed and doesn\u0027t actually work",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1557c423_85a8fa66",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-18T05:26:05Z",
+      "side": 1,
+      "message": "fprintf to stderr and use the phrasing \"Missing argument to -n\" instead",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7b3ee0_906890bb",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-18T05:26:05Z",
+      "side": 1,
+      "message": "same feedback here as above",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27f23c09_53cdb38c",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-18T05:26:05Z",
+      "side": 1,
+      "message": "line is to long",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
