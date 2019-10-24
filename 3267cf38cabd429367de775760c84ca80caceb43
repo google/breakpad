@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1a202bf1_524b808d",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-24T20:01:04Z",
+      "side": 1,
+      "message": "yeah, there is no real winning option here, so i won\u0027t press on it.  you can wrap all the args, wrap just the string arg, break up the string, merge all the strings into a single one with a single fprintf call, whatever as long as it\u0027s not over 80 cols.",
+      "parentUuid": "fbcf5e99_4058010c",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8658bfe1_37568d78",
         "filename": "src/tools/linux/dump_syms/dump_syms.cc",
         "patchSetId": 4
