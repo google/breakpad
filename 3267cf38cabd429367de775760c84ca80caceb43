@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e9feaaf0_9bb1c589",
+        "filename": "src/common/linux/elfutils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1208641
+      },
+      "writtenOn": "2019-10-24T19:56:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08efc675_391562ce",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "036947ca_df898035",
         "filename": "src/tools/linux/dump_syms/dump_syms.cc",
         "patchSetId": 4
@@ -47,6 +65,24 @@
       "writtenOn": "2019-10-18T05:26:05Z",
       "side": 1,
       "message": "line is too long now",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbcf5e99_4058010c",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1208641
+      },
+      "writtenOn": "2019-10-24T19:56:00Z",
+      "side": 1,
+      "message": "I think how I moved the string to another line is the best thing here? I was trying to maintain alignment of the other strings while staying under 80 characters. Please tell me if you think something else would be better.",
+      "parentUuid": "036947ca_df898035",
       "revId": "3267cf38cabd429367de775760c84ca80caceb43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "dcd4b278_b937d481",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1208641
+      },
+      "writtenOn": "2019-10-24T19:56:00Z",
+      "side": 1,
+      "message": "derp right! Done.",
+      "parentUuid": "8658bfe1_37568d78",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1557c423_85a8fa66",
         "filename": "src/tools/linux/dump_syms/dump_syms.cc",
         "patchSetId": 4
@@ -84,6 +138,24 @@
       "revId": "3267cf38cabd429367de775760c84ca80caceb43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfeb8370_3d2c2120",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1208641
+      },
+      "writtenOn": "2019-10-24T19:56:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1557c423_85a8fa66",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "b17da59e_2c03c599",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1208641
+      },
+      "writtenOn": "2019-10-24T19:56:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7b3ee0_906890bb",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27f23c09_53cdb38c",
         "filename": "src/tools/linux/dump_syms/dump_syms.cc",
         "patchSetId": 4
@@ -118,6 +208,24 @@
       "revId": "3267cf38cabd429367de775760c84ca80caceb43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e8fabc1_0a6a3025",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1208641
+      },
+      "writtenOn": "2019-10-24T19:56:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27f23c09_53cdb38c",
+      "revId": "3267cf38cabd429367de775760c84ca80caceb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
