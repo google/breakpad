@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd472115_a2daf651",
+        "filename": "src/common/linux/dump_symbols.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2019-10-24T19:18:20Z",
+      "side": 1,
+      "message": "No need to declare until you use it below.",
+      "revId": "3e56ef9d4e328142c07605a0bde1dfd2ed122611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1c7ab95_9f2f1743",
+        "filename": "src/common/linux/dump_symbols.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2019-10-24T19:18:20Z",
+      "side": 1,
+      "message": "\u003d {} instead of memset, if even necessary.",
+      "revId": "3e56ef9d4e328142c07605a0bde1dfd2ed122611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
