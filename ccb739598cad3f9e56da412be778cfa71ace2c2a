@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d2170ce_ea573b70",
+        "filename": "src/tools/linux/dump_syms/dump_syms.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-24T21:46:43Z",
+      "side": 1,
+      "message": "lines is too long",
+      "revId": "ccb739598cad3f9e56da412be778cfa71ace2c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
