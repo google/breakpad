@@ -557,6 +557,24 @@
     },
     {
       "key": {
+        "uuid": "97af6058_36fbc45e",
+        "filename": "src/common/linux/http_upload.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-14T21:48:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0c1594b4_74508dc9",
+      "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1df06293_73506062",
         "filename": "src/common/linux/http_upload.cc",
         "patchSetId": 6
@@ -574,6 +592,24 @@
     },
     {
       "key": {
+        "uuid": "c1f4e449_d95e9f60",
+        "filename": "src/common/linux/http_upload.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-14T21:48:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1df06293_73506062",
+      "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1c0b07a_97211899",
         "filename": "src/common/linux/http_upload.cc",
         "patchSetId": 6
@@ -588,6 +624,24 @@
       "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b9bebf_02859cc6",
+        "filename": "src/common/linux/http_upload.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-14T21:48:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c1c0b07a_97211899",
+      "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -626,6 +680,24 @@
     },
     {
       "key": {
+        "uuid": "4b4e614e_565ec480",
+        "filename": "src/common/linux/http_upload.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-14T21:48:46Z",
+      "side": 1,
+      "message": "Okay I re-implemented all of that stuff using the LibcurlWrapper class. Also this required fixing some bugs in LibcurlWrapper. For example, it previously was passing a wrong-sized pointed into libcurl that would corrupt the heap.",
+      "parentUuid": "c81d538e_eec165d8",
+      "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd4802d8_8098ed3a",
         "filename": "src/common/linux/http_upload.cc",
         "patchSetId": 6
@@ -640,6 +712,24 @@
       "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4571d3f9_e27d4f70",
+        "filename": "src/common/linux/http_upload.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-14T21:48:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fd4802d8_8098ed3a",
+      "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -660,6 +750,24 @@
     },
     {
       "key": {
+        "uuid": "ccc6bc65_c2bcc176",
+        "filename": "src/common/linux/http_upload.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-14T21:48:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6a8be9dc_7dfd4948",
+      "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e434cabb_4c7b66ed",
         "filename": "src/common/linux/http_upload.cc",
         "patchSetId": 6
@@ -674,6 +782,24 @@
       "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2315d6b7_d28cb46c",
+        "filename": "src/common/linux/http_upload.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-14T21:48:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e434cabb_4c7b66ed",
+      "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -694,6 +820,24 @@
     },
     {
       "key": {
+        "uuid": "10fcff4d_a5bfdf92",
+        "filename": "src/common/linux/http_upload.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-14T21:48:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a999a89d_0e994506",
+      "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d47baa1c_bfdb2187",
         "filename": "src/common/linux/http_upload.cc",
         "patchSetId": 6
@@ -708,6 +852,24 @@
       "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "364287aa_22c6cfb3",
+        "filename": "src/common/linux/http_upload.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-14T21:48:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d47baa1c_bfdb2187",
+      "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -728,6 +890,24 @@
     },
     {
       "key": {
+        "uuid": "bfd08f79_339e1b48",
+        "filename": "src/common/linux/http_upload.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-14T21:48:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e9e44d27_42b00d0a",
+      "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51b011df_72cabe62",
         "filename": "src/common/linux/http_upload.h",
         "patchSetId": 6
@@ -742,6 +922,24 @@
       "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "214246bf_870d1c90",
+        "filename": "src/common/linux/http_upload.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-14T21:48:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "51b011df_72cabe62",
+      "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
