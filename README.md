@@ -63,6 +63,17 @@ To update an existing checkout to a newer revision, you can
 `git pull` as usual, but then you should run `gclient sync` to ensure that the
 dependent repos are up-to-date.
 
+Alternatively, you can build and install breakpad using [vcpkg](https://github.com/Microsoft/vcpkg/) dependency manager:
+```sh
+git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
+./bootstrap-vcpkg.sh
+./vcpkg integrate install
+./vcpkg install breakpad
+```
+The breakpad port in vcpkg is kept up to date by Microsoft team members and community contributors.
+If the version is out of date, please [create an issue or pull request](https://github.com/Microsoft/vcpkg) on the vcpkg repository.
+
 ## To request change review
 
 1.  Follow the steps above to get the source and build it.
