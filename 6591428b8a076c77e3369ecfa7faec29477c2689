@@ -435,6 +435,24 @@
     },
     {
       "key": {
+        "uuid": "2db432e5_8ba8b1a0",
+        "filename": "docs/sym_upload_v2_protocol.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-15T20:08:43Z",
+      "side": 1,
+      "message": "we can keep it like this for now",
+      "parentUuid": "88dbda18_2809f8cf",
+      "revId": "6591428b8a076c77e3369ecfa7faec29477c2689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51b2f359_648f3e33",
         "filename": "docs/sym_upload_v2_protocol.md",
         "patchSetId": 6
