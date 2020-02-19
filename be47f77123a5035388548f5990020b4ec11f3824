@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "7cef0da8_2f99a72b",
+        "filename": "docs/sym_upload_v2_protocol.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-02-19T16:15:19Z",
+      "side": 1,
+      "message": "Why not make -k optional and not pass the key\u003d parameter at all?",
+      "range": {
+        "startLine": 44,
+        "startChar": 56,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "be47f77123a5035388548f5990020b4ec11f3824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41c9dab5_20170e18",
+        "filename": "docs/sym_upload_v2_protocol.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-02-19T16:15:19Z",
+      "side": 1,
+      "message": "Since the code and even the rest of this document refers to the new protocol as sym-upload-v2, it’s very confusing for the URL to be v1.",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 27
+      },
+      "revId": "be47f77123a5035388548f5990020b4ec11f3824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9e6d2f4_6a188263",
+        "filename": "docs/sym_upload_v2_protocol.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-02-19T16:15:19Z",
+      "side": 1,
+      "message": "You already gave the protocol as part of API-URL.",
+      "range": {
+        "startLine": 62,
+        "startChar": 7,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "be47f77123a5035388548f5990020b4ec11f3824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17e4b1e5_abffb75e",
+        "filename": "docs/sym_upload_v2_protocol.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-02-19T16:15:19Z",
+      "side": 1,
+      "message": "Since this step returns an upload_url, why is the checkStatus step even necessary? Why can’t you pass file_name and debug_id to this uploads:create thing and let it do the lookup, returning either an upload URL or a status saying that the symbols are already present?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 83
+      },
+      "revId": "be47f77123a5035388548f5990020b4ec11f3824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e1c66b_b0e5116d",
+        "filename": "docs/sym_upload_v2_protocol.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-02-19T16:15:19Z",
+      "side": 1,
+      "message": "It seems like that would make this step either unnecessary or at least simpler from the client’s perspective too.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "be47f77123a5035388548f5990020b4ec11f3824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1683434_a9692ded",
         "filename": "src/common/linux/libcurl_wrapper.cc",
         "patchSetId": 11
