@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36ac82bc_80a460ba",
+        "filename": "docs/sym_upload_v2_protocol.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:08:38Z",
+      "side": 1,
+      "message": "That\u0027s a fair point, I\u0027ll change it to do that.",
+      "parentUuid": "7cef0da8_2f99a72b",
+      "range": {
+        "startLine": 44,
+        "startChar": 56,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "be47f77123a5035388548f5990020b4ec11f3824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41c9dab5_20170e18",
         "filename": "docs/sym_upload_v2_protocol.md",
         "patchSetId": 11
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "b656918f_8a22211a",
+        "filename": "docs/sym_upload_v2_protocol.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9e6d2f4_6a188263",
+      "range": {
+        "startLine": 62,
+        "startChar": 7,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "be47f77123a5035388548f5990020b4ec11f3824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8396c4e8_46172b31",
+        "filename": "docs/sym_upload_v2_protocol.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:08:38Z",
+      "side": 1,
+      "message": "Yeah I guess I should remove that from here. It makes sense if you\u0027re thinking about this just as an HTTP/REST path on the server, but I agree that it invites readers to get confused about the version of upload protocol versus version of REST protocol.",
+      "parentUuid": "41c9dab5_20170e18",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 27
+      },
+      "revId": "be47f77123a5035388548f5990020b4ec11f3824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17e4b1e5_abffb75e",
         "filename": "docs/sym_upload_v2_protocol.md",
         "patchSetId": 11
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ccb58252_84ba20f3",
+        "filename": "docs/sym_upload_v2_protocol.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:08:38Z",
+      "side": 1,
+      "message": "That was an alternative that we discussed but ultimately the API for that came out awkward. First we didn\u0027t want users who only care about the status to get an upload URL in response, since they don\u0027t expect one. Then, for users who want to override, and therefore don\u0027t care about the status, they need another field to set to say \"no, really, I want an upload URL.\"\n\nThe former case we don\u0027t do in symupload, but the latter is something that symupload already does. Splitting it up into two independent steps resolves both potential issues.",
+      "parentUuid": "17e4b1e5_abffb75e",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 83
+      },
+      "revId": "be47f77123a5035388548f5990020b4ec11f3824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93e1c66b_b0e5116d",
         "filename": "docs/sym_upload_v2_protocol.md",
         "patchSetId": 11
@@ -114,6 +210,30 @@
       "revId": "be47f77123a5035388548f5990020b4ec11f3824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d80e51ee_647d7536",
+        "filename": "docs/sym_upload_v2_protocol.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:08:38Z",
+      "side": 1,
+      "message": "I don\u0027t think changing the \"create upload URL\" step(s) would impact how this part works. In order to keep the server stateless (wrt. a given symbol upload), in between these API calls, \"uploads:create\" just calculates a unique upload path and signs it with credentials that allow a timed, anonymous upload.\n\nIdentification and metadata for that upload must be provided once the upload has completed, so that the upload server can handle the request synchronously (from the perspective of the caller).\n\nIf I missed the point of the comment then apologies :)",
+      "parentUuid": "93e1c66b_b0e5116d",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "be47f77123a5035388548f5990020b4ec11f3824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
