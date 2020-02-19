@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4ca7d6ec_61515dd8",
+        "filename": "src/common/linux/symbol_collector_client.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31276b47_3206322e",
+      "range": {
+        "startLine": 25,
+        "startChar": 35,
+        "endLine": 29,
+        "endChar": 38
+      },
+      "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c65bd05_53edfe00",
         "filename": "src/common/linux/symbol_collector_client.cc",
         "patchSetId": 4
@@ -80,6 +104,30 @@
       "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88acb4ff_11742368",
+        "filename": "src/common/linux/symbol_collector_client.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c65bd05_53edfe00",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "5bfb58bf_19fa0359",
+        "filename": "src/common/linux/symbol_collector_client.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35e9bfda_4b261a02",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 6
+      },
+      "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85be687d_4b8e0884",
         "filename": "src/common/linux/symbol_upload.cc",
         "patchSetId": 4
@@ -129,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "7662be03_946d9eb9",
+        "filename": "src/common/linux/symbol_upload.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85be687d_4b8e0884",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 23
+      },
+      "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d511282_8121a74b",
         "filename": "src/common/linux/symbol_upload.cc",
         "patchSetId": 4
@@ -149,6 +245,30 @@
       "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b218a261_d9436ff4",
+        "filename": "src/common/linux/symbol_upload.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d511282_8121a74b",
+      "range": {
+        "startLine": 128,
+        "startChar": 6,
+        "endLine": 129,
+        "endChar": 9
+      },
+      "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -222,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "a5bd0708_c2fc412c",
+        "filename": "src/common/linux/symbol_upload.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "138a0166_3fa04079",
+      "range": {
+        "startLine": 188,
+        "startChar": 9,
+        "endLine": 188,
+        "endChar": 25
+      },
+      "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f44ea295_3122b336",
         "filename": "src/common/linux/symbol_upload.cc",
         "patchSetId": 4
@@ -242,6 +386,30 @@
       "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82dfef50_c4599aa0",
+        "filename": "src/common/linux/symbol_upload.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f44ea295_3122b336",
+      "range": {
+        "startLine": 195,
+        "startChar": 6,
+        "endLine": 195,
+        "endChar": 9
+      },
+      "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -268,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "bed8f256_de6f6f32",
+        "filename": "src/tools/linux/symupload/minidump_upload.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e744fe68_ad3af8a7",
+      "range": {
+        "startLine": 71,
+        "startChar": 41,
+        "endLine": 71,
+        "endChar": 51
+      },
+      "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e5278a8_5bdd6f24",
         "filename": "src/tools/linux/symupload/minidump_upload.cc",
         "patchSetId": 4
@@ -291,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "bd8c6afd_8a40f8db",
+        "filename": "src/tools/linux/symupload/minidump_upload.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e5278a8_5bdd6f24",
+      "range": {
+        "startLine": 75,
+        "startChar": 41,
+        "endLine": 76,
+        "endChar": 44
+      },
+      "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d320f53b_5f9ecaa2",
         "filename": "src/tools/linux/symupload/sym_upload.cc",
         "patchSetId": 4
@@ -311,6 +527,30 @@
       "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cec1cfa_f687445d",
+        "filename": "src/tools/linux/symupload/sym_upload.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-19T23:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d320f53b_5f9ecaa2",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "06312cf0bb2674942bf7f4732a61d1f8a0cb9b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
