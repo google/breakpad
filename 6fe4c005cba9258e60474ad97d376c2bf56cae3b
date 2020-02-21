@@ -93,6 +93,30 @@
       "revId": "6fe4c005cba9258e60474ad97d376c2bf56cae3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3402507_4a9b748d",
+        "filename": "src/common/linux/google_crashdump_uploader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-02-21T19:08:48Z",
+      "side": 1,
+      "message": "Maybe \"if (long{http_status_code} !\u003d status_code) { /* error */ }\"? I guess we don\u0027t need to worry about undefined behavior since this isn\u0027t an overflow in the arthmetical sense (unless the assignment overload and/or conversion does something crazy).",
+      "parentUuid": "c8425649_6d69b005",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 34
+      },
+      "revId": "6fe4c005cba9258e60474ad97d376c2bf56cae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
