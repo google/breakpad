@@ -69,6 +69,30 @@
       "revId": "6fe4c005cba9258e60474ad97d376c2bf56cae3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8425649_6d69b005",
+        "filename": "src/common/linux/google_crashdump_uploader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2020-02-21T18:59:11Z",
+      "side": 1,
+      "message": "I think it\u0027d only be needed if we used -Wconversion (which we apparently don\u0027t anywhere). But it wouldn\u0027t change behavior, we could still overflow. It might be a good idea to check for that overflow and log something though.",
+      "parentUuid": "4ebce8ac_35cffdfb",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 34
+      },
+      "revId": "6fe4c005cba9258e60474ad97d376c2bf56cae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
