@@ -264,7 +264,7 @@ StackFrame* StackwalkerARM::GetCallerFrame(const CallStack* stack,
   if (fp_register_ >= 0 && !frame.get())
     frame.reset(GetCallerByFramePointer(frames));
 
-  // If everuthing failed, fall back to stack scanning.
+  // If everything failed, fall back to stack scanning.
   if (stack_scan_allowed && !frame.get())
     frame.reset(GetCallerByStackScan(frames));
 
