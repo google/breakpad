@@ -1,0 +1,289 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "014332ae_0985a63c",
+        "filename": "src/tools/mac/symupload/HTTPGetRequest.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "Nit: 2020 (other new files too)",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "099a3dc1_2518ff4f",
+        "filename": "src/tools/mac/symupload/HTTPGetRequest.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "Nit: 2-space indent (other files, too)",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d88241b_de0d049b",
+        "filename": "src/tools/mac/symupload/HTTPRequest.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "#include \u003cAvailability.h\u003e for these",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e450d996_cf2079f2",
+        "filename": "src/tools/mac/symupload/HTTPRequest.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "and \u003cAvailabilityMacros.h\u003e for these.\n\nOr you can standardize on one form or the other, and choose either \u003cAvailability.h\u003e or \u003cAvailabilityMacros.h\u003e.",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79c6ef8d_298cda5d",
+        "filename": "src/tools/mac/symupload/HTTPRequest.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "This is looking pretty raggedy, but clang-format can help you if you want it to.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feb48702_2bffc01b",
+        "filename": "src/tools/mac/symupload/HTTPRequest.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "Gerrit found a bunch of lines in this file that are whitespace-only. Some other files seem to have this too.\n\n(In addition, this part of the file has that pesky indent problem again.)\n\n((looks like you used Xcode’s editor.))",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c92b5f07_d2a0b67e",
+        "filename": "src/tools/mac/symupload/SymbolCollectorClient.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "The server interface is called checkStatus though, right?",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4aef7ff_1f31fc98",
+        "filename": "src/tools/mac/symupload/SymbolCollectorClient.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "Objective-C style is checkSymbolStatus:, first letter lowercase.\n\nAnd really, the name should describe each parameter, so call sites are clear. So this would become checkSymbolStatusOnServer:\n\nThere’s a comment on line 60 that would need to be adjusted too.",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b14d55_ec0a7574",
+        "filename": "src/tools/mac/symupload/SymbolCollectorClient.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "Same thing here and on line 92.",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b934f52_3aeee240",
+        "filename": "src/tools/mac/symupload/symupload.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "An explicit options-\u003esuccess \u003d NO might be nice, because the V1 function always sets options-\u003esuccess. (I had to track things back up to the bzero to see that it’s already NO coming into this).",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8cb5690_49f002ee",
+        "filename": "src/tools/mac/symupload/symupload.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "Hmm, is this really success?",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e55cf97_39f2401f",
+        "filename": "src/tools/mac/symupload/symupload.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "I think the two functions would be easier to use if they both took the same set of arguments: NSArray* for the second one for both.",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 3
+      },
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a6102c_8484d6be",
+        "filename": "src/tools/mac/symupload/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "Not the best macro to use for an #include guard. Someone else is going to use this name for sure.\n\nYour other files seemed not to use any guards at all, which will work as long as they’re always #imported and never #included. (Not our preferred style, though…we do like proper guards everywhere, even for files that get #imported.)",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5075352d_11b686b3",
+        "filename": "src/tools/mac/symupload/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "Same comment applies here.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 56
+      },
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8957ad68_18089b4e",
+        "filename": "src/tools/mac/symupload/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-07-24T21:58:49Z",
+      "side": 1,
+      "message": "Doesn’t really need inlining, would’ve moved this to an .m file.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 78
+      },
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
