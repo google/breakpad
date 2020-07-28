@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "2097fbbf_4969d640",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Replied to a bunch of comments. I\u0027ve incorporated all the feedback into another change which will go up as a separate review.",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "014332ae_0985a63c",
         "filename": "src/tools/mac/symupload/HTTPGetRequest.h",
         "patchSetId": 5
@@ -19,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "37653e60_3571c5e3",
+        "filename": "src/tools/mac/symupload/HTTPGetRequest.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "014332ae_0985a63c",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "099a3dc1_2518ff4f",
         "filename": "src/tools/mac/symupload/HTTPGetRequest.m",
         "patchSetId": 5
@@ -33,6 +68,24 @@
       "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c31efd49_02f2a668",
+        "filename": "src/tools/mac/symupload/HTTPGetRequest.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "099a3dc1_2518ff4f",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "c1fbbdf7_8686302f",
+        "filename": "src/tools/mac/symupload/HTTPRequest.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37d486fc_9531d63a",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d88241b_de0d049b",
         "filename": "src/tools/mac/symupload/HTTPRequest.m",
         "patchSetId": 5
@@ -88,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "c773c2ac_5cdef970",
+        "filename": "src/tools/mac/symupload/HTTPRequest.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d88241b_de0d049b",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e450d996_cf2079f2",
         "filename": "src/tools/mac/symupload/HTTPRequest.m",
         "patchSetId": 5
@@ -102,6 +191,24 @@
       "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed0f1f53_e75e4dd4",
+        "filename": "src/tools/mac/symupload/HTTPRequest.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e450d996_cf2079f2",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "a505ac30_b89b8b9a",
+        "filename": "src/tools/mac/symupload/HTTPRequest.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "I\u0027ve run clang-format (via a VS Code extension, so might not be configured the same way you meant in your comment). Hopefully it\u0027s all better?",
+      "parentUuid": "79c6ef8d_298cda5d",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "feb48702_2bffc01b",
         "filename": "src/tools/mac/symupload/HTTPRequest.m",
         "patchSetId": 5
@@ -142,6 +273,24 @@
       "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b57cc6f7_34770a88",
+        "filename": "src/tools/mac/symupload/HTTPRequest.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "I think clang-format fixed this.",
+      "parentUuid": "feb48702_2bffc01b",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "cbb4cfee_e9a2d933",
+        "filename": "src/tools/mac/symupload/SymbolCollectorClient.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Yes the HTTP-REST verb is \"checkStatus\". In the Proto interface it\u0027s called \"CheckSymbolStatus\". I started changing this over to the HTTP-REST names but now that I\u0027m looking at that it seems less clear. For instance \"CheckSymbolStatus\" would become \"v1/symbols/{debug_file}/{debug_id}:checkStatus\".",
+      "parentUuid": "c92b5f07_d2a0b67e",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4aef7ff_1f31fc98",
         "filename": "src/tools/mac/symupload/SymbolCollectorClient.h",
         "patchSetId": 5
@@ -176,6 +343,24 @@
       "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f330f550_9eae6209",
+        "filename": "src/tools/mac/symupload/SymbolCollectorClient.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Thanks! Should be fixed now.",
+      "parentUuid": "f4aef7ff_1f31fc98",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -196,6 +381,24 @@
     },
     {
       "key": {
+        "uuid": "341e055b_00b8b90d",
+        "filename": "src/tools/mac/symupload/SymbolCollectorClient.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0b14d55_ec0a7574",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b934f52_3aeee240",
         "filename": "src/tools/mac/symupload/symupload.m",
         "patchSetId": 5
@@ -213,6 +416,24 @@
     },
     {
       "key": {
+        "uuid": "4f8b0667_fc703472",
+        "filename": "src/tools/mac/symupload/symupload.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b934f52_3aeee240",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8cb5690_49f002ee",
         "filename": "src/tools/mac/symupload/symupload.m",
         "patchSetId": 5
@@ -227,6 +448,24 @@
       "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c90e827_111175f7",
+        "filename": "src/tools/mac/symupload/symupload.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "I don\u0027t mind changing that to a failure. It\u0027s just whatever users expect.",
+      "parentUuid": "c8cb5690_49f002ee",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -253,6 +492,30 @@
     },
     {
       "key": {
+        "uuid": "3a83918d_1d478c03",
+        "filename": "src/tools/mac/symupload/symupload.m",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e55cf97_39f2401f",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 3
+      },
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38a6102c_8484d6be",
         "filename": "src/tools/mac/symupload/util.h",
         "patchSetId": 5
@@ -273,6 +536,30 @@
       "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7abdd393_d91430e3",
+        "filename": "src/tools/mac/symupload/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "This has been changed to \"encoding_util_h\". LMK if that still seems iffy.",
+      "parentUuid": "38a6102c_8484d6be",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -299,6 +586,30 @@
     },
     {
       "key": {
+        "uuid": "a5ae7dc6_f1d8487c",
+        "filename": "src/tools/mac/symupload/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5075352d_11b686b3",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 56
+      },
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8957ad68_18089b4e",
         "filename": "src/tools/mac/symupload/util.h",
         "patchSetId": 5
@@ -319,6 +630,30 @@
       "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ac2498b_5a88e215",
+        "filename": "src/tools/mac/symupload/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T18:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8957ad68_18089b4e",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 78
+      },
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
