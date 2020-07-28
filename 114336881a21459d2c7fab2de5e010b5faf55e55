@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "80a6bff8_7af5f4b8",
+        "filename": "src/tools/mac/symupload/HTTPRequest.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002222
+      },
+      "writtenOn": "2020-07-28T15:56:33Z",
+      "side": 1,
+      "message": "Should this (and HTTPRequest.m and utils.h)be moved to src/common/mac/? When trying to build breakpad for Chrome, it fails with:\n\n  ../../third_party/breakpad/breakpad/src/common/mac/HTTPMultipartUpload.h:34:9: fatal error: \u0027HTTPRequest.h\u0027 file not found\n\nIt might be possible to workaround this by adding \"tools/mac/symupload\" to the include path, but that seems a little awkward for something like the ios \"client\" target, which uses HTTPMultipartUpload, and therefore now needs HTTPRequest, but doesn\u0027t otherwise need any other symupload sources.",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d88241b_de0d049b",
         "filename": "src/tools/mac/symupload/HTTPRequest.m",
         "patchSetId": 5
