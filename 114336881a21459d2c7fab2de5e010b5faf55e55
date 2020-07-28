@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "37d486fc_9531d63a",
+        "filename": "src/tools/mac/symupload/HTTPRequest.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2020-07-28T16:06:50Z",
+      "side": 1,
+      "message": "Yeah that seems like the right thing to do. I\u0027ll work on this now.",
+      "parentUuid": "80a6bff8_7af5f4b8",
+      "revId": "114336881a21459d2c7fab2de5e010b5faf55e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d88241b_de0d049b",
         "filename": "src/tools/mac/symupload/HTTPRequest.m",
         "patchSetId": 5
