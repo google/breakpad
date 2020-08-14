@@ -180,7 +180,7 @@ class Stackwalker {
       // caller was a no return function, this might point past the end of the
       // function. Subtract one from the instruction pointer so it points into
       // the call instruction instead.
-      if (modules_ && modules_->GetModuleForAddress(ip  - 1) &&
+      if (modules_ && modules_->GetModuleForAddress(ip - 1) &&
           InstructionAddressSeemsValid(ip - 1)) {
         *ip_found = ip;
         *location_found = location;
