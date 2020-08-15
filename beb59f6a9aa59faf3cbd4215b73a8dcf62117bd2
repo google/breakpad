@@ -33,6 +33,24 @@
       "revId": "beb59f6a9aa59faf3cbd4215b73a8dcf62117bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "465a3138_a40983dd",
+        "filename": "src/common/linux/elfutils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1388596
+      },
+      "writtenOn": "2020-08-15T04:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d33abd21_fe2a6644",
+      "revId": "beb59f6a9aa59faf3cbd4215b73a8dcf62117bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
