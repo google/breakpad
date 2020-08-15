@@ -16,6 +16,23 @@
       "revId": "beb59f6a9aa59faf3cbd4215b73a8dcf62117bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d33abd21_fe2a6644",
+        "filename": "src/common/linux/elfutils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-08-15T04:11:52Z",
+      "side": 1,
+      "message": "Before returning, you must:\n\n    *section_start \u003d nullptr;\n    *section_size \u003d 0;\n\nDon’t impose a requirement to initialize on the caller!",
+      "revId": "beb59f6a9aa59faf3cbd4215b73a8dcf62117bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
