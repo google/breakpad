@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "816caf6b_e1dceba2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388596
+      },
+      "writtenOn": "2020-08-30T10:27:47Z",
+      "side": 1,
+      "message": "https://groups.google.com/g/google-breakpad-discuss/c/H0pxHI0TUXM",
+      "revId": "d562f51cefd320aa63b45de33d7f8c1e37e0f312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
