@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bb7e87fd_116c8223",
+        "filename": ".clang-format",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-31T15:16:02Z",
+      "side": 1,
+      "message": "change to https",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 6
+      },
+      "revId": "e91dbb236de275f4e9ee13529381ee95ec8b3ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2084a8c5_e9e0780e",
         "filename": ".clang-format",
         "patchSetId": 3
@@ -30,6 +53,53 @@
       "writtenOn": "2020-08-31T13:59:24Z",
       "side": 1,
       "message": "This isn’t really true now.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 69
+      },
+      "revId": "e91dbb236de275f4e9ee13529381ee95ec8b3ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc3499f7_c2c2ce8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-31T15:16:02Z",
+      "side": 1,
+      "message": "for the reference URI, use this instead:\nhttps://chromium.googlesource.com/chromium/src/+/HEAD/.clang-format",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 69
+      },
+      "revId": "e91dbb236de275f4e9ee13529381ee95ec8b3ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1d1dec5_c6f6aca9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-31T15:16:02Z",
+      "side": 1,
+      "message": "maybe say \"Based on the .clang-format ...\"",
+      "parentUuid": "99c5051b_a64ea23f",
       "range": {
         "startLine": 9,
         "startChar": 0,
