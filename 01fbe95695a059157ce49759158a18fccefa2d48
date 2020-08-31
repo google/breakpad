@@ -42,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "44ca82d4_f8f3b6c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-31T18:15:59Z",
+      "side": 1,
+      "message": "i haven\u0027t looked closely, but can you see how hard it is to add unittest coverage ?",
+      "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4556b589_46585309",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 1
@@ -150,6 +167,24 @@
       "writtenOn": "2020-08-31T17:41:22Z",
       "side": 1,
       "message": "Care to try running \"git cl format\" locally and have clang-format auto-indent this?",
+      "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ec13a5_9ee64283",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-31T18:15:59Z",
+      "side": 1,
+      "message": "we\u0027re just about to add a .clang-format to this repo :)",
+      "parentUuid": "dd09a531_8ce82479",
       "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
