@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "2ad63bda_1b22af4c",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-08-31T00:23:15Z",
+      "side": 1,
+      "message": "\u003e we require C++11 in configure, so i\u0027d be fine keeping this assuming it influences the behavior\n\nWe definitely want C++11, I just meant that I’d hope that clang-format’s defaults for Chromium already imply C++11.",
+      "parentUuid": "1cf229c0_f3602a2c",
+      "revId": "50bb42378b08775aa7ce2945ed87cd14d323931c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a58f7e6c_7ca8d461",
         "filename": ".clang-format",
         "patchSetId": 2
