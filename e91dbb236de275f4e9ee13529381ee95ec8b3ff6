@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2084a8c5_e9e0780e",
+        "filename": ".clang-format",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2020-08-31T13:59:01Z",
+      "side": 1,
+      "message": "I’d stick a blank line before this so that the directives don’t get lost in the comments (and the comments don’t get lost in the directives).",
+      "revId": "e91dbb236de275f4e9ee13529381ee95ec8b3ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
