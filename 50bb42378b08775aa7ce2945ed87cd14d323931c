@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a4e57ab4_fa6964e4",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1388596
+      },
+      "writtenOn": "2020-08-31T01:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fddd73c0_da75bfb2",
+      "revId": "50bb42378b08775aa7ce2945ed87cd14d323931c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b3bb968_8fa993f6",
         "filename": ".clang-format",
         "patchSetId": 2
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "9a3a18b1_adb5997e",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1388596
+      },
+      "writtenOn": "2020-08-31T01:58:58Z",
+      "side": 1,
+      "message": "After my local test， we still need C++11 to workaround this issue.\n\n\u003e So, in order to get \u003e\u003e instead of \u003e \u003e, we still need to add \"Standard: Cpp11\" to .clang-format, otherwise it appears the behaviour is to maintain \"\u003e \u003e\" if that\u0027s what in the input, or alternatively maintain \"\u003e\u003e\" if that\u0027s in the input. I think we probably want the chromium check-in to \"fix\" them at this point?\nfrom: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d417296\n\n# ref cl\nhttps://codereview.chromium.org/599093008/\nhttps://codereview.chromium.org/696843002/",
+      "parentUuid": "2ad63bda_1b22af4c",
+      "revId": "50bb42378b08775aa7ce2945ed87cd14d323931c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a58f7e6c_7ca8d461",
         "filename": ".clang-format",
         "patchSetId": 2
@@ -116,6 +152,30 @@
       "revId": "50bb42378b08775aa7ce2945ed87cd14d323931c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82b950ae_17b44eb9",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1388596
+      },
+      "writtenOn": "2020-08-31T01:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a280e173_6b92c3d4",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "50bb42378b08775aa7ce2945ed87cd14d323931c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
