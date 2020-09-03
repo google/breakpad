@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d9c1310_249accd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450902
+      },
+      "writtenOn": "2020-09-03T07:46:32Z",
+      "side": 1,
+      "message": "Hi,\nI fixed everything that needed fixing and added a unit test that uses gdb to validate the core file.\nI failed to run \"git cl format\" - I would appreciate your assistance with it (or just run it at your env and paste the output as a comment here).\nThx for the quick response 😊",
+      "revId": "15d919e0789517ab864137481eb4f05c2f2ad690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

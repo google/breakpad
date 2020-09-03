@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf40936b_384e255f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1450902
+      },
+      "writtenOn": "2020-09-03T07:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "809dea34_e7ee3ebc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74a4cce5_414ec7a6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "78c2e225_5f100ad2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450902
+      },
+      "writtenOn": "2020-09-03T07:46:32Z",
+      "side": 1,
+      "message": "I managed to add a basic unit test creating a minidump, converting to core, and inspecting it in gdb.",
+      "parentUuid": "44ca82d4_f8f3b6c6",
+      "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4556b589_46585309",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 1
@@ -76,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "a4e06aad_cbce75cc",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1450902
+      },
+      "writtenOn": "2020-09-03T07:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4556b589_46585309",
+      "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d3c96be_2c194050",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 1
@@ -90,6 +150,24 @@
       "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f467da96_e442abf7",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1450902
+      },
+      "writtenOn": "2020-09-03T07:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d3c96be_2c194050",
+      "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +194,30 @@
     },
     {
       "key": {
+        "uuid": "a3af3669_2419bdba",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1450902
+      },
+      "writtenOn": "2020-09-03T07:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1f43bab_99792d70",
+      "range": {
+        "startLine": 1221,
+        "startChar": 18,
+        "endLine": 1221,
+        "endChar": 29
+      },
+      "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87ba8352_64434b20",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 1
@@ -139,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "c6b139c9_0cff0145",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1450902
+      },
+      "writtenOn": "2020-09-03T07:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87ba8352_64434b20",
+      "range": {
+        "startLine": 1225,
+        "startChar": 31,
+        "endLine": 1225,
+        "endChar": 40
+      },
+      "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b11aef91_7fe56a37",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 1
@@ -153,6 +279,24 @@
       "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63893734_575f245d",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1450902
+      },
+      "writtenOn": "2020-09-03T07:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b11aef91_7fe56a37",
+      "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -191,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "89de46fa_8123bbb3",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1450902
+      },
+      "writtenOn": "2020-09-03T07:46:32Z",
+      "side": 1,
+      "message": "I\u0027m having some issues:\n\nProblem while looking for clang-format in Chromium source tree:\nCould not find checkout in any parent of the current path.\nSet CHROMIUM_BUILDTOOLS_PATH to use outside of a chromium checkout.",
+      "parentUuid": "63ec13a5_9ee64283",
+      "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f06c649_410af5b6",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 1
@@ -205,6 +367,24 @@
       "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "071fd30d_28c933c5",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1450902
+      },
+      "writtenOn": "2020-09-03T07:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f06c649_410af5b6",
+      "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
