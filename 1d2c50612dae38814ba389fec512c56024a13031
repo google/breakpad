@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d6d1bd3_5a0c720a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450902
+      },
+      "writtenOn": "2020-09-03T08:38:07Z",
+      "side": 1,
+      "message": "It\u0027s all right 😊 I\u0027m really happy to get quick responses from you.",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
