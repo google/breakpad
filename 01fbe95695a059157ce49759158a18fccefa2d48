@@ -389,6 +389,24 @@
     },
     {
       "key": {
+        "uuid": "0eb486b4_54e70db8",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1450902
+      },
+      "writtenOn": "2020-09-07T12:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08279d27_793c9e3f",
+      "revId": "01fbe95695a059157ce49759158a18fccefa2d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f06c649_410af5b6",
         "filename": "src/tools/linux/md2core/minidump-2-core.cc",
         "patchSetId": 1
