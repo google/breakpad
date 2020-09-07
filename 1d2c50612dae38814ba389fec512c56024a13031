@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "d80b424b_ada541d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-07T17:10:25Z",
+      "side": 1,
+      "message": "rephrase this so it\u0027s clear what the change is doing/fixing\n\n minidump-2-core: add registered heap memory to core file",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b171dd0_f869ca8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-07T17:10:25Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d6d1bd3_5a0c720a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -16,6 +50,176 @@
       "revId": "1d2c50612dae38814ba389fec512c56024a13031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af1f852e_363b348e",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-07T17:10:25Z",
+      "side": 1,
+      "message": "you repeat this 3 times.  put it in a variable instead.",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baf2258c_59d095e4",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-07T17:10:25Z",
+      "side": 1,
+      "message": "\"May\" and period at the end of sentences",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af135f79_27e63aad",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-07T17:10:25Z",
+      "side": 1,
+      "message": "base_address is a u64, not an unsigned long.  you need to use PRIx64 for it instead.",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3c44609_b8ab5899",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-07T17:10:25Z",
+      "side": 1,
+      "message": "use C++ style casts",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2db1b45_9875c674",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1275,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-07T17:10:25Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eeb71bb_d3d5da74",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-07T17:10:25Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e15110e2_332f67da",
+        "filename": "src/tools/linux/md2core/minidump-2-core.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-07T17:10:25Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "367c394f_8ca49283",
+        "filename": "src/tools/linux/md2core/minidump_2_core_gdb_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-07T17:10:25Z",
+      "side": 1,
+      "message": "this is a simple stat() or access() call.  no need for running an external program.",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0c686ed_29fba9c1",
+        "filename": "src/tools/linux/md2core/minidump_2_core_gdb_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-07T17:10:25Z",
+      "side": 1,
+      "message": "normally we use breakpad classes to open/parse the file and extract fields of interest.  it\u0027s difficult in this case because the current minidump-2-core code is not written as a proper module one can include.  but i won\u0027t ask you to rewrite that :P.",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3309b3f_f97124e2",
+        "filename": "src/tools/linux/md2core/minidump_2_core_gdb_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-07T17:10:25Z",
+      "side": 1,
+      "message": "the problem really is that system() is not portable, and we can\u0027t rely on gdb being installed.  rename this test to use a DISABLED_ prefix so it\u0027s available, but not run by default.",
+      "revId": "1d2c50612dae38814ba389fec512c56024a13031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
