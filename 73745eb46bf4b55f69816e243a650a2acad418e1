@@ -16,6 +16,23 @@
       "message": "Request for comments. If you are interested in this change, please help me improve it.\n",
       "revId": "73745eb46bf4b55f69816e243a650a2acad418e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97719136_7ac5e9f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-14T00:30:01Z",
+      "side": 1,
+      "message": "there\u0027s too much going on here in one CL.  you\u0027ll need to clean up the commit message for starers.\n\nwe still use automake-1.15.1, not 1.16.  you\u0027ll want to install the older version to use here.  we might consider upgrading to 1.16, but that needs to be done by itself.",
+      "revId": "73745eb46bf4b55f69816e243a650a2acad418e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
