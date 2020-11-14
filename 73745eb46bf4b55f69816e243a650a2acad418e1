@@ -33,6 +33,74 @@
       "message": "there\u0027s too much going on here in one CL.  you\u0027ll need to clean up the commit message for starers.\n\nwe still use automake-1.15.1, not 1.16.  you\u0027ll want to install the older version to use here.  we might consider upgrading to 1.16, but that needs to be done by itself.",
       "revId": "73745eb46bf4b55f69816e243a650a2acad418e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ab85f36_2e0d8d49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-14T00:39:27Z",
+      "side": 1,
+      "message": "(i haven\u0027t taken a look at the actual code, just the build system stuff)",
+      "revId": "73745eb46bf4b55f69816e243a650a2acad418e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "422656cc_8dfa5c0c",
+        "filename": "docs/linux_core_handler.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-14T00:39:27Z",
+      "side": 1,
+      "message": "write this link as [Linux starter guide](./linux_starter_guide.md) so it\u0027ll get linked when reading it online",
+      "revId": "73745eb46bf4b55f69816e243a650a2acad418e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd69c78_06b9dce3",
+        "filename": "docs/linux_core_handler.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-14T00:39:27Z",
+      "side": 1,
+      "message": "use ``` blocks so you don\u0027t have to indent it\n\nyou\u0027ll also want a \\ after the \u003e",
+      "revId": "73745eb46bf4b55f69816e243a650a2acad418e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64fadb53_8cda9a63",
+        "filename": "docs/linux_core_handler.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-14T00:39:27Z",
+      "side": 1,
+      "message": "you can link core(5) to https://man7.org/linux/man-pages/man5/core.5.html",
+      "revId": "73745eb46bf4b55f69816e243a650a2acad418e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
