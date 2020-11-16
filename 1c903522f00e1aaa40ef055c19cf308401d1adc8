@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdba5814_b97e0eb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T13:51:06Z",
+      "side": 1,
+      "message": "This change adds a tool (pid2md) for Linux. The process is paused, the minidump is generated and the process resumes its execution.\n\nKind regards,\n\nLudovic",
+      "revId": "1c903522f00e1aaa40ef055c19cf308401d1adc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
