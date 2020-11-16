@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a23d6db0_2efffd9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T13:43:16Z",
+      "side": 1,
+      "message": "Thank you. I have updated the documentation, changed the version of automake and removed pid2md from this CL. Is it still to much ?",
+      "parentUuid": "97719136_7ac5e9f9",
+      "revId": "73745eb46bf4b55f69816e243a650a2acad418e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "422656cc_8dfa5c0c",

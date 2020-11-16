@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "520fc3e1_f92064fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T13:43:16Z",
+      "side": 1,
+      "message": "Thank you very much Mike.\n\nI have updated the documentation, changed the version of automake and removed pid2md from this CL.\nAre left two commits which only make sense together. Is it still to much ?\n\nAlso, the heuristic of 1 MB worked fine in all the tests I have done (programs with more than 100 threads), but this is open for discussion 😊\n\nKind regards,\n\nLudovic",
+      "revId": "d1ccfc9d404563b2160fa6401125de4e56d5f6e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
