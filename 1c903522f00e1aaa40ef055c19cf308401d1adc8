@@ -16,6 +16,23 @@
       "message": "This change adds a tool (pid2md) for Linux. The process is paused, the minidump is generated and the process resumes its execution.\n\nKind regards,\n\nLudovic",
       "revId": "1c903522f00e1aaa40ef055c19cf308401d1adc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54cb6036_625df67d",
+        "filename": "src/tools/linux/pid2md/pid2md.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T18:05:44Z",
+      "side": 1,
+      "message": "when i first got started on this project, i found the terseness of the tools to be a significant barrier.  can you add a few more lines here explaining what this is for ?\n\nreally you can just move the // file comment you have above into this message and it\u0027ll be useful to everyone.",
+      "revId": "1c903522f00e1aaa40ef055c19cf308401d1adc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
