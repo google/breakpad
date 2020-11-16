@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3825944_3a0a5938",
+        "filename": "docs/linux_core_handler.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b1c5d6f7_c03d6739",
+      "range": {
+        "startLine": 38,
+        "startChar": 60,
+        "endLine": 38,
+        "endChar": 62
+      },
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1261487d_b3e04b6d",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc0722e6_d55573a9",
+        "filename": "src/client/linux/minidump_writer/linux_core_dumper.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1261487d_b3e04b6d",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b942d3a7_1ed0dfcd",
@@ -71,6 +113,24 @@
       "writtenOn": "2020-11-16T17:59:15Z",
       "side": 1,
       "message": "use strerror(errno) here to display things for humans\n\nyou\u0027ll want to adjust all the error messages you write in this change",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0dce685_127b246c",
+        "filename": "src/client/linux/minidump_writer/linux_core_dumper.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b942d3a7_1ed0dfcd",
       "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13071f95_326ca321",
+        "filename": "src/common/linux/elf_core_dump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "48653c1d_c2996b04",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 51
+      },
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e19667c3_4be86ad3",
@@ -115,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c6ff4db_1ac3798a",
+        "filename": "src/common/linux/elf_core_dump.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e19667c3_4be86ad3",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c269b14a_a1b2a431",
@@ -128,6 +230,24 @@
       "writtenOn": "2020-11-16T17:59:15Z",
       "side": 1,
       "message": "add an anonymous namespace to hold all the local functions",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4add9c4b_ab39ba3a",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c269b14a_a1b2a431",
       "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +275,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d371912_c54bf4eb",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e5c3935_a46da881",
+      "range": {
+        "startLine": 62,
+        "startChar": 26,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "192e059d_44ea14db",
@@ -168,6 +312,24 @@
       "writtenOn": "2020-11-16T17:59:15Z",
       "side": 1,
       "message": "hoist this up as a constant",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f11af4_d86c223a",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "192e059d_44ea14db",
       "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -189,6 +351,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c40ef20_9e300106",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb741939_9a3b9fcf",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "718aaabb_4ad4a7c8",
@@ -202,6 +382,24 @@
       "writtenOn": "2020-11-16T17:59:15Z",
       "side": 1,
       "message": "bad indentation.  `clang-format -style\u003dfile -i` should help.",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a73e62b_e289147b",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "718aaabb_4ad4a7c8",
       "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -223,6 +421,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d09fe87_eae935c1",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ec90564_e31263ed",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bee9e0e4_b6b903e0",
@@ -236,6 +452,24 @@
       "writtenOn": "2020-11-16T17:59:15Z",
       "side": 1,
       "message": "use syslog() instead to save error messages to the OS",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f5f99f_1c77e787",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bee9e0e4_b6b903e0",
       "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -104,6 +104,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "632537ea_21faf527",
+        "filename": "docs/linux_core_handler.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "acd69c78_06b9dce3",
+      "revId": "73745eb46bf4b55f69816e243a650a2acad418e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64fadb53_8cda9a63",

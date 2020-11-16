@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c902ca2_8aa15f3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-16T23:52:09Z",
+      "side": 1,
+      "message": "Hi Mike,\n\nThanks a lot for the detailed review: it is much appreciated!\nSorry for all the style issues.\nPlease feel free to question to logic or the purpose of the change.\n\nKind regards,\n\nLudovic ",
+      "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
