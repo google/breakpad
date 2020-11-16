@@ -1,0 +1,243 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e7c66c_31999202",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "seems like a reasonable start",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1c5d6f7_c03d6739",
+        "filename": "docs/linux_core_handler.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "only one space needed here",
+      "range": {
+        "startLine": 38,
+        "startChar": 60,
+        "endLine": 38,
+        "endChar": 62
+      },
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1261487d_b3e04b6d",
+        "filename": "src/client/linux/minidump_writer/linux_core_dumper.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "use O_CLOEXEC here\n\ndrop the 3rd arg",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b942d3a7_1ed0dfcd",
+        "filename": "src/client/linux/minidump_writer/linux_core_dumper.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "use strerror(errno) here to display things for humans\n\nyou\u0027ll want to adjust all the error messages you write in this change",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48653c1d_c2996b04",
+        "filename": "src/common/linux/elf_core_dump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "use pread() instead",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 51
+      },
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e19667c3_4be86ad3",
+        "filename": "src/common/linux/elf_core_dump.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "\"Descriptor\" and period at the end",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c269b14a_a1b2a431",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "add an anonymous namespace to hold all the local functions",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e5c3935_a46da881",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "\"megabyte\"",
+      "range": {
+        "startLine": 62,
+        "startChar": 26,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "192e059d_44ea14db",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "hoist this up as a constant",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb741939_9a3b9fcf",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "use scoped_ptr_malloc so you don\u0027t need to free(buf) everywhere below",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "718aaabb_4ad4a7c8",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "bad indentation.  `clang-format -style\u003dfile -i` should help.",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ec90564_e31263ed",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "use MFD_CLOEXEC",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee9e0e4_b6b903e0",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-16T17:59:15Z",
+      "side": 1,
+      "message": "use syslog() instead to save error messages to the OS",
+      "revId": "5a7844a51b7bf2c1f12228a575c27fbc92e745b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
