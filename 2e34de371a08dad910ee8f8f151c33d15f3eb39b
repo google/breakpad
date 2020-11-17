@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56de0806_33164709",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-17T15:24:36Z",
+      "side": 1,
+      "message": "Mike,\n\nThank you for the review. I have added a small description in the help message.\n\nKind regards,\n\nLudovic",
+      "revId": "2e34de371a08dad910ee8f8f151c33d15f3eb39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
