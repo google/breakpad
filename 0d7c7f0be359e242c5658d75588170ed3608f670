@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a4d4976_1b73cac0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-17T14:58:03Z",
+      "side": 1,
+      "message": "you can delete Bug: as that tag has specific meaning",
+      "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1c902ca2_8aa15f3b",
@@ -14,6 +31,74 @@
       "writtenOn": "2020-11-16T23:52:09Z",
       "side": 1,
       "message": "Hi Mike,\n\nThanks a lot for the detailed review: it is much appreciated!\nSorry for all the style issues.\nPlease feel free to question to logic or the purpose of the change.\n\nKind regards,\n\nLudovic ",
+      "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4bea65_91dc8da2",
+        "filename": "src/common/linux/elf_core_dump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-17T14:58:03Z",
+      "side": 1,
+      "message": "where is this fd closed? the class is taking ownership, so I\u0027m guessing you want to update the deconstructor. and probably put a check here too if this func was called multiple times.",
+      "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d919b839_623690d2",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-17T14:58:03Z",
+      "side": 1,
+      "message": "you can delete \"core_handler\" since none of these funcs are used outside this module",
+      "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57841a47_62d05dc8",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-17T14:58:03Z",
+      "side": 1,
+      "message": "can you add a few lines here for users? at least the file comment above that you have already.\n\ncould also put the url to the new doc you wrote above.",
+      "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b96098b_c95bd943",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-17T14:58:03Z",
+      "side": 1,
+      "message": "is warning the right level? seems like this is normal operation so should be notice/info.",
       "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
