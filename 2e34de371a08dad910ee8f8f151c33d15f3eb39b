@@ -16,6 +16,40 @@
       "message": "Mike,\n\nThank you for the review. I have added a small description in the help message.\n\nKind regards,\n\nLudovic",
       "revId": "2e34de371a08dad910ee8f8f151c33d15f3eb39b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18702bf1_4e07a439",
+        "filename": "src/tools/linux/pid2md/pid2md.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-19T07:35:05Z",
+      "side": 1,
+      "message": "how about \"A tool\" ?  colloquially in English, people say \"A utility\".  changing it to \"tool\" avoids that confusion :).",
+      "revId": "2e34de371a08dad910ee8f8f151c33d15f3eb39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "040b663d_e155b6b2",
+        "filename": "src/tools/linux/pid2md/pid2md.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-19T07:35:05Z",
+      "side": 1,
+      "message": "normally tools put this as the first line, then the detailed description after that",
+      "revId": "2e34de371a08dad910ee8f8f151c33d15f3eb39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
