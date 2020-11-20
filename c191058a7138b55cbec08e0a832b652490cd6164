@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "864cb5b8_e19d7a26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-20T20:28:18Z",
+      "side": 1,
+      "message": "Hi Mike,\n\nThanks again for the review and sorry for the late reply. Please take a look at this updated version.\n\nKind regards,\n\nLudovic ",
+      "revId": "c191058a7138b55cbec08e0a832b652490cd6164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
