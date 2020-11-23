@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a09cd1c_f1b6604f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-23T12:22:01Z",
+      "side": 1,
+      "message": "Hi Mike,\n\nSorry for the late reply (it took me some time to investigate a \"use after destroy\" situation which manifest itself only when using anonymous namespace).\n\nPlease take a look at this version.\n\nKind regards,\n\nLudovic",
+      "revId": "92ebf1ab65eb914677187daf9d4c08d483166b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

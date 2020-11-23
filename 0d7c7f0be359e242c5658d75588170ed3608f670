@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b20a8f45_9dc6862c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-23T12:22:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a4d4976_1b73cac0",
+      "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1c902ca2_8aa15f3b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff873cd_7369923a",
+        "filename": "src/common/linux/elf_core_dump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-23T12:22:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cb4bea65_91dc8da2",
+      "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d919b839_623690d2",
@@ -65,6 +101,24 @@
       "writtenOn": "2020-11-17T14:58:03Z",
       "side": 1,
       "message": "you can delete \"core_handler\" since none of these funcs are used outside this module",
+      "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb0090e3_bb18c246",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-23T12:22:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d919b839_623690d2",
       "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10369036_20cf0a1f",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-23T12:22:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "57841a47_62d05dc8",
+      "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b96098b_c95bd943",
@@ -99,6 +171,24 @@
       "writtenOn": "2020-11-17T14:58:03Z",
       "side": 1,
       "message": "is warning the right level? seems like this is normal operation so should be notice/info.",
+      "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21d14c9e_1d85b1cf",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-23T12:22:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8b96098b_c95bd943",
       "revId": "0d7c7f0be359e242c5658d75588170ed3608f670",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
