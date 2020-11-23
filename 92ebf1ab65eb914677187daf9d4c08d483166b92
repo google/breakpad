@@ -16,6 +16,29 @@
       "message": "Hi Mike,\n\nSorry for the late reply (it took me some time to investigate a \"use after destroy\" situation which manifest itself only when using anonymous namespace).\n\nPlease take a look at this version.\n\nKind regards,\n\nLudovic",
       "revId": "92ebf1ab65eb914677187daf9d4c08d483166b92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baec4679_62ab9f16",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-23T17:03:42Z",
+      "side": 1,
+      "message": "master-\u003eHEAD",
+      "range": {
+        "startLine": 67,
+        "startChar": 65,
+        "endLine": 67,
+        "endChar": 71
+      },
+      "revId": "92ebf1ab65eb914677187daf9d4c08d483166b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
