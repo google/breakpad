@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39883c3_d2c5417b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-23T21:59:23Z",
+      "side": 1,
+      "message": "Hi Mike,\n\nThe documentation link is updated as suggested. Thanks a lot !\n\nLudovic",
+      "revId": "8ce9d87b31eb3231542c72a1ed147212bd8e96f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

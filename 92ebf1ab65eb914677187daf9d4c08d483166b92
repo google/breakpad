@@ -39,6 +39,30 @@
       },
       "revId": "92ebf1ab65eb914677187daf9d4c08d483166b92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09ac190f_0f35f033",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-23T21:59:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "baec4679_62ab9f16",
+      "range": {
+        "startLine": 67,
+        "startChar": 65,
+        "endLine": 67,
+        "endChar": 71
+      },
+      "revId": "92ebf1ab65eb914677187daf9d4c08d483166b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
