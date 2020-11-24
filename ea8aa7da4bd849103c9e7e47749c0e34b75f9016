@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca7b905_4219ac68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-11-24T07:49:24Z",
+      "side": 1,
+      "message": "Hi Mike,\n\nThe change is rebased. Thanks a lot!\n\nLudovic",
+      "revId": "ea8aa7da4bd849103c9e7e47749c0e34b75f9016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
