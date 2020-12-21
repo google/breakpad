@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "773fb308_c124a408",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317891
+      },
+      "writtenOn": "2020-12-21T18:31:02Z",
+      "side": 1,
+      "message": "Hi Mike,\n\nI recently tried to build Breakpad from source on an older Linux machine, and core_handler specifically fails to build due to the lack of memfd_create in \u003csys/mman.h\u003e until glibc \u003e\u003d 2.27. I think we\u0027d be better off if we maintain support for building on machines with glibc \u003c 2.27, unless we can confirm that Breakpad doesn\u0027t intend to support this?\n\nThanks!\n- Eric",
+      "revId": "27f15ef3034ec4697033fc2c351063d8dbb0bcb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
