@@ -51,6 +51,24 @@
       "parentUuid": "7cc710ed_ddb28aa7",
       "revId": "c250bc94cd9ef39afb76298199837a67e980088c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb45574_ac6ff580",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1317891
+      },
+      "writtenOn": "2020-12-21T21:06:55Z",
+      "side": 1,
+      "message": "This should now be moot.",
+      "parentUuid": "6e73b6fa_482cb3df",
+      "revId": "c250bc94cd9ef39afb76298199837a67e980088c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
