@@ -70,6 +70,24 @@
       "parentUuid": "a3e5a87f_85bba4cf",
       "revId": "9545e696f34c04c22e2916908670e76cdefff258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9de64210_06183abb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317891
+      },
+      "writtenOn": "2020-12-21T21:29:41Z",
+      "side": 1,
+      "message": "Not quite, no. Not sure why, but even if I invert the checks in Makefile.am and rerun the full suite (make distclean, autoconf, autoheader, make), it still ends up building core_handler. It doesn\u0027t seem to be ending up conditional?",
+      "parentUuid": "daf58297_3b978c29",
+      "revId": "9545e696f34c04c22e2916908670e76cdefff258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
