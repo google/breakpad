@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0d5dba6_bde329e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127134
+      },
+      "writtenOn": "2020-12-21T20:11:00Z",
+      "side": 1,
+      "message": "Hi Mike and Eric,\n\nI would be happy to understand why it is preferred to build core_handler if memfd is not supported instead of just not building it.\n\nCheers,\n\nLudovic",
+      "revId": "9545e696f34c04c22e2916908670e76cdefff258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
