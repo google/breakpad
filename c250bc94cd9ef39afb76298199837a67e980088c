@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc2f68e3_54fe0dc6",
+        "filename": "configure.ac",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-21T20:39:07Z",
+      "side": 1,
+      "message": "you don\u0027t need this.  AM_CONDITIONAL is only used in automake files.",
+      "revId": "c250bc94cd9ef39afb76298199837a67e980088c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7cc710ed_ddb28aa7",
         "filename": "src/tools/linux/core_handler/core_handler.cc",
         "patchSetId": 2
@@ -14,6 +31,24 @@
       "writtenOn": "2020-12-21T20:11:00Z",
       "side": 1,
       "message": "Please do not abort here: this will execute core_handler again.\nReturning an error is fine.\n\n#define memfd_create(...) ({ fprintf(stderr, \"memfd_create is required\\n\"); -1;})",
+      "revId": "c250bc94cd9ef39afb76298199837a67e980088c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e73b6fa_482cb3df",
+        "filename": "src/tools/linux/core_handler/core_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-21T20:39:07Z",
+      "side": 1,
+      "message": "that\u0027s a gcc extension.  we\u0027d have to define a real func at that point.",
+      "parentUuid": "7cc710ed_ddb28aa7",
       "revId": "c250bc94cd9ef39afb76298199837a67e980088c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
