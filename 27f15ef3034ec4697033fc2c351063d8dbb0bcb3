@@ -16,6 +16,24 @@
       "message": "Hi Mike,\n\nI recently tried to build Breakpad from source on an older Linux machine, and core_handler specifically fails to build due to the lack of memfd_create in \u003csys/mman.h\u003e until glibc \u003e\u003d 2.27. I think we\u0027d be better off if we maintain support for building on machines with glibc \u003c 2.27, unless we can confirm that Breakpad doesn\u0027t intend to support this?\n\nThanks!\n- Eric",
       "revId": "27f15ef3034ec4697033fc2c351063d8dbb0bcb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aa3d29c_444b0708",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-21T18:36:05Z",
+      "side": 1,
+      "message": "i\u0027d take a different approach: add a check for memfd() to configure.ac (update AC_CHECK_FUNCS).  then include config.h in this file and use HAVE_MEMFD to determine what to do.\n\ni\u0027d be fine doing something like:\n\n #ifndef HAVE_MEMFD\n # define memfd(...) do { fprintf(stderr, \"memfd is required\\n\"); abort(); } while (0)\n #endif\n\nif you really want to keep compat on older glibc but newer kernel, the right route for working with syscalls is to update LSS to include a shim and then use that here.",
+      "parentUuid": "773fb308_c124a408",
+      "revId": "27f15ef3034ec4697033fc2c351063d8dbb0bcb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
