@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a93aae7_36f96487",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317891
+      },
+      "writtenOn": "2020-12-21T21:53:35Z",
+      "side": 1,
+      "message": "Thanks, Mike! ... I don\u0027t have committing permissions on this repo, so do you mind doing it?",
+      "revId": "ddcae337f6189aae2ffca120ad66ef794013cb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
