@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e0a9ec_9d7d6706",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-01-04T22:49:16Z",
+      "side": 1,
+      "message": "had to tweak the indentation slightly after the rename",
+      "revId": "f134679fd756128e263df1f843c67f90975c6b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
