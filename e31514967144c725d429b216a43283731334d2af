@@ -16,6 +16,24 @@
       "message": "This is terrific and will be a good add.\n\nThe last time I added a few enums, it broke the build due to -Wswitch, even though I hadn\u0027t seen that in my own testing. Just want to double check that your testing included that option. Otherwise, good to go.",
       "revId": "e31514967144c725d429b216a43283731334d2af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c2e9834_f9534b71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000684
+      },
+      "writtenOn": "2021-01-19T17:25:33Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with -Wswitch.  Where/how do I test that?",
+      "parentUuid": "534f2bc4_42a3c09d",
+      "revId": "e31514967144c725d429b216a43283731334d2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
