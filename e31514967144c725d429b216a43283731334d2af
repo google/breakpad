@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "534f2bc4_42a3c09d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386395
+      },
+      "writtenOn": "2021-01-19T16:32:15Z",
+      "side": 1,
+      "message": "This is terrific and will be a good add.\n\nThe last time I added a few enums, it broke the build due to -Wswitch, even though I hadn\u0027t seen that in my own testing. Just want to double check that your testing included that option. Otherwise, good to go.",
+      "revId": "e31514967144c725d429b216a43283731334d2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
