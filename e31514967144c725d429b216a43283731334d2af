@@ -34,6 +34,23 @@
       "parentUuid": "534f2bc4_42a3c09d",
       "revId": "e31514967144c725d429b216a43283731334d2af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "323266b4_2cb3b924",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000684
+      },
+      "writtenOn": "2021-01-19T18:41:51Z",
+      "side": 1,
+      "message": "Tested with -Wswitch and everything built ok.",
+      "revId": "e31514967144c725d429b216a43283731334d2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
