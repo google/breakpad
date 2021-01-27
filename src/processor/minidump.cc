@@ -1773,7 +1773,7 @@ bool MinidumpThreadList::Read(uint32_t expected_size) {
         BPLOG(ERROR) << "MinidumpThreadList found multiple threads with ID " <<
                         HexString(thread_id) << " at thread " <<
                         thread_index << "/" << thread_count;
-        return false;
+        continue;
       }
       id_to_thread_map_[thread_id] = thread;
     }
@@ -5884,14 +5884,14 @@ T* Minidump::GetStream(T** stream) {
 
   uint32_t stream_length;
   if (!SeekToStreamType(stream_type, &stream_length)) {
-    BPLOG(ERROR) << "GetStream could not seek to stream type " << stream_type;
+    BPLOG(ERROR) << "GetStream could not seek to stream type " << stream_type << "  T:" << typeid(T).name();
     return NULL;
   }
 
   scoped_ptr<T> new_stream(new T(this));
 
   if (!new_stream->Read(stream_length)) {
-    BPLOG(ERROR) << "GetStream could not read stream type " << stream_type;
+    BPLOG(ERROR) << "GetStream could not read stream type " << stream_type << " length:" << stream_length << "  T:" << typeid(T).name();
     return NULL;
   }
 
