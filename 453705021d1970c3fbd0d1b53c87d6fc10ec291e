@@ -16,6 +16,23 @@
       "message": "stackwalk_common is for programs, not the libbreakpad client library.  something else is going on here.",
       "revId": "453705021d1970c3fbd0d1b53c87d6fc10ec291e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e0cd6c4_64783c37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-01-29T12:42:28Z",
+      "side": 1,
+      "message": "although that is the pattern we\u0027re using atm even if it is wrong.  program-specific sources should be listed in the program-specific SOURCES variables.  trying to untangle libbreakpad static libs is a much larger yak shave.",
+      "revId": "453705021d1970c3fbd0d1b53c87d6fc10ec291e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
