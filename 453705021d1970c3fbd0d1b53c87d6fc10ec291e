@@ -33,6 +33,23 @@
       "message": "although that is the pattern we\u0027re using atm even if it is wrong.  program-specific sources should be listed in the program-specific SOURCES variables.  trying to untangle libbreakpad static libs is a much larger yak shave.",
       "revId": "453705021d1970c3fbd0d1b53c87d6fc10ec291e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a109643_c3e2c863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-01-29T12:43:54Z",
+      "side": 1,
+      "message": "and FTR, the way to reproduce this is to run configure out-of-tree with --disable-dependency-tracking.  otherwise config.status will pre-mkdir all the output paths and no one will see this race.\n\n rm -rf build \u0026\u0026 mkdir build \u0026\u0026 cd build\n ../configure --disable-dependency-tracking\n make src/processor/stackwalk_common.o",
+      "revId": "453705021d1970c3fbd0d1b53c87d6fc10ec291e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
