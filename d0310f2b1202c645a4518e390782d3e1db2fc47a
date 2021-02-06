@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eff9355f_2271184e",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-02-06T15:05:44Z",
+      "side": 1,
+      "message": "since it\u0027s in this repo, the path can be relative:\n\n ./docs/",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 82
+      },
+      "revId": "d0310f2b1202c645a4518e390782d3e1db2fc47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
