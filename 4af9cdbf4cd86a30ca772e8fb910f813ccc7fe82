@@ -16,6 +16,24 @@
       "message": "Fine by me but I don\u0027t have any voting privileges here",
       "revId": "4af9cdbf4cd86a30ca772e8fb910f813ccc7fe82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da49d33b_e49be76f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-02-25T01:02:33Z",
+      "side": 1,
+      "message": "that seems like an oversight.  i\u0027ve added you now :).",
+      "parentUuid": "c6abb25e_4a89b3ec",
+      "revId": "4af9cdbf4cd86a30ca772e8fb910f813ccc7fe82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
