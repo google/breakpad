@@ -16,6 +16,23 @@
       "message": "For discussion.  I don\u0027t know if this is a bad idea or not?",
       "revId": "eda216bd631092b6f625189572c756c776b81ae3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5a3bb03_ab20a9c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116294
+      },
+      "writtenOn": "2021-02-26T21:59:37Z",
+      "side": 1,
+      "message": "This is a WIP but I don\u0027t think gerrit sends email if I don\u0027t trigger a review.",
+      "revId": "eda216bd631092b6f625189572c756c776b81ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
