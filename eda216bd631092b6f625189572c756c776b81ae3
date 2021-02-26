@@ -33,6 +33,29 @@
       "message": "This is a WIP but I don\u0027t think gerrit sends email if I don\u0027t trigger a review.",
       "revId": "eda216bd631092b6f625189572c756c776b81ae3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "560768bc_d0c09a0d",
+        "filename": "src/tools/mac/symupload/symupload.mm",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2021-02-26T22:20:17Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 14
+      },
+      "revId": "eda216bd631092b6f625189572c756c776b81ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
