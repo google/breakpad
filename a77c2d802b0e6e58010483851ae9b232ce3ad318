@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72cb681b_00dbf405",
+        "filename": "src/client/windows/unittests/crash_generation_server_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-02-26T09:48:40Z",
+      "side": 1,
+      "message": "there\u0027s whitespace issues here.  please fix that first.\n\nif you\u0027re developing on Windows, you probably want to search for things like \"autocrlf windows git\".",
+      "revId": "a77c2d802b0e6e58010483851ae9b232ce3ad318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
