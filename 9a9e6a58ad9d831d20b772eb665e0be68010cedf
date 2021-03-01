@@ -129,6 +129,30 @@
       },
       "revId": "9a9e6a58ad9d831d20b772eb665e0be68010cedf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2856123_95e8c6ff",
+        "filename": "src/tools/mac/symupload/symupload.mm",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2021-03-01T23:15:43Z",
+      "side": 1,
+      "message": "That makes sense to me. I would expect people to only upload macho and dsym from Mac symupload, but technically they can upload anything. Mac dump_syms would fail to pull debug IDs out of eg. PE files anyway so yeah you\u0027re right we need to restrict it.",
+      "parentUuid": "e5039ffd_474b443e",
+      "range": {
+        "startLine": 420,
+        "startChar": 6,
+        "endLine": 420,
+        "endChar": 57
+      },
+      "revId": "9a9e6a58ad9d831d20b772eb665e0be68010cedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
