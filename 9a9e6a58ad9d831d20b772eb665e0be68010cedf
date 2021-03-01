@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e9027c8_af5b669c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116294
+      },
+      "writtenOn": "2021-03-01T17:15:52Z",
+      "side": 1,
+      "message": "#include \"common/mac/dump_syms.h\" is a C++ file, so this needs to be an objc++ file.",
+      "parentUuid": "4056869f_fdc224a5",
+      "revId": "9a9e6a58ad9d831d20b772eb665e0be68010cedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3fa290e_4f12b4ba",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-01T16:34:55Z",
       "side": 1,
       "message": "Since this identifier needs be the same for all the artifacts associated with one executable binary, we should be careful about testing for Mac and iOS that it _is_ actually always the same in practice.",
+      "range": {
+        "startLine": 420,
+        "startChar": 6,
+        "endLine": 420,
+        "endChar": 57
+      },
+      "revId": "9a9e6a58ad9d831d20b772eb665e0be68010cedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc72825_87938648",
+        "filename": "src/tools/mac/symupload/symupload.mm",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1116294
+      },
+      "writtenOn": "2021-03-01T17:15:52Z",
+      "side": 1,
+      "message": "They should be the same.  If they are different.. things won\u0027t work regardless, right?",
+      "parentUuid": "c3fa290e_4f12b4ba",
       "range": {
         "startLine": 420,
         "startChar": 6,
