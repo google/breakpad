@@ -81,6 +81,30 @@
       },
       "revId": "9a9e6a58ad9d831d20b772eb665e0be68010cedf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "738614fd_23abbdb7",
+        "filename": "src/tools/mac/symupload/symupload.mm",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1324403
+      },
+      "writtenOn": "2021-03-01T21:11:32Z",
+      "side": 1,
+      "message": "If they are different, then the symbol store contract would be to upload both with the debug ID from the executable binary. This is the case eg. for ELF executables and DWARF Fission files, where the latter don\u0027t have debug IDs at all.",
+      "parentUuid": "bcc72825_87938648",
+      "range": {
+        "startLine": 420,
+        "startChar": 6,
+        "endLine": 420,
+        "endChar": 57
+      },
+      "revId": "9a9e6a58ad9d831d20b772eb665e0be68010cedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
