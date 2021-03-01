@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "670835f5_57602109",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-03-01T14:25:11Z",
+      "side": 1,
+      "message": "when you upload a new patch, it doesn\u0027t send out an e-mail notification.  you have to go through comments \u0026 respond to them.\n\ncan you mark comments that you\u0027ve addressed as resolved ?",
+      "revId": "3e301b3cc2b92cf19ea0d7007132d0cd5b2efe4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
