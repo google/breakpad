@@ -84,6 +84,40 @@
       "message": "I don\u0027t have permissions to land -- can you do that, or is there another process?",
       "revId": "dd3c1e73d2f6ca5e35a83496c8e7f14a3bb5eeda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4fa009_4f181055",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002222
+      },
+      "writtenOn": "2021-03-02T18:00:22Z",
+      "side": 1,
+      "message": "Slight aside, and more a question for Mark or Nelson, but could/should Linux support similar auto-ID\u0027ing?",
+      "revId": "dd3c1e73d2f6ca5e35a83496c8e7f14a3bb5eeda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a40c6c2_4c91746d",
+        "filename": "src/tools/mac/symupload/symupload.mm",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1002222
+      },
+      "writtenOn": "2021-03-02T18:00:22Z",
+      "side": 1,
+      "message": "Nit: This message should probably be updated since it might be confusing why it sometimes works for non-breakpad files but sometimes doesn\u0027t (and maybe the general help message as well, to indicate the formats that support automatic ID?) .",
+      "revId": "dd3c1e73d2f6ca5e35a83496c8e7f14a3bb5eeda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
