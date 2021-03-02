@@ -136,6 +136,24 @@
       "parentUuid": "4a40c6c2_4c91746d",
       "revId": "dd3c1e73d2f6ca5e35a83496c8e7f14a3bb5eeda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf8bb3c_9f57cf55",
+        "filename": "src/tools/mac/symupload/symupload.mm",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1002222
+      },
+      "writtenOn": "2021-03-02T18:31:56Z",
+      "side": 1,
+      "message": "Yeah, I was going to mention that. I think that could actually use a separate message, since it\u0027s really a separate error case. Something like \"Unable to determine debug-id. Please specify with \u0027-i\u0027.\"\n\nThe situation I was trying to avoid is something like, you try to upload two dsym files, and the first one succeeds, but then the second one fails to automatically extract the debug-id (for whatever reason) and you get the error message \"-c and -i must be specified for non-breakpad symbol upload types\", and you sit there scratching your head because it JUST WORKED FOR A NON-BREAKPAD UPLOAD TYPE!!!",
+      "parentUuid": "b3e33d22_a10de69a",
+      "revId": "dd3c1e73d2f6ca5e35a83496c8e7f14a3bb5eeda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
