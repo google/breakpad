@@ -118,6 +118,24 @@
       "message": "Nit: This message should probably be updated since it might be confusing why it sometimes works for non-breakpad files but sometimes doesn\u0027t (and maybe the general help message as well, to indicate the formats that support automatic ID?) .",
       "revId": "dd3c1e73d2f6ca5e35a83496c8e7f14a3bb5eeda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3e33d22_a10de69a",
+        "filename": "src/tools/mac/symupload/symupload.mm",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1116294
+      },
+      "writtenOn": "2021-03-02T18:09:03Z",
+      "side": 1,
+      "message": "I didn\u0027t touch it since, if for some reason `dump_symbols.Identifier()` fails, debugID won\u0027t be automagically set and \u0027-i\u0027 is still required.\n\nWhat do you think?",
+      "parentUuid": "4a40c6c2_4c91746d",
+      "revId": "dd3c1e73d2f6ca5e35a83496c8e7f14a3bb5eeda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
