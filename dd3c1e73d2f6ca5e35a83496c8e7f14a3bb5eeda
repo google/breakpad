@@ -154,6 +154,24 @@
       "parentUuid": "b3e33d22_a10de69a",
       "revId": "dd3c1e73d2f6ca5e35a83496c8e7f14a3bb5eeda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e5b7823_c0a0a6ee",
+        "filename": "src/tools/mac/symupload/symupload.mm",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1116294
+      },
+      "writtenOn": "2021-03-02T18:48:50Z",
+      "side": 1,
+      "message": "Got it -- added suggested comment.  PTAL!",
+      "parentUuid": "ebf8bb3c_9f57cf55",
+      "revId": "dd3c1e73d2f6ca5e35a83496c8e7f14a3bb5eeda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
