@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc14423e_ef6d7bf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002927
+      },
+      "writtenOn": "2021-03-04T20:01:45Z",
+      "side": 1,
+      "message": "For some reason, when building dump_syms.exe and its unit tests for tip-of-tree (using refresh_binaries.bat), the tests fail and look like they want the old baseline.\n\nMaybe it\u0027s something about how I\u0027m building, or what libraries get linked in.\n\nCan you share how you are building and running these tests? I didn\u0027t really find any documentation for this, the best I found was that refresh_binaries.bat file.",
+      "revId": "a86aedb515c3b2bd778b342402f09bc6009e8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
