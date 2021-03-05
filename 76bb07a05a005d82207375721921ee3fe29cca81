@@ -56,6 +56,30 @@
       },
       "revId": "76bb07a05a005d82207375721921ee3fe29cca81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d1f8f8_d79e3d36",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1002927
+      },
+      "writtenOn": "2021-03-05T19:22:40Z",
+      "side": 1,
+      "message": "I\u0027ve fixed the capital letter.\n\nSince the function is only used in this file, I don\u0027t see any reason to make it a static member.",
+      "parentUuid": "0ae24266_6754ea80",
+      "range": {
+        "startLine": 852,
+        "startChar": 12,
+        "endLine": 852,
+        "endChar": 27
+      },
+      "revId": "76bb07a05a005d82207375721921ee3fe29cca81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
