@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f4797a_9b02d1c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002927
+      },
+      "writtenOn": "2021-03-05T15:44:41Z",
+      "side": 1,
+      "message": "Mozilla was already carrying a patch for this downstream for the same reason:\nhttps://hg.mozilla.org/releases/mozilla-beta/rev/942a9f9f19a3\n\n\nI tested this by looking at the output of \"dump_syms chrome.dll\" before and after. Here\u0027s an excerpt from the diff:\n\n```\n@@ -55814,7 +55814,7 @@\n 237eb 44 46 46455\n 2382f 8f 49 46455\n 238be fc 49 46455\n-FUNC 239c0 8e 0 ?Generate@WasmOutOfLineTrap@?A0xF7AD154B@compiler@internal@v8@@UEAAXXZ$b9a2d08191025897deb63995da6d3571\n+FUNC 239c0 8e 0 v8::internal::compiler::`anonymous namespace\u0027::WasmOutOfLineTrap::Generate()\n 239c0 0 330 175761\n 239c0 8 331 175761\n 239c8 d 332 175761\n@@ -64715,7 +64715,7 @@\n 791ea 5 691 46140\n 791ef 11 691 46140\n 79200 24 706 46140\n-FUNC 79260 2d0 0 ?ContainsOperationCallback@?A0x42FFC680@blink@@YAXAEBV?$FunctionCallbackInfo@VValue@v8@@@v8@@@Z.llvm.13040715209719948753\n+FUNC 79260 2d0 0 blink::`anonymous namespace\u0027::ContainsOperationCallback(v8::FunctionCallbackInfo\u003cv8::Value\u003e const \u0026)\n 79260 21 578 368783\n 79281 7 583 368783\n 79288 6f 588 368783\n```",
+      "revId": "76bb07a05a005d82207375721921ee3fe29cca81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
