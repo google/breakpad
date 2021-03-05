@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "300c3cab_7527c28f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116294
+      },
+      "writtenOn": "2021-03-05T23:25:47Z",
+      "side": 1,
+      "message": "I\u0027m pretty confident on the UUID changes, although I\u0027m curious if this hack can be unwound?\n\nI\u0027m less confident in the HTTP changes since I don\u0027t know the right way to test this.  Is there a staging endpoint I can use (I don\u0027t have a key, for example).",
+      "revId": "c41a40da98c14c1ab4de33e12033759285f82c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
