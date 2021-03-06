@@ -50,6 +50,24 @@
       "message": "It seems worth clarifying (assuming it is true) in this comment that the period is only used in this one case.",
       "revId": "dd3a3a93e0222bf057c3436b124b913f9ded8018",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce062085_6eefcebf",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1002927
+      },
+      "writtenOn": "2021-03-06T09:07:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "51409931_e7433401",
+      "revId": "dd3a3a93e0222bf057c3436b124b913f9ded8018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
