@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e0bf4f_517d8515",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1002927
+      },
+      "writtenOn": "2021-03-08T17:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d92ca8ff_594709b6",
+      "revId": "fe85042b994d4ae0b0747133c917576209830ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80266a41_1388d7c4",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-08T16:09:53Z",
       "side": 1,
       "message": "This isn’t really “fix up” (which doesn’t inherently mean anything in particular), it’s a combination of “strip suffix and undecorate”.",
+      "revId": "fe85042b994d4ae0b0747133c917576209830ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4a2fac9_3ad17e18",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1002927
+      },
+      "writtenOn": "2021-03-08T17:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80266a41_1388d7c4",
       "revId": "fe85042b994d4ae0b0747133c917576209830ca5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96527daf_5411ddcc",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1002927
+      },
+      "writtenOn": "2021-03-08T17:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "933ae35c_362322b8",
+      "revId": "fe85042b994d4ae0b0747133c917576209830ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7df013e_2870a7dd",
@@ -65,6 +119,30 @@
       "writtenOn": "2021-03-08T16:09:53Z",
       "side": 1,
       "message": "Shouldn’t be necessary.",
+      "range": {
+        "startLine": 875,
+        "startChar": 45,
+        "endLine": 875,
+        "endChar": 48
+      },
+      "revId": "fe85042b994d4ae0b0747133c917576209830ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1986a347_62417b09",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1002927
+      },
+      "writtenOn": "2021-03-08T17:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7df013e_2870a7dd",
       "range": {
         "startLine": 875,
         "startChar": 45,
