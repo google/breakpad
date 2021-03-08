@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9200172_a3b4dcd4",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1002927
+      },
+      "writtenOn": "2021-03-08T18:26:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a079d2a9_3882146f",
+      "revId": "2adcd9e9c76c59348fe286b66a518e4ba55f32e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdd683e5_e7fab6e8",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-03-08T17:58:05Z",
       "side": 1,
       "message": "Reformat to fit in 80 columns.",
+      "revId": "2adcd9e9c76c59348fe286b66a518e4ba55f32e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e9cb9f_4f014cc9",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002927
+      },
+      "writtenOn": "2021-03-08T18:26:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdd683e5_e7fab6e8",
       "revId": "2adcd9e9c76c59348fe286b66a518e4ba55f32e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
