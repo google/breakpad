@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d92ca8ff_594709b6",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2021-03-08T16:09:53Z",
+      "side": 1,
+      "message": "Minor thing, but we generally prefer an unnamed namespace to this form of “static”. We already have an unnamed namespace at the top of the file, you should put this in it.",
+      "revId": "fe85042b994d4ae0b0747133c917576209830ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80266a41_1388d7c4",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2021-03-08T16:09:53Z",
+      "side": 1,
+      "message": "This isn’t really “fix up” (which doesn’t inherently mean anything in particular), it’s a combination of “strip suffix and undecorate”.",
+      "revId": "fe85042b994d4ae0b0747133c917576209830ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933ae35c_362322b8",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2021-03-08T16:09:53Z",
+      "side": 1,
+      "message": "Prefer to just write the 1024 when sizing the array at declaration (wchar_t undecorated[1024]), then using arrayize(undecorated) where needed in the call to UnDecorateSymbolNameW.",
+      "revId": "fe85042b994d4ae0b0747133c917576209830ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7df013e_2870a7dd",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2021-03-08T16:09:53Z",
+      "side": 1,
+      "message": "Shouldn’t be necessary.",
+      "range": {
+        "startLine": 875,
+        "startChar": 45,
+        "endLine": 875,
+        "endChar": 48
+      },
+      "revId": "fe85042b994d4ae0b0747133c917576209830ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
