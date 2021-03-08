@@ -16,6 +16,40 @@
       "message": "Thanks for the review! Please take another look.",
       "revId": "2adcd9e9c76c59348fe286b66a518e4ba55f32e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a079d2a9_3882146f",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2021-03-08T17:58:05Z",
+      "side": 1,
+      "message": "Maybe StripLlvmSuffixAndUndecorate so that it’s clear whose benefit this is for at the call site.",
+      "revId": "2adcd9e9c76c59348fe286b66a518e4ba55f32e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd683e5_e7fab6e8",
+        "filename": "src/common/windows/pdb_source_line_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2021-03-08T17:58:05Z",
+      "side": 1,
+      "message": "Reformat to fit in 80 columns.",
+      "revId": "2adcd9e9c76c59348fe286b66a518e4ba55f32e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
