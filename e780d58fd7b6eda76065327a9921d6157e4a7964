@@ -16,6 +16,24 @@
       "message": "This file was moved from common/android to common/linux, but the asm-mips directory still resides in common/android, so on Linux MIPS (not Android) build now fails because of missing includes.\n\nWhat will be the correct fix: move the asm-mips directory to common/linux, or make these includes conditional (and revert to generic asm/ includes like before Ie6a079b6b8130b549ebc6d0bc4aef0e47e7bd6c2 on non-Android)?",
       "revId": "e780d58fd7b6eda76065327a9921d6157e4a7964",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c517b45_d87272db",
+        "filename": "src/common/linux/breakpad_getcontext.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-03-16T15:28:32Z",
+      "side": 1,
+      "message": "moving the android/ headers to linux/ would only work if they\u0027re compatible with all C libraries.  i haven\u0027t looked.\n\notherwise you\u0027d want to use __ANDROID__ ifdef here to pick between the Android-specific \u0026 the general Linux headers.",
+      "parentUuid": "c607f327_3bf5e7c0",
+      "revId": "e780d58fd7b6eda76065327a9921d6157e4a7964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
