@@ -34,6 +34,24 @@
       "parentUuid": "c607f327_3bf5e7c0",
       "revId": "e780d58fd7b6eda76065327a9921d6157e4a7964",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eafc9952_d8d04bf5",
+        "filename": "src/common/linux/breakpad_getcontext.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1344427
+      },
+      "writtenOn": "2021-03-17T10:26:16Z",
+      "side": 1,
+      "message": "These headers are copied from Android NDK, but I don’t see anything Android-specific there.\n\nI worked around by adding these lines to Chromium\u0027s BUILD.gn:\n\n    if (is_linux) {\n      defines \u003d [ \"HAVE_GETCONTEXT\" ]\n      sources -\u003d [ \"breakpad/src/common/linux/breakpad_getcontext.S\" ]\n    }\n\nDon’t know if it’s suitable for upstream Chromium, but it should work in our case (Debian).\n\nAnyway, there is still a bug in breakpad which needs fixing: code from common/linux should not include headers from common/android.",
+      "parentUuid": "6c517b45_d87272db",
+      "revId": "e780d58fd7b6eda76065327a9921d6157e4a7964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
