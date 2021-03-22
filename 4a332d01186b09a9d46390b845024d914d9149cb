@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c6a638e_89ebe64b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-03-22T02:37:52Z",
+      "side": 1,
+      "message": "use the official archives rather than some random website\nhttps://sourceware.org/pipermail/libc-alpha/2020-October/118513.html",
+      "revId": "4a332d01186b09a9d46390b845024d914d9149cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9a2d6c2_994cba04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-03-22T02:37:52Z",
+      "side": 1,
+      "message": "should switch it all to size_t to match the stack_t API",
+      "revId": "4a332d01186b09a9d46390b845024d914d9149cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b16afd0b_34bd55cc",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-03-22T02:37:52Z",
+      "side": 1,
+      "message": "remove the static \u0026 const markings",
+      "revId": "4a332d01186b09a9d46390b845024d914d9149cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
