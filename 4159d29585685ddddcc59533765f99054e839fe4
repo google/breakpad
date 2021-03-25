@@ -16,6 +16,29 @@
       "message": "ptal.",
       "revId": "4159d29585685ddddcc59533765f99054e839fe4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6e5e35_aef2a7b8",
+        "filename": "src/processor/minidump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4857,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2021-03-25T18:31:40Z",
+      "side": 1,
+      "message": "expected_size is the size in the minidump.\nsizeof(crashpad_info_) is the size of the structure that Crashpad knows about.\n\nThere may be a mismatch. The mismatch can happen in either direction, because an old Breakpad might read a new minidump, or a new Breakpad might read an old minidump.\n\nSo you can say this _right_now_ because sizeof(crashpad_info_) is the minimum size that you’ll accept. But as you expand things in the future, sizeof(crashpad_info_) will be larger, and you don’t want to reject expected_sizes that are smaller than the new larger sizeof(crashpad_info_)s.\n\nWhat you’ll really need to do is set the minimum size that Breakpad understands here, and then take each field in sequence. If it’s present in the minidump, use it. If it’s not present, set some sane default (like zero?) in crashpad_info_, or set some boolean that indicates it’s not present.",
+      "range": {
+        "startLine": 4857,
+        "startChar": 6,
+        "endLine": 4857,
+        "endChar": 19
+      },
+      "revId": "4159d29585685ddddcc59533765f99054e839fe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
