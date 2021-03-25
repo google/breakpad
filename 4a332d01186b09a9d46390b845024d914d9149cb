@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a4b89f_6ec4ccdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2021-03-25T19:14:18Z",
+      "side": 1,
+      "message": "Would LGTM otherwise.",
+      "revId": "4a332d01186b09a9d46390b845024d914d9149cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b16afd0b_34bd55cc",
@@ -48,6 +65,24 @@
       "writtenOn": "2021-03-22T02:37:52Z",
       "side": 1,
       "message": "remove the static \u0026 const markings",
+      "revId": "4a332d01186b09a9d46390b845024d914d9149cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d92d9ff3_b75130cf",
+        "filename": "src/client/linux/handler/exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2021-03-25T19:14:18Z",
+      "side": 1,
+      "message": "\u003e remove the static \u0026 const markings\n\nI don’t care if it’s const, but it shouldn’t be static.",
+      "parentUuid": "b16afd0b_34bd55cc",
       "revId": "4a332d01186b09a9d46390b845024d914d9149cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
