@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "573b3990_d9048054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000825
+      },
+      "writtenOn": "2021-04-01T17:41:41Z",
+      "side": 1,
+      "message": "Joshua, I don\u0027t have permission to submit this patch, would you like to do so?",
+      "revId": "482b0e3973199ef301dceac3496f001d71d888a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
