@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dedb1a7_4fc6a345",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-05-11T23:37:16Z",
+      "side": 1,
+      "message": "It\u0027s hard to use compiler to generate different kinds of entries in a single debug_rnglists section. So, I hand-coded it based on compiler-generated .debug_rnglists section. \n",
+      "revId": "dde9cc3ecaf0635ca15ed0718f9ecf76ccd0a754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
