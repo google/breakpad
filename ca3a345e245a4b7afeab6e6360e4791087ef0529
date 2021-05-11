@@ -16,6 +16,24 @@
       "message": "Hmm, where does header_size come into this calculation? I\u0027d expect DWARFv5 sec_offset rnglist should be read directly from the \u0027data\u0027 value, same as v4.\n\n(is this case tested? Oh, I see the test case was changed to subtract 12 from the offset - I think that change is incorrect)\n\nMight be worth testing all this, at least manually with some real DWARF from Clang?",
       "revId": "ca3a345e245a4b7afeab6e6360e4791087ef0529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5580751b_edaf87c3",
+        "filename": "src/common/dwarf/dwarf2reader.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-05-11T20:00:39Z",
+      "side": 1,
+      "message": "Do you mean that the data is offset from beginning of each cu\u0027s header? Or the beginning of .debug_rnglists section?\n\nHow can I use clange to generate .debug_rnglists with DW_FORM_sec_offset inside? I can only got DW_FORM_rnglistx inside.",
+      "parentUuid": "8a2eef38_798f40c1",
+      "revId": "ca3a345e245a4b7afeab6e6360e4791087ef0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
