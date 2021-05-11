@@ -102,6 +102,30 @@
       },
       "revId": "c416640f579ef4e4c8d1a48e1e1ae4a61a7fbbdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad4a33df_5d80774f",
+        "filename": "src/common/dwarf/dwarf2reader_die_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1511392
+      },
+      "writtenOn": "2021-05-11T18:04:50Z",
+      "side": 1,
+      "message": "That\u0027s a bug in the spec (\u0026 not how GCC or Clang generate rnglists - it\u0027d be fairly difficult to do (would require some interesting multi-section object files, some sort of comdat to deduplicate this header and/or linker-dwarf-awareness to put all the rnglists together - and require renumbering of all the rnglistx values in each CU)).\n\nHere\u0027s the issue tracking fixing the wording: http://dwarfstd.org/ShowIssue.php?issue\u003d190130.1\n\nIn any case - there\u0027s one contribution/hunk/header/list/etc per CU generally, or at least there\u0027s the option for more than one per file \u0026 implementations will generally produce at least object file (so there will be many in linked binaries)",
+      "parentUuid": "e9905e37_3c7cc015",
+      "range": {
+        "startLine": 759,
+        "startChar": 0,
+        "endLine": 759,
+        "endChar": 28
+      },
+      "revId": "c416640f579ef4e4c8d1a48e1e1ae4a61a7fbbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
