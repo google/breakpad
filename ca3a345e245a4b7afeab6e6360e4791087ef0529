@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a2eef38_798f40c1",
+        "filename": "src/common/dwarf/dwarf2reader.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1511392
+      },
+      "writtenOn": "2021-05-11T19:31:13Z",
+      "side": 1,
+      "message": "Hmm, where does header_size come into this calculation? I\u0027d expect DWARFv5 sec_offset rnglist should be read directly from the \u0027data\u0027 value, same as v4.\n\n(is this case tested? Oh, I see the test case was changed to subtract 12 from the offset - I think that change is incorrect)\n\nMight be worth testing all this, at least manually with some real DWARF from Clang?",
+      "revId": "ca3a345e245a4b7afeab6e6360e4791087ef0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
