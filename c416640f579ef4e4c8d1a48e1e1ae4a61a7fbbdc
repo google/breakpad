@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d36800e_fc78edc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511392
+      },
+      "writtenOn": "2021-05-11T18:39:40Z",
+      "side": 1,
+      "message": "Yep, I think that would be the way to go.\n\nThe DW_AT_rnglists_base (\u0026 similar attributes) were specified to point to after the header for this reason (the ability to use them without having to parse/skip over the header) so far as I can see/imagine/speculate.\n\nSo skip all the header parsing, set `offset_array_ \u003d offset_array_base_;`, don\u0027t worry about the count/leave it as zero/unused (remove the variable entirely, maybe?) (if some malformed DWARF has a rnglistx too large - well, it\u0027ll interpret the some rnglist as an index and jump off to who knows where, but that\u0027s garbage-in-garbage-out).\n\nI assume the length is already bounds checked by the limits of the size of the section, yes? That should be enough. No need to use the length in the header to restrict that further. (again, would provide an opportunity for somewhat nicer/faster failures on malformed DWARF, but I think it adds more complexity than is worthwhile given the way the DWARF is designed here)\n\n\nAt least a basic test to exercise all this would be to write two files, each with two functions - compile them with function sections (so the two CUs both get rnglists - hmm, might want to make it a bit more interesting to ensure the two rnglists are different (like having different offsets/index tables) but that requires more finagling to introduce more range lists, which isn\u0027t trivial - I usually do that with hand-crafted LLVM IR to jumble up some instructions) - so then you\u0027ll have two rnglists contributions.\n\nDWARF64 is still pretty hypothetical/experimental so far as I know (might be simpler to say it\u0027s not supported for now?) but if you want to test it Clang /might/ be able to generate DWARF64 for this. (yeah, tried testing it, looks like we do correctly produce DWARF64 for this ,at least at a glance) - rnglists_base of 0x14 instead of 0xc, etc.\n\n\n(ah, latest code change looks correct - but, yeah, we could skip all the header parsing stuff, if you like - less code means less chance of bugs, perhaps?)",
+      "parentUuid": "4f6cb60d_86adf4ed",
+      "revId": "c416640f579ef4e4c8d1a48e1e1ae4a61a7fbbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9464bc65_80965a1d",
         "filename": "src/common/dwarf/dwarf2reader.cc",
         "patchSetId": 1
