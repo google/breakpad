@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d00db4e_c2621f60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386395
+      },
+      "writtenOn": "2021-05-11T17:40:47Z",
+      "side": 1,
+      "message": "Thanks for the catch and the change.\n\nThe biggest mistake I made when I wrote the original change was constructing the only test case by hand--and because I erroneously read the standard as saying that there was a compilation-unit header (instead of a single-section header), I wrote the both the code and test case incorrectly.\n\nI think this fix suffers from the same problem.\n\nYou found my mistake by using compiler-generated dwarf. I think the best thing to do here is to ensure that the two-translation unit test you are adding more closely matches what a compiler would do. Which is to say, not have two headers. \n\nOnce that test case is correct, I suspect the code to read it will be quite a bit cleaner.\n\nThe original code isn\u0027t wrong where it does the actual reading, it just reads the header from the wrong place.\n\nSo this patch should probably be a fair amount smaller, except the test-case, which will much better than my original once it is cleaned up a bit.",
+      "revId": "c416640f579ef4e4c8d1a48e1e1ae4a61a7fbbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9464bc65_80965a1d",
+        "filename": "src/common/dwarf/dwarf2reader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1386395
+      },
+      "writtenOn": "2021-05-11T17:40:47Z",
+      "side": 1,
+      "message": "[Start with comment on the test case. This will make more sense after that.]\n\nThe original code for detecting header lengths and dwarf32 vs dwarf64 is correct. A dwarf64 length here would be at offset5 so dwarf32 vs dwarf64 can be detected in line here without passing it around. Also, the dwarf64 length needs to be read at the a +4 offset. So just keep the original code, except have it start at offset zero, and don\u0027t pass anything in.\n\nSection 7.2.8.1:\n\nunit_length (initial length)\nA 4-byte or 12-byte length containing the length of the set of entries for this\ncompilation unit, not including the length field itself. In the 32-bit DWARF\nformat, this is a 4-byte unsigned integer (which must be less than\n0xfffffff0); in the 64-bit DWARF format, this consists of the 4-byte value\n0xffffffff followed by an 8-byte unsigned integer that gives the actual\nlength (see Section 7.4 on page 196).",
+      "revId": "c416640f579ef4e4c8d1a48e1e1ae4a61a7fbbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c19b10_22b42fdd",
+        "filename": "src/common/dwarf/dwarf2reader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1386395
+      },
+      "writtenOn": "2021-05-11T17:40:47Z",
+      "side": 1,
+      "message": "after the other comments, I think we should keep this named ranges_base_",
+      "range": {
+        "startLine": 266,
+        "startChar": 13,
+        "endLine": 266,
+        "endChar": 31
+      },
+      "revId": "c416640f579ef4e4c8d1a48e1e1ae4a61a7fbbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d6fc9d_a8f2ce3c",
+        "filename": "src/common/dwarf/dwarf2reader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1386395
+      },
+      "writtenOn": "2021-05-11T17:40:47Z",
+      "side": 1,
+      "message": "there is no need to pass isDwarf32 around. That is detectible at header-read.",
+      "range": {
+        "startLine": 287,
+        "startChar": 55,
+        "endLine": 287,
+        "endChar": 64
+      },
+      "revId": "c416640f579ef4e4c8d1a48e1e1ae4a61a7fbbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9905e37_3c7cc015",
+        "filename": "src/common/dwarf/dwarf2reader_die_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1386395
+      },
+      "writtenOn": "2021-05-11T17:40:47Z",
+      "side": 1,
+      "message": "The way I read the dwarf 5 standard, Section 7.2.8 [1], there should be only one header for the entire section. This is the mistake I made originally. Fixing this will affect the rest of the patch fairly dramatically.\n\nhttp://dwarfstd.org/doc/DWARF5.pdf\n\n1: Section 7.2.8:\n\nEach .debug_rnglists and .debug_rnglists.dwo section begins with a header containing:\n...\nImmediately following the header is an array of offsets. This array is followed a series of range lists.\n\n...\n[There is no additional content.]",
+      "range": {
+        "startLine": 759,
+        "startChar": 0,
+        "endLine": 759,
+        "endChar": 28
+      },
+      "revId": "c416640f579ef4e4c8d1a48e1e1ae4a61a7fbbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
