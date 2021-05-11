@@ -34,6 +34,24 @@
       "parentUuid": "8a2eef38_798f40c1",
       "revId": "ca3a345e245a4b7afeab6e6360e4791087ef0529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732a2e17_15d83aa0",
+        "filename": "src/common/dwarf/dwarf2reader.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1511392
+      },
+      "writtenOn": "2021-05-11T20:10:00Z",
+      "side": 1,
+      "message": "\u003e Do you mean that the data is offset from beginning of each cu\u0027s header? Or the beginning of .debug_rnglists section?\n\nThe beginning of the .debug_rnglists section.\n\n\u003e How can I use clange to generate .debug_rnglists with DW_FORM_sec_offset inside? I can only got DW_FORM_rnglistx inside.\n\nAh, yeah, Clang never uses sec_offset for ranges in DWARFv5. I think GCC does, though - yep! GCC 8 or above seem to produce sec_offset references to rnglists.",
+      "parentUuid": "5580751b_edaf87c3",
+      "revId": "ca3a345e245a4b7afeab6e6360e4791087ef0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
