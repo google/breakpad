@@ -16,6 +16,109 @@
       "message": "It\u0027s hard to use compiler to generate different kinds of entries in a single debug_rnglists section. So, I hand-coded it based on compiler-generated .debug_rnglists section. \n",
       "revId": "dde9cc3ecaf0635ca15ed0718f9ecf76ccd0a754",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "852c557d_58848299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511392
+      },
+      "writtenOn": "2021-05-12T00:16:57Z",
+      "side": 1,
+      "message": "You could get both by linking GCC and Clang objects together - but if you want assembly, yeah, some hand-crafting would be needed (at least copy/pasting the two together - but probably as easy to take Clang\u0027s output and switch a rnglistx to sec_offset, trim the offset list, etc - Clang\u0027s output tends to be fairly symbolic, so some modifications like this are practical without having to go and hand-hack a lot of other dependent values like length fields, etc)",
+      "parentUuid": "9dedb1a7_4fc6a345",
+      "revId": "dde9cc3ecaf0635ca15ed0718f9ecf76ccd0a754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e49299_b8d2f02e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511392
+      },
+      "writtenOn": "2021-05-12T00:16:57Z",
+      "side": 1,
+      "message": "Generally makes sense to me - some minor/optional things for the test cases",
+      "revId": "dde9cc3ecaf0635ca15ed0718f9ecf76ccd0a754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd662c7_d9f6a18a",
+        "filename": "src/common/dwarf/dwarf2reader_die_unittest.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1511392
+      },
+      "writtenOn": "2021-05-12T00:16:57Z",
+      "side": 1,
+      "message": "Might be worth declaring 12 earlier as a constant with a comment explaining what it is (or computing it from the length of the header - rnglists2.size() just after the header is emitted) (similarly in other places in the tests)",
+      "revId": "dde9cc3ecaf0635ca15ed0718f9ecf76ccd0a754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c3f39d_6363311f",
+        "filename": "src/common/dwarf/dwarf2reader_die_unittest.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1511392
+      },
+      "writtenOn": "2021-05-12T00:16:57Z",
+      "side": 1,
+      "message": "all these range comments might be good to use the half-open syntax that matches the semantics, so `[19, 20)` in this case, etc.",
+      "revId": "dde9cc3ecaf0635ca15ed0718f9ecf76ccd0a754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1349bc1_7f2e69ca",
+        "filename": "src/common/dwarf/dwarf2reader_die_unittest.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1511392
+      },
+      "writtenOn": "2021-05-12T00:16:57Z",
+      "side": 1,
+      "message": "Could retrieve the size after the length is emitted - store that in a variable like \"offsetAfterLength\" and use that here to make this more symbolic/less \"magic numbers\"",
+      "revId": "dde9cc3ecaf0635ca15ed0718f9ecf76ccd0a754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d611f62f_619f8b44",
+        "filename": "src/common/dwarf/dwarf2reader_die_unittest.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1511392
+      },
+      "writtenOn": "2021-05-12T00:16:57Z",
+      "side": 1,
+      "message": "Indentation?",
+      "revId": "dde9cc3ecaf0635ca15ed0718f9ecf76ccd0a754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
