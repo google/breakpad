@@ -16,6 +16,29 @@
       "message": "Think this is looking all good to me, FWIW.",
       "revId": "36f899e9a8fc81f1b6b17e54600827020f79f488",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "566f2af7_e13ccaa3",
+        "filename": "src/common/dwarf/dwarf2reader.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-05-13T20:54:20Z",
+      "side": 1,
+      "message": "No trailing underscore here.",
+      "range": {
+        "startLine": 286,
+        "startChar": 47,
+        "endLine": 286,
+        "endChar": 48
+      },
+      "revId": "36f899e9a8fc81f1b6b17e54600827020f79f488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
