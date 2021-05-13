@@ -39,6 +39,30 @@
       },
       "revId": "36f899e9a8fc81f1b6b17e54600827020f79f488",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "829eebae_9766be18",
+        "filename": "src/common/dwarf/dwarf2reader.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-05-13T21:03:32Z",
+      "side": 1,
+      "message": "That function was deleted.",
+      "parentUuid": "566f2af7_e13ccaa3",
+      "range": {
+        "startLine": 286,
+        "startChar": 47,
+        "endLine": 286,
+        "endChar": 48
+      },
+      "revId": "36f899e9a8fc81f1b6b17e54600827020f79f488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
