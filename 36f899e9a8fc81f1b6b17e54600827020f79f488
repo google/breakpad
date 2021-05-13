@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "462d0f56_47f1f7e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511392
+      },
+      "writtenOn": "2021-05-13T20:28:46Z",
+      "side": 1,
+      "message": "Think this is looking all good to me, FWIW.",
+      "revId": "36f899e9a8fc81f1b6b17e54600827020f79f488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
