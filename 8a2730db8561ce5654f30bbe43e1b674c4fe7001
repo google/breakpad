@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125413e4_62df8f88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000684
+      },
+      "writtenOn": "2021-05-17T22:18:56Z",
+      "side": 1,
+      "message": "LGTM, but I don\u0027t have privileges to approve this.",
+      "revId": "8a2730db8561ce5654f30bbe43e1b674c4fe7001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
