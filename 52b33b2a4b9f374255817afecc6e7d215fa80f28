@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e036c6b_19afb940",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-05-17T23:48:20Z",
+      "side": 1,
+      "message": "Hi, this seems wired that forward_ref_die_to_func is always empty. I don\u0027t see where you insert into cu_context-\u003eforward_ref_die_to_func.",
+      "revId": "52b33b2a4b9f374255817afecc6e7d215fa80f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
