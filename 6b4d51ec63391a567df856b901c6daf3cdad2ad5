@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c00ad4_3f84e837",
+        "filename": "src/common/dwarf/dwarf2reader.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1386395
+      },
+      "writtenOn": "2021-05-17T18:38:39Z",
+      "side": 1,
+      "message": "David may have a different take, but I don\u0027t think this is correct. addr_base could be nearly any offset into .debug_addr. So either way, a wrong address could be returned.\n\nIf I\u0027m not mistaken, the proper fix is to scan through the rest of the die until DW_AT_addr_base is found, and then go back and retrieve the address.",
+      "range": {
+        "startLine": 440,
+        "startChar": 4,
+        "endLine": 440,
+        "endChar": 14
+      },
+      "revId": "6b4d51ec63391a567df856b901c6daf3cdad2ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
