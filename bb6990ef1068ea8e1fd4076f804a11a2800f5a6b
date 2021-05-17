@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "bfd07e22_b26771b7",
         "filename": "src/common/mac/HTTPMultipartUpload.m",
@@ -20,10 +21,10 @@
         "endChar": 45
       },
       "revId": "bb6990ef1068ea8e1fd4076f804a11a2800f5a6b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "07bd7aaa_4ed32238",
         "filename": "src/common/mac/HTTPMultipartUpload.m",
@@ -44,10 +45,34 @@
         "endChar": 45
       },
       "revId": "bb6990ef1068ea8e1fd4076f804a11a2800f5a6b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b45559b_71a43c57",
+        "filename": "src/common/mac/HTTPMultipartUpload.m",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1430358
+      },
+      "writtenOn": "2021-05-17T02:58:59Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "07bd7aaa_4ed32238",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "bb6990ef1068ea8e1fd4076f804a11a2800f5a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "2cca3cfc_d7716900",
         "filename": "src/common/mac/HTTPMultipartUpload.m",
@@ -61,10 +86,10 @@
       "side": 1,
       "message": "Watch the 80-column limit, throughout.",
       "revId": "bb6990ef1068ea8e1fd4076f804a11a2800f5a6b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "bd71ee9e_ccfffd27",
         "filename": "src/common/mac/HTTPMultipartUpload.m",
@@ -79,10 +104,10 @@
       "message": "Done",
       "parentUuid": "2cca3cfc_d7716900",
       "revId": "bb6990ef1068ea8e1fd4076f804a11a2800f5a6b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "abf96c0d_a49ba29a",
         "filename": "src/common/mac/HTTPMultipartUpload.m",
@@ -102,10 +127,10 @@
         "endChar": 59
       },
       "revId": "bb6990ef1068ea8e1fd4076f804a11a2800f5a6b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "1bb0f8dd_388fbeaf",
         "filename": "src/common/mac/HTTPMultipartUpload.m",
@@ -126,10 +151,10 @@
         "endChar": 59
       },
       "revId": "bb6990ef1068ea8e1fd4076f804a11a2800f5a6b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "8f0c3a28_787635d5",
         "filename": "src/common/mac/HTTPMultipartUpload.m",
@@ -143,10 +168,10 @@
       "side": 1,
       "message": "I don’t see why this had to be refactored into its own function.",
       "revId": "bb6990ef1068ea8e1fd4076f804a11a2800f5a6b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "af9166fc_b7990ce1",
         "filename": "src/common/mac/HTTPMultipartUpload.m",
@@ -161,8 +186,25 @@
       "message": "I wanted to avoid nested `#if` directives to improve readability.",
       "parentUuid": "8f0c3a28_787635d5",
       "revId": "bb6990ef1068ea8e1fd4076f804a11a2800f5a6b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "558b2f34_8af2aefd",
+        "filename": "src/common/mac/HTTPMultipartUpload.m",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1430358
+      },
+      "writtenOn": "2021-05-17T02:58:59Z",
+      "side": 1,
+      "message": "Changed my mind. I decided to refactor the `#if` directives into new macros and keep the existing code structure.",
+      "parentUuid": "af9166fc_b7990ce1",
+      "revId": "bb6990ef1068ea8e1fd4076f804a11a2800f5a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

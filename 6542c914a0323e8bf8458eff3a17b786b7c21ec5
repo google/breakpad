@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "ac7199cd_c12013f4",
         "filename": "src/common/mac/HTTPRequest.m",
@@ -14,8 +15,25 @@
       "side": 1,
       "message": "This is called wait_semaphore now (new line 49, also used on 85–86, moved from old lines 52 and 56). Did you compile-test this?",
       "revId": "6542c914a0323e8bf8458eff3a17b786b7c21ec5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "428bc8be_93764a1d",
+        "filename": "src/common/mac/HTTPRequest.m",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1430358
+      },
+      "writtenOn": "2021-05-17T02:58:59Z",
+      "side": 1,
+      "message": "Figured out why the compile wasn’t failing. Needed to add `HTTPRequest.m` to the Xcode project and increase the deployment target. Fixed!",
+      "parentUuid": "ac7199cd_c12013f4",
+      "revId": "6542c914a0323e8bf8458eff3a17b786b7c21ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
