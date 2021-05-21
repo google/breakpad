@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bf2773f_e2e9bfb6",
+        "filename": "src/common/mac/macho_reader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-05-21T15:48:31Z",
+      "side": 1,
+      "message": "d",
+      "range": {
+        "startLine": 528,
+        "startChar": 35,
+        "endLine": 528,
+        "endChar": 36
+      },
+      "revId": "d8a0cc719d65fb1272a8962bc6e3c8aa0b1b6310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
