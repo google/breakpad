@@ -39,6 +39,30 @@
       },
       "revId": "05d720c1910851c113154632426caa9ad8186f03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8d71bb1_ed29227c",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-05-26T18:05:38Z",
+      "side": 1,
+      "message": "having \"extra\" people here isn\u0027t a problem by itself.  you just have to be knowledgeable about the codebase/project.  so even if you haven\u0027t contributed in a long time, that\u0027s fine.\n\nhowever, if you\u0027re in this file, chances are pretty good that you\u0027ll be called on at some point to review/approve a CL.  if you don\u0027t want that responsibility, we can drop you.",
+      "parentUuid": "8fa61314_b13a85d6",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "05d720c1910851c113154632426caa9ad8186f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
