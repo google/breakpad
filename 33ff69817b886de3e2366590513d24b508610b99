@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "357db776_ce07721c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-05-26T18:52:39Z",
+      "side": 1,
+      "message": "It tries to de-duplicate the PUBLIC records whose address also shows up in a function record: https://chromium.googlesource.com/breakpad/breakpad/+/refs/heads/main/src/common/module.cc#95. \nThe PUBLIC records list externs_ is constructed when loading .strtab and .symtab. And the FUNCTION records list functions_ is constructed when loading .debug_info.\nSo, externs_ is always empty if we load .debug_info first.",
+      "parentUuid": "d945a6fa_90138495",
+      "revId": "33ff69817b886de3e2366590513d24b508610b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36fadd34_1e768df6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -54,6 +72,24 @@
       "writtenOn": "2021-05-26T00:59:45Z",
       "side": 1,
       "message": "Is it possible to construct a unit test for this scenario in dump_symbols_unittest.cc?",
+      "revId": "33ff69817b886de3e2366590513d24b508610b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7273bc8_d718c43a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-05-26T18:52:39Z",
+      "side": 1,
+      "message": "Then it requires construct .debug_info .debug_str sections which could be tedious.",
+      "parentUuid": "229cab9b_04525b3f",
       "revId": "33ff69817b886de3e2366590513d24b508610b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
