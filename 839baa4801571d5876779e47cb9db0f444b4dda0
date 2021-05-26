@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a97979_26bd6b2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512597
+      },
+      "writtenOn": "2021-05-26T20:06:08Z",
+      "side": 1,
+      "message": "I realized that my issue is that \"fetch breakpad\" isn\u0027t actually pulling all the files.  I did make this change locally on the g3 copy and confirmed it builds and all of the tests pass.",
+      "revId": "839baa4801571d5876779e47cb9db0f444b4dda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
