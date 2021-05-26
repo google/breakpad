@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b81868ed_a3cc725a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1512597
+      },
+      "writtenOn": "2021-05-26T17:33:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b744eb94_bb53aaf4",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "03f0b27a890a83fa6d2cc62b92f90fe2fd0b7bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6dca944_fa38ea36",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8100a14_4e2066c1",
+        "filename": "src/common/dwarf/dwarf2reader_die_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1512597
+      },
+      "writtenOn": "2021-05-26T17:33:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6dca944_fa38ea36",
+      "revId": "03f0b27a890a83fa6d2cc62b92f90fe2fd0b7bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b4018df_1fba0732",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-05-26T16:29:25Z",
       "side": 1,
       "message": "This namespace was still anonymous.",
+      "range": {
+        "startLine": 187,
+        "startChar": 16,
+        "endLine": 187,
+        "endChar": 31
+      },
+      "revId": "03f0b27a890a83fa6d2cc62b92f90fe2fd0b7bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c6d34f_afcd9b16",
+        "filename": "src/common/dwarf/dwarf2reader_lineinfo_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1512597
+      },
+      "writtenOn": "2021-05-26T17:33:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b4018df_1fba0732",
       "range": {
         "startLine": 187,
         "startChar": 16,
