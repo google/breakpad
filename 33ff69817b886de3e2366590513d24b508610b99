@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d945a6fa_90138495",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-05-26T00:59:45Z",
+      "side": 1,
+      "message": "Curious, why does the loading ordering change the number of records. Why does it de-duplicate in one order but not the other?",
+      "revId": "33ff69817b886de3e2366590513d24b508610b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36fadd34_1e768df6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-05-26T00:59:45Z",
+      "side": 1,
+      "message": "nit: \"661 MB to 577 MB\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 46,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "33ff69817b886de3e2366590513d24b508610b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "229cab9b_04525b3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-05-26T00:59:45Z",
+      "side": 1,
+      "message": "Is it possible to construct a unit test for this scenario in dump_symbols_unittest.cc?",
+      "revId": "33ff69817b886de3e2366590513d24b508610b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
