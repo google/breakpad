@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98cdb8bb_b7433ef8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003006
+      },
+      "writtenOn": "2021-05-27T20:17:28Z",
+      "side": 1,
+      "message": "How many INLINE and INLINE_ORIGIN records are there in the chrome breakpad symbol file with this change? If there are many, we might want shorter names like INL and ORIGIN.\n\nPlease also add the size of the chrome.dll breakpad file before and after this change to the commit description.",
+      "revId": "d76b5cef3cae7b94e9842f9cf5f8c6353677f886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
