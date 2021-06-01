@@ -34,6 +34,75 @@
       "parentUuid": "98cdb8bb_b7433ef8",
       "revId": "d76b5cef3cae7b94e9842f9cf5f8c6353677f886",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18c3c53a_c931e019",
+        "filename": "src/common/module.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-01T19:20:40Z",
+      "side": 1,
+      "message": "|i| can be eliminated by iterating with |head| instead as you did in CreateInlineOrigins(). I also think |in| was a better name for this variable than |head|.",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 27
+      },
+      "revId": "d76b5cef3cae7b94e9842f9cf5f8c6353677f886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d0debf4_c1be0f31",
+        "filename": "src/common/module.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-01T19:20:40Z",
+      "side": 1,
+      "message": "function",
+      "range": {
+        "startLine": 126,
+        "startChar": 44,
+        "endLine": 126,
+        "endChar": 53
+      },
+      "revId": "d76b5cef3cae7b94e9842f9cf5f8c6353677f886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb3aabfb_3f2a8504",
+        "filename": "src/common/module.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-01T19:20:40Z",
+      "side": 1,
+      "message": "Please add a comment stating what are the prerequisites for calling this function and/or make it private if nothing outside Module should ever need to call it.",
+      "range": {
+        "startLine": 328,
+        "startChar": 2,
+        "endLine": 328,
+        "endChar": 29
+      },
+      "revId": "d76b5cef3cae7b94e9842f9cf5f8c6353677f886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
