@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b21ec7e_f05f53e2",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-01T23:18:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a379be08_624f52f4",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 10
+      },
+      "revId": "c06e8baab2b5b86f79c9d5d76c4af9ebd2ea4321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12a799d2_23bb1d89",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-01T19:20:40Z",
       "side": 1,
       "message": "|key| and |val| would be fine names for a generic map structure, but this class is very specific kind of map. What are the keys and values?",
+      "range": {
+        "startLine": 118,
+        "startChar": 20,
+        "endLine": 118,
+        "endChar": 46
+      },
+      "revId": "c06e8baab2b5b86f79c9d5d76c4af9ebd2ea4321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "731c301f_697b04c4",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-01T23:18:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12a799d2_23bb1d89",
       "range": {
         "startLine": 118,
         "startChar": 20,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc6b05d_50e54e64",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-01T23:18:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4829ce37_6e1e8986",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 58
+      },
+      "revId": "c06e8baab2b5b86f79c9d5d76c4af9ebd2ea4321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "789fd977_0de91003",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-01T19:20:40Z",
       "side": 1,
       "message": "private members should be named with trailing underscores, e.g. \"inline_origins_\"",
+      "range": {
+        "startLine": 145,
+        "startChar": 23,
+        "endLine": 145,
+        "endChar": 37
+      },
+      "revId": "c06e8baab2b5b86f79c9d5d76c4af9ebd2ea4321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa0ca186_06e54308",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-01T23:18:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "789fd977_0de91003",
       "range": {
         "startLine": 145,
         "startChar": 23,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fc3dbeb_9c200b57",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-01T23:18:21Z",
+      "side": 1,
+      "message": "FuncHandler put subprogram\u0027s offset into the map only when it sees DW_AT_decl_file in that DW_TAG_subprogram. The value of DW_AT_decl_file is the key in this map.",
+      "parentUuid": "75a4270b_193113d3",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 54
+      },
+      "revId": "c06e8baab2b5b86f79c9d5d76c4af9ebd2ea4321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67122be0_c78ed723",
         "filename": "src/common/dwarf_cu_to_module.cc",
         "patchSetId": 7
@@ -129,6 +249,30 @@
       "writtenOn": "2021-06-01T19:20:40Z",
       "side": 1,
       "message": "DW_AT_decl_file",
+      "range": {
+        "startLine": 781,
+        "startChar": 5,
+        "endLine": 781,
+        "endChar": 20
+      },
+      "revId": "c06e8baab2b5b86f79c9d5d76c4af9ebd2ea4321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d9bb3c5_de711dbd",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-01T23:18:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67122be0_c78ed723",
       "range": {
         "startLine": 781,
         "startChar": 5,
@@ -152,6 +296,30 @@
       "writtenOn": "2021-06-01T19:20:40Z",
       "side": 1,
       "message": "I know this is the style now recommended by the style guide, but it\u0027s inconsistent with the existing style, which can cause confusion. When I see the files parameter declared as a reference, instead of a pointer as the other parameters are, it suggests that this parameter will be treated differently, but I don\u0027t think that\u0027s the case.",
+      "range": {
+        "startLine": 160,
+        "startChar": 62,
+        "endLine": 160,
+        "endChar": 63
+      },
+      "revId": "c06e8baab2b5b86f79c9d5d76c4af9ebd2ea4321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90306561_c54d6cf0",
+        "filename": "src/common/dwarf_cu_to_module.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-01T23:18:21Z",
+      "side": 1,
+      "message": "Done. It\u0027s just so that I could omit the step of dereferencing pointer.",
+      "parentUuid": "5aa20a95_a4b7ef8e",
       "range": {
         "startLine": 160,
         "startChar": 62,
