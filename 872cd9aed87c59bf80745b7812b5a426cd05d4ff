@@ -16,6 +16,23 @@
       "message": "Friendly ping.",
       "revId": "872cd9aed87c59bf80745b7812b5a426cd05d4ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c1f1a6_0bcd8823",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1174099
+      },
+      "writtenOn": "2021-06-02T18:52:44Z",
+      "side": 1,
+      "message": "I guess LGTM.\n\nSeems fragile that the de-duplication is handled in Module::AddFunction and not either ALSO in Module::AddExtern OR INSTEAD as a distinct post-processing step, such as an extra step at the bottom of Module::AddFunctions, or an extra call from DwarfCUToModule::Finish. But this is fine. Maybe add a comment in dump_symbols.cc in between where you deal with the symbol table and the DWARF info saying that the order is important.",
+      "revId": "872cd9aed87c59bf80745b7812b5a426cd05d4ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
