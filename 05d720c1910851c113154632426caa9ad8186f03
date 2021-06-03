@@ -63,6 +63,30 @@
       },
       "revId": "05d720c1910851c113154632426caa9ad8186f03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ef2e5e_ab52bc1c",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1440694
+      },
+      "writtenOn": "2021-06-03T20:39:19Z",
+      "side": 1,
+      "message": "Please respect and  remove : (Primano Tucci primiano@chromium.org)\nIf A Person Wishes to be removed Please Do it. from the list if they say no.\nIt Follows Best Practices.\nThank You",
+      "parentUuid": "a8d71bb1_ed29227c",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "05d720c1910851c113154632426caa9ad8186f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

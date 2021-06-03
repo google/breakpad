@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a217686f_e16fc606",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1440694
+      },
+      "writtenOn": "2021-06-03T20:39:19Z",
+      "side": 1,
+      "message": "Please Remove Primiano Tucci as requsted by P.T.\nThank You",
+      "revId": "c4b0806f4876b01a8eaf2fcda490bc9b5fe8b2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
