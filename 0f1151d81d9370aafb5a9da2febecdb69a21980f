@@ -3,6 +3,188 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c170105_c803c479",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "BTW, did you mean \"symbol\" here?",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "012d87e7_7497c930",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "I\u0027m just nitpicking.",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54720e30_cadd56f9",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "using InlineOriginByOffset \u003d map\u003c....\u003e;",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f13c7ea_b6fc52bd",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "Can these be unique_ptrs?",
+      "range": {
+        "startLine": 101,
+        "startChar": 22,
+        "endLine": 101,
+        "endChar": 43
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef0588e1_3344447a",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "If you save the result from this find(), you can reuse it on lines 137 and 138 to save some lookups.",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5316d1eb_a4fedae4",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e64a0a8c_4c133855",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "Can you consistently use map or std::map? (compare with line 344)",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e410818d_fdbbbacf",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "Is it necessary to add up all the values, just to see if the result is 0? If any of the ranges is non-empty, isn\u0027t that good enough to return false?",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e8458ee_59205f5c",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "Initialize where declared?",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b007ab44_26049227",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "1 variable per line.",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66c9e578_fbb3b4b2",
         "filename": "src/common/dwarf_cu_to_module.cc",
         "patchSetId": 10
@@ -49,6 +231,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e52796b8_f89392aa",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "Looks a bit weird. Did \"git cl format\" do this?",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a37e956_1dbc8113",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "Extra space at the end.",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f408bad8_d68adc3d",
         "filename": "src/common/dwarf_cu_to_module.cc",
         "patchSetId": 10
@@ -88,6 +304,103 @@
         "startChar": 0,
         "endLine": 706,
         "endChar": 11
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0aa7339_04eb5d41",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "nullptr",
+      "range": {
+        "startLine": 845,
+        "startChar": 35,
+        "endLine": 845,
+        "endChar": 39
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "667a397d_640ee41c",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "Excess trailing space.",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "281c193f_eb1f8f61",
+        "filename": "src/common/dwarf_cu_to_module.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "IWYU: \u003cmap\u003e (and also \u003cvector\u003e for the previous line)",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40dd2cc0_781c3e86",
+        "filename": "src/common/dwarf_cu_to_module.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "nit: sort",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f7f3c1f_954edd6e",
+        "filename": "src/common/module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-07T19:30:42Z",
+      "side": 1,
+      "message": "I can\u0027t figure out what this is. Better to write it out since it\u0027s not a super long type like the iterator case on line 330. After that, should this be a copy, or should this be a const SomeType\u0026 to avoid a copy? Same goes for line 350.",
+      "range": {
+        "startLine": 344,
+        "startChar": 12,
+        "endLine": 344,
+        "endChar": 16
       },
       "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
