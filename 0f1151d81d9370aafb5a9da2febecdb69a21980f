@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66c9e578_fbb3b4b2",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-07T19:07:07Z",
+      "side": 1,
+      "message": "call_site_line_",
+      "range": {
+        "startLine": 657,
+        "startChar": 6,
+        "endLine": 657,
+        "endChar": 20
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d42e9799_4e64a805",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-07T19:07:07Z",
+      "side": 1,
+      "message": "parent_site_number_",
+      "range": {
+        "startLine": 658,
+        "startChar": 6,
+        "endLine": 658,
+        "endChar": 24
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f408bad8_d68adc3d",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-07T19:07:07Z",
+      "side": 1,
+      "message": "FuncHandler::EndAttributes() also tries calling ComputeQualifiedName() to try retrieving the name from the specification. Is that needed here?",
+      "range": {
+        "startLine": 697,
+        "startChar": 0,
+        "endLine": 698,
+        "endChar": 35
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf2b00c_7adad22c",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-07T19:07:07Z",
+      "side": 1,
+      "message": "1. I think specification_offset_ is a better name for this.\n\n2. I think a DW_TAG_inlined_subroutine is allowed to not have a specification or abstract origin if it includes all the necessary attributes itself. Would we still want to emit an INLINE entry for this case?",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 11
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2993027d_4067dc71",
+        "filename": "src/common/module.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-07T19:07:07Z",
+      "side": 1,
+      "message": "This deserves a comment about why it exists.\n\nI think this is a linked list of all inlines in a function and there isn\u0027t necessarily any parent-child relationship between them?",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 25
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc620211_768bfee4",
+        "filename": "src/common/module.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-07T19:07:07Z",
+      "side": 1,
+      "message": "InlineOrigin",
+      "range": {
+        "startLine": 399,
+        "startChar": 22,
+        "endLine": 399,
+        "endChar": 30
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
