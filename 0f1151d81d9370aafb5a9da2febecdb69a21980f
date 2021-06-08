@@ -322,6 +322,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a667841_89122639",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-08T00:19:06Z",
+      "side": 1,
+      "message": "To be clearer, see (1) vs. (2) on https://en.cppreference.com/w/cpp/language/data_members#Member_initialization\n\nClang Tidy even has a check to do this code modernization, but why wait for someone to do that when you can just right the code that way in the first place? https://clang.llvm.org/extra/clang-tidy/checks/modernize-use-default-member-init.html",
+      "parentUuid": "9322aff2_d74ed31a",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b007ab44_26049227",
