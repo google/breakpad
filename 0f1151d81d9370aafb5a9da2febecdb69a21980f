@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "14283957_e357e645",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c170105_c803c479",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "012d87e7_7497c930",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 10
@@ -81,6 +105,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a51420b_cf2c1a14",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54720e30_cadd56f9",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984d2a31_7488d728",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "I think we can do it, but it\u0027s more complex because InlineOrigin* will be assigned to Inline\u0027s origin field which has longer lifetime than the InlineOriginMap object owned by DwarfCUToModule::FilePrivate.",
+      "parentUuid": "8f13c7ea_b6fc52bd",
+      "range": {
+        "startLine": 101,
+        "startChar": 22,
+        "endLine": 101,
+        "endChar": 43
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef0588e1_3344447a",
@@ -94,6 +160,24 @@
       "writtenOn": "2021-06-07T19:30:42Z",
       "side": 1,
       "message": "If you save the result from this find(), you can reuse it on lines 137 and 138 to save some lookups.",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6637e100_c9d0c99f",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef0588e1_3344447a",
       "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c80e342b_a3e8b0f4",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5316d1eb_a4fedae4",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e64a0a8c_4c133855",
@@ -128,6 +230,24 @@
       "writtenOn": "2021-06-07T19:30:42Z",
       "side": 1,
       "message": "Can you consistently use map or std::map? (compare with line 344)",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e67892a_ebc580c5",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e64a0a8c_4c133855",
       "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +269,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ddb2b8_7c321d7f",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "I just move the existing IsEmptyRange function up so both InlineHandler and FunctionHandler can use it.",
+      "parentUuid": "e410818d_fdbbbacf",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e8458ee_59205f5c",
@@ -162,6 +300,24 @@
       "writtenOn": "2021-06-07T19:30:42Z",
       "side": 1,
       "message": "Initialize where declared?",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9322aff2_d74ed31a",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "It\u0027s declared below in line 653.",
+      "parentUuid": "9e8458ee_59205f5c",
       "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +339,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "238a8595_ed63ba3b",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b007ab44_26049227",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66c9e578_fbb3b4b2",
@@ -196,6 +370,30 @@
       "writtenOn": "2021-06-07T19:07:07Z",
       "side": 1,
       "message": "call_site_line_",
+      "range": {
+        "startLine": 657,
+        "startChar": 6,
+        "endLine": 657,
+        "endChar": 20
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8946a0ca_b38afc58",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66c9e578_fbb3b4b2",
       "range": {
         "startLine": 657,
         "startChar": 6,
@@ -229,6 +427,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "218fd62b_79275c3b",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d42e9799_4e64a805",
+      "range": {
+        "startLine": 658,
+        "startChar": 6,
+        "endLine": 658,
+        "endChar": 24
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e52796b8_f89392aa",
@@ -242,6 +464,24 @@
       "writtenOn": "2021-06-07T19:30:42Z",
       "side": 1,
       "message": "Looks a bit weird. Did \"git cl format\" do this?",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d4694bc_d4aa3dae",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "I used the format from DwarfCUToModule::FunctionHandler::ProcessAttributeUnsigned. \nUpdated.",
+      "parentUuid": "e52796b8_f89392aa",
       "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -263,6 +503,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83a18d3f_7e409045",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a37e956_1dbc8113",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f408bad8_d68adc3d",
@@ -276,6 +534,30 @@
       "writtenOn": "2021-06-07T19:07:07Z",
       "side": 1,
       "message": "FuncHandler::EndAttributes() also tries calling ComputeQualifiedName() to try retrieving the name from the specification. Is that needed here?",
+      "range": {
+        "startLine": 697,
+        "startChar": 0,
+        "endLine": 698,
+        "endChar": 35
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e149a47_8b732d9b",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "That\u0027s different. At here, I\u0027m trying to get the abstract_origin_\u0027s name if possible. If not, name_ will be empty and be fixed later in a call to InlineOriginMap::GetOrCreateInlineOrigin with correct name, which might come from the call to ComputeQualifiedName() in FuncHandler::EndAttributes().\n\nBut instead of let the name be empty, the name should be \"\u003cname omitted\u003e\" in case of we can\u0027t fix the name for it to be consistent with FuncitonHandler::Finish().",
+      "parentUuid": "f408bad8_d68adc3d",
       "range": {
         "startLine": 697,
         "startChar": 0,
@@ -311,6 +593,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47eb108b_381c2b03",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "For 2, actually I think this is not necessary. I tested with chrome, this condition is never true. I also asked David Blaikie if every DW_TAG_inlined_subroutine has a DW_AT_abstract_origin. He said \"Practically speaking, yes.\".",
+      "parentUuid": "7cf2b00c_7adad22c",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 11
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0aa7339_04eb5d41",
         "filename": "src/common/dwarf_cu_to_module.cc",
         "patchSetId": 10
@@ -322,6 +628,30 @@
       "writtenOn": "2021-06-07T19:30:42Z",
       "side": 1,
       "message": "nullptr",
+      "range": {
+        "startLine": 845,
+        "startChar": 35,
+        "endLine": 845,
+        "endChar": 39
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e91aa7_ea7599c4",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0aa7339_04eb5d41",
       "range": {
         "startLine": 845,
         "startChar": 35,
@@ -349,6 +679,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "781dcb3e_fea4925f",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "667a397d_640ee41c",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "281c193f_eb1f8f61",
@@ -362,6 +710,24 @@
       "writtenOn": "2021-06-07T19:30:42Z",
       "side": 1,
       "message": "IWYU: \u003cmap\u003e (and also \u003cvector\u003e for the previous line)",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e6ed24_8846d143",
+        "filename": "src/common/dwarf_cu_to_module.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "281c193f_eb1f8f61",
       "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -383,6 +749,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33b40f65_b13551cf",
+        "filename": "src/common/dwarf_cu_to_module.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40dd2cc0_781c3e86",
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f7f3c1f_954edd6e",
@@ -396,6 +780,30 @@
       "writtenOn": "2021-06-07T19:30:42Z",
       "side": 1,
       "message": "I can\u0027t figure out what this is. Better to write it out since it\u0027s not a super long type like the iterator case on line 330. After that, should this be a copy, or should this be a const SomeType\u0026 to avoid a copy? Same goes for line 350.",
+      "range": {
+        "startLine": 344,
+        "startChar": 12,
+        "endLine": 344,
+        "endChar": 16
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66148487_ad2953ed",
+        "filename": "src/common/module.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f7f3c1f_954edd6e",
       "range": {
         "startLine": 344,
         "startChar": 12,
@@ -431,6 +839,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e415b49_b9983e31",
+        "filename": "src/common/module.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "The implementation was incorrect. child_inline should be a vector of Inline*. The structure of Inline should like a tree.\nHere is an example:\n - foo() a function\n  - f1() inlined\n    - f2() inlined\n      - f3() inlined\n    - f4() inlined\n\nFunction foo owns Inline f1. Inline f1 owns Inline f2 and f4. Inline f2 owns Inline f3.\n\nI corrected the implementation in the update.",
+      "parentUuid": "2993027d_4067dc71",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 25
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc620211_768bfee4",
         "filename": "src/common/module.h",
         "patchSetId": 10
@@ -442,6 +874,30 @@
       "writtenOn": "2021-06-07T19:07:07Z",
       "side": 1,
       "message": "InlineOrigin",
+      "range": {
+        "startLine": 399,
+        "startChar": 22,
+        "endLine": 399,
+        "endChar": 30
+      },
+      "revId": "0f1151d81d9370aafb5a9da2febecdb69a21980f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4102b998_3ceddb7f",
+        "filename": "src/common/module.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-08T00:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc620211_768bfee4",
       "range": {
         "startLine": 399,
         "startChar": 22,
