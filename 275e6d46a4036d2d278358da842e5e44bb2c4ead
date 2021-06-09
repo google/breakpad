@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c65a9b6_816e72ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-09T05:15:05Z",
+      "side": 1,
+      "message": "this makes dump_syms segfault.  please see https://crbug.com/google-breakpad/843 for details.",
+      "revId": "275e6d46a4036d2d278358da842e5e44bb2c4ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
