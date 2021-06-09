@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20b63738_f5c57431",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-09T17:33:01Z",
+      "side": 1,
+      "message": "I think there\u0027s an error here or maybe I\u0027m missing something.\n\nInlineHandler\u0027s constructor increments cu_context_\u003einline_nest_level when descending into an InlineHandler, but nothing happens to cu_context_-\u003einlines.\n\nExtending your example from below:\n - foo() a function\n  - f1() inlined\n    - f2() inlined\n      - f3() inlined\n    - f4() inlined\n      - f5() inlined\n\nInlineHandler()::Finish() for f2() will place f2()\u0027s inline in cu_context_-\u003einlines.\n\nThe next InlineHandler()::Finish() call will be for f5() which will swap cu_context-\u003einlines, which still contains f2(), into f5()\u0027s child_inlines, right?",
+      "range": {
+        "startLine": 772,
+        "startChar": 0,
+        "endLine": 777,
+        "endChar": 39
+      },
+      "revId": "654bf51a430a5d35d7ab3d7180673d41e5edc956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
