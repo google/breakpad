@@ -22,6 +22,30 @@
       },
       "revId": "654bf51a430a5d35d7ab3d7180673d41e5edc956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c84547d5_ccc5082c",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-09T21:03:05Z",
+      "side": 1,
+      "message": "Yes, there\u0027s an error. \n\nIn the fix, I removed inline_nest_level and inlines from cu_context.",
+      "parentUuid": "20b63738_f5c57431",
+      "range": {
+        "startLine": 772,
+        "startChar": 0,
+        "endLine": 777,
+        "endChar": 39
+      },
+      "revId": "654bf51a430a5d35d7ab3d7180673d41e5edc956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
