@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f5890bb_6d4d8595",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-10T04:28:19Z",
+      "side": 1,
+      "message": "sorry, but i\u0027m not quite following why this is what we want.  forcing objects to be leaked is a bit of a red flag that we\u0027re doing something wrong somewhere else, and by not freeing things, we\u0027re ignoring the underlying issue.",
+      "revId": "b8cf01466bc506a776c32cd1eb44b7e3ac0e42a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
