@@ -16,6 +16,40 @@
       "message": "Alternative solution for https://chromium-review.googlesource.com/c/breakpad/breakpad/+/2948203.",
       "revId": "b743b2c4e6bb78444c08dc456a6c6264e96fad10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9611aa6_6de3213f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-10T06:19:26Z",
+      "side": 1,
+      "message": "if you wanted to use some C++11 stuff like shared_ptr or unique_ptr, that\u0027d be fine",
+      "revId": "b743b2c4e6bb78444c08dc456a6c6264e96fad10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d4c2bf8_011f43c7",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-10T06:19:26Z",
+      "side": 1,
+      "message": "do we need this ?  couldn\u0027t we search+delete right away ?",
+      "revId": "b743b2c4e6bb78444c08dc456a6c6264e96fad10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
