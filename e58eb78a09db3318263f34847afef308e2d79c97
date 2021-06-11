@@ -57,6 +57,30 @@
       },
       "revId": "e58eb78a09db3318263f34847afef308e2d79c97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ebda492_422feca9",
+        "filename": "src/common/linux/dump_symbols.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-11T22:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b4e23fe_bc37066c",
+      "range": {
+        "startLine": 764,
+        "startChar": 22,
+        "endLine": 764,
+        "endChar": 23
+      },
+      "revId": "e58eb78a09db3318263f34847afef308e2d79c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
