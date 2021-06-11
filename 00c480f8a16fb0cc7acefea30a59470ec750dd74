@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1333fac3_9d1214af",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-11T18:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f149a10_126021d8",
+      "range": {
+        "startLine": 661,
+        "startChar": 27,
+        "endLine": 661,
+        "endChar": 34
+      },
+      "revId": "00c480f8a16fb0cc7acefea30a59470ec750dd74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47dbce2b_35ef9726",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-10T21:47:56Z",
       "side": 1,
       "message": "child_inlines_",
+      "range": {
+        "startLine": 663,
+        "startChar": 26,
+        "endLine": 663,
+        "endChar": 39
+      },
+      "revId": "00c480f8a16fb0cc7acefea30a59470ec750dd74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e602d187_8735812e",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-11T18:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47dbce2b_35ef9726",
       "range": {
         "startLine": 663,
         "startChar": 26,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "620d3fde_a2360c8c",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-11T18:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7576f225_b6a6e48a",
+      "range": {
+        "startLine": 718,
+        "startChar": 0,
+        "endLine": 719,
+        "endChar": 70
+      },
+      "revId": "00c480f8a16fb0cc7acefea30a59470ec750dd74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dad0223_79829010",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-06-10T21:47:56Z",
       "side": 1,
       "message": "Since we\u0027re relying on the assumption that all inlined subroutines have a specification or inline origin in practice, an assert(specification_offset_ !\u003d 0) would be good.",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 761,
+        "endChar": 52
+      },
+      "revId": "00c480f8a16fb0cc7acefea30a59470ec750dd74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfbd0393_24210794",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-11T18:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dad0223_79829010",
       "range": {
         "startLine": 760,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea21a23f_d8850969",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-11T18:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f30da89a_543c808b",
+      "range": {
+        "startLine": 801,
+        "startChar": 26,
+        "endLine": 801,
+        "endChar": 39
+      },
+      "revId": "00c480f8a16fb0cc7acefea30a59470ec750dd74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "408fcb59_84c96501",
@@ -150,6 +270,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91b844dd_818f29a5",
+        "filename": "src/common/dwarf_cu_to_module.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-11T18:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "408fcb59_84c96501",
+      "revId": "00c480f8a16fb0cc7acefea30a59470ec750dd74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c4dc5e7_88d0ba89",
@@ -163,6 +301,30 @@
       "writtenOn": "2021-06-10T21:47:56Z",
       "side": 1,
       "message": "This might be NULL?",
+      "range": {
+        "startLine": 225,
+        "startChar": 12,
+        "endLine": 225,
+        "endChar": 16
+      },
+      "revId": "00c480f8a16fb0cc7acefea30a59470ec750dd74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d65cae6a_352cc04e",
+        "filename": "src/common/module.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-11T18:54:23Z",
+      "side": 1,
+      "message": "We only insert origin into inline_origins if its file field is not NULL in Module::CreateInlineOrigins(), which is called before this function.",
+      "parentUuid": "7c4dc5e7_88d0ba89",
       "range": {
         "startLine": 225,
         "startChar": 12,
@@ -196,6 +358,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1841317_2348cec4",
+        "filename": "src/common/module.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-11T18:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "991a5ea5_3ce0b7f2",
+      "range": {
+        "startLine": 255,
+        "startChar": 6,
+        "endLine": 255,
+        "endChar": 29
+      },
+      "revId": "00c480f8a16fb0cc7acefea30a59470ec750dd74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cab0f6b_bcc5ecb2",
@@ -209,6 +395,30 @@
       "writtenOn": "2021-06-10T21:47:56Z",
       "side": 1,
       "message": "inline_origins_",
+      "range": {
+        "startLine": 410,
+        "startChar": 18,
+        "endLine": 410,
+        "endChar": 32
+      },
+      "revId": "00c480f8a16fb0cc7acefea30a59470ec750dd74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0acc57a0_a8af4251",
+        "filename": "src/common/module.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-11T18:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cab0f6b_bcc5ecb2",
       "range": {
         "startLine": 410,
         "startChar": 18,
