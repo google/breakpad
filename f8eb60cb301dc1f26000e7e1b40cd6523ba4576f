@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6a1c483_7938dc7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001934
+      },
+      "writtenOn": "2021-06-18T17:11:49Z",
+      "side": 1,
+      "message": "Do you need help with a manual submit? DEPS roll in Chromium?",
+      "revId": "f8eb60cb301dc1f26000e7e1b40cd6523ba4576f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
