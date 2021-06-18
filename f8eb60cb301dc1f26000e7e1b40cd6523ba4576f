@@ -16,6 +16,24 @@
       "message": "Do you need help with a manual submit? DEPS roll in Chromium?",
       "revId": "f8eb60cb301dc1f26000e7e1b40cd6523ba4576f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d27327_b2425f1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000805
+      },
+      "writtenOn": "2021-06-18T17:36:56Z",
+      "side": 1,
+      "message": "Yeah, that\u0027d be nice.  Submit at least I don\u0027t have permission to do.  The DEPS roll I might be able to manage, although if you want to I won\u0027t object :)",
+      "parentUuid": "a6a1c483_7938dc7b",
+      "revId": "f8eb60cb301dc1f26000e7e1b40cd6523ba4576f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
