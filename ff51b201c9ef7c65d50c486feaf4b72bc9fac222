@@ -22,6 +22,30 @@
       },
       "revId": "ff51b201c9ef7c65d50c486feaf4b72bc9fac222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c21a217_51e829c8",
+        "filename": "src/common/symbol_data.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-06-24T22:55:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e2b0ef0_16d97626",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "ff51b201c9ef7c65d50c486feaf4b72bc9fac222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
