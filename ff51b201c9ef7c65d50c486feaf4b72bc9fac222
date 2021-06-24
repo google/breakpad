@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2b0ef0_16d97626",
+        "filename": "src/common/symbol_data.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-24T18:14:17Z",
+      "side": 1,
+      "message": "Some of the combinations of these values don\u0027t make sense, e.g. NO_CFI \u0026 ONLY_CFI.\n\nSuggest instead naming things\nNO_DATA \u003d 0\nSYMBOLS_AND_FILES \u003d 1,\nCFI \u003d 1 \u003c\u003c 1\nINLINES \u003d 1 \u003c\u003c 2\nALL_SYMBOL_DATA \u003d SYMBOLS_AND_FILES | CFI | INLINES\n\nWhere SYMBOLS_AND_FILES is the stuff that would have been output with NO_CFI.\n\nComments which describe how these values are used, e.g. https://source.chromium.org/chromium/chromium/src/+/main:third_party/breakpad/breakpad/src/common/module.h;drc\u003da524a1e24b19dcb3605190e5e9bb1b0f10ca8be8;l\u003d282 should also be updated.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "ff51b201c9ef7c65d50c486feaf4b72bc9fac222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
