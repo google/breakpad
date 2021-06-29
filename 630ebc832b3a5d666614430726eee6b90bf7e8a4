@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1d3e820_b919ad27",
+        "filename": "src/common/linux/dump_symbols.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-29T22:48:04Z",
+      "side": 1,
+      "message": "Positive comparisons are more readable. go/tott/530\n\nIt\u0027s especially true in this case since an xor here won\u0027t necessarily remain correct if values are added to this enum.\n\nI think this condition should be\nif (options.symbol_data \u0026 SYMBOLS_AND_FILES) {\n\nIf other values, e.g. INLINES also need to run this code, you could either\n1. make this condition if ((options.symbol_data \u0026 SYMBOLS_AND_FILES) || (options.symbol_data \u0026 INLINES)) {\n2. Change the definition of INLINES to (1 \u003c\u003c 2) | SYMBOLS_AND_FILES",
+      "range": {
+        "startLine": 683,
+        "startChar": 6,
+        "endLine": 683,
+        "endChar": 31
+      },
+      "revId": "630ebc832b3a5d666614430726eee6b90bf7e8a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
