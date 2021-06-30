@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed63f237_49c7d676",
+        "filename": "src/common/mac/dump_syms.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-30T18:39:58Z",
+      "side": 1,
+      "message": "INLINES",
+      "range": {
+        "startLine": 600,
+        "startChar": 24,
+        "endLine": 600,
+        "endChar": 41
+      },
+      "revId": "ccef5486cab16f1f33db637c308d8cbb3971eb90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333481d5_a333592e",
+        "filename": "src/common/symbol_data.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-06-30T18:39:58Z",
+      "side": 1,
+      "message": "This does sign extension if SymbolData is signed, which it could be. There\u0027s no reason SymbolData needs to support signed types though, so better to just declare it as implemented with something unsigned.\n\nYou can also use https://en.cppreference.com/w/cpp/types/underlying_type for this cast to avoid making assumptions about its type.",
+      "range": {
+        "startLine": 45,
+        "startChar": 45,
+        "endLine": 45,
+        "endChar": 48
+      },
+      "revId": "ccef5486cab16f1f33db637c308d8cbb3971eb90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
