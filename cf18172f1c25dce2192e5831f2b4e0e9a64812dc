@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1383137_45dd1fbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000805
+      },
+      "writtenOn": "2021-07-01T19:53:38Z",
+      "side": 1,
+      "message": "Changing reviewers to vapier@ since mark@ is OOO",
+      "revId": "cf18172f1c25dce2192e5831f2b4e0e9a64812dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
