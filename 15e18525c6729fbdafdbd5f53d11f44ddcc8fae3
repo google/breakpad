@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a70e399b_fb081c72",
+        "filename": "src/common/dwarf/dwarf2reader.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-07-08T22:04:31Z",
+      "side": 1,
+      "message": "I think this isn\u0027t quite right either since str_offsets_base_ should point past the header, but its the value we get for the str_offsets from the .debug_cu_index that doesn\u0027t account for the header",
+      "range": {
+        "startLine": 462,
+        "startChar": 28,
+        "endLine": 462,
+        "endChar": 45
+      },
+      "revId": "15e18525c6729fbdafdbd5f53d11f44ddcc8fae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
