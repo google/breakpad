@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f61cd50_096fca72",
+        "filename": "src/google_breakpad/processor/basic_source_line_resolver.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-07-15T21:06:37Z",
+      "side": 1,
+      "message": "line",
+      "range": {
+        "startLine": 111,
+        "startChar": 22,
+        "endLine": 111,
+        "endChar": 28
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f5857d7_b1d3b7e1",
+        "filename": "src/google_breakpad/processor/basic_source_line_resolver.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-07-15T21:06:37Z",
+      "side": 1,
+      "message": "line",
+      "range": {
+        "startLine": 114,
+        "startChar": 57,
+        "endLine": 114,
+        "endChar": 63
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "122679c6_fd33157e",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-07-15T21:06:37Z",
+      "side": 1,
+      "message": "This is a Module member so there\u0027s no need to pass it in here.",
+      "range": {
+        "startLine": 241,
+        "startChar": 4,
+        "endLine": 241,
+        "endChar": 40
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d00ede2_3af2f5f6",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-07-15T21:06:37Z",
+      "side": 1,
+      "message": "These should use managed pointers so they aren\u0027t leaked.",
+      "range": {
+        "startLine": 243,
+        "startChar": 16,
+        "endLine": 243,
+        "endChar": 27
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7175aba8_a9e13e48",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-07-15T21:06:37Z",
+      "side": 1,
+      "message": "Unnecessary because newFrame was copied from frame.",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 44
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35123010_4a5d2298",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-07-15T21:06:37Z",
+      "side": 1,
+      "message": "Negative inline_nest_level wasn\u0027t allowed by ParseInline so I think this should never happen. Prefer an assertion unless there\u0027s some reason we need to allow negative inline_nest_level sometimes.",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 17
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d21646_506bfab1",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-07-15T21:06:37Z",
+      "side": 1,
+      "message": "Have you observed it being incorrect? Why was it incorrect? We should prefer to uncover, explain, and resolve errors, rather than silently ignoring them.",
+      "range": {
+        "startLine": 588,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 19
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "521cca8e_e0c37aa8",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-07-15T21:06:37Z",
+      "side": 1,
+      "message": "The assumption about inlines being output in order of increasing base address seems dubious, but I\u0027m not really sure. Is this assumption guaranteed by DWARF/dump_syms?\n\nCan you expect/assert that |in| has a range that\u0027s contained within the range of its parent?\n\nAlternatively, Function could maintain a map of inline_nest_level -\u003e most recently added inline at that level.",
+      "range": {
+        "startLine": 594,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 46
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "188c3354_d09c9d59",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-07-15T21:06:37Z",
+      "side": 1,
+      "message": "also verify tokens.size() \u003e\u003d 5\n\nWe don\u0027t expect inlines without any address range, right?",
+      "range": {
+        "startLine": 686,
+        "startChar": 5,
+        "endLine": 686,
+        "endChar": 29
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5ad4977_92809e9a",
+        "filename": "src/processor/stackwalker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1172779
+      },
+      "writtenOn": "2021-07-15T21:06:37Z",
+      "side": 1,
+      "message": "I think it\u0027d be better to still only count this as one scanned frame. This count of scanned frames is meant to capture the increasing risk that the stackwalk is incorrect and we should give up.\n\nIncluding inlines in the stackwalk increases the amount of information we\u0027re reporting per machine-code frame, but having or not having inlined frames doesn\u0027t affect the process for finding the next machine-code frame.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 53
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
