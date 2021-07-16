@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "717f7a1c_67ce2588",
+        "filename": "src/google_breakpad/processor/basic_source_line_resolver.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-07-16T01:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f61cd50_096fca72",
+      "range": {
+        "startLine": 111,
+        "startChar": 22,
+        "endLine": 111,
+        "endChar": 28
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f5857d7_b1d3b7e1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-15T21:06:37Z",
       "side": 1,
       "message": "line",
+      "range": {
+        "startLine": 114,
+        "startChar": 57,
+        "endLine": 114,
+        "endChar": 63
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "781e4e89_05d837ef",
+        "filename": "src/google_breakpad/processor/basic_source_line_resolver.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-07-16T01:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f5857d7_b1d3b7e1",
       "range": {
         "startLine": 114,
         "startChar": 57,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "291a1f68_861bf424",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-07-16T01:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "122679c6_fd33157e",
+      "range": {
+        "startLine": 241,
+        "startChar": 4,
+        "endLine": 241,
+        "endChar": 40
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d00ede2_3af2f5f6",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-15T21:06:37Z",
       "side": 1,
       "message": "These should use managed pointers so they aren\u0027t leaked.",
+      "range": {
+        "startLine": 243,
+        "startChar": 16,
+        "endLine": 243,
+        "endChar": 27
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb8ce50_adac9cfe",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-07-16T01:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d00ede2_3af2f5f6",
       "range": {
         "startLine": 243,
         "startChar": 16,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f58212_73d1ae18",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-07-16T01:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7175aba8_a9e13e48",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 44
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35123010_4a5d2298",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-07-15T21:06:37Z",
       "side": 1,
       "message": "Negative inline_nest_level wasn\u0027t allowed by ParseInline so I think this should never happen. Prefer an assertion unless there\u0027s some reason we need to allow negative inline_nest_level sometimes.",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 17
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ecd708_be925b9c",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-07-16T01:22:26Z",
+      "side": 1,
+      "message": "Yes, this never happens. Removed.",
+      "parentUuid": "35123010_4a5d2298",
       "range": {
         "startLine": 584,
         "startChar": 0,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c90e9a8_1107ec46",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-07-16T01:22:26Z",
+      "side": 1,
+      "message": "No I haven\u0027t observed this. It\u0027s possible in the case when ParseInline returns false due to malformed INLINE record.\nFor example:\nINLINE 0...\nINLINE 1...(malformed)\nINLINE 2...\nINLINE 3...\nINLINE 2...\n\nIn that case, we will INLINE 0 followed by first INLINE 2. I think we should discard all INLINE records belonging to INLINE 1.",
+      "parentUuid": "f5d21646_506bfab1",
+      "range": {
+        "startLine": 588,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 19
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "521cca8e_e0c37aa8",
         "filename": "src/processor/basic_source_line_resolver.cc",
         "patchSetId": 4
@@ -175,6 +343,30 @@
       "writtenOn": "2021-07-15T21:06:37Z",
       "side": 1,
       "message": "The assumption about inlines being output in order of increasing base address seems dubious, but I\u0027m not really sure. Is this assumption guaranteed by DWARF/dump_syms?\n\nCan you expect/assert that |in| has a range that\u0027s contained within the range of its parent?\n\nAlternatively, Function could maintain a map of inline_nest_level -\u003e most recently added inline at that level.",
+      "range": {
+        "startLine": 594,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 46
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329e99a1_6e1e745f",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-07-16T01:22:26Z",
+      "side": 1,
+      "message": "I checked that this assumption is wrong and not guaranteed. \n\nThe alternative solution won\u0027t work if we discard all INLINE records belonging to \nthe malformed INLINE. The map might store the inline_nest_level -\u003e stale inline.\nExample:\nINLINE 0...\nINLINE 1...\nINLINE 0...\nINLINE 1...(malformed)\nINLINE 2...\n\nINLINE 2 will be added to first INLINE 1\u0027s ranges.",
+      "parentUuid": "521cca8e_e0c37aa8",
       "range": {
         "startLine": 594,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ca91fa_d515de3d",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-07-16T01:22:26Z",
+      "side": 1,
+      "message": "No, inlines should always have address range.",
+      "parentUuid": "188c3354_d09c9d59",
+      "range": {
+        "startLine": 686,
+        "startChar": 5,
+        "endLine": 686,
+        "endChar": 29
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5ad4977_92809e9a",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-07-15T21:06:37Z",
       "side": 1,
       "message": "I think it\u0027d be better to still only count this as one scanned frame. This count of scanned frames is meant to capture the increasing risk that the stackwalk is incorrect and we should give up.\n\nIncluding inlines in the stackwalk increases the amount of information we\u0027re reporting per machine-code frame, but having or not having inlined frames doesn\u0027t affect the process for finding the next machine-code frame.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 53
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9654dbb2_6cb1780a",
+        "filename": "src/processor/stackwalker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-07-16T01:22:26Z",
+      "side": 1,
+      "message": "Makes senses. I wasn\u0027t sure about this.",
+      "parentUuid": "c5ad4977_92809e9a",
       "range": {
         "startLine": 172,
         "startChar": 0,
