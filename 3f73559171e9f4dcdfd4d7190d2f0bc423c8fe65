@@ -330,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e0fa7a_8927e735",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-07-19T21:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c90e9a8_1107ec46",
+      "range": {
+        "startLine": 588,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 19
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "521cca8e_e0c37aa8",
@@ -367,6 +391,30 @@
       "side": 1,
       "message": "I checked that this assumption is wrong and not guaranteed. \n\nThe alternative solution won\u0027t work if we discard all INLINE records belonging to \nthe malformed INLINE. The map might store the inline_nest_level -\u003e stale inline.\nExample:\nINLINE 0...\nINLINE 1...\nINLINE 0...\nINLINE 1...(malformed)\nINLINE 2...\n\nINLINE 2 will be added to first INLINE 1\u0027s ranges.",
       "parentUuid": "521cca8e_e0c37aa8",
+      "range": {
+        "startLine": 594,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 46
+      },
+      "revId": "3f73559171e9f4dcdfd4d7190d2f0bc423c8fe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc83d246_38aa429d",
+        "filename": "src/processor/basic_source_line_resolver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1403119
+      },
+      "writtenOn": "2021-07-19T21:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "329e99a1_6e1e745f",
       "range": {
         "startLine": 594,
         "startChar": 0,
