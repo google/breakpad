@@ -1,0 +1,3 @@
+# Ignore build directories
+tmp
+build

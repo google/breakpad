@@ -122,7 +122,7 @@ endif
 ## Libraries
 check_LIBRARIES =
 noinst_LIBRARIES =
-lib_LIBRARIES =
+lib_LIBRARIES = src/processor/libbugsnag_stackwalk_wrapper.a
 libexec_PROGRAMS =
 bin_PROGRAMS =
 check_PROGRAMS =
@@ -1305,6 +1305,46 @@ src_processor_microdump_stackwalk_LDADD = \
 src_processor_minidump_stackwalk_SOURCES = \
 	src/processor/minidump_stackwalk.cc
 src_processor_minidump_stackwalk_LDADD = \
+	src/common/path_helper.o \
+	src/processor/basic_code_modules.o \
+	src/processor/basic_source_line_resolver.o \
+	src/processor/call_stack.o \
+	src/processor/cfi_frame_info.o \
+	src/processor/convert_old_arm64_context.o \
+	src/processor/disassembler_x86.o \
+	src/processor/dump_context.o \
+	src/processor/dump_object.o \
+	src/processor/exploitability.o \
+	src/processor/exploitability_linux.o \
+	src/processor/exploitability_win.o \
+	src/processor/logging.o \
+	src/processor/minidump.o \
+	src/processor/minidump_processor.o \
+	src/processor/pathname_stripper.o \
+	src/processor/process_state.o \
+	src/processor/proc_maps_linux.o \
+	src/processor/simple_symbol_supplier.o \
+	src/processor/source_line_resolver_base.o \
+	src/processor/stack_frame_cpu.o \
+	src/processor/stack_frame_symbolizer.o \
+	src/processor/stackwalk_common.o \
+	src/processor/stackwalker.o \
+	src/processor/stackwalker_address_list.o \
+	src/processor/stackwalker_amd64.o \
+	src/processor/stackwalker_arm.o \
+	src/processor/stackwalker_arm64.o \
+	src/processor/stackwalker_mips.o \
+	src/processor/stackwalker_ppc.o \
+	src/processor/stackwalker_ppc64.o \
+	src/processor/stackwalker_sparc.o \
+	src/processor/stackwalker_x86.o \
+	src/processor/symbolic_constants_win.o \
+	src/processor/tokenize.o \
+	src/third_party/libdisasm/libdisasm.a
+
+src_processor_libbugsnag_stackwalk_wrapper_a_SOURCES = \
+	src/processor/bugsnag_stackwalk_wrapper.cc
+src_processor_libbugsnag_stackwalk_wrapper_a_LIBADD = \
 	src/common/path_helper.o \
 	src/processor/basic_code_modules.o \
 	src/processor/basic_source_line_resolver.o \

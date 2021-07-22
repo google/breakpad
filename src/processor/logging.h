@@ -142,7 +142,7 @@ int ErrnoString(string* error_string);
 #endif
 
 #ifndef BPLOG_MINIMUM_SEVERITY
-#define BPLOG_MINIMUM_SEVERITY SEVERITY_INFO
+#define BPLOG_MINIMUM_SEVERITY SEVERITY_ERROR
 #endif
 
 #define BPLOG_LOG_IS_ON(severity) \
