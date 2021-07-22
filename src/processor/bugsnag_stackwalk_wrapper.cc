@@ -394,22 +394,20 @@ string MDGUIDToString(const MDGUID& uuid) {
 
 MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
   google_breakpad::MinidumpCrashpadInfo* minidumpCrashpadInfo = dump.GetCrashpadInfo();
-  if (!minidumpCrashpadInfo) {
+  if (minidumpCrashpadInfo) {
 
-    const MDRawCrashpadInfo* rawCrashpadInfo = minidumpCrashpadInfo->crashpad_info();
-    if (!rawCrashpadInfo) {
-      
-      CrashpadInfo crashpadInfo = {.reportId = duplicate(MDGUIDToString(rawCrashpadInfo->report_id)), 
-        .clientId = duplicate(MDGUIDToString(rawCrashpadInfo->client_id))};
+      const MDRawCrashpadInfo* rawCrashpadInfo = minidumpCrashpadInfo->crashpad_info();
+      if (rawCrashpadInfo) {
+        
+        CrashpadInfo crashpadInfo = {.reportId = duplicate(MDGUIDToString(rawCrashpadInfo->report_id)), 
+          .clientId = duplicate(MDGUIDToString(rawCrashpadInfo->client_id))};
 
-      MinidumpMetadata minidumpMetadata = {.crashpadInfo = crashpadInfo};
-
-      return minidumpMetadata;
-    }
+        MinidumpMetadata minidumpMetadata = {.crashpadInfo = crashpadInfo};
+        return minidumpMetadata;
+      }
   }
-
-  MinidumpMetadata minidumpMetadata;
-  return minidumpMetadata;
+  
+  return MinidumpMetadata {};
 }
 
 // Gets an Event payload from the minidump.
