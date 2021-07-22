@@ -47,6 +47,15 @@ typedef struct Thread {
   Stacktrace stacktrace;
 } Thread;
 
+typedef struct CrashpadInfo {
+  const char* reportId;
+  const char* clientId;
+} CrashpadInfo;
+
+typedef struct MinidumpMetadata {
+  CrashpadInfo crashpadInfo;
+} MinidumpMetadata;
+
 typedef struct Event {
   int threadCount;
   const char* temp;
@@ -54,6 +63,7 @@ typedef struct Event {
   App app;
   Device device;
   Thread* threads;
+  MinidumpMetadata metadata;
 } Event;
 
 typedef struct ModuleDetails {

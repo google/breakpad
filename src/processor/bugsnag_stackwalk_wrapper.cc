@@ -17,6 +17,8 @@
 #include "google_breakpad/processor/stack_frame_cpu.h"
 #include "processor/pathname_stripper.h"
 
+#include "google_breakpad/common/minidump_format.h"
+
 using google_breakpad::BasicSourceLineResolver;
 using google_breakpad::CallStack;
 using google_breakpad::HexString;
@@ -373,6 +375,43 @@ string getFriendlyFailureReason(ProcessResult process_result) {
   }
 }
 
+string MDGUIDToString(const MDGUID& uuid) {
+  char buf[37];
+  snprintf(buf, sizeof(buf), "%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x",
+           uuid.data1,
+           uuid.data2,
+           uuid.data3,
+           uuid.data4[0],
+           uuid.data4[1],
+           uuid.data4[2],
+           uuid.data4[3],
+           uuid.data4[4],
+           uuid.data4[5],
+           uuid.data4[6],
+           uuid.data4[7]);
+  return std::string(buf);
+}
+
+MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
+  google_breakpad::MinidumpCrashpadInfo* minidumpCrashpadInfo = dump.GetCrashpadInfo();
+  if (!minidumpCrashpadInfo) {
+
+    const MDRawCrashpadInfo* rawCrashpadInfo = minidumpCrashpadInfo->crashpad_info();
+    if (!rawCrashpadInfo) {
+      
+      CrashpadInfo crashpadInfo = {.reportId = duplicate(MDGUIDToString(rawCrashpadInfo->report_id)), 
+        .clientId = duplicate(MDGUIDToString(rawCrashpadInfo->client_id))};
+
+      MinidumpMetadata minidumpMetadata = {.crashpadInfo = crashpadInfo};
+
+      return minidumpMetadata;
+    }
+  }
+
+  MinidumpMetadata minidumpMetadata;
+  return minidumpMetadata;
+}
+
 // Gets an Event payload from the minidump.
 // Note: Logic for parsing the minidump is based on PrintMinidumpProcess in
 // minidump_stackwalk.cc
@@ -419,6 +458,10 @@ WrappedEvent GetEventFromMinidump(const char* filename,
 
     // Map the process state to an Event struct
     result.event = getEvent(process_state);
+
+    // Populate metadata
+    result.event.metadata = getMinidumpMetadata(dump);
+
   } catch (const std::exception& ex) {
     string errMsg = "encountered exception: " + string(ex.what());
     result.pstrErr = duplicate(errMsg);
