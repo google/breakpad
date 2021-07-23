@@ -398,11 +398,40 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
 
       const MDRawCrashpadInfo* rawCrashpadInfo = minidumpCrashpadInfo->crashpad_info();
       if (rawCrashpadInfo) {
-        
+
+        int saCount = 0;
+        SimpleAnnotation* sa_array = nullptr;
+
+        std::map<std::string, std::string> simple_annotations_;
+        if (rawCrashpadInfo->simple_annotations.data_size) {
+          if (dump.ReadSimpleStringDictionary(
+              rawCrashpadInfo->simple_annotations.rva,
+              &simple_annotations_)) {
+
+            saCount = simple_annotations_.size();
+            sa_array = new SimpleAnnotation[saCount];
+            int saIndex = 0;
+            for (std::map<std::string, std::string>::const_iterator iterator = simple_annotations_.begin();
+                iterator != simple_annotations_.end();
+                ++iterator) {
+              SimpleAnnotation simpleAnnotation = {.key = iterator->first.c_str(), .value = iterator->second.c_str()};
+              sa_array[saIndex] = simpleAnnotation;
+
+              ++saIndex;
+            }
+          }
+          else {
+            BPLOG(ERROR) << "getMinidumpMetadata cannot read simple_annotations";
+          }
+        }
+
         CrashpadInfo crashpadInfo = {.reportId = duplicate(MDGUIDToString(rawCrashpadInfo->report_id)), 
-          .clientId = duplicate(MDGUIDToString(rawCrashpadInfo->client_id))};
+          .clientId = duplicate(MDGUIDToString(rawCrashpadInfo->client_id)),
+          .simpleAnnotationCount = saCount,
+          .simpleAnnotations = sa_array};
 
         MinidumpMetadata minidumpMetadata = {.crashpadInfo = crashpadInfo};
+
         return minidumpMetadata;
       }
   }

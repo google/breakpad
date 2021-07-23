@@ -47,9 +47,16 @@ typedef struct Thread {
   Stacktrace stacktrace;
 } Thread;
 
+typedef struct SimpleAnnotation {
+  const char* key;
+  const char* value;
+} SimpleAnnotation;
+
 typedef struct CrashpadInfo {
   const char* reportId;
   const char* clientId;
+  int simpleAnnotationCount;
+  SimpleAnnotation* simpleAnnotations;
 } CrashpadInfo;
 
 typedef struct MinidumpMetadata {
