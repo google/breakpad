@@ -52,11 +52,25 @@ typedef struct SimpleAnnotation {
   const char* value;
 } SimpleAnnotation;
 
+typedef struct ListAnnotation {
+  const char* value;
+} ListAnnotation;
+
+typedef struct ModuleInfo {
+  const char* moduleName;
+  int listAnnotationCount;
+  ListAnnotation* listAnnotations;
+  int simpleAnnotationCount;
+  SimpleAnnotation* simpleAnnotations;
+} ModuleInfo;
+
 typedef struct CrashpadInfo {
   const char* reportId;
   const char* clientId;
   int simpleAnnotationCount;
   SimpleAnnotation* simpleAnnotations;
+  int moduleCount;
+  ModuleInfo* moduleInfo;
 } CrashpadInfo;
 
 typedef struct MinidumpMetadata {
