@@ -578,9 +578,7 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
 
         MinidumpModuleList* module_list = dump.GetModuleList();
         if (!module_list) {
-          BPLOG(ERROR) << "getMinidumpMetadata failed to get module list";
-          //result.pstrErr = duplicate("failed to get module list");
-          //return result;
+          throw std::runtime_error("Failed to get module list");
         }
 
         int saCount = 0;
@@ -605,35 +603,30 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
             saCount = simple_annotations_.size();
             sa_array = (SimpleAnnotation*)malloc(sizeof(SimpleAnnotation) * saCount);
             if (!sa_array) {
-              // TODO
+              throw std::bad_alloc();
             }
             int saIndex = 0;
             for (std::map<std::string, std::string>::const_iterator iterator = simple_annotations_.begin();
                 iterator != simple_annotations_.end();
                 ++iterator) {
               SimpleAnnotation simpleAnnotation = {.key = duplicate(iterator->first.c_str()), .value = duplicate(iterator->second.c_str())};
-              BPLOG(ERROR) << "simpleAnnotation: key - " << simpleAnnotation.key << " value - " << simpleAnnotation.value;
               sa_array[saIndex] = simpleAnnotation;
 
               ++saIndex;
             }
           }
           else {
-            BPLOG(ERROR) << "getMinidumpMetadata cannot read simple_annotations";
+            throw std::runtime_error("Failed to read simple_annotations");
           }
         }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         if (rawCrashpadInfo->module_list.data_size) {
           if (!dump.SeekSet(rawCrashpadInfo->module_list.rva)) {
-            BPLOG(ERROR) << "getMinidumpMetadata cannot seek to module_list";
-            //return false;
+            throw std::runtime_error("Failed to seek to module_list");
           }
 
-          //uint32_t count;
           if (!dump.ReadBytes(&moduleInfoCount, sizeof(moduleInfoCount))) {
-            BPLOG(ERROR) << "getMinidumpMetadata cannot read module_list count";
-            //return false;
+            throw std::runtime_error("Failed to read module_list count");
           }
 
           if (dump.swap()) {
@@ -641,21 +634,16 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
           }
 
           google_breakpad::scoped_array<MDRawModuleCrashpadInfoLink> module_crashpad_info_links(
-              new MDRawModuleCrashpadInfoLink[moduleInfoCount]);
+              new MDRawModuleCrashpadInfoLink[moduleInfoCount]); // TODO - ensure this memory is deleted
 
-          // Read the entire array in one fell swoop, instead of reading one entry
-          // at a time in the loop.
           if (!dump.ReadBytes(
                   &module_crashpad_info_links[0],
                   sizeof(MDRawModuleCrashpadInfoLink) * moduleInfoCount)) {
-            BPLOG(ERROR)
-                << "getMinidumpMetadata could not read Crashpad module links";
-            //return false;
+                throw std::runtime_error("Failed to read Crashpad module links");
           }
 
           moduleInfoArray = (ModuleInfo*)malloc(sizeof(ModuleInfo) * moduleInfoCount);
 
-          // for each module
           for (uint32_t moduleIndex = 0; moduleIndex < moduleInfoCount; ++moduleIndex) {
             int modulesLACount = 0;
             ListAnnotation* modulesLAArray = nullptr;
@@ -670,16 +658,13 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
             uint32_t minidump_module_list_index = module_crashpad_info_links[moduleIndex].minidump_module_list_index;
 
             if (!dump.SeekSet(module_crashpad_info_links[moduleIndex].location.rva)) {
-              BPLOG(ERROR)
-                  << "getMinidumpMetadata cannot seek to Crashpad module info";
-              //return false;
+              throw std::runtime_error("Failed to seek to Crashpad module info");
             }
 
             MDRawModuleCrashpadInfo module_crashpad_info;
             if (!dump.ReadBytes(&module_crashpad_info,
                                       sizeof(module_crashpad_info))) {
-              BPLOG(ERROR) << "getMinidumpMetadata cannot read Crashpad module info";
-              //return false;
+              throw std::runtime_error("Failed to read Crashpad module info");
             }
 
             if (dump.swap()) {
@@ -696,22 +681,19 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
                 modulesLACount = list_annotations.size();
                 modulesLAArray = (ListAnnotation*)malloc(sizeof(ListAnnotation) * modulesLACount);
                 if (!modulesLAArray) {
-                  // TODO
+                  throw std::bad_alloc();
                 }
                 int laIndex = 0;
                 for (std::vector<std::string>::const_iterator iterator = list_annotations.begin();
                     iterator != list_annotations.end();
                     ++iterator) {
                   ListAnnotation listAnnotation = {.value = duplicate((*iterator).c_str())};
-                  BPLOG(ERROR) << "listAnnotation: value - " << listAnnotation.value;
                   modulesLAArray[laIndex] = listAnnotation;
 
                   ++laIndex;
                 }
               } else {
-                BPLOG(ERROR) << "getMinidumpMetadata cannot read Crashpad module "
-                    "info list annotations";
-                //return false;
+                throw std::runtime_error("Failed to read Crashpad module info list annotations");
               }
             }
 
@@ -723,22 +705,19 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
                 modulesSACount = simple_annotations_.size();
                 modulesSAArray = (SimpleAnnotation*)malloc(sizeof(SimpleAnnotation) * modulesSACount);
                 if (!modulesSAArray) {
-                  // TODO
+                  throw std::bad_alloc();
                 }
                 int saIndex = 0;
                 for (std::map<std::string, std::string>::const_iterator iterator = simple_annotations_.begin();
                     iterator != simple_annotations_.end();
                     ++iterator) {
                   SimpleAnnotation simpleAnnotation = {.key = duplicate(iterator->first.c_str()), .value = duplicate(iterator->second.c_str())};
-                  BPLOG(ERROR) << "simpleAnnotation: key - " << simpleAnnotation.key << " value - " << simpleAnnotation.value;
                   modulesSAArray[saIndex] = simpleAnnotation;
 
                   ++saIndex;
                 }
               } else {
-                BPLOG(ERROR) << "getMinidumpMetadata cannot read Crashpad module "
-                    "info simple annotations";
-                //return false;
+                throw std::runtime_error("Failed to read Crashpad module info simple annotations"); // TODO
               }
             }
 
@@ -747,106 +726,16 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
               throw std::runtime_error("Bad module index");
             }
 
-            //string debug_identifier = module->debug_identifier();
-            //module_ids[i] = duplicate(debug_identifier);
-
             string code_file = PathnameStripper::File(module->code_file());
 
-            //ModuleInfo moduleInfo = {.moduleName = duplicate(code_file), .listAnnotationCount = modulesLACount, .listAnnotations = modulesLAArray,
-            //  .simpleAnnotationCount = modulesSACount, .simpleAnnotations = modulesSAArray};
             moduleInfo.moduleName = duplicate(code_file);
             moduleInfo.listAnnotations = modulesLAArray;
             moduleInfo.listAnnotationCount = modulesLACount;
             moduleInfo.simpleAnnotations = modulesSAArray;
             moduleInfo.simpleAnnotationCount = modulesSACount;
-
             moduleInfoArray[moduleIndex] = moduleInfo;
-
-            // add to list of modules here?
-
-            //result.moduleDetails.moduleCount = module_list->module_count();
-
-            //const MinidumpModule* mainModule = module_list->GetMainModule();
-            //if (!mainModule) {
-            //  throw std::runtime_error("failed to get main module");
-            //}
-            //string mainModuleId = mainModule->debug_identifier();
-            //result.moduleDetails.mainModuleId = duplicate(mainModuleId);
-
-            //char** module_ids =
-            //    (char**)malloc(sizeof(char*) * module_list->module_count());
-            //if (!module_ids) {
-            //  throw std::bad_alloc();
-            //}
-            //char** module_names =
-            //    (char**)malloc(sizeof(char*) * module_list->module_count());
-            //if (!module_names) {
-            //  throw std::bad_alloc();
-            //}
-
-            /*
-            for (unsigned int i = 0; i < module_list->module_count(); i++) {
-              const MinidumpModule* module = module_list->GetModuleAtIndex(i);
-              if (!module) {
-                throw std::runtime_error("Bad module index");
-              }
-
-              string debug_identifier = module->debug_identifier();
-              module_ids[i] = duplicate(debug_identifier);
-
-              string code_file = PathnameStripper::File(module->code_file());
-              string debug_file = PathnameStripper::File(module->debug_file());
-              module_names[i] = duplicate(debug_file);
-            }*/
-
-            /*
-            module_crashpad_info_links_.push_back(
-                module_crashpad_info_links[index].minidump_module_list_index);
-            module_crashpad_info_.push_back(module_crashpad_info);
-            module_crashpad_info_list_annotations_.push_back(list_annotations);
-            module_crashpad_info_simple_annotations_.push_back(simple_annotations);
-            */
           }
         }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /*
-        for (uint32_t module_index = 0;
-              module_index < module_crashpad_info_links_.size();
-              ++module_index) {
-            printf("  module_list[%d].minidump_module_list_index = %d\n",
-                  module_index, module_crashpad_info_links_[module_index]);
-            printf("  module_list[%d].version = %d\n",
-                  module_index, module_crashpad_info_[module_index].version);
-            for (uint32_t annotation_index = 0;
-                annotation_index <
-                    module_crashpad_info_list_annotations_[module_index].size();
-                ++annotation_index) {
-              printf("  module_list[%d].list_annotations[%d] = %s\n",
-                    module_index,
-                    annotation_index,
-                    module_crashpad_info_list_annotations_
-                        [module_index][annotation_index].c_str());
-            }
-            for (std::map<std::string, std::string>::const_iterator iterator =
-                    module_crashpad_info_simple_annotations_[module_index].begin();
-                iterator !=
-                    module_crashpad_info_simple_annotations_[module_index].end();
-                ++iterator) {
-              printf("  module_list[%d].simple_annotations[\"%s\"] = %s\n",
-                    module_index, iterator->first.c_str(), iterator->second.c_str());
-            }
-          }
-          */
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/*
-const char* moduleName;
-  int listAnnotationCount;
-  ListAnnotation* listAnnotations;
-  int simpleAnnotationCount;
-  SimpleAnnotation* simpleAnnotations;
- */
 
         CrashpadInfo crashpadInfo = {.reportId = duplicate(MDGUIDToString(rawCrashpadInfo->report_id)), 
           .clientId = duplicate(MDGUIDToString(rawCrashpadInfo->client_id)),
