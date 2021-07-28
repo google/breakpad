@@ -84,7 +84,7 @@ typedef struct Event {
   App app;
   Device device;
   Thread* threads;
-  MinidumpMetadata metadata;
+  MinidumpMetadata metaData;
 } Event;
 
 typedef struct ModuleDetails {

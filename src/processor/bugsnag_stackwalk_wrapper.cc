@@ -175,7 +175,7 @@ void destroyEvent(Event* event) {
     destroyThread(&event->threads[i]);
   }
   freeAndInvalidate((void**)&event->threads);
-  destroyMinidumpMetadata(&event->metadata);
+  destroyMinidumpMetadata(&event->metaData);
 }
 
 void destroyModuleDetails(ModuleDetails* moduleDetails) {
@@ -803,7 +803,7 @@ WrappedEvent GetEventFromMinidump(const char* filename,
     result.event = getEvent(process_state);
 
     // Populate metadata
-    result.event.metadata = getMinidumpMetadata(dump);
+    result.event.metaData = getMinidumpMetadata(dump);
 
   } catch (const std::exception& ex) {
     string errMsg = "encountered exception: " + string(ex.what());
