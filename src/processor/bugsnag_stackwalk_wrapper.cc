@@ -447,7 +447,7 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
 
   google_breakpad::MinidumpCrashpadInfo* mci = dump.GetCrashpadInfo();
   if (!mci) {
-    return MinidumpMetadata {};
+    return MinidumpMetadata{};
   }
 
   MinidumpModuleList* module_list = dump.GetModuleList();
@@ -455,7 +455,10 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
     BPLOG(ERROR) << "Cannot get module list for minidump";
   }
 
-  const uint32_t moduleInfoCount = ((mci && mci->GetModuleCrashpadInfoLinks()) ? mci->GetModuleCrashpadInfoLinks()->size() : 0);
+  const uint32_t moduleInfoCount =
+      ((mci && mci->GetModuleCrashpadInfoLinks())
+           ? mci->GetModuleCrashpadInfoLinks()->size()
+           : 0);
   if (moduleInfoCount > 0) {
     moduleInfoArray = (ModuleInfo*)malloc(sizeof(ModuleInfo) * moduleInfoCount);
     if (!moduleInfoArray) {
@@ -469,7 +472,8 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
     BPLOG(ERROR) << "Cannot get simple annotations for minidump";
   }
 
-  const uint32_t simpleAnnotationCount = (simpleAnnotations ? simpleAnnotations->size() : 0);
+  const uint32_t simpleAnnotationCount =
+      (simpleAnnotations ? simpleAnnotations->size() : 0);
   if (simpleAnnotationCount > 0) {
     simpleAnnotationArray = (SimpleAnnotation*)malloc(sizeof(SimpleAnnotation) *
                                                       simpleAnnotationCount);
@@ -481,8 +485,8 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
   if (simpleAnnotationArray) {
     uint32_t simpleAnnotationIndex = 0;
     for (std::map<std::string, std::string>::const_iterator iterator =
-            simpleAnnotations->begin();
-        iterator != simpleAnnotations->end(); ++iterator) {
+             simpleAnnotations->begin();
+         iterator != simpleAnnotations->end(); ++iterator) {
       SimpleAnnotation simpleAnnotation = {
           .key = duplicate(iterator->first.c_str()),
           .value = duplicate(iterator->second.c_str())};
@@ -497,7 +501,8 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
     ModuleInfo moduleInfo{};
 
     string code_file = "";
-    const MinidumpModule* module = (module_list ? module_list->GetModuleAtIndex(module_index) : nullptr);
+    const MinidumpModule* module =
+        (module_list ? module_list->GetModuleAtIndex(module_index) : nullptr);
     if (module) {
       code_file = PathnameStripper::File(module->code_file());
     }
@@ -524,23 +529,26 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
 
     if (infoListAnnotations) {
       for (uint32_t annotation_index = 0;
-          annotation_index < (*infoListAnnotations)[module_index].size();
-          ++annotation_index) {
+           annotation_index < (*infoListAnnotations)[module_index].size();
+           ++annotation_index) {
         ListAnnotation listAnnotation = {
-            .value = duplicate(
-                (*infoListAnnotations)[module_index][annotation_index].c_str())};
+            .value =
+                duplicate((*infoListAnnotations)[module_index][annotation_index]
+                              .c_str())};
         modulesListAnnotationArray[annotation_index] = listAnnotation;
       }
     }
 
     const std::vector<std::map<std::string, std::string>>*
-        infoSimpleAnnotations = (mci ? mci->GetInfoSimpleAnnotations() : nullptr);
+        infoSimpleAnnotations =
+            (mci ? mci->GetInfoSimpleAnnotations() : nullptr);
     if (!infoSimpleAnnotations) {
       BPLOG(ERROR) << "Cannot get info simple annotations for minidump";
     }
 
     const uint32_t modulesSimpleAnnotationCount =
-        (infoSimpleAnnotations ? (*infoSimpleAnnotations)[module_index].size() : 0);
+        (infoSimpleAnnotations ? (*infoSimpleAnnotations)[module_index].size()
+                               : 0);
     if (modulesSimpleAnnotationCount > 0) {
       modulesSimpleAnnotationArray = (SimpleAnnotation*)malloc(
           sizeof(SimpleAnnotation) * modulesSimpleAnnotationCount);
@@ -552,12 +560,14 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
     if (infoSimpleAnnotations) {
       uint32_t simpleAnnotationIndex = 0;
       for (std::map<std::string, std::string>::const_iterator iterator =
-              (*infoSimpleAnnotations)[module_index].begin();
-          iterator != (*infoSimpleAnnotations)[module_index].end(); ++iterator) {
+               (*infoSimpleAnnotations)[module_index].begin();
+           iterator != (*infoSimpleAnnotations)[module_index].end();
+           ++iterator) {
         SimpleAnnotation simpleAnnotation = {
             .key = duplicate(iterator->first.c_str()),
             .value = duplicate(iterator->second.c_str())};
-        modulesSimpleAnnotationArray[simpleAnnotationIndex++] = simpleAnnotation;
+        modulesSimpleAnnotationArray[simpleAnnotationIndex++] =
+            simpleAnnotation;
       }
     }
 
