@@ -455,7 +455,7 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
     BPLOG(ERROR) << "Cannot get module list for minidump";
   }
 
-  const uint32_t moduleInfoCount = (mci ? mci->GetModuleCrashpadInfoLinks()->size() : 0);
+  const uint32_t moduleInfoCount = ((mci && mci->GetModuleCrashpadInfoLinks()) ? mci->GetModuleCrashpadInfoLinks()->size() : 0);
   if (moduleInfoCount > 0) {
     moduleInfoArray = (ModuleInfo*)malloc(sizeof(ModuleInfo) * moduleInfoCount);
     if (!moduleInfoArray) {
