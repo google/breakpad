@@ -25,10 +25,23 @@ typedef struct Stacktrace {
   Stackframe* frames;
 } Stacktrace;
 
+typedef struct RegisterData {
+  const char* registerName;
+  const char* registerValue;
+} RegisterData;
+
+typedef struct Register {
+  int frameIndex;
+  int registerDataCount;
+  RegisterData* registerDataItems;
+} Register;
+
 typedef struct Exception {
   Stacktrace stacktrace;
   const char* errorClass;
   const char* crashAddress;
+  int registerCount;
+  Register* registers;
 } Exception;
 
 typedef struct App {
