@@ -574,11 +574,11 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
 
     ModuleInfo moduleInfo = {
         .moduleName = duplicate(code_file),
-        .listAnnotations = modulesListAnnotationArray,
         .listAnnotationCount = static_cast<int>(modulesListAnnotationCount),
+        .listAnnotations = modulesListAnnotationArray,
+        .simpleAnnotationCount = static_cast<int>(modulesSimpleAnnotationCount),
         .simpleAnnotations = modulesSimpleAnnotationArray,
-        .simpleAnnotationCount =
-            static_cast<int>(modulesSimpleAnnotationCount)};
+    };
     moduleInfoVector.push_back(moduleInfo);
   }
 
