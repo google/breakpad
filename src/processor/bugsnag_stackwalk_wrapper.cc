@@ -459,12 +459,8 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
       ((mci && mci->GetModuleCrashpadInfoLinks())
            ? mci->GetModuleCrashpadInfoLinks()->size()
            : 0);
-  if (moduleInfoCount > 0) {
-    moduleInfoArray = (ModuleInfo*)malloc(sizeof(ModuleInfo) * moduleInfoCount);
-    if (!moduleInfoArray) {
-      throw std::bad_alloc();
-    }
-  }
+
+  std::vector<ModuleInfo> moduleInfoVector;
 
   const std::map<std::string, std::string>* simpleAnnotations =
       (mci ? mci->GetSimpleAnnotations() : nullptr);
@@ -498,7 +494,6 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
        ++module_index) {
     ListAnnotation* modulesListAnnotationArray = nullptr;
     SimpleAnnotation* modulesSimpleAnnotationArray = nullptr;
-    ModuleInfo moduleInfo{};
 
     string code_file = "";
     const MinidumpModule* module =
@@ -517,8 +512,24 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
       BPLOG(ERROR) << "Cannot get info list annotations for minidump";
     }
 
+    const std::vector<std::map<std::string, std::string>>*
+        infoSimpleAnnotations =
+            (mci ? mci->GetInfoSimpleAnnotations() : nullptr);
+    if (!infoSimpleAnnotations) {
+      BPLOG(ERROR) << "Cannot get info simple annotations for minidump";
+    }
+
     const uint32_t modulesListAnnotationCount =
         (infoListAnnotations ? (*infoListAnnotations)[module_index].size() : 0);
+    const uint32_t modulesSimpleAnnotationCount =
+        (infoSimpleAnnotations ? (*infoSimpleAnnotations)[module_index].size()
+                               : 0);
+    if ((modulesListAnnotationCount == 0) &&
+        (modulesSimpleAnnotationCount == 0)) {
+      // only add modules that have some list annotations or simple annotations
+      continue;
+    }
+
     if (modulesListAnnotationCount > 0) {
       modulesListAnnotationArray = (ListAnnotation*)malloc(
           sizeof(ListAnnotation) * modulesListAnnotationCount);
@@ -539,16 +550,6 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
       }
     }
 
-    const std::vector<std::map<std::string, std::string>>*
-        infoSimpleAnnotations =
-            (mci ? mci->GetInfoSimpleAnnotations() : nullptr);
-    if (!infoSimpleAnnotations) {
-      BPLOG(ERROR) << "Cannot get info simple annotations for minidump";
-    }
-
-    const uint32_t modulesSimpleAnnotationCount =
-        (infoSimpleAnnotations ? (*infoSimpleAnnotations)[module_index].size()
-                               : 0);
     if (modulesSimpleAnnotationCount > 0) {
       modulesSimpleAnnotationArray = (SimpleAnnotation*)malloc(
           sizeof(SimpleAnnotation) * modulesSimpleAnnotationCount);
@@ -571,12 +572,14 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
       }
     }
 
-    moduleInfo.moduleName = duplicate(code_file);
-    moduleInfo.listAnnotations = modulesListAnnotationArray;
-    moduleInfo.listAnnotationCount = modulesListAnnotationCount;
-    moduleInfo.simpleAnnotations = modulesSimpleAnnotationArray;
-    moduleInfo.simpleAnnotationCount = modulesSimpleAnnotationCount;
-    moduleInfoArray[module_index] = moduleInfo;
+    ModuleInfo moduleInfo = {
+        .moduleName = duplicate(code_file),
+        .listAnnotations = modulesListAnnotationArray,
+        .listAnnotationCount = static_cast<int>(modulesListAnnotationCount),
+        .simpleAnnotations = modulesSimpleAnnotationArray,
+        .simpleAnnotationCount =
+            static_cast<int>(modulesSimpleAnnotationCount)};
+    moduleInfoVector.push_back(moduleInfo);
   }
 
   string report_id = "";
@@ -586,12 +589,29 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
     client_id = MDGUIDToString(mci->crashpad_info()->client_id);
   }
 
+  const uint32_t moduleInfosAdded = moduleInfoVector.size();
+  if (moduleInfosAdded > 0) {
+    moduleInfoArray =
+        (ModuleInfo*)malloc(sizeof(ModuleInfo) * moduleInfosAdded);
+    if (!moduleInfoArray) {
+      throw std::bad_alloc();
+    }
+
+    uint32_t moduleIndex = 0;
+    for (std::vector<ModuleInfo>::const_iterator iterator =
+             moduleInfoVector.begin();
+         iterator != moduleInfoVector.end(); ++iterator) {
+      moduleInfoArray[moduleIndex] = std::move(*iterator);
+      ++moduleIndex;
+    }
+  }
+
   CrashpadInfo crashpadInfo = {
       .reportId = duplicate(report_id),
       .clientId = duplicate(client_id),
       .simpleAnnotationCount = static_cast<int>(simpleAnnotationCount),
       .simpleAnnotations = simpleAnnotationArray,
-      .moduleCount = static_cast<int>(moduleInfoCount),
+      .moduleCount = static_cast<int>(moduleInfosAdded),
       .moduleInfo = moduleInfoArray};
 
   MinidumpMetadata minidumpMetadata = {.crashpadInfo = crashpadInfo};
