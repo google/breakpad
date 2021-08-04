@@ -33,7 +33,7 @@ typedef struct RegisterData {
 typedef struct Register {
   int frameIndex;
   int registerDataCount;
-  RegisterData* registerDataItems;
+  RegisterData* registerValues;
 } Register;
 
 typedef struct Exception {

@@ -90,9 +90,9 @@ void destroyRegister(Register* reg) {
     return;
 
   for (int i = 0; i < reg->registerDataCount; ++i) {
-    destroyRegisterData(&reg->registerDataItems[i]);
+    destroyRegisterData(&reg->registerValues[i]);
   }
-  freeAndInvalidate((void**)&reg->registerDataItems);
+  freeAndInvalidate((void**)&reg->registerValues);
 }
 
 void destroyException(Exception* exception) {
@@ -750,7 +750,7 @@ static Register* getRegisters(const StackFrame* frame, const string& cpu) {
           registerDataArray[registerDataIndex++] = rd;
     }
 
-    Register r = {.frameIndex = 0, .registerDataCount = static_cast<int>(registerDataIndex), .registerDataItems = registerDataArray};
+    Register r = {.frameIndex = 0, .registerDataCount = static_cast<int>(registerDataIndex), .registerValues = registerDataArray};
     registers = (Register*)malloc(sizeof(Register));
     registers[0] = r;
   }
