@@ -1343,6 +1343,7 @@ src_processor_minidump_stackwalk_LDADD = \
 	src/third_party/libdisasm/libdisasm.a
 
 src_processor_libbugsnag_stackwalk_wrapper_a_SOURCES = \
+	src/processor/bugsnag_register_reader.cc \
 	src/processor/bugsnag_stackwalk_wrapper.cc
 src_processor_libbugsnag_stackwalk_wrapper_a_LIBADD = \
 	src/common/path_helper.o \

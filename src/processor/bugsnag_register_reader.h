@@ -7,15 +7,15 @@ using google_breakpad::StackFrame;
 
 namespace bugsnag_breakpad {
 
-static std::string XXXFormatRegisterValue(uint32_t value);
+static std::string FormatRegisterValue(uint32_t value);
 
-static std::string XXXFormatRegister64Value(uint64_t value);
+static std::string FormatRegister64Value(uint64_t value);
 
-static void XXXAddToRegisterMap(std::map<std::string, std::string>& registerMap,
+static void AddToRegisterMap(std::map<std::string, std::string>& registerMap,
                              const char* name,
                              const std::string value);
 
-static void XXXgetRegisterData(std::map<std::string, std::string>& registerMap,
+void getRegisterData(std::map<std::string, std::string>& registerMap,
                             const StackFrame* frame,
                             const std::string& cpu);
 
