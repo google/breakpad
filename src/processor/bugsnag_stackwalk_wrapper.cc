@@ -201,7 +201,8 @@ static void destroyWrappedEvent(WrappedEvent* wrappedEvent) {
   destroyEvent(&wrappedEvent->event);
 }
 
-static void destroyWrappedModuleDetails(WrappedModuleDetails* wrappedModuleDetails) {
+static void destroyWrappedModuleDetails(
+    WrappedModuleDetails* wrappedModuleDetails) {
   if (!wrappedModuleDetails)
     return;
 
@@ -442,9 +443,10 @@ static string MDGUIDToString(const MDGUID& uuid) {
   return std::string(buf);
 }
 
-static uint32_t getSimpleAnnotations(MinidumpCrashpadInfo& mci, SimpleAnnotation** simpleAnnotationArray) {
-
-  const std::map<std::string, std::string>* simpleAnnotations = mci.GetSimpleAnnotations();
+static uint32_t getSimpleAnnotations(MinidumpCrashpadInfo& mci,
+                                     SimpleAnnotation** simpleAnnotationArray) {
+  const std::map<std::string, std::string>* simpleAnnotations =
+      mci.GetSimpleAnnotations();
   if (!simpleAnnotations) {
     BPLOG(ERROR) << "Cannot get simple annotations for minidump";
     return 0;
@@ -453,16 +455,16 @@ static uint32_t getSimpleAnnotations(MinidumpCrashpadInfo& mci, SimpleAnnotation
   const uint32_t simpleAnnotationCount =
       (simpleAnnotations ? simpleAnnotations->size() : 0);
   if (simpleAnnotationCount > 0) {
-    *simpleAnnotationArray = (SimpleAnnotation*)malloc(sizeof(SimpleAnnotation) *
-                                                      simpleAnnotationCount);
+    *simpleAnnotationArray = (SimpleAnnotation*)malloc(
+        sizeof(SimpleAnnotation) * simpleAnnotationCount);
     if (!*simpleAnnotationArray) {
       throw std::bad_alloc();
     }
 
     uint32_t simpleAnnotationIndex = 0;
     for (std::map<std::string, std::string>::const_iterator iterator =
-            simpleAnnotations->begin();
-        iterator != simpleAnnotations->end(); ++iterator) {
+             simpleAnnotations->begin();
+         iterator != simpleAnnotations->end(); ++iterator) {
       SimpleAnnotation simpleAnnotation = {
           .key = duplicate(iterator->first.c_str()),
           .value = duplicate(iterator->second.c_str())};
@@ -472,15 +474,16 @@ static uint32_t getSimpleAnnotations(MinidumpCrashpadInfo& mci, SimpleAnnotation
   return simpleAnnotationCount;
 }
 
-static uint32_t getListAnnotationsForModule(const uint32_t module_index,
-  const std::vector<std::vector<std::string>>* infoListAnnotations,
-  ListAnnotation** modulesListAnnotationArray) {
-  
+static uint32_t getListAnnotationsForModule(
+    const uint32_t module_index,
+    const std::vector<std::vector<std::string>>* infoListAnnotations,
+    ListAnnotation** modulesListAnnotationArray) {
   if (!infoListAnnotations) {
     return 0;
   }
 
-  const uint32_t modulesListAnnotationCount = (*infoListAnnotations)[module_index].size();
+  const uint32_t modulesListAnnotationCount =
+      (*infoListAnnotations)[module_index].size();
   if (modulesListAnnotationCount > 0) {
     *modulesListAnnotationArray = (ListAnnotation*)malloc(
         sizeof(ListAnnotation) * modulesListAnnotationCount);
@@ -490,27 +493,27 @@ static uint32_t getListAnnotationsForModule(const uint32_t module_index,
   }
 
   for (uint32_t annotation_index = 0;
-      annotation_index < modulesListAnnotationCount;
-      ++annotation_index) {
+       annotation_index < modulesListAnnotationCount; ++annotation_index) {
     ListAnnotation listAnnotation = {
-        .value =
-            duplicate((*infoListAnnotations)[module_index][annotation_index]
-                          .c_str())};
+        .value = duplicate(
+            (*infoListAnnotations)[module_index][annotation_index].c_str())};
     (*modulesListAnnotationArray)[annotation_index] = listAnnotation;
   }
 
   return modulesListAnnotationCount;
 }
 
-static uint32_t getSimpleAnnotationsForModule(const uint32_t module_index,
-  const std::vector<std::map<std::string, std::string>>* infoSimpleAnnotations,
-  SimpleAnnotation** modulesSimpleAnnotationArray) {
-
+static uint32_t getSimpleAnnotationsForModule(
+    const uint32_t module_index,
+    const std::vector<std::map<std::string, std::string>>*
+        infoSimpleAnnotations,
+    SimpleAnnotation** modulesSimpleAnnotationArray) {
   if (!infoSimpleAnnotations) {
     return 0;
   }
 
-  const uint32_t modulesSimpleAnnotationCount = (*infoSimpleAnnotations)[module_index].size();
+  const uint32_t modulesSimpleAnnotationCount =
+      (*infoSimpleAnnotations)[module_index].size();
   if (modulesSimpleAnnotationCount > 0) {
     *modulesSimpleAnnotationArray = (SimpleAnnotation*)malloc(
         sizeof(SimpleAnnotation) * modulesSimpleAnnotationCount);
@@ -521,9 +524,8 @@ static uint32_t getSimpleAnnotationsForModule(const uint32_t module_index,
 
   uint32_t simpleAnnotationIndex = 0;
   for (std::map<std::string, std::string>::const_iterator iterator =
-          (*infoSimpleAnnotations)[module_index].begin();
-      iterator != (*infoSimpleAnnotations)[module_index].end();
-      ++iterator) {
+           (*infoSimpleAnnotations)[module_index].begin();
+       iterator != (*infoSimpleAnnotations)[module_index].end(); ++iterator) {
     if (simpleAnnotationIndex >= modulesSimpleAnnotationCount) {
       BPLOG(ERROR) << "Array out of bounds";
       break;
@@ -531,13 +533,14 @@ static uint32_t getSimpleAnnotationsForModule(const uint32_t module_index,
     SimpleAnnotation simpleAnnotation = {
         .key = duplicate(iterator->first.c_str()),
         .value = duplicate(iterator->second.c_str())};
-    (*modulesSimpleAnnotationArray)[simpleAnnotationIndex++] =
-        simpleAnnotation;
+    (*modulesSimpleAnnotationArray)[simpleAnnotationIndex++] = simpleAnnotation;
   }
   return modulesSimpleAnnotationCount;
 }
 
-static uint32_t getModuleAnnotations(Minidump& dump, MinidumpCrashpadInfo& mci, ModuleInfo** moduleInfoArray) {
+static uint32_t getModuleAnnotations(Minidump& dump,
+                                     MinidumpCrashpadInfo& mci,
+                                     ModuleInfo** moduleInfoArray) {
   const uint32_t moduleInfoCount =
       ((mci.GetModuleCrashpadInfoLinks())
            ? mci.GetModuleCrashpadInfoLinks()->size()
@@ -552,8 +555,8 @@ static uint32_t getModuleAnnotations(Minidump& dump, MinidumpCrashpadInfo& mci, 
     BPLOG(ERROR) << "Cannot get info list annotations for minidump";
   }
 
-  const std::vector<std::map<std::string, std::string>>*
-      infoSimpleAnnotations = mci.GetInfoSimpleAnnotations();
+  const std::vector<std::map<std::string, std::string>>* infoSimpleAnnotations =
+      mci.GetInfoSimpleAnnotations();
   if (!infoSimpleAnnotations) {
     BPLOG(ERROR) << "Cannot get info simple annotations for minidump";
   }
@@ -570,7 +573,7 @@ static uint32_t getModuleAnnotations(Minidump& dump, MinidumpCrashpadInfo& mci, 
   }
 
   for (uint32_t module_index = 0; module_index < moduleInfoCount;
-      ++module_index) {
+       ++module_index) {
     ListAnnotation* modulesListAnnotationArray = nullptr;
     SimpleAnnotation* modulesSimpleAnnotationArray = nullptr;
 
@@ -584,9 +587,11 @@ static uint32_t getModuleAnnotations(Minidump& dump, MinidumpCrashpadInfo& mci, 
       continue;
     }
 
-    const uint32_t modulesListAnnotationCount = getListAnnotationsForModule(module_index, infoListAnnotations, &modulesListAnnotationArray);
+    const uint32_t modulesListAnnotationCount = getListAnnotationsForModule(
+        module_index, infoListAnnotations, &modulesListAnnotationArray);
 
-    const uint32_t modulesSimpleAnnotationCount = getSimpleAnnotationsForModule(module_index, infoSimpleAnnotations, &modulesSimpleAnnotationArray);
+    const uint32_t modulesSimpleAnnotationCount = getSimpleAnnotationsForModule(
+        module_index, infoSimpleAnnotations, &modulesSimpleAnnotationArray);
 
     if ((modulesListAnnotationCount == 0) &&
         (modulesSimpleAnnotationCount == 0)) {
@@ -610,7 +615,7 @@ static uint32_t getModuleAnnotations(Minidump& dump, MinidumpCrashpadInfo& mci, 
         (ModuleInfo*)malloc(sizeof(ModuleInfo) * moduleInfoItemCount);
     if (!*moduleInfoArray) {
       throw std::bad_alloc();
-    } 
+    }
 
     uint32_t moduleIndex = 0;
     for (std::vector<ModuleInfo>::const_iterator iterator =
@@ -631,9 +636,11 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
     return MinidumpMetadata{};
   }
 
-  const uint32_t simpleAnnotationCount = getSimpleAnnotations(*mci, &simpleAnnotationArray);
+  const uint32_t simpleAnnotationCount =
+      getSimpleAnnotations(*mci, &simpleAnnotationArray);
 
-  const uint32_t moduleInfoCount = getModuleAnnotations(dump, *mci, &moduleInfoArray);
+  const uint32_t moduleInfoCount =
+      getModuleAnnotations(dump, *mci, &moduleInfoArray);
 
   string report_id = "";
   string client_id = "";
