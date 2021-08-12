@@ -450,20 +450,14 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
     return MinidumpMetadata{};
   }
 
-  MinidumpModuleList* module_list = dump.GetModuleList();
-  if (!module_list) {
-    BPLOG(ERROR) << "Cannot get module list for minidump";
-  }
-
   const uint32_t moduleInfoCount =
-      ((mci && mci->GetModuleCrashpadInfoLinks())
+      ((mci->GetModuleCrashpadInfoLinks())
            ? mci->GetModuleCrashpadInfoLinks()->size()
            : 0);
 
   std::vector<ModuleInfo> moduleInfoVector;
 
-  const std::map<std::string, std::string>* simpleAnnotations =
-      (mci ? mci->GetSimpleAnnotations() : nullptr);
+  const std::map<std::string, std::string>* simpleAnnotations = mci->GetSimpleAnnotations();
   if (!simpleAnnotations) {
     BPLOG(ERROR) << "Cannot get simple annotations for minidump";
   }
@@ -490,101 +484,119 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
     }
   }
 
-  for (uint32_t module_index = 0; module_index < moduleInfoCount;
-       ++module_index) {
-    ListAnnotation* modulesListAnnotationArray = nullptr;
-    SimpleAnnotation* modulesSimpleAnnotationArray = nullptr;
+  const std::vector<std::vector<std::string>>* infoListAnnotations =
+      mci->GetInfoListAnnotations();
+  if (!infoListAnnotations) {
+    BPLOG(ERROR) << "Cannot get info list annotations for minidump";
+  }
 
-    string code_file = "";
-    const MinidumpModule* module =
-        (module_list ? module_list->GetModuleAtIndex(module_index) : nullptr);
-    if (module) {
-      code_file = PathnameStripper::File(module->code_file());
-    }
-    if (code_file == "") {
-      BPLOG(ERROR) << "Cannot get module name for minidump";
-      continue;
-    }
+  const std::vector<std::map<std::string, std::string>>*
+      infoSimpleAnnotations = mci->GetInfoSimpleAnnotations();
+  if (!infoSimpleAnnotations) {
+    BPLOG(ERROR) << "Cannot get info simple annotations for minidump";
+  }
 
-    const std::vector<std::vector<std::string>>* infoListAnnotations =
-        mci->GetInfoListAnnotations();
-    if (!infoListAnnotations) {
-      BPLOG(ERROR) << "Cannot get info list annotations for minidump";
-    }
+  MinidumpModuleList* module_list = dump.GetModuleList();
+  if (!module_list) {
+    BPLOG(ERROR) << "Cannot get module list for minidump";
+  } else {
+    for (uint32_t module_index = 0; module_index < moduleInfoCount;
+        ++module_index) {
+      ListAnnotation* modulesListAnnotationArray = nullptr;
+      SimpleAnnotation* modulesSimpleAnnotationArray = nullptr;
 
-    const std::vector<std::map<std::string, std::string>>*
-        infoSimpleAnnotations =
-            (mci ? mci->GetInfoSimpleAnnotations() : nullptr);
-    if (!infoSimpleAnnotations) {
-      BPLOG(ERROR) << "Cannot get info simple annotations for minidump";
-    }
-
-    const uint32_t modulesListAnnotationCount =
-        (infoListAnnotations ? (*infoListAnnotations)[module_index].size() : 0);
-    const uint32_t modulesSimpleAnnotationCount =
-        (infoSimpleAnnotations ? (*infoSimpleAnnotations)[module_index].size()
-                               : 0);
-    if ((modulesListAnnotationCount == 0) &&
-        (modulesSimpleAnnotationCount == 0)) {
-      // only add modules that have some list annotations or simple annotations
-      continue;
-    }
-
-    if (modulesListAnnotationCount > 0) {
-      modulesListAnnotationArray = (ListAnnotation*)malloc(
-          sizeof(ListAnnotation) * modulesListAnnotationCount);
-      if (!modulesListAnnotationArray) {
-        throw std::bad_alloc();
+      string code_file = "";
+      const MinidumpModule* module = module_list->GetModuleAtIndex(module_index);
+      if (module) {
+        code_file = PathnameStripper::File(module->code_file());
       }
-    }
-
-    if (infoListAnnotations) {
-      for (uint32_t annotation_index = 0;
-           annotation_index < (*infoListAnnotations)[module_index].size();
-           ++annotation_index) {
-        ListAnnotation listAnnotation = {
-            .value =
-                duplicate((*infoListAnnotations)[module_index][annotation_index]
-                              .c_str())};
-        modulesListAnnotationArray[annotation_index] = listAnnotation;
+      if (code_file == "") {
+        BPLOG(ERROR) << "Cannot get module name for minidump";
+        continue;
       }
-    }
 
-    if (modulesSimpleAnnotationCount > 0) {
-      modulesSimpleAnnotationArray = (SimpleAnnotation*)malloc(
-          sizeof(SimpleAnnotation) * modulesSimpleAnnotationCount);
-      if (!modulesSimpleAnnotationArray) {
-        throw std::bad_alloc();
+      // this does not need to be in the loop
+      /*const std::vector<std::vector<std::string>>* infoListAnnotations =
+          mci->GetInfoListAnnotations();
+      if (!infoListAnnotations) {
+        BPLOG(ERROR) << "Cannot get info list annotations for minidump";
+      }*/
+
+      // this does not need to be in the loop
+      /*const std::vector<std::map<std::string, std::string>>*
+          infoSimpleAnnotations =
+              (mci ? mci->GetInfoSimpleAnnotations() : nullptr);
+      if (!infoSimpleAnnotations) {
+        BPLOG(ERROR) << "Cannot get info simple annotations for minidump";
+      }*/
+
+      const uint32_t modulesListAnnotationCount =
+          (infoListAnnotations ? (*infoListAnnotations)[module_index].size() : 0);
+      const uint32_t modulesSimpleAnnotationCount =
+          (infoSimpleAnnotations ? (*infoSimpleAnnotations)[module_index].size()
+                                : 0);
+      if ((modulesListAnnotationCount == 0) &&
+          (modulesSimpleAnnotationCount == 0)) {
+        // only add modules that have some list annotations or simple annotations
+        continue;
       }
-    }
 
-    if (infoSimpleAnnotations) {
-      uint32_t simpleAnnotationIndex = 0;
-      for (std::map<std::string, std::string>::const_iterator iterator =
-               (*infoSimpleAnnotations)[module_index].begin();
-           iterator != (*infoSimpleAnnotations)[module_index].end();
-           ++iterator) {
-        SimpleAnnotation simpleAnnotation = {
-            .key = duplicate(iterator->first.c_str()),
-            .value = duplicate(iterator->second.c_str())};
-        modulesSimpleAnnotationArray[simpleAnnotationIndex++] =
-            simpleAnnotation;
+      if (modulesListAnnotationCount > 0) {
+        modulesListAnnotationArray = (ListAnnotation*)malloc(
+            sizeof(ListAnnotation) * modulesListAnnotationCount);
+        if (!modulesListAnnotationArray) {
+          throw std::bad_alloc();
+        }
       }
-    }
 
-    ModuleInfo moduleInfo = {
-        .moduleName = duplicate(code_file),
-        .listAnnotationCount = static_cast<int>(modulesListAnnotationCount),
-        .listAnnotations = modulesListAnnotationArray,
-        .simpleAnnotationCount = static_cast<int>(modulesSimpleAnnotationCount),
-        .simpleAnnotations = modulesSimpleAnnotationArray,
-    };
-    moduleInfoVector.push_back(moduleInfo);
+      if (infoListAnnotations) {
+        for (uint32_t annotation_index = 0;
+            annotation_index < (*infoListAnnotations)[module_index].size();
+            ++annotation_index) {
+          ListAnnotation listAnnotation = {
+              .value =
+                  duplicate((*infoListAnnotations)[module_index][annotation_index]
+                                .c_str())};
+          modulesListAnnotationArray[annotation_index] = listAnnotation;
+        }
+      }
+
+      if (modulesSimpleAnnotationCount > 0) {
+        modulesSimpleAnnotationArray = (SimpleAnnotation*)malloc(
+            sizeof(SimpleAnnotation) * modulesSimpleAnnotationCount);
+        if (!modulesSimpleAnnotationArray) {
+          throw std::bad_alloc();
+        }
+      }
+
+      if (infoSimpleAnnotations) {
+        uint32_t simpleAnnotationIndex = 0;
+        for (std::map<std::string, std::string>::const_iterator iterator =
+                (*infoSimpleAnnotations)[module_index].begin();
+            iterator != (*infoSimpleAnnotations)[module_index].end();
+            ++iterator) {
+          SimpleAnnotation simpleAnnotation = {
+              .key = duplicate(iterator->first.c_str()),
+              .value = duplicate(iterator->second.c_str())};
+          modulesSimpleAnnotationArray[simpleAnnotationIndex++] =
+              simpleAnnotation;
+        }
+      }
+
+      ModuleInfo moduleInfo = {
+          .moduleName = duplicate(code_file),
+          .listAnnotationCount = static_cast<int>(modulesListAnnotationCount),
+          .listAnnotations = modulesListAnnotationArray,
+          .simpleAnnotationCount = static_cast<int>(modulesSimpleAnnotationCount),
+          .simpleAnnotations = modulesSimpleAnnotationArray,
+      };
+      moduleInfoVector.push_back(moduleInfo);
+    }
   }
 
   string report_id = "";
   string client_id = "";
-  if (mci && mci->crashpad_info()) {
+  if (mci->crashpad_info()) {
     report_id = MDGUIDToString(mci->crashpad_info()->report_id);
     client_id = MDGUIDToString(mci->crashpad_info()->client_id);
   }
