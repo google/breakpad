@@ -441,6 +441,35 @@ string MDGUIDToString(const MDGUID& uuid) {
   return std::string(buf);
 }
 
+static uint32_t getSimpleAnnotations(google_breakpad::MinidumpCrashpadInfo& mci, SimpleAnnotation* simpleAnnotationArray) {
+  const std::map<std::string, std::string>* simpleAnnotations = mci.GetSimpleAnnotations();
+  if (!simpleAnnotations) {
+    BPLOG(ERROR) << "Cannot get simple annotations for minidump";
+    return 0;
+  }
+
+  const uint32_t simpleAnnotationCount =
+      (simpleAnnotations ? simpleAnnotations->size() : 0);
+  if (simpleAnnotationCount > 0) {
+    simpleAnnotationArray = (SimpleAnnotation*)malloc(sizeof(SimpleAnnotation) *
+                                                      simpleAnnotationCount);
+    if (!simpleAnnotationArray) {
+      throw std::bad_alloc();
+    }
+
+    uint32_t simpleAnnotationIndex = 0;
+    for (std::map<std::string, std::string>::const_iterator iterator =
+            simpleAnnotations->begin();
+        iterator != simpleAnnotations->end(); ++iterator) {
+      SimpleAnnotation simpleAnnotation = {
+          .key = duplicate(iterator->first.c_str()),
+          .value = duplicate(iterator->second.c_str())};
+      simpleAnnotationArray[simpleAnnotationIndex++] = simpleAnnotation;
+    }
+  }
+  return simpleAnnotationCount;
+}
+
 MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
   SimpleAnnotation* simpleAnnotationArray = nullptr;
   ModuleInfo* moduleInfoArray = nullptr;
@@ -457,32 +486,7 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
 
   std::vector<ModuleInfo> moduleInfoVector;
 
-  const std::map<std::string, std::string>* simpleAnnotations = mci->GetSimpleAnnotations();
-  if (!simpleAnnotations) {
-    BPLOG(ERROR) << "Cannot get simple annotations for minidump";
-  }
-
-  const uint32_t simpleAnnotationCount =
-      (simpleAnnotations ? simpleAnnotations->size() : 0);
-  if (simpleAnnotationCount > 0) {
-    simpleAnnotationArray = (SimpleAnnotation*)malloc(sizeof(SimpleAnnotation) *
-                                                      simpleAnnotationCount);
-    if (!simpleAnnotationArray) {
-      throw std::bad_alloc();
-    }
-  }
-
-  if (simpleAnnotationArray) {
-    uint32_t simpleAnnotationIndex = 0;
-    for (std::map<std::string, std::string>::const_iterator iterator =
-             simpleAnnotations->begin();
-         iterator != simpleAnnotations->end(); ++iterator) {
-      SimpleAnnotation simpleAnnotation = {
-          .key = duplicate(iterator->first.c_str()),
-          .value = duplicate(iterator->second.c_str())};
-      simpleAnnotationArray[simpleAnnotationIndex++] = simpleAnnotation;
-    }
-  }
+  const uint32_t simpleAnnotationCount = getSimpleAnnotations(*mci, simpleAnnotationArray);
 
   const std::vector<std::vector<std::string>>* infoListAnnotations =
       mci->GetInfoListAnnotations();
