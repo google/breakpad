@@ -33,6 +33,10 @@ static void AddToRegisterMap(std::map<std::string, std::string>& registerMap,
   registerMap.insert(std::make_pair(name, value));
 }
 
+/*
+The logic to access register names and values has been derived from the function
+PrintStack in stackwalk_common.cc
+*/
 void getRegisterData(std::map<std::string, std::string>& registerMap,
                             const StackFrame* frame,
                             const std::string& cpu) {
