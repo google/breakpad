@@ -2,10 +2,10 @@
 
 #include <string.h>
 #include <iomanip>
+#include <map>
 #include <sstream>
 #include <string>
 #include <vector>
-#include <map>
 
 #include "google_breakpad/processor/stack_frame_cpu.h"
 
@@ -38,8 +38,8 @@ The logic to access register names and values has been derived from the function
 PrintStack in stackwalk_common.cc
 */
 void getRegisterData(std::map<std::string, std::string>& registerMap,
-                            const StackFrame* frame,
-                            const std::string& cpu) {
+                     const StackFrame* frame,
+                     const std::string& cpu) {
   if (cpu == "x86") {
     using google_breakpad::StackFrameX86;
     const StackFrameX86* frame_x86 =
@@ -470,4 +470,4 @@ void getRegisterData(std::map<std::string, std::string>& registerMap,
   }
 }
 
-} // namespace bugsnag_breakpad
+}  // namespace bugsnag_breakpad

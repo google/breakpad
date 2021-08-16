@@ -1,5 +1,5 @@
-#include <string>
 #include <map>
+#include <string>
 
 #include "google_breakpad/processor/stack_frame_cpu.h"
 
@@ -16,7 +16,7 @@ static void AddToRegisterMap(std::map<std::string, std::string>& registerMap,
                              const std::string value);
 
 void getRegisterData(std::map<std::string, std::string>& registerMap,
-                            const StackFrame* frame,
-                            const std::string& cpu);
+                     const StackFrame* frame,
+                     const std::string& cpu);
 
-} // namespace bugsnag_breakpad
+}  // namespace bugsnag_breakpad
