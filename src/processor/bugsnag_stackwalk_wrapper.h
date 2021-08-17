@@ -75,6 +75,7 @@ typedef struct CrashpadInfo {
 
 typedef struct MinidumpMetadata {
   CrashpadInfo crashpadInfo;
+  const char* assertion;
 } MinidumpMetadata;
 
 typedef struct Event {
@@ -85,6 +86,7 @@ typedef struct Event {
   Device device;
   Thread* threads;
   MinidumpMetadata metaData;
+  bool unhandled;
 } Event;
 
 typedef struct ModuleDetails {
