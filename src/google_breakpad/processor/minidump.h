@@ -1117,6 +1117,26 @@ class MinidumpCrashpadInfo : public MinidumpStream {
   // Print a human-readable representation of the object to stdout.
   void Print();
 
+  // Accessor added by Bugsnag
+  const std::vector<uint32_t>* GetModuleCrashpadInfoLinks() const {
+    return &module_crashpad_info_links_;
+  }
+  
+  // Accessor added by Bugsnag
+  const std::vector<std::vector<std::string>>* GetInfoListAnnotations() const {
+    return &module_crashpad_info_list_annotations_;
+  }
+
+  // Accessor added by Bugsnag
+  const std::vector<std::map<std::string, std::string>>* GetInfoSimpleAnnotations() const {
+    return &module_crashpad_info_simple_annotations_;
+  }
+
+  // Accessor added by Bugsnag
+  const std::map<std::string, std::string>* GetSimpleAnnotations() const {
+    return &simple_annotations_;
+  }
+
  private:
   friend class Minidump;
 

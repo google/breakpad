@@ -60,6 +60,36 @@ typedef struct Thread {
   Stacktrace stacktrace;
 } Thread;
 
+typedef struct SimpleAnnotation {
+  const char* key;
+  const char* value;
+} SimpleAnnotation;
+
+typedef struct ListAnnotation {
+  const char* value;
+} ListAnnotation;
+
+typedef struct ModuleInfo {
+  const char* moduleName;
+  int listAnnotationCount;
+  ListAnnotation* listAnnotations;
+  int simpleAnnotationCount;
+  SimpleAnnotation* simpleAnnotations;
+} ModuleInfo;
+
+typedef struct CrashpadInfo {
+  const char* reportId;
+  const char* clientId;
+  int simpleAnnotationCount;
+  SimpleAnnotation* simpleAnnotations;
+  int moduleCount;
+  ModuleInfo* moduleInfo;
+} CrashpadInfo;
+
+typedef struct MinidumpMetadata {
+  CrashpadInfo crashpadInfo;
+} MinidumpMetadata;
+
 typedef struct Event {
   int threadCount;
   const char* temp;
@@ -67,6 +97,7 @@ typedef struct Event {
   App app;
   Device device;
   Thread* threads;
+  MinidumpMetadata metaData;
 } Event;
 
 typedef struct ModuleDetails {
