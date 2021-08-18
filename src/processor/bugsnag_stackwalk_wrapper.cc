@@ -628,7 +628,8 @@ static uint32_t getModuleAnnotations(Minidump& dump,
   return moduleInfoItemCount;
 }
 
-MinidumpMetadata getMinidumpMetadata(Minidump& dump, const ProcessState& process_state) {
+MinidumpMetadata getMinidumpMetadata(Minidump& dump,
+                                     const ProcessState& process_state) {
   SimpleAnnotation* simpleAnnotationArray = nullptr;
   ModuleInfo* moduleInfoArray = nullptr;
 
@@ -659,8 +660,8 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump, const ProcessState& process
       .moduleInfo = moduleInfoArray};
 
   MinidumpMetadata minidumpMetadata = {
-    .crashpadInfo = crashpadInfo,
-    .assertion = duplicate(process_state.assertion().c_str())};
+      .crashpadInfo = crashpadInfo,
+      .assertion = duplicate(process_state.assertion().c_str())};
 
   return minidumpMetadata;
 }
