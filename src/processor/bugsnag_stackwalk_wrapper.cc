@@ -81,22 +81,22 @@ static void destroyStacktrace(Stacktrace* stacktrace) {
   freeAndInvalidate((void**)&stacktrace->frames);
 }
 
-static void destroyRegisterData(RegisterData* regData) {
-  if (!regData)
-    return;
-
-  freeAndInvalidate((void**)&regData->registerName);
-  freeAndInvalidate((void**)&regData->registerValue);
-}
-
-static void destroyRegister(Register* reg) {
+static void destroyRegisterValue(RegisterValue* reg) {
   if (!reg)
     return;
 
-  for (int i = 0; i < reg->registerDataCount; ++i) {
-    destroyRegisterData(&reg->registerValues[i]);
+  freeAndInvalidate((void**)&reg->name);
+  freeAndInvalidate((void**)&reg->value);
+}
+
+static void destroyRegisters(Register* registers) {
+  if (!registers)
+    return;
+
+  for (int i = 0; i < registers->registerValueCount; ++i) {
+    destroyRegisterValue(&registers->registerValues[i]);
   }
-  freeAndInvalidate((void**)&reg->registerValues);
+  freeAndInvalidate((void**)&registers->registerValues);
 }
 
 static void destroyException(Exception* exception) {
@@ -106,7 +106,7 @@ static void destroyException(Exception* exception) {
   freeAndInvalidate((void**)&exception->errorClass);
   freeAndInvalidate((void**)&exception->crashAddress);
   destroyStacktrace(&exception->stacktrace);
-  destroyRegister(exception->registers);
+  destroyRegisters(exception->registers);
 }
 
 static void destroyApp(App* app) {
@@ -336,38 +336,36 @@ Thread* getThreads(const ProcessState& process_state) {
   return threads;
 }
 
-static Register* getRegisters(const StackFrame* frame, const string& cpu) {
-  std::vector<RegisterData> registerDataVector;
-  RegisterData* registerDataArray = nullptr;
-  Register* registers = nullptr;
+static Register getRegisterForStackFrame(const StackFrame* frame,
+                                         const string& cpu) {
+  RegisterValue* registerArray = nullptr;
+  // frameIndex of -1 indicates it has not been set - caller must set this field
+  Register reg = {.frameIndex = -1};
 
-  std::map<std::string, std::string> registerMap;
-  bugsnag_breakpad::getRegisterData(registerMap, frame, cpu);
+  std::map<std::string, std::string> registerMap =
+      bugsnag_breakpad::getRegisterValues(frame, cpu);
 
   if (registerMap.size() > 0) {
-    registerDataArray =
-        (RegisterData*)malloc(sizeof(RegisterData) * registerMap.size());
-    if (!registerDataArray) {
+    registerArray =
+        (RegisterValue*)malloc(sizeof(RegisterValue) * registerMap.size());
+    if (!registerArray) {
       throw std::bad_alloc();
     }
 
-    uint32_t registerDataIndex = 0;
+    uint32_t registerIndex = 0;
     for (std::map<std::string, std::string>::const_iterator iterator =
              registerMap.begin();
          iterator != registerMap.end(); ++iterator) {
-      RegisterData rd = {.registerName = duplicate(iterator->first.c_str()),
-                         .registerValue = duplicate(iterator->second.c_str())};
-      registerDataArray[registerDataIndex++] = rd;
+      RegisterValue regValue = {.name = duplicate(iterator->first.c_str()),
+                                .value = duplicate(iterator->second.c_str())};
+      registerArray[registerIndex++] = regValue;
     }
 
-    Register r = {.frameIndex = 0,
-                  .registerDataCount = static_cast<int>(registerDataIndex),
-                  .registerValues = registerDataArray};
-    registers = (Register*)malloc(sizeof(Register));
-    registers[0] = r;
+    reg.registerValueCount = static_cast<int>(registerIndex);
+    reg.registerValues = registerArray;
   }
 
-  return registers;
+  return reg;
 }
 
 // Maps the information from a minidump into our Event struct
@@ -378,10 +376,26 @@ static Event getEvent(const ProcessState& process_state) {
   string cpu = process_state.system_info()->cpu;
   const CallStack* stack =
       process_state.threads()->at(getErrorReportingThreadIndex(process_state));
-  const StackFrame* frame = stack->frames()->at(0);
+
+  // currently retrieve the registers for only the top stack frame
+  const uint32_t NUMBER_OF_STACK_FRAMES = 1;
+  Register* registers =
+      (Register*)malloc(sizeof(Register) * NUMBER_OF_STACK_FRAMES);
+  if (!registers) {
+    throw std::bad_alloc();
+  }
 
   // get the exception register info
-  Register* registers = getRegisters(frame, cpu);
+  uint32_t framesAdded = 0;
+  for (uint32_t frameIndex; frameIndex < NUMBER_OF_STACK_FRAMES &&
+                            frameIndex < stack->frames()->size();
+       ++frameIndex) {
+    const StackFrame* frame = stack->frames()->at(frameIndex);
+    Register r = getRegisterForStackFrame(frame, cpu);
+    r.frameIndex = frameIndex;
+    registers[frameIndex] = r;
+    ++framesAdded;
+  }
 
   Exception e = {.stacktrace = s,
                  .errorClass = duplicate(process_state.crash_reason())};
@@ -389,7 +403,7 @@ static Event getEvent(const ProcessState& process_state) {
   if (crashAddress != "") {
     e.crashAddress = duplicate(crashAddress);
   }
-  e.registerCount = 1;
+  e.registerCount = framesAdded;
   e.registers = registers;
 
   int uptime = 0;

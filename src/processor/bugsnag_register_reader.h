@@ -15,8 +15,7 @@ static void AddToRegisterMap(std::map<std::string, std::string>& registerMap,
                              const char* name,
                              const std::string value);
 
-void getRegisterData(std::map<std::string, std::string>& registerMap,
-                     const StackFrame* frame,
-                     const std::string& cpu);
+std::map<std::string, std::string> getRegisterValues(const StackFrame* frame,
+                                                     const std::string& cpu);
 
 }  // namespace bugsnag_breakpad

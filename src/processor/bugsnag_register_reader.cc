@@ -23,7 +23,7 @@ static std::string FormatRegisterValue(uint32_t value) {
 static std::string FormatRegister64Value(uint64_t value) {
   std::stringstream ss;
   ss << "0x" << std::hex << std::nouppercase << std::setfill('0')
-     << std::setw(16) << value;
+     << std::setw(12) << value;
   return ss.str();
 }
 
@@ -37,9 +37,9 @@ static void AddToRegisterMap(std::map<std::string, std::string>& registerMap,
 The logic to access register names and values has been derived from the function
 PrintStack in stackwalk_common.cc
 */
-void getRegisterData(std::map<std::string, std::string>& registerMap,
-                     const StackFrame* frame,
-                     const std::string& cpu) {
+std::map<std::string, std::string> getRegisterValues(const StackFrame* frame,
+                                                     const std::string& cpu) {
+  std::map<std::string, std::string> registerMap;
   if (cpu == "x86") {
     using google_breakpad::StackFrameX86;
     const StackFrameX86* frame_x86 =
@@ -468,6 +468,7 @@ void getRegisterData(std::map<std::string, std::string>& registerMap,
                            frame_mips->context.iregs[MD_CONTEXT_MIPS_REG_S7]));
     }
   }
+  return registerMap;
 }
 
 }  // namespace bugsnag_breakpad

@@ -25,15 +25,15 @@ typedef struct Stacktrace {
   Stackframe* frames;
 } Stacktrace;
 
-typedef struct RegisterData {
-  const char* registerName;
-  const char* registerValue;
-} RegisterData;
+typedef struct RegisterValue {
+  const char* name;
+  const char* value;
+} RegisterValue;
 
 typedef struct Register {
   int frameIndex;
-  int registerDataCount;
-  RegisterData* registerValues;
+  int registerValueCount;
+  RegisterValue* registerValues;
 } Register;
 
 typedef struct Exception {
