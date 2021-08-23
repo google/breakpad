@@ -13,17 +13,32 @@ using google_breakpad::StackFrame;
 
 namespace bugsnag_breakpad {
 
+// flag to indicate that register addresses should be padded with leading zeros
+const bool PAD_REGISTER_ADDRESSES = false;
+
 static std::string FormatRegisterValue(uint32_t value) {
+  char buffer[64];
+  if (PAD_REGISTER_ADDRESSES) {
+    snprintf(buffer, sizeof(buffer), "0x%08x", value);
+  } else {
+    snprintf(buffer, sizeof(buffer), "0x%x", value);
+  }
+
   std::stringstream ss;
-  ss << "0x" << std::hex << std::nouppercase << std::setfill('0')
-     << std::setw(8) << value;
+  ss << buffer;
   return ss.str();
 }
 
 static std::string FormatRegister64Value(uint64_t value) {
+  char buffer[64];
+  if (PAD_REGISTER_ADDRESSES) {
+    snprintf(buffer, sizeof(buffer), "0x%016" PRIx64 , value);
+  } else {
+    snprintf(buffer, sizeof(buffer), "0x%" PRIx64, value);
+  }
+
   std::stringstream ss;
-  ss << "0x" << std::hex << std::nouppercase << std::setfill('0')
-     << std::setw(12) << value;
+  ss << buffer;
   return ss.str();
 }
 
