@@ -387,7 +387,7 @@ static Event getEvent(const ProcessState& process_state) {
 
   // get the exception register info
   uint32_t framesAdded = 0;
-  for (uint32_t frameIndex; frameIndex < NUMBER_OF_STACK_FRAMES &&
+  for (uint32_t frameIndex = 0; frameIndex < NUMBER_OF_STACK_FRAMES &&
                             frameIndex < stack->frames()->size();
        ++frameIndex) {
     const StackFrame* frame = stack->frames()->at(frameIndex);
