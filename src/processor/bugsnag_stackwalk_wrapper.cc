@@ -336,7 +336,7 @@ Thread* getThreads(const ProcessState& process_state) {
   return threads;
 }
 
-static Register getRegisterForStackFrame(const StackFrame* frame,
+static Register getRegistersForStackFrame(const StackFrame* frame,
                                          const string& cpu) {
   RegisterValue* registerArray = nullptr;
   // frameIndex of -1 indicates it has not been set - caller must set this field
@@ -391,7 +391,7 @@ static Event getEvent(const ProcessState& process_state) {
                                 frameIndex < stack->frames()->size();
        ++frameIndex) {
     const StackFrame* frame = stack->frames()->at(frameIndex);
-    Register r = getRegisterForStackFrame(frame, cpu);
+    Register r = getRegistersForStackFrame(frame, cpu);
     r.frameIndex = frameIndex;
     registers[frameIndex] = r;
     ++framesAdded;
