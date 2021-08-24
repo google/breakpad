@@ -587,8 +587,10 @@ src_processor_libbugsnag_stackwalk_wrapper_a_AR = $(AR) $(ARFLAGS)
 @DISABLE_PROCESSOR_FALSE@	src/processor/tokenize.o \
 @DISABLE_PROCESSOR_FALSE@	src/third_party/libdisasm/libdisasm.a
 am__src_processor_libbugsnag_stackwalk_wrapper_a_SOURCES_DIST =  \
+	src/processor/bugsnag_register_reader.cc \
 	src/processor/bugsnag_stackwalk_wrapper.cc
-@DISABLE_PROCESSOR_FALSE@am_src_processor_libbugsnag_stackwalk_wrapper_a_OBJECTS = src/processor/bugsnag_stackwalk_wrapper.$(OBJEXT)
+@DISABLE_PROCESSOR_FALSE@am_src_processor_libbugsnag_stackwalk_wrapper_a_OBJECTS = src/processor/bugsnag_register_reader.$(OBJEXT) \
+@DISABLE_PROCESSOR_FALSE@	src/processor/bugsnag_stackwalk_wrapper.$(OBJEXT)
 src_processor_libbugsnag_stackwalk_wrapper_a_OBJECTS =  \
 	$(am_src_processor_libbugsnag_stackwalk_wrapper_a_OBJECTS)
 src_testing_libtesting_a_AR = $(AR) $(ARFLAGS)
@@ -1843,6 +1845,7 @@ am__depfiles_remade = src/client/$(DEPDIR)/minidump_file_writer.Po \
 	src/processor/$(DEPDIR)/basic_code_modules.Po \
 	src/processor/$(DEPDIR)/basic_source_line_resolver.Po \
 	src/processor/$(DEPDIR)/basic_source_line_resolver_unittest-basic_source_line_resolver_unittest.Po \
+	src/processor/$(DEPDIR)/bugsnag_register_reader.Po \
 	src/processor/$(DEPDIR)/bugsnag_stackwalk_wrapper.Po \
 	src/processor/$(DEPDIR)/call_stack.Po \
 	src/processor/$(DEPDIR)/cfi_frame_info.Po \
@@ -2460,6 +2463,7 @@ pdfdir = @pdfdir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
 psdir = @psdir@
+runstatedir = @runstatedir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
@@ -3657,6 +3661,7 @@ TESTS = $(check_PROGRAMS) $(check_SCRIPTS)
 @DISABLE_PROCESSOR_FALSE@	src/third_party/libdisasm/libdisasm.a
 
 @DISABLE_PROCESSOR_FALSE@src_processor_libbugsnag_stackwalk_wrapper_a_SOURCES = \
+@DISABLE_PROCESSOR_FALSE@	src/processor/bugsnag_register_reader.cc \
 @DISABLE_PROCESSOR_FALSE@	src/processor/bugsnag_stackwalk_wrapper.cc
 
 @DISABLE_PROCESSOR_FALSE@src_processor_libbugsnag_stackwalk_wrapper_a_LIBADD = \
@@ -4394,6 +4399,9 @@ src/libbreakpad.a: $(src_libbreakpad_a_OBJECTS) $(src_libbreakpad_a_DEPENDENCIES
 	$(AM_V_at)-rm -f src/libbreakpad.a
 	$(AM_V_AR)$(src_libbreakpad_a_AR) src/libbreakpad.a $(src_libbreakpad_a_OBJECTS) $(src_libbreakpad_a_LIBADD)
 	$(AM_V_at)$(RANLIB) src/libbreakpad.a
+src/processor/bugsnag_register_reader.$(OBJEXT):  \
+	src/processor/$(am__dirstamp) \
+	src/processor/$(DEPDIR)/$(am__dirstamp)
 src/processor/bugsnag_stackwalk_wrapper.$(OBJEXT):  \
 	src/processor/$(am__dirstamp) \
 	src/processor/$(DEPDIR)/$(am__dirstamp)
@@ -5595,6 +5603,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/basic_code_modules.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/basic_source_line_resolver.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/basic_source_line_resolver_unittest-basic_source_line_resolver_unittest.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/bugsnag_register_reader.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/bugsnag_stackwalk_wrapper.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/call_stack.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/cfi_frame_info.Po@am__quote@ # am--include-marker
@@ -9665,6 +9674,7 @@ distclean: distclean-am
 	-rm -f src/processor/$(DEPDIR)/basic_code_modules.Po
 	-rm -f src/processor/$(DEPDIR)/basic_source_line_resolver.Po
 	-rm -f src/processor/$(DEPDIR)/basic_source_line_resolver_unittest-basic_source_line_resolver_unittest.Po
+	-rm -f src/processor/$(DEPDIR)/bugsnag_register_reader.Po
 	-rm -f src/processor/$(DEPDIR)/bugsnag_stackwalk_wrapper.Po
 	-rm -f src/processor/$(DEPDIR)/call_stack.Po
 	-rm -f src/processor/$(DEPDIR)/cfi_frame_info.Po
@@ -10008,6 +10018,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/processor/$(DEPDIR)/basic_code_modules.Po
 	-rm -f src/processor/$(DEPDIR)/basic_source_line_resolver.Po
 	-rm -f src/processor/$(DEPDIR)/basic_source_line_resolver_unittest-basic_source_line_resolver_unittest.Po
+	-rm -f src/processor/$(DEPDIR)/bugsnag_register_reader.Po
 	-rm -f src/processor/$(DEPDIR)/bugsnag_stackwalk_wrapper.Po
 	-rm -f src/processor/$(DEPDIR)/call_stack.Po
 	-rm -f src/processor/$(DEPDIR)/cfi_frame_info.Po
