@@ -449,7 +449,6 @@ static uint32_t getSimpleAnnotations(MinidumpCrashpadInfo& mci,
   const std::map<std::string, std::string>* simpleAnnotations =
       mci.GetSimpleAnnotations();
   if (!simpleAnnotations) {
-    BPLOG(ERROR) << "Cannot get simple annotations for minidump";
     return 0;
   }
 
@@ -552,15 +551,9 @@ static uint32_t getModuleAnnotations(Minidump& dump,
 
   const std::vector<std::vector<std::string>>* infoListAnnotations =
       mci.GetInfoListAnnotations();
-  if (!infoListAnnotations) {
-    BPLOG(ERROR) << "Cannot get info list annotations for minidump";
-  }
 
   const std::vector<std::map<std::string, std::string>>* infoSimpleAnnotations =
       mci.GetInfoSimpleAnnotations();
-  if (!infoSimpleAnnotations) {
-    BPLOG(ERROR) << "Cannot get info simple annotations for minidump";
-  }
 
   if (!infoListAnnotations && !infoSimpleAnnotations) {
     return 0;
