@@ -185,6 +185,7 @@ static void destroyMinidumpMetadata(MinidumpMetadata* minidumpMetadata) {
     return;
 
   destroyCrashpadInfo(&minidumpMetadata->crashpadInfo);
+  freeAndInvalidate((void**)&minidumpMetadata->assertion);
 }
 
 static void destroyEvent(Event* event) {
