@@ -185,6 +185,7 @@ static void destroyMinidumpMetadata(MinidumpMetadata* minidumpMetadata) {
     return;
 
   destroyCrashpadInfo(&minidumpMetadata->crashpadInfo);
+  freeAndInvalidate((void**)&minidumpMetadata->assertion);
 }
 
 static void destroyEvent(Event* event) {
@@ -426,7 +427,8 @@ static Event getEvent(const ProcessState& process_state) {
                        .exception = e,
                        .app = app,
                        .device = device,
-                       .threads = getThreads(process_state)};
+                       .threads = getThreads(process_state),
+                       .unhandled = process_state.crashed()};
 
   return returnEvent;
 }
@@ -700,7 +702,8 @@ static uint32_t getModuleAnnotations(Minidump& dump,
   return moduleInfoItemCount;
 }
 
-MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
+MinidumpMetadata getMinidumpMetadata(Minidump& dump,
+                                     const ProcessState& process_state) {
   SimpleAnnotation* simpleAnnotationArray = nullptr;
   ModuleInfo* moduleInfoArray = nullptr;
 
@@ -730,7 +733,9 @@ MinidumpMetadata getMinidumpMetadata(Minidump& dump) {
       .moduleCount = static_cast<int>(moduleInfoCount),
       .moduleInfo = moduleInfoArray};
 
-  MinidumpMetadata minidumpMetadata = {.crashpadInfo = crashpadInfo};
+  MinidumpMetadata minidumpMetadata = {
+      .crashpadInfo = crashpadInfo,
+      .assertion = duplicate(process_state.assertion().c_str())};
 
   return minidumpMetadata;
 }
@@ -783,7 +788,7 @@ WrappedEvent GetEventFromMinidump(const char* filename,
     result.event = getEvent(process_state);
 
     // Populate metadata
-    result.event.metaData = getMinidumpMetadata(dump);
+    result.event.metaData = getMinidumpMetadata(dump, process_state);
 
   } catch (const std::exception& ex) {
     string errMsg = "encountered exception: " + string(ex.what());
