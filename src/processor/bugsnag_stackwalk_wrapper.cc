@@ -211,9 +211,11 @@ static void destroyModuleDetails(ModuleDetails* moduleDetails) {
   for (int i = 0; i < moduleDetails->moduleCount; i++) {
     freeAndInvalidate((void**)&moduleDetails->moduleIds[i]);
     freeAndInvalidate((void**)&moduleDetails->moduleNames[i]);
+    freeAndInvalidate((void**)&moduleDetails->moduleCodeFiles[i]);
   }
   freeAndInvalidate((void**)&moduleDetails->moduleIds);
   freeAndInvalidate((void**)&moduleDetails->moduleNames);
+  freeAndInvalidate((void**)&moduleDetails->moduleCodeFiles);
 }
 
 static void destroyWrappedEvent(WrappedEvent* wrappedEvent) {
@@ -469,6 +471,11 @@ WrappedModuleDetails GetModuleDetails(const char* minidump_filename) {
     if (!module_names) {
       throw std::bad_alloc();
     }
+    char** module_code_files =
+        (char**)malloc(sizeof(char*) * module_list->module_count());
+    if (!module_code_files) {
+      throw std::bad_alloc();
+    }
 
     for (unsigned int i = 0; i < module_list->module_count(); i++) {
       const MinidumpModule* module = module_list->GetModuleAtIndex(i);
@@ -481,9 +488,13 @@ WrappedModuleDetails GetModuleDetails(const char* minidump_filename) {
 
       string debug_file = PathnameStripper::File(module->debug_file());
       module_names[i] = duplicate(debug_file);
+
+      string code_file = module->code_file();
+      module_code_files[i] = duplicate(code_file);
     };
     result.moduleDetails.moduleIds = module_ids;
     result.moduleDetails.moduleNames = module_names;
+    result.moduleDetails.moduleCodeFiles = module_code_files;
   } catch (const std::exception& ex) {
     string errMsg = "encountered exception: " + string(ex.what());
     result.pstrErr = duplicate(errMsg);

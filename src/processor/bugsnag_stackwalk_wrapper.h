@@ -107,6 +107,7 @@ typedef struct ModuleDetails {
   char* mainModuleId;
   char** moduleIds;
   char** moduleNames;
+  char** moduleCodeFiles;
 } ModuleDetails;
 
 typedef struct WrappedEvent {
