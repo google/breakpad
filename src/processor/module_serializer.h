@@ -74,6 +74,12 @@ class ModuleSerializer {
   // owner should call delete [] to free the memory after use.
   char* Serialize(const BasicSourceLineResolver::Module& module,
                   unsigned int* size = NULL);
+  
+  // Bugsnag function to serialize a single module
+  char* SerializeModule(
+    const BasicSourceLineResolver* basic_resolver,
+    string code_file,
+    unsigned int* size);
 
   // Given the string format symbol_data, produces a chunk of serialized data.
   // Caller takes ownership of the serialized data (on heap), and owner should

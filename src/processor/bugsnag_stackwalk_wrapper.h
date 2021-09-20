@@ -120,12 +120,21 @@ typedef struct WrappedModuleDetails {
   const char* pstrErr;
 } WrappedModuleDetails;
 
+typedef struct SerializedModuleDetails {
+  const char* code_file;
+  const char* module_path;
+  unsigned int serialized_size;
+  char* serialized_data;
+} SerializedModuleDetails;
+
 WrappedModuleDetails GetModuleDetails(const char* minidump_filename);
+bool SerializeModule(SerializedModuleDetails* stack_module_details);
 WrappedEvent GetEventFromMinidump(const char* filename,
-                                  const int symbol_path_count,
-                                  const char** symbol_paths);
+                                  const int stack_details_size,
+                                  SerializedModuleDetails** stack_details);
 void DestroyEvent(WrappedEvent* wrapped_event);
 void DestroyModuleDetails(WrappedModuleDetails* wrapped_module_details);
+void DestroySerializedModuleDetails(SerializedModuleDetails* serialized_module_details);
 
 #ifdef __cplusplus
 }

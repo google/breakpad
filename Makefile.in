@@ -553,6 +553,8 @@ src_processor_libbugsnag_stackwalk_wrapper_a_AR = $(AR) $(ARFLAGS)
 @DISABLE_PROCESSOR_FALSE@	src/common/path_helper.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/basic_code_modules.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/basic_source_line_resolver.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/fast_source_line_resolver.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/module_serializer.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/call_stack.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/cfi_frame_info.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/convert_old_arm64_context.o \
@@ -3668,6 +3670,8 @@ TESTS = $(check_PROGRAMS) $(check_SCRIPTS)
 @DISABLE_PROCESSOR_FALSE@	src/common/path_helper.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/basic_code_modules.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/basic_source_line_resolver.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/fast_source_line_resolver.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/module_serializer.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/call_stack.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/cfi_frame_info.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/convert_old_arm64_context.o \

@@ -1349,6 +1349,8 @@ src_processor_libbugsnag_stackwalk_wrapper_a_LIBADD = \
 	src/common/path_helper.o \
 	src/processor/basic_code_modules.o \
 	src/processor/basic_source_line_resolver.o \
+	src/processor/fast_source_line_resolver.o \
+	src/processor/module_serializer.o \
 	src/processor/call_stack.o \
 	src/processor/cfi_frame_info.o \
 	src/processor/convert_old_arm64_context.o \
