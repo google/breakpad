@@ -300,7 +300,7 @@ static Stacktrace getStack(const CallStack* stack) {
 
     if (frame->module) {
       loadAddress = HexString(frame->module->base_address());
-      filename = frame->module->code_file();
+      filename = PathnameStripper::File(frame->module->code_file());
       moduleId = frame->module->debug_identifier();
       moduleName = frame->module->debug_file();
       codeFile = frame->module->code_file();
