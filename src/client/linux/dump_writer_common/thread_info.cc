@@ -270,7 +270,26 @@ void ThreadInfo::FillCPUContext(RawContextCPU* out) const {
   out->float_save.fir = mcontext.fpc_eir;
 #endif
 }
-#endif  // __mips__
+
+#elif defined(__loongarch64)
+
+uintptr_t ThreadInfo::GetInstructionPointer() const {
+  return mcontext.__pc;
+}
+
+void ThreadInfo::FillCPUContext(RawContextCPU* out) const {
+  out->context_flags = MD_CONTEXT_LOONGARCH64_FULL;
+
+  for (int i = 0; i < MD_CONTEXT_LOONGARCH64_GPR_COUNT; ++i)
+    out->iregs[i] = mcontext.__gregs[i];
+
+  for (int i = 0; i < MD_FLOATINGSAVEAREA_LOONGARCH64_FPR_COUNT; ++i)
+    out->float_save.regs[i] = mcontext.__fpregs[i].__val64[0]; // FIXME: union?
+
+  out->csr_epc = mcontext.__pc;
+}
+
+#endif  // __loongarch64
 
 void ThreadInfo::GetGeneralPurposeRegisters(void** gp_regs, size_t* size) {
   assert(gp_regs || size);
@@ -279,6 +298,11 @@ void ThreadInfo::GetGeneralPurposeRegisters(void** gp_regs, size_t* size) {
     *gp_regs = mcontext.gregs;
   if (size)
     *size = sizeof(mcontext.gregs);
+#elif defined(__loongarch64)
+  if (gp_regs)
+    *gp_regs = mcontext.__gregs;
+  if (size)
+    *size = sizeof(mcontext.__gregs);
 #else
   if (gp_regs)
     *gp_regs = &regs;
@@ -294,6 +318,11 @@ void ThreadInfo::GetFloatingPointRegisters(void** fp_regs, size_t* size) {
     *fp_regs = &mcontext.fpregs;
   if (size)
     *size = sizeof(mcontext.fpregs);
+#elif defined(__loongarch64)
+  if (fp_regs)
+    *fp_regs = &mcontext.__fpregs;
+  if (size)
+    *size = sizeof(mcontext.__fpregs);
 #else
   if (fp_regs)
     *fp_regs = &fpregs;

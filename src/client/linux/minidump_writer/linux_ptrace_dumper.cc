@@ -53,6 +53,9 @@
 #if defined(__i386)
 #include <cpuid.h>
 #endif
+#if defined(__loongarch64)
+#include <asm/reg.h>
+#endif
 
 #include "client/linux/minidump_writer/directory_reader.h"
 #include "client/linux/minidump_writer/line_reader.h"
@@ -286,6 +289,12 @@ bool LinuxPtraceDumper::GetThreadInfoByIndex(size_t index, ThreadInfo* info) {
              reinterpret_cast<void*>(DSP_CONTROL), &info->mcontext.dsp);
 #endif
 
+/* FIXME does it needed */
+#if defined(__loongarch64)
+  sys_ptrace(PTRACE_PEEKUSER, tid,
+             reinterpret_cast<void*>(LOONGARCH64_EF_CSR_EPC), &info->mcontext.__pc);
+#endif
+
   const uint8_t* stack_pointer;
 #if defined(__i386)
   my_memcpy(&stack_pointer, &info->regs.esp, sizeof(info->regs.esp));
@@ -298,6 +307,10 @@ bool LinuxPtraceDumper::GetThreadInfoByIndex(size_t index, ThreadInfo* info) {
 #elif defined(__mips__)
   stack_pointer =
       reinterpret_cast<uint8_t*>(info->mcontext.gregs[MD_CONTEXT_MIPS_REG_SP]);
+#elif defined(__loongarch64)
+  my_memcpy(&stack_pointer,
+    &info->mcontext.__gregs[MD_CONTEXT_LOONGARCH64_REG_SP],
+    sizeof(info->mcontext.__gregs[MD_CONTEXT_LOONGARCH64_REG_SP]));
 #else
 #error "This code hasn't been ported to your platform yet."
 #endif

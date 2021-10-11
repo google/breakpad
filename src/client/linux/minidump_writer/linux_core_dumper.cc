@@ -42,6 +42,9 @@
 // To get register definitions.
 #include <asm/reg.h>
 #endif
+#if defined(__loongarch64)
+#include <asm/reg.h>
+#endif
 
 #include "common/linux/elf_gnu_compat.h"
 #include "common/linux/linux_libc_support.h"
@@ -112,6 +115,10 @@ bool LinuxCoreDumper::GetThreadInfoByIndex(size_t index, ThreadInfo* info) {
 #elif defined(__mips__)
   stack_pointer =
       reinterpret_cast<uint8_t*>(info->mcontext.gregs[MD_CONTEXT_MIPS_REG_SP]);
+#elif defined(__loongarch64)
+  memcpy(&stack_pointer,
+    &info->mcontext.__gregs[MD_CONTEXT_LOONGARCH64_REG_SP],
+    sizeof(info->mcontext.__gregs[MD_CONTEXT_LOONGARCH64_REG_SP]));
 #else
 #error "This code hasn't been ported to your platform yet."
 #endif
@@ -218,9 +225,16 @@ bool LinuxCoreDumper::EnumerateThreads() {
         info.mcontext.mdlo = status->pr_reg[EF_LO];
         info.mcontext.mdhi = status->pr_reg[EF_HI];
         info.mcontext.pc = status->pr_reg[EF_CP0_EPC];
-#else  // __mips__
+#elif defined(__loongarch64)
+        memcpy(info.mcontext.__gregs,
+               &status->pr_reg[LOONGARCH64_EF_R0],
+               sizeof(info.mcontext.__gregs));
+        memcpy(&info.mcontext.__pc,
+               &status->pr_reg[LOONGARCH64_EF_CSR_EPC],
+               sizeof(info.mcontext.__pc));
+#else
         memcpy(&info.regs, status->pr_reg, sizeof(info.regs));
-#endif  // __mips__
+#endif  // __loongarch64
         if (first_thread) {
           crash_thread_ = pid;
           crash_signal_ = status->pr_info.si_signo;

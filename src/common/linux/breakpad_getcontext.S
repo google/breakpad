@@ -230,10 +230,10 @@ breakpad_getcontext:
 #elif defined(__mips__)
 
 // This implementation is inspired by implementation of getcontext in glibc.
-#include <asm-mips/asm.h>
-#include <asm-mips/regdef.h>
+#include <sys/asm.h>
+#include <sys/regdef.h>
 #if _MIPS_SIM == _ABIO32
-#include <asm-mips/fpregdef.h>
+#include <sys/fpregdef.h>
 #endif
 
 // from asm-mips/asm.h
@@ -399,6 +399,98 @@ NESTED (breakpad_getcontext, FRAME_SIZE, ra)
 END (breakpad_getcontext)
 #endif // _MIPS_SIM == _ABIO32
 
+#elif defined(__loongarch64)
+
+#define  _NSIG                       128
+#define  __NR_rt_sigprocmask         135
+
+  .text
+  .global breakpad_getcontext
+  .hidden breakpad_getcontext
+  .type breakpad_getcontext, @function
+  .align 4
+breakpad_getcontext:
+  STORE_PC
+  STORE_GPR(0)
+  STORE_GPR(1)
+  STORE_GPR(2)
+  STORE_GPR(3)
+  STORE_GPR(4)
+  STORE_GPR(5)
+  STORE_GPR(6)
+  STORE_GPR(7)
+  STORE_GPR(8)
+  STORE_GPR(9)
+  STORE_GPR(10)
+  STORE_GPR(11)
+  STORE_GPR(12)
+  STORE_GPR(13)
+  STORE_GPR(14)
+  STORE_GPR(15)
+  STORE_GPR(16)
+  STORE_GPR(17)
+  STORE_GPR(18)
+  STORE_GPR(19)
+  STORE_GPR(20)
+  STORE_GPR(21)
+  STORE_GPR(22)
+  STORE_GPR(23)
+  STORE_GPR(24)
+  STORE_GPR(25)
+  STORE_GPR(26)
+  STORE_GPR(27)
+  STORE_GPR(28)
+  STORE_GPR(29)
+  STORE_GPR(30)
+  STORE_GPR(31)
+  STORE_FPR(0)
+  STORE_FPR(1)
+  STORE_FPR(2)
+  STORE_FPR(3)
+  STORE_FPR(4)
+  STORE_FPR(5)
+  STORE_FPR(6)
+  STORE_FPR(7)
+  STORE_FPR(8)
+  STORE_FPR(9)
+  STORE_FPR(10)
+  STORE_FPR(11)
+  STORE_FPR(12)
+  STORE_FPR(13)
+  STORE_FPR(14)
+  STORE_FPR(15)
+  STORE_FPR(16)
+  STORE_FPR(17)
+  STORE_FPR(18)
+  STORE_FPR(19)
+  STORE_FPR(20)
+  STORE_FPR(21)
+  STORE_FPR(22)
+  STORE_FPR(23)
+  STORE_FPR(24)
+  STORE_FPR(25)
+  STORE_FPR(26)
+  STORE_FPR(27)
+  STORE_FPR(28)
+  STORE_FPR(29)
+  STORE_FPR(30)
+  STORE_FPR(31)
+
+  /* rt_sigprocmask (SIG_BLOCK, NULL, &ucp->uc_sigmask, _NSIG8) */
+  addi.d $a2, $a0, UCONTEXT_SIGMASK_OFFSET
+  li.w  $a1, zero
+  li.w  $a0, 0
+  li.w  $a3, _NSIG / 8
+  li.w  $a7, __NR_rt_sigprocmask
+
+  syscall 0
+
+  /* Return zero for success */
+  move $a0, $zero
+
+ jirl $zero, $ra, 0
+
+  .size breakpad_getcontext, . - breakpad_getcontext
 #elif defined(__x86_64__)
 /* The x64 implementation of breakpad_getcontext was derived in part
    from the implementation of libunwind which requires the following

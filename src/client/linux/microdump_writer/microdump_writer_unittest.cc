@@ -280,9 +280,15 @@ TEST(MicrodumpWriterTest, BasicWithMappings) {
   ASSERT_TRUE(ContainsMicrodump(buf));
 
 #ifdef __LP64__
+#if defined(__loongarch64)
+  ASSERT_NE(std::string::npos,
+            buf.find("M 0000000000004000 000000000000002A 0000000000004000 "
+                     "33221100554477668899AABBCCDDEEFF0 libfoo.so"));
+#else
   ASSERT_NE(std::string::npos,
             buf.find("M 0000000000001000 000000000000002A 0000000000001000 "
                      "33221100554477668899AABBCCDDEEFF0 libfoo.so"));
+#endif
 #else
   ASSERT_NE(std::string::npos,
             buf.find("M 00001000 0000002A 00001000 "

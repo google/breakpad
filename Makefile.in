@@ -199,6 +199,7 @@ EXTRA_PROGRAMS = $(am__EXEEXT_1)
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_address_list_unittest \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips_unittest \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips64_unittest \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64_unittest \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_x86_unittest \
 @DISABLE_PROCESSOR_FALSE@	src/processor/synth_minidump_unittest
 
@@ -299,6 +300,7 @@ am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(libexecdir)" \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_address_list_unittest$(EXEEXT) \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips_unittest$(EXEEXT) \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips64_unittest$(EXEEXT) \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64_unittest$(EXEEXT) \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_x86_unittest$(EXEEXT) \
 @DISABLE_PROCESSOR_FALSE@	src/processor/synth_minidump_unittest$(EXEEXT)
 @LINUX_HOST_TRUE@am__EXEEXT_6 = src/client/linux/linux_client_unittest$(EXEEXT) \
@@ -490,6 +492,8 @@ am__src_libbreakpad_a_SOURCES_DIST =  \
 	src/processor/stackwalker_address_list.h \
 	src/processor/stackwalker_mips.cc \
 	src/processor/stackwalker_mips.h \
+	src/processor/stackwalker_loongarch64.cc \
+	src/processor/stackwalker_loongarch64.h \
 	src/processor/stackwalker_ppc.cc \
 	src/processor/stackwalker_ppc.h \
 	src/processor/stackwalker_ppc64.cc \
@@ -543,6 +547,7 @@ am__src_libbreakpad_a_SOURCES_DIST =  \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.$(OBJEXT) \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_address_list.$(OBJEXT) \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.$(OBJEXT) \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.$(OBJEXT) \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.$(OBJEXT) \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.$(OBJEXT) \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.$(OBJEXT) \
@@ -979,6 +984,7 @@ src_processor_exploitability_unittest_OBJECTS =  \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.o \
@@ -1043,6 +1049,7 @@ src_processor_microdump_processor_unittest_OBJECTS =  \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.o \
@@ -1082,6 +1089,7 @@ src_processor_microdump_stackwalk_OBJECTS =  \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.o \
@@ -1135,6 +1143,7 @@ src_processor_minidump_processor_unittest_OBJECTS =  \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.o \
@@ -1180,6 +1189,7 @@ src_processor_minidump_stackwalk_OBJECTS =  \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.o \
@@ -1345,6 +1355,18 @@ src_processor_stackwalker_mips_unittest_OBJECTS =  \
 @DISABLE_PROCESSOR_FALSE@	$(am__DEPENDENCIES_2) \
 @DISABLE_PROCESSOR_FALSE@	$(am__DEPENDENCIES_1) \
 @DISABLE_PROCESSOR_FALSE@	$(am__DEPENDENCIES_1)
+am__src_processor_stackwalker_loongarch64_unittest_SOURCES_DIST =  \
+	src/common/test_assembler.cc \
+	src/processor/stackwalker_loongarch64_unittest.cc
+@DISABLE_PROCESSOR_FALSE@am_src_processor_stackwalker_loongarch64_unittest_OBJECTS = src/common/processor_stackwalker_loongarch64_unittest-test_assembler.$(OBJEXT) \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.$(OBJEXT)
+src_processor_stackwalker_loongarch64_unittest_OBJECTS =  \
+	$(am_src_processor_stackwalker_loongarch64_unittest_OBJECTS)
+@DISABLE_PROCESSOR_FALSE@src_processor_stackwalker_loongarch64_unittest_DEPENDENCIES =  \
+@DISABLE_PROCESSOR_FALSE@	src/libbreakpad.a \
+@DISABLE_PROCESSOR_FALSE@	$(am__DEPENDENCIES_2) \
+@DISABLE_PROCESSOR_FALSE@	$(am__DEPENDENCIES_1) \
+@DISABLE_PROCESSOR_FALSE@	$(am__DEPENDENCIES_1)
 am__src_processor_stackwalker_selftest_SOURCES_DIST =  \
 	src/processor/stackwalker_selftest.cc
 @DISABLE_PROCESSOR_FALSE@am_src_processor_stackwalker_selftest_OBJECTS = src/processor/stackwalker_selftest.$(OBJEXT)
@@ -1371,6 +1393,7 @@ src_processor_stackwalker_selftest_OBJECTS =  \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.o \
@@ -1693,6 +1716,7 @@ am__depfiles_remade = src/client/$(DEPDIR)/minidump_file_writer.Po \
 	src/common/$(DEPDIR)/processor_stackwalker_arm_unittest-test_assembler.Po \
 	src/common/$(DEPDIR)/processor_stackwalker_mips64_unittest-test_assembler.Po \
 	src/common/$(DEPDIR)/processor_stackwalker_mips_unittest-test_assembler.Po \
+	src/common/$(DEPDIR)/processor_stackwalker_loongarch64_unittest-test_assembler.Po \
 	src/common/$(DEPDIR)/processor_stackwalker_x86_unittest-test_assembler.Po \
 	src/common/$(DEPDIR)/processor_synth_minidump_unittest-test_assembler.Po \
 	src/common/$(DEPDIR)/string_conversion.Po \
@@ -1873,6 +1897,8 @@ am__depfiles_remade = src/client/$(DEPDIR)/minidump_file_writer.Po \
 	src/processor/$(DEPDIR)/stackwalker_mips.Po \
 	src/processor/$(DEPDIR)/stackwalker_mips64_unittest-stackwalker_mips64_unittest.Po \
 	src/processor/$(DEPDIR)/stackwalker_mips_unittest-stackwalker_mips_unittest.Po \
+	src/processor/$(DEPDIR)/stackwalker_loongarch64.Po \
+	src/processor/$(DEPDIR)/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.Po \
 	src/processor/$(DEPDIR)/stackwalker_ppc.Po \
 	src/processor/$(DEPDIR)/stackwalker_ppc64.Po \
 	src/processor/$(DEPDIR)/stackwalker_selftest.Po \
@@ -1991,6 +2017,7 @@ SOURCES = $(src_client_linux_libbreakpad_client_a_SOURCES) \
 	$(src_processor_stackwalker_arm_unittest_SOURCES) \
 	$(src_processor_stackwalker_mips64_unittest_SOURCES) \
 	$(src_processor_stackwalker_mips_unittest_SOURCES) \
+	$(src_processor_stackwalker_loongarch64_unittest_SOURCES) \
 	$(src_processor_stackwalker_selftest_SOURCES) \
 	$(src_processor_stackwalker_x86_unittest_SOURCES) \
 	$(src_processor_static_address_map_unittest_SOURCES) \
@@ -2047,6 +2074,7 @@ DIST_SOURCES =  \
 	$(am__src_processor_stackwalker_arm_unittest_SOURCES_DIST) \
 	$(am__src_processor_stackwalker_mips64_unittest_SOURCES_DIST) \
 	$(am__src_processor_stackwalker_mips_unittest_SOURCES_DIST) \
+	$(am__src_processor_stackwalker_loongarch64_unittest_SOURCES_DIST) \
 	$(am__src_processor_stackwalker_selftest_SOURCES_DIST) \
 	$(am__src_processor_stackwalker_x86_unittest_SOURCES_DIST) \
 	$(am__src_processor_static_address_map_unittest_SOURCES_DIST) \
@@ -2629,6 +2657,8 @@ CLEANFILES = $(am__append_12)
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_address_list.h \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.cc \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.h \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.cc \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.h \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.cc \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.h \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.cc \
@@ -3105,6 +3135,7 @@ TESTS = $(check_PROGRAMS) $(check_SCRIPTS)
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.o \
@@ -3186,6 +3217,7 @@ TESTS = $(check_PROGRAMS) $(check_SCRIPTS)
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.o \
@@ -3227,6 +3259,7 @@ TESTS = $(check_PROGRAMS) $(check_SCRIPTS)
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.o \
@@ -3390,6 +3423,7 @@ TESTS = $(check_PROGRAMS) $(check_SCRIPTS)
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.o \
@@ -3467,6 +3501,18 @@ TESTS = $(check_PROGRAMS) $(check_SCRIPTS)
 @DISABLE_PROCESSOR_FALSE@	$(PTHREAD_CFLAGS) $(PTHREAD_LIBS)
 
 @DISABLE_PROCESSOR_FALSE@src_processor_stackwalker_mips64_unittest_CPPFLAGS = \
+@DISABLE_PROCESSOR_FALSE@	$(AM_CPPFLAGS) $(TEST_CFLAGS)
+
+@DISABLE_PROCESSOR_FALSE@src_processor_stackwalker_loongarch64_unittest_SOURCES = \
+@DISABLE_PROCESSOR_FALSE@	src/common/test_assembler.cc \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64_unittest.cc
+
+@DISABLE_PROCESSOR_FALSE@src_processor_stackwalker_loongarch64_unittest_LDADD = \
+@DISABLE_PROCESSOR_FALSE@	src/libbreakpad.a \
+@DISABLE_PROCESSOR_FALSE@	$(TEST_LIBS) \
+@DISABLE_PROCESSOR_FALSE@	$(PTHREAD_CFLAGS) $(PTHREAD_LIBS)
+
+@DISABLE_PROCESSOR_FALSE@src_processor_stackwalker_loongarch64_unittest_CPPFLAGS = \
 @DISABLE_PROCESSOR_FALSE@	$(AM_CPPFLAGS) $(TEST_CFLAGS)
 
 @DISABLE_PROCESSOR_FALSE@src_processor_stackwalker_x86_unittest_SOURCES = \
@@ -3579,6 +3625,7 @@ TESTS = $(check_PROGRAMS) $(check_SCRIPTS)
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.o \
@@ -3619,6 +3666,7 @@ TESTS = $(check_PROGRAMS) $(check_SCRIPTS)
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_arm64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_mips.o \
+@DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_loongarch64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_ppc64.o \
 @DISABLE_PROCESSOR_FALSE@	src/processor/stackwalker_sparc.o \
@@ -3737,6 +3785,7 @@ EXTRA_DIST = \
 	src/processor/testdata/microdump-arm.dmp \
 	src/processor/testdata/microdump-mips32.dmp \
 	src/processor/testdata/microdump-mips64.dmp \
+	src/processor/testdata/microdump-loongarch64.dmp \
 	src/processor/testdata/microdump-multiple.dmp \
 	src/processor/testdata/microdump.stackwalk-arm64.out \
 	src/processor/testdata/microdump.stackwalk-arm.out \
@@ -4300,6 +4349,9 @@ src/processor/stackwalker_address_list.$(OBJEXT):  \
 	src/processor/$(am__dirstamp) \
 	src/processor/$(DEPDIR)/$(am__dirstamp)
 src/processor/stackwalker_mips.$(OBJEXT):  \
+	src/processor/$(am__dirstamp) \
+	src/processor/$(DEPDIR)/$(am__dirstamp)
+src/processor/stackwalker_loongarch64.$(OBJEXT):  \
 	src/processor/$(am__dirstamp) \
 	src/processor/$(DEPDIR)/$(am__dirstamp)
 src/processor/stackwalker_ppc.$(OBJEXT):  \
@@ -5004,6 +5056,18 @@ src/processor/stackwalker_mips_unittest-stackwalker_mips_unittest.$(OBJEXT):  \
 src/processor/stackwalker_mips_unittest$(EXEEXT): $(src_processor_stackwalker_mips_unittest_OBJECTS) $(src_processor_stackwalker_mips_unittest_DEPENDENCIES) $(EXTRA_src_processor_stackwalker_mips_unittest_DEPENDENCIES) src/processor/$(am__dirstamp)
 	@rm -f src/processor/stackwalker_mips_unittest$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(src_processor_stackwalker_mips_unittest_OBJECTS) $(src_processor_stackwalker_mips_unittest_LDADD) $(LIBS)
+
+src/common/processor_stackwalker_loongarch64_unittest-test_assembler.$(OBJEXT):  \
+	src/common/$(am__dirstamp) \
+	src/common/$(DEPDIR)/$(am__dirstamp)
+src/processor/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.$(OBJEXT):  \
+	src/processor/$(am__dirstamp) \
+	src/processor/$(DEPDIR)/$(am__dirstamp)
+
+src/processor/stackwalker_loongarch64_unittest$(EXEEXT): $(src_processor_stackwalker_loongarch64_unittest_OBJECTS) $(src_processor_stackwalker_loongarch64_unittest_DEPENDENCIES) $(EXTRA_src_processor_stackwalker_loongarch64_unittest_DEPENDENCIES) src/processor/$(am__dirstamp)
+	@rm -f src/processor/stackwalker_loongarch64_unittest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(src_processor_stackwalker_loongarch64_unittest_OBJECTS) $(src_processor_stackwalker_loongarch64_unittest_LDADD) $(LIBS)
+
 src/processor/stackwalker_selftest.$(OBJEXT):  \
 	src/processor/$(am__dirstamp) \
 	src/processor/$(DEPDIR)/$(am__dirstamp)
@@ -5405,6 +5469,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/common/$(DEPDIR)/processor_stackwalker_arm_unittest-test_assembler.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/common/$(DEPDIR)/processor_stackwalker_mips64_unittest-test_assembler.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/common/$(DEPDIR)/processor_stackwalker_mips_unittest-test_assembler.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/common/$(DEPDIR)/processor_stackwalker_loongarch64_unittest-test_assembler.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/common/$(DEPDIR)/processor_stackwalker_x86_unittest-test_assembler.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/common/$(DEPDIR)/processor_synth_minidump_unittest-test_assembler.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/common/$(DEPDIR)/string_conversion.Po@am__quote@ # am--include-marker
@@ -5585,6 +5650,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/stackwalker_mips.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/stackwalker_mips64_unittest-stackwalker_mips64_unittest.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/stackwalker_mips_unittest-stackwalker_mips_unittest.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/stackwalker_loongarch64.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/stackwalker_ppc.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/stackwalker_ppc64.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/processor/$(DEPDIR)/stackwalker_selftest.Po@am__quote@ # am--include-marker
@@ -7629,6 +7696,34 @@ src/processor/stackwalker_mips_unittest-stackwalker_mips_unittest.obj: src/proce
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_processor_stackwalker_mips_unittest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/processor/stackwalker_mips_unittest-stackwalker_mips_unittest.obj `if test -f 'src/processor/stackwalker_mips_unittest.cc'; then $(CYGPATH_W) 'src/processor/stackwalker_mips_unittest.cc'; else $(CYGPATH_W) '$(srcdir)/src/processor/stackwalker_mips_unittest.cc'; fi`
 
+src/common/processor_stackwalker_loongarch64_unittest-test_assembler.o: src/common/test_assembler.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_processor_stackwalker_loongarch64_unittest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/common/processor_stackwalker_loongarch64_unittest-test_assembler.o -MD -MP -MF src/common/$(DEPDIR)/processor_stackwalker_loongarch64_unittest-test_assembler.Tpo -c -o src/common/processor_stackwalker_loongarch64_unittest-test_assembler.o `test -f 'src/common/test_assembler.cc' || echo '$(srcdir)/'`src/common/test_assembler.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/common/$(DEPDIR)/processor_stackwalker_loongarch64_unittest-test_assembler.Tpo src/common/$(DEPDIR)/processor_stackwalker_loongarch64_unittest-test_assembler.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/common/test_assembler.cc' object='src/common/processor_stackwalker_loongarch64_unittest-test_assembler.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_processor_stackwalker_loongarch64_unittest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/common/processor_stackwalker_loongarch64_unittest-test_assembler.o `test -f 'src/common/test_assembler.cc' || echo '$(srcdir)/'`src/common/test_assembler.cc
+
+src/common/processor_stackwalker_loongarch64_unittest-test_assembler.obj: src/common/test_assembler.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_processor_stackwalker_loongarch64_unittest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/common/processor_stackwalker_loongarch64_unittest-test_assembler.obj -MD -MP -MF src/common/$(DEPDIR)/processor_stackwalker_loongarch64_unittest-test_assembler.Tpo -c -o src/common/processor_stackwalker_loongarch64_unittest-test_assembler.obj `if test -f 'src/common/test_assembler.cc'; then $(CYGPATH_W) 'src/common/test_assembler.cc'; else $(CYGPATH_W) '$(srcdir)/src/common/test_assembler.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/common/$(DEPDIR)/processor_stackwalker_loongarch64_unittest-test_assembler.Tpo src/common/$(DEPDIR)/processor_stackwalker_loongarch64_unittest-test_assembler.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/common/test_assembler.cc' object='src/common/processor_stackwalker_loongarch64_unittest-test_assembler.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_processor_stackwalker_loongarch64_unittest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/common/processor_stackwalker_loongarch64_unittest-test_assembler.obj `if test -f 'src/common/test_assembler.cc'; then $(CYGPATH_W) 'src/common/test_assembler.cc'; else $(CYGPATH_W) '$(srcdir)/src/common/test_assembler.cc'; fi`
+
+src/processor/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.o: src/processor/stackwalker_loongarch64_unittest.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_processor_stackwalker_loongarch64_unittest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/processor/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.o -MD -MP -MF src/processor/$(DEPDIR)/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.Tpo -c -o src/processor/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.o `test -f 'src/processor/stackwalker_loongarch64_unittest.cc' || echo '$(srcdir)/'`src/processor/stackwalker_loongarch64_unittest.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/processor/$(DEPDIR)/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.Tpo src/processor/$(DEPDIR)/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/processor/stackwalker_loongarch64_unittest.cc' object='src/processor/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_processor_stackwalker_loongarch64_unittest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/processor/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.o `test -f 'src/processor/stackwalker_loongarch64_unittest.cc' || echo '$(srcdir)/'`src/processor/stackwalker_loongarch64_unittest.cc
+
+src/processor/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.obj: src/processor/stackwalker_loongarch64_unittest.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_processor_stackwalker_loongarch64_unittest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/processor/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.obj -MD -MP -MF src/processor/$(DEPDIR)/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.Tpo -c -o src/processor/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.obj `if test -f 'src/processor/stackwalker_loongarch64_unittest.cc'; then $(CYGPATH_W) 'src/processor/stackwalker_loongarch64_unittest.cc'; else $(CYGPATH_W) '$(srcdir)/src/processor/stackwalker_loongarch64_unittest.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/processor/$(DEPDIR)/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.Tpo src/processor/$(DEPDIR)/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/processor/stackwalker_loongarch64_unittest.cc' object='src/processor/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_processor_stackwalker_loongarch64_unittest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/processor/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.obj `if test -f 'src/processor/stackwalker_loongarch64_unittest.cc'; then $(CYGPATH_W) 'src/processor/stackwalker_loongarch64_unittest.cc'; else $(CYGPATH_W) '$(srcdir)/src/processor/stackwalker_loongarch64_unittest.cc'; fi`
+
 src/common/processor_stackwalker_x86_unittest-test_assembler.o: src/common/test_assembler.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_processor_stackwalker_x86_unittest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/common/processor_stackwalker_x86_unittest-test_assembler.o -MD -MP -MF src/common/$(DEPDIR)/processor_stackwalker_x86_unittest-test_assembler.Tpo -c -o src/common/processor_stackwalker_x86_unittest-test_assembler.o `test -f 'src/common/test_assembler.cc' || echo '$(srcdir)/'`src/common/test_assembler.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/common/$(DEPDIR)/processor_stackwalker_x86_unittest-test_assembler.Tpo src/common/$(DEPDIR)/processor_stackwalker_x86_unittest-test_assembler.Po
@@ -9026,6 +9121,13 @@ src/processor/stackwalker_mips64_unittest.log: src/processor/stackwalker_mips64_
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+src/processor/stackwalker_loongarch64_unittest.log: src/processor/stackwalker_loongarch64_unittest$(EXEEXT)
+	@p='src/processor/stackwalker_loongarch64_unittest$(EXEEXT)'; \
+	b='src/processor/stackwalker_loongarch64_unittest'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 src/processor/stackwalker_x86_unittest.log: src/processor/stackwalker_x86_unittest$(EXEEXT)
 	@p='src/processor/stackwalker_x86_unittest$(EXEEXT)'; \
 	b='src/processor/stackwalker_x86_unittest'; \
@@ -9475,6 +9577,7 @@ distclean: distclean-am
 	-rm -f src/common/$(DEPDIR)/processor_stackwalker_arm_unittest-test_assembler.Po
 	-rm -f src/common/$(DEPDIR)/processor_stackwalker_mips64_unittest-test_assembler.Po
 	-rm -f src/common/$(DEPDIR)/processor_stackwalker_mips_unittest-test_assembler.Po
+	-rm -f src/common/$(DEPDIR)/processor_stackwalker_loongarch64_unittest-test_assembler.Po
 	-rm -f src/common/$(DEPDIR)/processor_stackwalker_x86_unittest-test_assembler.Po
 	-rm -f src/common/$(DEPDIR)/processor_synth_minidump_unittest-test_assembler.Po
 	-rm -f src/common/$(DEPDIR)/string_conversion.Po
@@ -9655,6 +9758,8 @@ distclean: distclean-am
 	-rm -f src/processor/$(DEPDIR)/stackwalker_mips.Po
 	-rm -f src/processor/$(DEPDIR)/stackwalker_mips64_unittest-stackwalker_mips64_unittest.Po
 	-rm -f src/processor/$(DEPDIR)/stackwalker_mips_unittest-stackwalker_mips_unittest.Po
+	-rm -f src/processor/$(DEPDIR)/stackwalker_loongarch64.Po
+	-rm -f src/processor/$(DEPDIR)/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.Po
 	-rm -f src/processor/$(DEPDIR)/stackwalker_ppc.Po
 	-rm -f src/processor/$(DEPDIR)/stackwalker_ppc64.Po
 	-rm -f src/processor/$(DEPDIR)/stackwalker_selftest.Po
@@ -9818,6 +9923,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/common/$(DEPDIR)/processor_stackwalker_arm_unittest-test_assembler.Po
 	-rm -f src/common/$(DEPDIR)/processor_stackwalker_mips64_unittest-test_assembler.Po
 	-rm -f src/common/$(DEPDIR)/processor_stackwalker_mips_unittest-test_assembler.Po
+	-rm -f src/common/$(DEPDIR)/processor_stackwalker_loongarch64_unittest-test_assembler.Po
 	-rm -f src/common/$(DEPDIR)/processor_stackwalker_x86_unittest-test_assembler.Po
 	-rm -f src/common/$(DEPDIR)/processor_synth_minidump_unittest-test_assembler.Po
 	-rm -f src/common/$(DEPDIR)/string_conversion.Po
@@ -9998,6 +10104,8 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/processor/$(DEPDIR)/stackwalker_mips.Po
 	-rm -f src/processor/$(DEPDIR)/stackwalker_mips64_unittest-stackwalker_mips64_unittest.Po
 	-rm -f src/processor/$(DEPDIR)/stackwalker_mips_unittest-stackwalker_mips_unittest.Po
+	-rm -f src/processor/$(DEPDIR)/stackwalker_loongarch64.Po
+	-rm -f src/processor/$(DEPDIR)/stackwalker_loongarch64_unittest-stackwalker_loongarch64_unittest.Po
 	-rm -f src/processor/$(DEPDIR)/stackwalker_ppc.Po
 	-rm -f src/processor/$(DEPDIR)/stackwalker_ppc64.Po
 	-rm -f src/processor/$(DEPDIR)/stackwalker_selftest.Po
