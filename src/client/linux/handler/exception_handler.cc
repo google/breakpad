@@ -461,7 +461,7 @@ bool ExceptionHandler::HandleSignal(int /*sig*/, siginfo_t* info, void* uc) {
     memcpy(&g_crash_context_.float_state, fp_ptr,
            sizeof(g_crash_context_.float_state));
   }
-#elif !defined(__ARM_EABI__) && !defined(__mips__)
+#elif !defined(__ARM_EABI__) && !defined(__mips__) && !defined(__loongarch64)
   // FP state is not part of user ABI on ARM Linux.
   // In case of MIPS Linux FP state is already part of ucontext_t
   // and 'float_state' is not a member of CrashContext.
@@ -701,7 +701,7 @@ bool ExceptionHandler::WriteMinidump() {
   }
 #endif
 
-#if !defined(__ARM_EABI__) && !defined(__aarch64__) && !defined(__mips__)
+#if !defined(__ARM_EABI__) && !defined(__aarch64__) && !defined(__mips__) && !defined(__loongarch64)
   // FPU state is not part of ARM EABI ucontext_t.
   memcpy(&context.float_state, context.context.uc_mcontext.fpregs,
          sizeof(context.float_state));
@@ -726,6 +726,9 @@ bool ExceptionHandler::WriteMinidump() {
 #elif defined(__mips__)
   context.siginfo.si_addr =
       reinterpret_cast<void*>(context.context.uc_mcontext.pc);
+#elif defined(__loongarch64)
+  context.siginfo.si_addr =
+      reinterpret_cast<void*>(context.context.uc_mcontext.__pc);
 #else
 #error "This code has not been ported to your platform yet."
 #endif

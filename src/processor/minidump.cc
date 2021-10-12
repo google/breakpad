@@ -96,6 +96,8 @@ bool IsContextSizeUnique(uint32_t context_size) {
     num_matching_contexts++;
   if (context_size == sizeof(MDRawContextMIPS))
     num_matching_contexts++;
+  if (context_size == sizeof(MDRawContextLOONGARCH64))
+    num_matching_contexts++;
   return num_matching_contexts == 1;
 }
 
@@ -1157,6 +1159,57 @@ bool MinidumpContext::Read(uint32_t expected_size) {
         break;
       }
 
+      case MD_CONTEXT_LOONGARCH64: {
+        if (expected_size != sizeof(MDRawContextLOONGARCH64)) {
+          BPLOG(ERROR) << "MinidumpContext LOONGARCH64 size mismatch, "
+                       << expected_size
+                       << " != "
+                       << sizeof(MDRawContextLOONGARCH64);
+          return false;
+        }
+
+        scoped_ptr<MDRawContextLOONGARCH64> context_loongarch(new MDRawContextLOONGARCH64());
+
+        // Set the context_flags member, which has already been read, and
+        // read the rest of the structure beginning with the first member
+        // after context_flags.
+        context_loongarch->context_flags = context_flags;
+
+        size_t flags_size = sizeof(context_loongarch->context_flags);
+        uint8_t* context_after_flags =
+            reinterpret_cast<uint8_t*>(context_loongarch.get()) + flags_size;
+        if (!minidump_->ReadBytes(context_after_flags,
+                                  sizeof(MDRawContextLOONGARCH64) - flags_size)) {
+          BPLOG(ERROR) << "MinidumpContext could not read LOONGARCH64 context";
+          return false;
+        }
+
+        // Do this after reading the entire MDRawContext structure because
+        // GetSystemInfo may seek minidump to a new position.
+        if (!CheckAgainstSystemInfo(cpu_type)) {
+          BPLOG(ERROR) << "MinidumpContext LOONGARCH64 does not match system info";
+          return false;
+        }
+
+        if (minidump_->swap()) {
+          // context_loongarch->context_flags was already swapped.
+          for (int ireg_index = 0;
+               ireg_index < MD_CONTEXT_LOONGARCH64_GPR_COUNT;
+               ++ireg_index) {
+            Swap(&context_loongarch->iregs[ireg_index]);
+          }
+          Swap(&context_loongarch->csr_epc);
+          for (int fpr_index = 0;
+               fpr_index < MD_FLOATINGSAVEAREA_LOONGARCH64_FPR_COUNT;
+               ++fpr_index) {
+            Swap(&context_loongarch->float_save.regs[fpr_index]);
+          }
+        }
+        SetContextLOONGARCH64(context_loongarch.release());
+
+        break;
+      }
+
       default: {
         // Unknown context type - Don't log as an error yet. Let the
         // caller work that out.
@@ -1248,6 +1301,11 @@ bool MinidumpContext::CheckAgainstSystemInfo(uint32_t context_cpu_type) {
     case MD_CONTEXT_MIPS64:
       if (system_info_cpu_type == MD_CPU_ARCHITECTURE_MIPS64)
         return_value = true;
+      break;
+
+    case MD_CONTEXT_LOONGARCH64:
+      if (system_info_cpu_type == MD_CPU_ARCHITECTURE_LOONGARCH64)
+	return_value = true;
       break;
   }
 
@@ -5097,6 +5155,8 @@ bool Minidump::GetContextCPUFlagsFromSystemInfo(uint32_t* context_cpu_flags) {
     GetSystemInfo() ? GetSystemInfo()->system_info() : NULL;
 
   if (system_info != NULL) {
+           BPLOG(INFO) << "system_info" <<
+          system_info;
     switch (system_info->processor_architecture) {
       case MD_CPU_ARCHITECTURE_X86:
         *context_cpu_flags = MD_CONTEXT_X86;
@@ -5106,6 +5166,9 @@ bool Minidump::GetContextCPUFlagsFromSystemInfo(uint32_t* context_cpu_flags) {
         break;
       case MD_CPU_ARCHITECTURE_MIPS64:
         *context_cpu_flags = MD_CONTEXT_MIPS64;
+        break;
+      case MD_CPU_ARCHITECTURE_LOONGARCH64:
+        *context_cpu_flags = MD_CONTEXT_LOONGARCH64;
         break;
       case MD_CPU_ARCHITECTURE_ALPHA:
         *context_cpu_flags = MD_CONTEXT_ALPHA;

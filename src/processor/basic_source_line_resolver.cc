@@ -682,7 +682,7 @@ bool SymbolParseHelper::ParseInline(
   inline_line += 7; // skip prefix
 
   vector<char*> tokens;
-  Tokenize(inline_line, kWhitespace, std::numeric_limits<int>::max(), &tokens);
+  Tokenize(inline_line, kWhitespace, std::numeric_limits<int>::max() / 2, &tokens);
 
   // The length of the vector should be at least 5 and an odd number.
   if (tokens.size() < 5 && tokens.size() % 2 == 0)

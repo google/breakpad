@@ -637,6 +637,147 @@ static void PrintStack(const CallStack* stack,
           sequence = PrintRegister64(
               "s7", frame_mips->context.iregs[MD_CONTEXT_MIPS_REG_S7],
               sequence);
+      } else if ((cpu == "loongarch64")) {
+        const StackFrameLOONGARCH64* frame_loongarch =
+            reinterpret_cast<const StackFrameLOONGARCH64*>(frame);
+
+	if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_RA)
+          sequence = PrintRegister64(
+              "ra", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_RA],
+              sequence);
+	if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_TP)
+          sequence = PrintRegister64(
+              "tp", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_TP],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_SP)
+          sequence = PrintRegister64(
+              "sp", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_SP],
+              sequence);
+
+        // Save registers a0-a7
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_A0)
+          sequence = PrintRegister64(
+              "a0", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_A0],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_A1)
+          sequence = PrintRegister64(
+              "a1", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_A1],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_A2)
+          sequence = PrintRegister64(
+              "a2", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_A2],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_A3)
+          sequence = PrintRegister64(
+              "a3", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_A3],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_A4)
+          sequence = PrintRegister64(
+              "a4", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_A4],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_A5)
+          sequence = PrintRegister64(
+              "a5", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_A5],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_A6)
+          sequence = PrintRegister64(
+              "a6", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_A6],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_A7)
+          sequence = PrintRegister64(
+              "a7", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_A7],
+              sequence);
+
+        // Save registers t0-s8
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_T0)
+          sequence = PrintRegister64(
+              "t0", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_T0],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_T1)
+          sequence = PrintRegister64(
+              "t1", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_T1],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_T2)
+          sequence = PrintRegister64(
+              "t2", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_T2],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_T3)
+          sequence = PrintRegister64(
+              "t3", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_T3],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_T4)
+          sequence = PrintRegister64(
+              "t4", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_T4],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_T5)
+          sequence = PrintRegister64(
+              "t5", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_T5],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_T6)
+          sequence = PrintRegister64(
+              "t6", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_T6],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_T7)
+          sequence = PrintRegister64(
+              "t7", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_T7],
+              sequence);
+	if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_T8)
+          sequence = PrintRegister64(
+              "t8", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_T8],
+              sequence);
+
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_X0)
+          sequence = PrintRegister64(
+              "x0", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_X0],
+              sequence);
+
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_FP)
+          sequence = PrintRegister64(
+              "fp", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_FP],
+              sequence);
+
+        // Save registers s0-s8
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_S0)
+          sequence = PrintRegister64(
+              "s0", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_S0],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_S1)
+          sequence = PrintRegister64(
+              "s1", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_S1],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_S2)
+          sequence = PrintRegister64(
+              "s2", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_S2],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_S3)
+          sequence = PrintRegister64(
+              "s3", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_S3],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_S4)
+          sequence = PrintRegister64(
+              "s4", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_S4],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_S5)
+          sequence = PrintRegister64(
+              "s5", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_S5],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_S6)
+          sequence = PrintRegister64(
+              "s6", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_S6],
+              sequence);
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_S7)
+          sequence = PrintRegister64(
+              "s7", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_S7],
+              sequence);
+
+        if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_S8)
+          sequence = PrintRegister64(
+              "s8", frame_loongarch->context.iregs[MD_CONTEXT_LOONGARCH64_REG_S8],
+              sequence);
+
+	if (frame_loongarch->context_validity & StackFrameLOONGARCH64::CONTEXT_VALID_PC)
+          sequence = PrintRegister64("pc", frame_loongarch->context.csr_epc, sequence);
+
       }
     }
     printf("\n    Found by: %s\n", frame->trust_description().c_str());
