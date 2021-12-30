@@ -359,10 +359,6 @@ bin_PROGRAMS += \
 	src/tools/linux/md2core/minidump-2-core \
 	src/tools/linux/symupload/minidump_upload \
 	src/tools/linux/symupload/sym_upload
-if X86_HOST
-bin_PROGRAMS += \
-	src/tools/mac/dump_syms/dump_syms_mac
-endif
 endif
 endif LINUX_HOST
 
@@ -416,10 +412,6 @@ if !DISABLE_TOOLS
 check_PROGRAMS += \
 	src/common/dumper_unittest \
 	src/tools/linux/md2core/minidump_2_core_unittest
-if X86_HOST
-check_PROGRAMS += \
-	src/common/mac/macho_reader_unittest
-endif
 endif
 endif LINUX_HOST
 
@@ -623,42 +615,6 @@ src_tools_linux_symupload_sym_upload_SOURCES = \
 	src/tools/linux/symupload/sym_upload.cc
 src_tools_linux_symupload_sym_upload_LDADD = -ldl
 
-src_tools_mac_dump_syms_dump_syms_mac_SOURCES = \
-	src/common/dwarf_cfi_to_module.cc \
-	src/common/dwarf_cu_to_module.cc \
-	src/common/dwarf_line_to_module.cc \
-	src/common/dwarf_range_list_handler.cc \
-	src/common/language.cc \
-	src/common/md5.cc \
-	src/common/module.cc \
-	src/common/path_helper.cc \
-	src/common/stabs_reader.cc \
-	src/common/stabs_to_module.cc \
-	src/common/dwarf/bytereader.cc \
-	src/common/dwarf/dwarf2diehandler.cc \
-	src/common/dwarf/dwarf2reader.cc \
-	src/common/dwarf/elf_reader.cc \
-	src/common/mac/arch_utilities.cc \
-	src/common/mac/dump_syms.cc \
-	src/common/mac/dump_syms.h \
-	src/common/mac/file_id.cc \
-	src/common/mac/file_id.h \
-	src/common/mac/macho_id.cc \
-	src/common/mac/macho_id.h \
-	src/common/mac/macho_reader.cc \
-	src/common/mac/macho_reader.h \
-	src/common/mac/macho_utilities.cc \
-	src/common/mac/macho_utilities.h \
-	src/common/mac/macho_walker.cc \
-	src/common/mac/macho_walker.h \
-	src/tools/mac/dump_syms/dump_syms_tool.cc
-src_tools_mac_dump_syms_dump_syms_mac_CXXFLAGS= \
-	-I$(top_srcdir)/src/third_party/mac_headers \
-	$(RUST_DEMANGLE_CFLAGS) \
-	-DHAVE_MACH_O_NLIST_H
-src_tools_mac_dump_syms_dump_syms_mac_LDADD= \
-	$(RUST_DEMANGLE_LIBS)
-
 src_common_dumper_unittest_SOURCES = \
 	src/common/byte_cursor_unittest.cc \
 	src/common/convert_UTF.cc \
@@ -726,38 +682,6 @@ src_common_dumper_unittest_LDADD = \
 	$(RUST_DEMANGLE_LIBS) \
 	$(PTHREAD_CFLAGS) $(PTHREAD_LIBS)
 
-src_common_mac_macho_reader_unittest_SOURCES = \
-	src/common/dwarf_cfi_to_module.cc \
-	src/common/dwarf_cu_to_module.cc \
-	src/common/dwarf_line_to_module.cc \
-	src/common/language.cc \
-	src/common/md5.cc \
-	src/common/module.cc \
-	src/common/path_helper.cc \
-	src/common/stabs_reader.cc \
-	src/common/stabs_to_module.cc \
-	src/common/test_assembler.cc \
-	src/common/dwarf/bytereader.cc \
-	src/common/dwarf/cfi_assembler.cc \
-	src/common/dwarf/dwarf2diehandler.cc \
-	src/common/dwarf/dwarf2reader.cc \
-	src/common/dwarf/elf_reader.cc \
-	src/common/mac/arch_utilities.cc \
-	src/common/mac/file_id.cc \
-	src/common/mac/macho_id.cc \
-	src/common/mac/macho_reader.cc \
-	src/common/mac/macho_reader_unittest.cc \
-	src/common/mac/macho_utilities.cc \
-	src/common/mac/macho_walker.cc \
-	src/common/tests/file_utils.cc
-src_common_mac_macho_reader_unittest_CPPFLAGS = \
-	$(AM_CPPFLAGS) $(TEST_CFLAGS) \
-	-I$(top_srcdir)/src/third_party/mac_headers \
-	-DHAVE_MACH_O_NLIST_H \
-	$(PTHREAD_CFLAGS)
-src_common_mac_macho_reader_unittest_LDADD = \
-	$(TEST_LIBS) \
-	$(PTHREAD_CFLAGS) $(PTHREAD_LIBS)
 endif
 
 src_common_linux_google_crashdump_uploader_test_SOURCES = \
@@ -1307,30 +1231,6 @@ EXTRA_DIST = \
 	$(SCRIPTS) \
 	src/client/linux/data/linux-gate-amd.sym \
 	src/client/linux/data/linux-gate-intel.sym \
-	src/client/mac/handler/breakpad_nlist_64.cc \
-	src/client/mac/handler/breakpad_nlist_64.h \
-	src/client/mac/handler/dynamic_images.cc \
-	src/client/mac/handler/dynamic_images.h \
-	src/client/mac/handler/exception_handler.cc \
-	src/client/mac/handler/exception_handler.h \
-	src/client/mac/handler/mach_vm_compat.h \
-	src/client/mac/handler/minidump_generator.cc \
-	src/client/mac/handler/minidump_generator.h \
-	src/client/mac/handler/minidump_test.xcodeproj/project.pbxproj \
-	src/client/mac/handler/minidump_tests32-Info.plist \
-	src/client/mac/handler/minidump_tests64-Info.plist \
-	src/client/mac/handler/obj-cTestCases-Info.plist \
-	src/client/mac/handler/protected_memory_allocator.cc \
-	src/client/mac/handler/protected_memory_allocator.h \
-	src/client/mac/handler/ucontext_compat.h \
-	src/client/mac/handler/testcases/testdata/dump_syms_i386_breakpad.sym \
-	src/client/mac/tests/BreakpadFramework_Test.mm \
-	src/client/mac/tests/crash_generation_server_test.cc \
-	src/client/mac/tests/exception_handler_test.cc \
-	src/client/mac/tests/minidump_generator_test.cc \
-	src/client/mac/tests/minidump_generator_test_helper.cc \
-	src/client/mac/tests/spawn_child_process.h \
-	src/client/mac/tests/testlogging.h \
 	src/client/minidump_file_writer_unittest.cc \
 	src/client/solaris/handler/Makefile \
 	src/client/solaris/handler/exception_handler.cc \
@@ -1352,13 +1252,6 @@ EXTRA_DIST = \
 	src/common/dwarf/dwarf2enums.h \
 	src/common/dwarf/line_state_machine.h \
 	src/common/dwarf/types.h \
-	src/common/mac/arch_utilities.h \
-	src/common/mac/byteswap.h \
-	src/common/mac/HTTPMultipartUpload.h \
-	src/common/mac/HTTPMultipartUpload.m \
-	src/common/mac/string_utilities.cc \
-	src/common/mac/string_utilities.h \
-	src/common/mac/super_fat_arch.h \
 	src/common/scoped_ptr.h \
 	src/common/solaris/dump_symbols.cc \
 	src/common/solaris/dump_symbols.h \
@@ -1516,38 +1409,11 @@ EXTRA_DIST = \
 	src/third_party/curl/stdcheaders.h \
 	src/third_party/curl/typecheck-gcc.h \
 	src/third_party/curl/types.h \
-	src/third_party/mac_headers/architecture/byte_order.h \
-	src/third_party/mac_headers/i386/_types.h \
-	src/third_party/mac_headers/mach/boolean.h \
-	src/third_party/mac_headers/mach/i386/boolean.h \
-	src/third_party/mac_headers/mach/i386/vm_param.h \
-	src/third_party/mac_headers/mach/i386/vm_types.h \
-	src/third_party/mac_headers/mach/machine/boolean.h \
-	src/third_party/mac_headers/mach/machine.h \
-	src/third_party/mac_headers/mach/machine/thread_state.h \
-	src/third_party/mac_headers/mach/machine/thread_status.h \
-	src/third_party/mac_headers/mach/machine/vm_types.h \
-	src/third_party/mac_headers/mach-o/arch.h \
-	src/third_party/mac_headers/mach-o/fat.h \
-	src/third_party/mac_headers/mach-o/loader.h \
-	src/third_party/mac_headers/mach-o/nlist.h \
-	src/third_party/mac_headers/mach/thread_status.h \
-	src/third_party/mac_headers/mach/vm_prot.h \
-	src/third_party/mac_headers/README \
 	src/third_party/musl/README \
 	src/third_party/musl/COPYRIGHT \
 	src/third_party/musl/README.breakpad \
 	src/third_party/musl/VERSION \
 	src/third_party/musl/include/elf.h \
-	src/tools/mac/crash_report/crash_report.mm \
-	src/tools/mac/crash_report/crash_report.xcodeproj/project.pbxproj \
-	src/tools/mac/crash_report/on_demand_symbol_supplier.h \
-	src/tools/mac/crash_report/on_demand_symbol_supplier.mm \
-	src/tools/mac/dump_syms/dump_syms.xcodeproj/project.pbxproj \
-	src/tools/mac/dump_syms/dump_syms_tool.cc \
-	src/tools/mac/symupload/minidump_upload.m \
-	src/tools/mac/symupload/symupload.m \
-	src/tools/mac/symupload/symupload.xcodeproj/project.pbxproj \
 	src/tools/solaris/dump_syms/Makefile \
 	src/tools/solaris/dump_syms/dump_syms.cc \
 	src/tools/solaris/dump_syms/run_regtest.sh \
