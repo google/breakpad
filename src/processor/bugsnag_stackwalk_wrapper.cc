@@ -411,8 +411,14 @@ static Event getEvent(const ProcessState& process_state) {
   if (crashAddress != "") {
     e.crashAddress = duplicate(crashAddress);
   }
+  
+  if (framesAdded < 1) {
+    free(registers);
+    registers = nullptr;
+  }
+
   e.registerCount = framesAdded;
-  e.registers = registers;
+  e.registers = registers; 
 
   int uptime = 0;
   if (process_state.time_date_stamp() != 0 &&
