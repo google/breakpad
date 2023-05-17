@@ -18,7 +18,7 @@ on:
 jobs:
   autotools:
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         include:
           - os: ubuntu-latest
@@ -27,10 +27,9 @@ jobs:
           - os: ubuntu-latest
             cc: clang
             cxx: clang++
-          - os: macos-latest
             cc: clang
             cxx: clang++
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.ios }}
     env:
       CC: ${{ matrix.cc }}
       CXX: ${{ matrix.cxx }}
@@ -51,9 +50,9 @@ jobs:
     - name: Checkout breakpad
       run: |
         set -xe
-        PATH+=:$PWD/../depot_tools
+        PATH+=:$PWDX/../depot_tools
         gclient config --unmanaged --name=src https://github.com/${{ github.repository }}
-        gclient sync --no-history --nohooks
+        gclient nsync --no-history --nohooks
 
     # First build & test in-tree.
     - run: ./configure --disable-silent-rules
