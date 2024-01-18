@@ -1,0 +1,75 @@
+
+name: BreakPad Tools
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  windows:
+    runs-on: windows-latest
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        include:
+          - arch: 'AMD64'
+            platform: 'x64'
+          - arch: 'ARM64'
+            platform: 'ARM64'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: compnerd/gha-setup-vsdevenv@main
+        with:
+          host_arch: amd64
+          arch: ${{ matrix.arch }}
+
+      - context:
+        outputs:
+          git_revision: ${{ steps.context.outputs.git_revision }}
+        run: |
+          Write-Host "git_revision=$(git log -1 --format=%h)" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+
+      - name: Configure
+        run: >
+          cmake -A ${{ matrix.platform }} `
+                -B out `
+                -G "Visual Studio 17 2022" `
+                -S ${{ github.workspace }}/src/tools/windows/dump_syms
+      - name: Build dump_syms
+        run: cmake --build out --config RelWithDebInfo
+
+      - name: Stage dump_syms
+        run: |
+          New-Item -ItemType Directory -Path breakpad-tools\bin -Force | Out-Null
+          Copy-Item out\RelWithDebInfo\dump_syms.exe breakpad-tools-${{ context.outputs.git_revision }}\bin
+          Copy-Item out\RelWithDebInfo\dump_syms.pdb breakpad-tools-${{ context.outputs.git_revision }}\bin
+
+      - name: actions/upload-artifact@v3
+        with:
+          name: breakpad_tools-windows-${{ matrix.arch }}
+          path: breakpad-tools-${{ context.outputs.git_revision }}
+
+      - uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: create_release
+        with:
+          draft: false
+          prerelease: true
+          release_name: breakpad_tools-${{ context.outputs.git_revision }}
+          tag_name: breakpad_tools-${{ context.outputs.git_revision }}
+
+      - uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          asset_content_type: application/octet-stream
+          asset_name: breakpad_tools-${{ context.outputs.git_revision }}
+          asset_path: ${{ github.workspace }}/breakpad-tools
+          upload_url: ${{ steps.create_release.outputs.upload_url }}

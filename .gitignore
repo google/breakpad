@@ -31,6 +31,7 @@
 .svn/
 
 # Ignore common compiled artifacts.
+*.sw?
 *~
 *.dwo
 *.o
