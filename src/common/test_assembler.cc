@@ -42,6 +42,8 @@
 
 #include <iterator>
 
+#include "common/memory_allocator.h"
+
 namespace google_breakpad {
 namespace test_assembler {
 
@@ -327,7 +329,7 @@ Section& Section::ULEB128(uint64_t value) {
 Section& Section::Align(size_t alignment, uint8_t pad_byte) {
   // ALIGNMENT must be a power of two.
   assert(((alignment - 1) & alignment) == 0);
-  size_t new_size = (contents_.size() + alignment - 1) & ~(alignment - 1);
+  size_t new_size = PageAllocator::AlignUp(contents_.size(), alignment);
   contents_.append(new_size - contents_.size(), pad_byte);
   assert((contents_.size() & (alignment - 1)) == 0);
   return *this;

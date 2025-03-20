@@ -53,6 +53,7 @@
 #include "common/linux/linux_libc_support.h"
 #include "common/linux/memory_mapped_file.h"
 #include "common/linux/safe_readlink.h"
+#include "common/memory_allocator.h"
 #include "google_breakpad/common/minidump_exception_linux.h"
 #include "third_party/lss/linux_syscall_support.h"
 
@@ -840,8 +841,7 @@ void LinuxDumper::SanitizeStackCopy(uint8_t* stack_copy, size_t stack_len,
   }
 
   // Zero memory that is below the current stack pointer.
-  const uintptr_t offset =
-      (sp_offset + sizeof(uintptr_t) - 1) & ~(sizeof(uintptr_t) - 1);
+  const uintptr_t offset = PageAllocator::AlignUp(sp_offset, sizeof(uintptr_t));
   if (offset) {
     my_memset(stack_copy, 0, offset);
   }
@@ -891,8 +891,7 @@ bool LinuxDumper::StackHasPointerToMapping(const uint8_t* stack_copy,
   // aligned word in the target process.
   const uintptr_t low_addr = mapping.system_mapping_info.start_addr;
   const uintptr_t high_addr = mapping.system_mapping_info.end_addr;
-  const uintptr_t offset =
-      (sp_offset + sizeof(uintptr_t) - 1) & ~(sizeof(uintptr_t) - 1);
+  const uintptr_t offset = PageAllocator::AlignUp(sp_offset, sizeof(uintptr_t));
 
   for (const uint8_t* sp = stack_copy + offset;
        sp <= stack_copy + stack_len - sizeof(uintptr_t);

@@ -39,6 +39,8 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "common/memory_allocator.h"
+
 namespace google_breakpad {
 
 // Implementation of ElfCoreDump::Note.
@@ -92,8 +94,7 @@ ElfCoreDump::Note ElfCoreDump::Note::GetNextNote() const {
 
 // static
 size_t ElfCoreDump::Note::AlignedSize(size_t size) {
-  size_t mask = sizeof(Word) - 1;
-  return (size + mask) & ~mask;
+  return PageAllocator::AlignUp(size, sizeof(Word));
 }
 
 

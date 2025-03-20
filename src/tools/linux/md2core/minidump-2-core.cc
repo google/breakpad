@@ -49,6 +49,7 @@
 #include <vector>
 
 #include "common/linux/memory_mapped_file.h"
+#include "common/memory_allocator.h"
 #include "common/minidump_type_helper.h"
 #include "common/path_helper.h"
 #include "common/scoped_ptr.h"
@@ -97,6 +98,7 @@ typedef gregset_t user_regs_struct;
 using google_breakpad::MDTypeHelper;
 using google_breakpad::MemoryMappedFile;
 using google_breakpad::MinidumpMemoryRange;
+using google_breakpad::PageAllocator;
 
 typedef MDTypeHelper<sizeof(ElfW(Addr))>::MDRawDebug MDRawDebug;
 typedef MDTypeHelper<sizeof(ElfW(Addr))>::MDRawLinkMap MDRawLinkMap;
@@ -1190,8 +1192,7 @@ AddDataToMapping(CrashedProcess* crashinfo, const string& data,
   CrashedProcess::Mapping mapping;
   mapping.permissions = PF_R | PF_W;
   mapping.start_address = addr & ~4095;
-  mapping.end_address =
-    (addr + data.size() + 4095) & ~4095;
+  mapping.end_address = PageAllocator::AlignUp(addr + data.size(), 4096);
   mapping.data.assign(addr & 4095, 0).append(data);
   mapping.data.append(-mapping.data.size() & 4095, 0);
   crashinfo->mappings[mapping.start_address] = mapping;
@@ -1290,9 +1291,9 @@ AugmentMappings(const Options& options, CrashedProcess* crashinfo,
     if (std::distance(iter, crashinfo->link_map.end()) == 1) {
       link_map.l_next = 0;
     } else {
-      link_map.l_next = (struct link_map*)(start_addr + data.size() +
-                                           sizeof(link_map) +
-                                           ((filename.size() + 8) & ~7));
+      link_map.l_next =
+          (struct link_map*)(start_addr + data.size() + sizeof(link_map) +
+                             PageAllocator::AlignUp(filename.size(), 8));
     }
     data.append((char*)&link_map, sizeof(link_map));
     data.append(filename);

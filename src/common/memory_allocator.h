@@ -29,10 +29,11 @@
 #ifndef GOOGLE_BREAKPAD_COMMON_MEMORY_ALLOCATOR_H_
 #define GOOGLE_BREAKPAD_COMMON_MEMORY_ALLOCATOR_H_
 
+#include <assert.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <sys/mman.h>
+#include <unistd.h>
 
 #include <memory>
 #include <vector>
@@ -68,6 +69,14 @@ class PageAllocator {
 
   ~PageAllocator() {
     FreeAll();
+  }
+
+  // Rounds up `offset` to the closest properly aligned value. `alignment` must
+  // be positive and a power of two.
+  template <typename T>
+  static T AlignUp(T offset, size_t alignment) {
+    assert(alignment > 0 && ((alignment - 1) & alignment) == 0);
+    return (offset + (alignment - 1)) & ~(alignment - 1);
   }
 
   void* Alloc(size_t bytes) {
