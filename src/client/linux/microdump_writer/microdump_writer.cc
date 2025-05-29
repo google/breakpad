@@ -61,6 +61,7 @@ using google_breakpad::LinuxPtraceDumper;
 using google_breakpad::MappingInfo;
 using google_breakpad::MappingList;
 using google_breakpad::MicrodumpExtraInfo;
+using google_breakpad::PageAllocator;
 using google_breakpad::RawContextCPU;
 using google_breakpad::ThreadInfo;
 using google_breakpad::UContextReader;
@@ -615,7 +616,10 @@ class MicrodumpWriter {
     }
   }
 
-  void* Alloc(unsigned bytes) { return dumper_->allocator()->Alloc(bytes); }
+  void* Alloc(unsigned bytes,
+              unsigned alignment = PageAllocator::kDefaultAllocAlignment) {
+    return dumper_->allocator()->Alloc(bytes, alignment);
+  }
 
   const ucontext_t* const ucontext_;
 #if GOOGLE_BREAKPAD_CRASH_CONTEXT_HAS_FLOAT_STATE

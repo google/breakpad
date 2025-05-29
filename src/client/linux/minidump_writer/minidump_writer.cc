@@ -773,9 +773,11 @@ class MinidumpWriter {
     const std::vector<uint64_t> crash_exception_info =
         dumper_->crash_exception_info();
     stream->exception_record.number_parameters = crash_exception_info.size();
-    memcpy(stream->exception_record.exception_information,
-           crash_exception_info.data(),
-           sizeof(uint64_t) * crash_exception_info.size());
+    if (!crash_exception_info.empty()) {
+      memcpy(stream->exception_record.exception_information,
+             crash_exception_info.data(),
+             sizeof(uint64_t) * crash_exception_info.size());
+    }
     stream->thread_context = crashing_thread_context_;
 
     return true;
@@ -940,8 +942,9 @@ class MinidumpWriter {
   void set_minidump_size_limit(off_t limit) { minidump_size_limit_ = limit; }
 
  private:
-  void* Alloc(unsigned bytes) {
-    return dumper_->allocator()->Alloc(bytes);
+  void* Alloc(unsigned bytes,
+              unsigned alignment = PageAllocator::kDefaultAllocAlignment) {
+    return dumper_->allocator()->Alloc(bytes, alignment);
   }
 
   pid_t GetCrashThread() const {
@@ -1330,7 +1333,8 @@ class MinidumpWriter {
       Buffers* next;
       size_t len;
       uint8_t data[kBufSize];
-    }* buffers = reinterpret_cast<Buffers*>(Alloc(sizeof(Buffers)));
+    }* buffers =
+        static_cast<Buffers*>(Alloc(sizeof(Buffers), alignof(Buffers)));
     buffers->next = nullptr;
     buffers->len = 0;
 
@@ -1347,7 +1351,8 @@ class MinidumpWriter {
       total += r;
       bufptr->len += r;
       if (bufptr->len == kBufSize) {
-        bufptr->next = reinterpret_cast<Buffers*>(Alloc(sizeof(Buffers)));
+        bufptr->next = static_cast<Buffers*>(
+            Alloc(sizeof(Buffers), alignof(Buffers)));
         bufptr = bufptr->next;
         bufptr->next = nullptr;
         bufptr->len = 0;

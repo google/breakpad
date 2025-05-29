@@ -94,10 +94,12 @@ class DirectoryReader {
   }
 
  private:
+  // Order members properly to minimize the padding.
   const int fd_;
-  bool hit_eof_;
   unsigned buf_used_;
-  uint8_t buf_[sizeof(struct kernel_dirent) + NAME_MAX + 1];
+  alignas(struct kernel_dirent)
+      uint8_t buf_[sizeof(struct kernel_dirent) + NAME_MAX + 1];
+  bool hit_eof_;
 };
 
 }  // namespace google_breakpad

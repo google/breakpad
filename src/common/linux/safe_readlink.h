@@ -36,7 +36,7 @@
 
 namespace google_breakpad {
 
-// This function wraps sys_readlink() and performs the same functionalty,
+// This function wraps sys_readlink() and performs the same functionality,
 // but guarantees |buffer| is NULL-terminated if sys_readlink() returns
 // no error. It takes the same arguments as sys_readlink(), but unlike
 // sys_readlink(), it returns true on success.

@@ -30,6 +30,7 @@
 #define GOOGLE_BREAKPAD_COMMON_MEMORY_ALLOCATOR_H_
 
 #include <assert.h>
+#include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <sys/mman.h>
@@ -59,6 +60,9 @@ namespace google_breakpad {
 // destroyed.
 class PageAllocator {
  public:
+  // Default alignment value suitable for allocating often used raw byte arrays.
+  static constexpr size_t kDefaultAllocAlignment = 1;
+
   PageAllocator()
       : page_size_(getpagesize()),
         last_(nullptr),
@@ -79,13 +83,18 @@ class PageAllocator {
     return (offset + (alignment - 1)) & ~(alignment - 1);
   }
 
-  void* Alloc(size_t bytes) {
-    if (!bytes)
+  // Allocates an array with requested amount of `bytes` and at a location with
+  // the requested `alignment` which must be a power of two and between 1 and
+  // `alignof(std::max_align_t)`.
+  void* Alloc(size_t bytes, size_t alignment = kDefaultAllocAlignment) {
+    if (!bytes || alignment < 1 || alignment > alignof(std::max_align_t))
       return nullptr;
 
-    if (current_page_ && page_size_ - page_offset_ >= bytes) {
-      uint8_t* const ret = current_page_ + page_offset_;
-      page_offset_ += bytes;
+    // Aligned page offset.
+    const size_t page_offset = AlignUp(page_offset_, alignment);
+    if (current_page_ && page_size_ - page_offset >= bytes) {
+      uint8_t* const ret = current_page_ + page_offset;
+      page_offset_ = page_offset + bytes;
       if (page_offset_ == page_size_) {
         page_offset_ = 0;
         current_page_ = nullptr;
@@ -159,6 +168,10 @@ class PageAllocator {
     size_t num_pages;  // the number of pages in this set.
   };
 
+  static_assert(
+      sizeof(PageHeader) % alignof(std::max_align_t) == 0,
+      "The first byte after `PageHeader` must be properly aligned.");
+
   const size_t page_size_;
   PageHeader* last_;
   uint8_t* current_page_;
@@ -198,7 +211,7 @@ struct PageStdAllocator {
     if (size <= stackdata_size_) {
       return stackdata_;
     }
-    return static_cast<pointer>(allocator_.Alloc(size));
+    return static_cast<pointer>(allocator_.Alloc(size, alignof(value_type)));
   }
 
   inline void deallocate(pointer, size_type) {
@@ -254,7 +267,7 @@ class auto_wasteful_vector : public wasteful_vector<T> {
 
 inline void* operator new(size_t nbytes,
                           google_breakpad::PageAllocator& allocator) {
-  return allocator.Alloc(nbytes);
+  return allocator.Alloc(nbytes, __STDCPP_DEFAULT_NEW_ALIGNMENT__);
 }
 
 #endif  // GOOGLE_BREAKPAD_COMMON_MEMORY_ALLOCATOR_H_

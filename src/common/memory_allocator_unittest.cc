@@ -102,6 +102,23 @@ TEST(PageAllocatorDeathTest, AlignUpBad9) {
   EXPECT_DEBUG_DEATH({ PageAllocator::AlignUp(0x11U, 9); }, "");
 }
 
+TEST(PageAllocatorTest, AllocAligned) {
+  PageAllocator allocator;
+
+  EXPECT_EQ(0U, allocator.pages_allocated());
+  void* p = allocator.Alloc(1);  // [0x...0]
+  EXPECT_EQ(reinterpret_cast<uintptr_t>(p) % 2, 0U);
+  p = allocator.Alloc(2);  // [0x...1 - 0x...2], default alignment.
+  EXPECT_EQ(reinterpret_cast<uintptr_t>(p) % 2, 1U);
+  for (unsigned alignment = 2; alignment <= alignof(std::max_align_t);
+       alignment *= 2) {
+    p = allocator.Alloc(1, alignment);
+    EXPECT_EQ(reinterpret_cast<uintptr_t>(p) % alignment, 0U);
+  }
+  EXPECT_EQ(allocator.Alloc(1, 0), nullptr);
+  EXPECT_EQ(allocator.Alloc(1, 2 * alignof(std::max_align_t)), nullptr);
+}
+
 namespace {
 typedef testing::Test WastefulVectorTest;
 }
