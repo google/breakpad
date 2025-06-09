@@ -47,6 +47,10 @@
 #include <stddef.h>
 #include <string.h>
 
+#if defined(__CHROMEOS__)
+#include <algorithm>
+#endif  // defined(__CHROMEOS__)
+
 #include "client/linux/minidump_writer/line_reader.h"
 #include "common/linux/elfutils.h"
 #include "common/linux/file_id.h"
