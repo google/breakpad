@@ -39,10 +39,7 @@
 #include <sys/types.h>
 
 #include "google_breakpad/common/breakpad_types.h"
-
-namespace libdis {
 #include "third_party/libdisasm/libdis.h"
-}
 
 namespace google_breakpad {
 
@@ -77,12 +74,12 @@ class DisassemblerX86 {
 
     // Returns the current instruction as defined in libdis.h,
     // or NULL if the current instruction is not valid.
-    const libdis::x86_insn_t* currentInstruction() {
+    const x86_insn_t* currentInstruction() {
       return instr_valid_ ? &current_instr_ : nullptr;
     }
 
     // Returns the type of the current instruction as defined in libdis.h.
-    libdis::x86_insn_group currentInstructionGroup() {
+    x86_insn_group currentInstructionGroup() {
       return current_instr_.group;
     }
 
@@ -108,12 +105,12 @@ class DisassemblerX86 {
     uint32_t current_inst_offset_;
 
     bool instr_valid_;
-    libdis::x86_insn_t current_instr_;
+    x86_insn_t current_instr_;
 
     // TODO(cdn): Maybe also track an expression's index register.
     // ex: mov eax, [ebx + ecx]; ebx is base, ecx is index.
     bool register_valid_;
-    libdis::x86_reg_t bad_register_;
+    x86_reg_t bad_register_;
 
     bool pushed_bad_value_;
     bool end_of_block_;
