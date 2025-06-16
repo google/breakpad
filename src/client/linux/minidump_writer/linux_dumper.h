@@ -320,6 +320,13 @@ class LinuxDumper {
   // generation.
   void LatePostprocessMappings();
 #endif  // __ANDROID__
+
+#ifdef BREAKPAD_GOOGLETEST_INCLUDES_H__
+  FRIEND_TEST(LinuxCoreDumperTest, EnumerateMappings);
+  FRIEND_TEST(LinuxCoreDumperTest, EnumerateMappings_diffname);
+  FRIEND_TEST(LinuxCoreDumperTest, EnumerateMappings_merge);
+  FRIEND_TEST(LinuxCoreDumperTest, EnumerateMappings_16K_padding);
+#endif
 };
 
 }  // namespace google_breakpad
