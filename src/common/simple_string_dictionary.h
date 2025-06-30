@@ -30,6 +30,7 @@
 #define COMMON_SIMPLE_STRING_DICTIONARY_H_
 
 #include <assert.h>
+#include <stddef.h>
 #include <string.h>
 
 namespace google_breakpad {

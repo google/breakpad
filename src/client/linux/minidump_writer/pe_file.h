@@ -29,6 +29,8 @@
 #ifndef CLIENT_LINUX_MINIDUMP_WRITER_PE_FILE_H_
 #define CLIENT_LINUX_MINIDUMP_WRITER_PE_FILE_H_
 
+#include <stddef.h>
+
 #include "client/linux/minidump_writer/pe_structs.h"
 
 namespace google_breakpad {
