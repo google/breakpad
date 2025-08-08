@@ -74,6 +74,7 @@ stamp-h1
 *.sdf
 *.sln
 *.suo
+*.user
 *.vcproj
 *.vcxproj
 
