@@ -62,16 +62,25 @@ for _name_.
 
 *   The _operatingsystem_ field names the operating system on which the
     executable or shared library was intended to run. This field should have one
-    of the following values: | **Value** | **Meaning** |
-    |:----------|:--------------------| | Linux | Linux | | mac | Macintosh OSX
-    | | windows | Microsoft Windows |
+    of the following values:
+
+    | **Value** | **Meaning** |
+    |:----------|:--------------------|
+    | Linux | Linux |
+    | mac | Macintosh OSX |
+    | windows | Microsoft Windows |
 
 *   The _architecture_ field indicates what processor architecture the
     executable or shared library contains machine code for. This field should
-    have one of the following values: | **Value** | **Instruction Set
-    Architecture** | |:----------|:---------------------------------| | x86 |
-    Intel IA-32 | | x86\_64 | AMD64/Intel 64 | | ppc | 32-bit PowerPC | | ppc64
-    | 64-bit PowerPC | | unknown | unknown |
+    have one of the following values:
+
+    | **Value** | **Instruction Set Architecture** |
+    |:----------|:---------------------------------|
+    | x86 | Intel IA-32 |
+    | x86\_64 | AMD64/Intel 64 |
+    | ppc | 32-bit PowerPC |
+    | ppc64 | 64-bit PowerPC |
+    | unknown | unknown |
 
 *   The _id_ field is a sequence of hexadecimal digits that identifies the exact
     executable or library whose contents the symbol file describes. The way in
