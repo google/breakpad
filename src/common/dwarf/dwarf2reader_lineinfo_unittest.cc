@@ -95,6 +95,30 @@ const uint8_t dwarf5_line_program[] = {
   // end
 };
 
+// Generated with Apple clang version 17.0.0 (clang-1700.0.13.3) by running:
+//
+// echo "int foo = 42;" > foo.c && \
+//   clang -gembed-source -gdwarf-5 -c -o foo.o foo.c && \
+//   otool -V -s __DWARF __debug_line foo.o && \
+//   otool -V -s __DWARF __debug_line_str foo.o && \
+//   otool -V -s __DWARF __debug_str foo.o
+const uint8_t dwarf5_line_program_embedded_source[] = {
+    0x46, 0x00, 0x00, 0x00, 0x05, 0x00, 0x08, 0x00, 0x3e, 0x00, 0x00,
+    0x00, 0x01, 0x01, 0x01, 0xfb, 0x0e, 0x0d, 0x00, 0x01, 0x01, 0x01,
+    0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x01, 0x1f,
+    0x01, 0x00, 0x00, 0x00, 0x00, 0x04, 0x01, 0x1f, 0x02, 0x0f, 0x05,
+    0x1e, 0x81, 0x40, 0x1f, 0x01, 0x03, 0x00, 0x00, 0x00, 0x00, 0x26,
+    0x60, 0x9b, 0xb4, 0x87, 0x5d, 0xd0, 0xd6, 0x72, 0x75, 0x5a, 0x4a,
+    0x3c, 0x05, 0x48, 0x5b, 0x2e, 0x00, 0x00, 0x00};
+
+const uint8_t dwarf5_line_string_section_embedded_source[] = {
+    '/', 'a', '\0', 'f', 'o', 'o', '.', 'c', '\0', 'i',  'n', 't',
+    ' ', 'f', 'o',  'o', ' ', '=', '4', '2', ';',  '\n', '\0'};
+
+const uint8_t dwarf5_string_section_embedded_source[] = {
+    'a',  '\0', 'b', '\0', 'c',  '\0', 'd', '\0', 'e',
+    '\0', 'f',  'o', 'o',  '\0', 'i',  'n', 't',  '\0'};
+
 const uint8_t dwarf4_line_program[] = {
   0x37, 0x0, 0x0, 0x0,  // unit_length (end - begin)
   // begin
@@ -163,6 +187,22 @@ TEST_F(LineProgram, ReadLinesDwarf5) {
   EXPECT_CALL(handler_, DefineFile("b/c", 0, 0, 0, 0)).Times(1);
   EXPECT_CALL(handler_, AddLine(0, 1, 0, 4, 0)).Times(1);
   EXPECT_EQ(line_reader.Start(), sizeof(dwarf5_line_program));
+}
+
+TEST_F(LineProgram, ReadLinesDwarf5EmbeddedSource) {
+  ByteReader byte_reader(ENDIANNESS_LITTLE);
+  // LineTables don't specify the offset size like Compilation Units do.
+  byte_reader.SetOffsetSize(4);
+  LineInfo line_reader(dwarf5_line_program_embedded_source,
+                       sizeof(dwarf5_line_program_embedded_source),
+                       &byte_reader, dwarf5_string_section_embedded_source,
+                       sizeof(dwarf5_string_section_embedded_source),
+                       dwarf5_line_string_section_embedded_source,
+                       sizeof(dwarf5_line_string_section_embedded_source),
+                       &handler_);
+  EXPECT_CALL(handler_, DefineDir("/a", 0)).Times(1);
+  EXPECT_CALL(handler_, DefineFile("foo.c", 0, 0, 0, 0)).Times(1);
+  EXPECT_EQ(line_reader.Start(), sizeof(dwarf5_line_program_embedded_source));
 }
 
 TEST_F(LineProgram, ReadLinesDwarf4) {
