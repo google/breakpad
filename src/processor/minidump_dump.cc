@@ -62,7 +62,7 @@ struct Options {
   Options()
       : minidumpPath(), hexdump(false), hexdump_width(16) {}
 
-  string minidumpPath;
+  std::string minidumpPath;
   bool hexdump;
   unsigned int hexdump_width;
 };

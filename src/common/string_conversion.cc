@@ -35,7 +35,6 @@
 #include "common/convert_UTF.h"
 #include "common/scoped_ptr.h"
 #include "common/string_conversion.h"
-#include "common/using_std_string.h"
 
 namespace google_breakpad {
 
@@ -121,7 +120,7 @@ static inline uint16_t Swap(uint16_t value) {
   return (value >> 8) | static_cast<uint16_t>(value << 8);
 }
 
-string UTF16ToUTF8(const vector<uint16_t>& in, bool swap) {
+std::string UTF16ToUTF8(const vector<uint16_t>& in, bool swap) {
   const UTF16* source_ptr = &in[0];
   scoped_array<uint16_t> source_buffer;
 

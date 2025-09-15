@@ -50,7 +50,6 @@
 #include <string>
 #include <utility>
 
-#include "common/using_std_string.h"
 #include "processor/fast_source_line_resolver_types.h"
 #include "processor/logging.h"
 #include "processor/module_factory.h"
@@ -173,7 +172,7 @@ void FastSourceLineResolver::Module::ConstructInlineFrames(
 
   // Update the source file and source line for each inlined frame.
   if (!inlined_frames->empty()) {
-    string parent_frame_source_file_name = frame->source_file_name;
+    std::string parent_frame_source_file_name = frame->source_file_name;
     int parent_frame_source_line = frame->source_line;
     frame->source_file_name = inlined_frames->back()->source_file_name;
     frame->source_line = inlined_frames->back()->source_line;
@@ -205,7 +204,7 @@ WindowsFrameInfo FastSourceLineResolver::CopyWFI(const char* raw) {
   uint32_t max_stack_size = para_uint32[5];
   const char* boolean = reinterpret_cast<const char*>(para_uint32 + 6);
   bool allocates_base_pointer = (*boolean != 0);
-  string program_string = boolean + 1;
+  std::string program_string = boolean + 1;
 
   return WindowsFrameInfo(type,
                           prolog_size,

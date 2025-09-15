@@ -38,7 +38,6 @@
 #include <string>
 #include <vector>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 #include "google_breakpad/processor/code_module.h"
 
@@ -61,10 +60,10 @@ class SourceLineResolverInterface {
   //
   // map_file should contain line/address mappings for this module.
   virtual bool LoadModule(const CodeModule* module,
-                          const string& map_file) = 0;
+                          const std::string& map_file) = 0;
   // Same as above, but takes the contents of a pre-read map buffer
   virtual bool LoadModuleUsingMapBuffer(const CodeModule* module,
-                                        const string& map_buffer) = 0;
+                                        const std::string& map_buffer) = 0;
 
   // Add an interface to load symbol using C-String data instead of string.
   // This is useful in the optimization design for avoiding unnecessary copying

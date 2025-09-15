@@ -39,8 +39,6 @@
 
 #include <string>
 
-#include "common/using_std_string.h"
-
 namespace google_breakpad {
 
 // An abstract base class for language-specific operations. We choose
@@ -73,8 +71,8 @@ class Language {
   // take into account the parent and child DIE types, allow languages
   // to use their own data type for complex parent names, etc. But if
   // C++ doesn't need all that, who would?
-  virtual string MakeQualifiedName (const string& parent_name,
-                                    const string& name) const = 0;
+  virtual std::string MakeQualifiedName(const std::string& parent_name,
+                                        const std::string& name) const = 0;
 
   enum DemangleResult {
     // Demangling was not performed because it’s not appropriate to attempt.
@@ -85,8 +83,8 @@ class Language {
   };
 
   // Wraps abi::__cxa_demangle() or similar for languages where appropriate.
-  virtual DemangleResult DemangleName(const string& mangled,
-                                      string* demangled) const {
+  virtual DemangleResult DemangleName(const std::string& mangled,
+                                      std::string* demangled) const {
     demangled->clear();
     return kDontDemangle;
   }

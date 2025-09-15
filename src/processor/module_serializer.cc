@@ -174,7 +174,7 @@ bool ModuleSerializer::SerializeModuleAndLoadIntoFastResolver(
   // Copy the data into string.
   // Must pass string to LoadModuleUsingMapBuffer(), instead of passing char* to
   // LoadModuleUsingMemoryBuffer(), because of data ownership/lifetime issue.
-  string symbol_data_string(symbol_data.get(), size);
+  std::string symbol_data_string(symbol_data.get(), size);
   symbol_data.reset();
 
   std::unique_ptr<CodeModule> code_module(
@@ -199,8 +199,7 @@ void ModuleSerializer::ConvertAllModules(
 }
 
 bool ModuleSerializer::ConvertOneModule(
-    const string& moduleid,
-    const BasicSourceLineResolver* basic_resolver,
+    const std::string& moduleid, const BasicSourceLineResolver* basic_resolver,
     FastSourceLineResolver* fast_resolver) {
   // Check for NULL pointer.
   if (!basic_resolver || !fast_resolver)
@@ -214,7 +213,7 @@ bool ModuleSerializer::ConvertOneModule(
   return SerializeModuleAndLoadIntoFastResolver(iter, fast_resolver);
 }
 
-char* ModuleSerializer::SerializeSymbolFileData(const string& symbol_data,
+char* ModuleSerializer::SerializeSymbolFileData(const std::string& symbol_data,
                                                 size_t* size) {
   std::unique_ptr<BasicSourceLineResolver::Module> module(
       new BasicSourceLineResolver::Module("no name"));

@@ -42,6 +42,7 @@
 #include <sys/stat.h>
 
 #include <map>
+#include <string>
 #include <utility>
 
 #include "google_breakpad/processor/source_line_resolver_base.h"
@@ -88,7 +89,7 @@ SourceLineResolverBase::~SourceLineResolverBase() {
   module_factory_ = nullptr;
 }
 
-bool SourceLineResolverBase::ReadSymbolFile(const string& map_file,
+bool SourceLineResolverBase::ReadSymbolFile(const std::string& map_file,
                                             char** symbol_data,
                                             size_t* symbol_data_size) {
   if (symbol_data == nullptr || symbol_data_size == nullptr) {
@@ -99,7 +100,7 @@ bool SourceLineResolverBase::ReadSymbolFile(const string& map_file,
   struct stat buf;
   int error_code = stat(map_file.c_str(), &buf);
   if (error_code == -1) {
-    string error_string;
+    std::string error_string;
     error_code = ErrnoString(&error_string);
     BPLOG(ERROR) << "Could not open " << map_file <<
         ", error " << error_code << ": " << error_string;
@@ -122,7 +123,7 @@ bool SourceLineResolverBase::ReadSymbolFile(const string& map_file,
 
   FILE* f = fopen(map_file.c_str(), "rt");
   if (!f) {
-    string error_string;
+    std::string error_string;
     error_code = ErrnoString(&error_string);
     BPLOG(ERROR) << "Could not open " << map_file <<
         ", error " << error_code << ": " << error_string;
@@ -138,7 +139,7 @@ bool SourceLineResolverBase::ReadSymbolFile(const string& map_file,
   items_read = fread(*symbol_data, 1, file_size, f);
 
   if (items_read != file_size) {
-    string error_string;
+    std::string error_string;
     error_code = ErrnoString(&error_string);
     BPLOG(ERROR) << "Could not slurp " << map_file <<
         ", error " << error_code << ": " << error_string;
@@ -152,7 +153,7 @@ bool SourceLineResolverBase::ReadSymbolFile(const string& map_file,
 }
 
 bool SourceLineResolverBase::LoadModule(const CodeModule* module,
-                                        const string& map_file) {
+                                        const std::string& map_file) {
   if (module == nullptr)
     return false;
 
@@ -189,7 +190,7 @@ bool SourceLineResolverBase::LoadModule(const CodeModule* module,
 }
 
 bool SourceLineResolverBase::LoadModuleUsingMapBuffer(
-    const CodeModule* module, const string& map_buffer) {
+    const CodeModule* module, const std::string& map_buffer) {
   BPLOG(INFO) << "SourceLineResolverBase::LoadModuleUsingMapBuffer(module = "
               << module->code_file()
               << ", map_buffer.size() = " << map_buffer.size() << ")";
@@ -336,12 +337,12 @@ CFIFrameInfo* SourceLineResolverBase::FindCFIFrameInfo(
 }
 
 bool SourceLineResolverBase::CompareString::operator()(
-    const string& s1, const string& s2) const {
+    const std::string& s1, const std::string& s2) const {
   return strcmp(s1.c_str(), s2.c_str()) < 0;
 }
 
 bool SourceLineResolverBase::Module::ParseCFIRuleSet(
-    const string& rule_set, CFIFrameInfo* frame_info) const {
+    const std::string& rule_set, CFIFrameInfo* frame_info) const {
   CFIFrameInfoParseHandler handler(frame_info);
   CFIRuleParser parser(&handler);
   return parser.Parse(rule_set);

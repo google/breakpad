@@ -40,7 +40,6 @@
 
 #include "breakpad_googletest_includes.h"
 #include "common/test_assembler.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/common/minidump_format.h"
 #include "google_breakpad/processor/basic_source_line_resolver.h"
 #include "google_breakpad/processor/call_stack.h"
@@ -109,7 +108,7 @@ class StackwalkerARMFixture {
 
   // Set the Breakpad symbol information that supplier should return for
   // MODULE to INFO.
-  void SetModuleSymbols(MockCodeModule* module, const string& info) {
+  void SetModuleSymbols(MockCodeModule* module, const std::string& info) {
     size_t buffer_size;
     char *buffer = supplier.CopySymbolDataAndOwnTheCopy(info, &buffer_size);
     EXPECT_CALL(supplier, GetCStringSymbolData(module, &system_info, _, _, _))
@@ -121,7 +120,7 @@ class StackwalkerARMFixture {
   // Populate stack_region with the contents of stack_section. Use
   // stack_section.start() as the region's starting address.
   void RegionFromSection() {
-    string contents;
+    std::string contents;
     ASSERT_TRUE(stack_section.GetContents(&contents));
     stack_region.Init(stack_section.start().Value(), contents);
   }

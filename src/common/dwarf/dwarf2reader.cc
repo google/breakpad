@@ -55,7 +55,6 @@
 #include "common/dwarf/bytereader-inl.h"
 #include "common/dwarf/bytereader.h"
 #include "common/dwarf/line_state_machine.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 
 namespace google_breakpad {
@@ -174,20 +173,35 @@ const SectionMap::const_iterator GetSectionByName(const SectionMap&
   return iter;
 }
 
-CompilationUnit::CompilationUnit(const string& path,
+CompilationUnit::CompilationUnit(const std::string& path,
                                  const SectionMap& sections, uint64_t offset,
                                  ByteReader* reader, Dwarf2Handler* handler)
-    : path_(path), offset_from_section_start_(offset), reader_(reader),
-      sections_(sections), handler_(handler), abbrevs_(),
-      string_buffer_(nullptr), string_buffer_length_(0),
-      line_string_buffer_(nullptr), line_string_buffer_length_(0),
-      str_offsets_buffer_(nullptr), str_offsets_buffer_length_(0),
-      addr_buffer_(nullptr), addr_buffer_length_(0),
-      is_split_dwarf_(false), is_type_unit_(false), dwo_id_(0), dwo_name_(),
-      skeleton_dwo_id_(0), addr_base_(0),
-      str_offsets_base_(0), have_checked_for_dwp_(false),
-      should_process_split_dwarf_(false), low_pc_(0),
-      has_source_line_info_(false), source_line_offset_(0) {}
+    : path_(path),
+      offset_from_section_start_(offset),
+      reader_(reader),
+      sections_(sections),
+      handler_(handler),
+      abbrevs_(),
+      string_buffer_(nullptr),
+      string_buffer_length_(0),
+      line_string_buffer_(nullptr),
+      line_string_buffer_length_(0),
+      str_offsets_buffer_(nullptr),
+      str_offsets_buffer_length_(0),
+      addr_buffer_(nullptr),
+      addr_buffer_length_(0),
+      is_split_dwarf_(false),
+      is_type_unit_(false),
+      dwo_id_(0),
+      dwo_name_(),
+      skeleton_dwo_id_(0),
+      addr_base_(0),
+      str_offsets_base_(0),
+      have_checked_for_dwp_(false),
+      should_process_split_dwarf_(false),
+      low_pc_(0),
+      has_source_line_info_(false),
+      source_line_offset_(0) {}
 
 // Initialize a compilation unit from a .dwo or .dwp file.
 // In this case, we need the .debug_addr section from the
@@ -1048,14 +1062,14 @@ bool CompilationUnit::ProcessSplitDwarf(std::string& split_file,
   if (!have_checked_for_dwp_) {
     // Look for a .dwp file in the same directory as the executable.
     have_checked_for_dwp_ = true;
-    string dwp_suffix(".dwp");
+    std::string dwp_suffix(".dwp");
     std::string dwp_path = path_ + dwp_suffix;
     if (stat(dwp_path.c_str(), &statbuf) != 0) {
       // Fall back to a split .debug file in the same directory.
-      string debug_suffix(".debug");
+      std::string debug_suffix(".debug");
       dwp_path = path_;
       size_t found = path_.rfind(debug_suffix);
-      if (found != string::npos &&
+      if (found != std::string::npos &&
           found + debug_suffix.length() == path_.length())
         dwp_path = dwp_path.replace(found, debug_suffix.length(), dwp_suffix);
     }
@@ -1112,8 +1126,8 @@ void CompilationUnit::ReadDebugSectionsFromDwo(ElfReader* elf_reader,
   };
   for (unsigned int i = 0u;
        i < sizeof(section_names)/sizeof(*(section_names)); ++i) {
-    string base_name = section_names[i];
-    string dwo_name = base_name + ".dwo";
+    std::string base_name = section_names[i];
+    std::string dwo_name = base_name + ".dwo";
     size_t section_size;
     const char* section_data = elf_reader->GetSectionByName(dwo_name,
                                                             &section_size);
@@ -2171,8 +2185,8 @@ class CallFrameInfo::RegisterRule: public CallFrameInfo::Rule {
 // Rule: EXPRESSION evaluates to the address at which the register is saved.
 class CallFrameInfo::ExpressionRule: public CallFrameInfo::Rule {
  public:
-  explicit ExpressionRule(const string& expression)
-      : expression_(expression) { }
+  explicit ExpressionRule(const std::string& expression)
+      : expression_(expression) {}
   ~ExpressionRule() { }
   bool Handle(Handler* handler, uint64_t address, int reg) const {
     return handler->ExpressionRule(address, reg, expression_);
@@ -2185,14 +2199,14 @@ class CallFrameInfo::ExpressionRule: public CallFrameInfo::Rule {
   }
   Rule* Copy() const { return new ExpressionRule(*this); }
  private:
-  string expression_;
+  std::string expression_;
 };
 
 // Rule: EXPRESSION evaluates to the address at which the register is saved.
 class CallFrameInfo::ValExpressionRule: public CallFrameInfo::Rule {
  public:
-  explicit ValExpressionRule(const string& expression)
-      : expression_(expression) { }
+  explicit ValExpressionRule(const std::string& expression)
+      : expression_(expression) {}
   ~ValExpressionRule() { }
   bool Handle(Handler* handler, uint64_t address, int reg) const {
     return handler->ValExpressionRule(address, reg, expression_);
@@ -2206,7 +2220,7 @@ class CallFrameInfo::ValExpressionRule: public CallFrameInfo::Rule {
   }
   Rule* Copy() const { return new ValExpressionRule(*this); }
  private:
-  string expression_;
+  std::string expression_;
 };
 
 // A map from register numbers to rules.
@@ -2387,7 +2401,7 @@ class CallFrameInfo::State {
     unsigned register_number;  // A register number.
     uint64_t offset;             // An offset or address.
     long signed_offset;        // A signed offset.
-    string expression;         // A DWARF expression.
+    std::string expression;    // A DWARF expression.
   };
 
   // Parse CFI instruction operands from STATE's instruction stream as
@@ -2574,8 +2588,8 @@ bool CallFrameInfo::State::ParseOperands(const char* format,
         if (len > bytes_left || expression_length > bytes_left - len)
           return ReportIncomplete();
         cursor_ += len;
-        operands->expression = string(reinterpret_cast<const char*>(cursor_),
-                                      expression_length);
+        operands->expression = std::string(
+            reinterpret_cast<const char*>(cursor_), expression_length);
         cursor_ += expression_length;
         break;
       }
@@ -3053,8 +3067,9 @@ bool CallFrameInfo::ReadCIEFields(CIE* cie) {
                                                cie->end - augmentation_start));
   if (! augmentation_end) return ReportIncomplete(cie);
   cursor = augmentation_end;
-  cie->augmentation = string(reinterpret_cast<const char*>(augmentation_start),
-                             cursor - augmentation_start);
+  cie->augmentation =
+      std::string(reinterpret_cast<const char*>(augmentation_start),
+                  cursor - augmentation_start);
   // Skip the terminating '\0'.
   cursor++;
 
@@ -3480,7 +3495,7 @@ void CallFrameInfo::Reporter::UnrecognizedVersion(uint64_t offset, int version) 
 }
 
 void CallFrameInfo::Reporter::UnrecognizedAugmentation(uint64_t offset,
-                                                       const string& aug) {
+                                                       const std::string& aug) {
   fprintf(stderr,
           "%s: CFI frame description entry at offset 0x%" PRIx64 " in '%s':"
           " CIE specifies unrecognized augmentation: '%s'\n",

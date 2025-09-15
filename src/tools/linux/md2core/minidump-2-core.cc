@@ -53,7 +53,6 @@
 #include "common/minidump_type_helper.h"
 #include "common/path_helper.h"
 #include "common/scoped_ptr.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 #include "google_breakpad/common/minidump_format.h"
 #include "third_party/lss/linux_syscall_support.h"
@@ -106,12 +105,12 @@ typedef MDTypeHelper<sizeof(ElfW(Addr))>::MDRawLinkMap MDRawLinkMap;
 static const MDRVA kInvalidMDRVA = static_cast<MDRVA>(-1);
 
 struct Options {
-  string minidump_path;
+  std::string minidump_path;
   bool verbose;
   int out_fd;
   bool use_filename;
   bool inc_guid;
-  string so_basedir;
+  std::string so_basedir;
 };
 
 static void
@@ -303,8 +302,8 @@ struct CrashedProcess {
     uint32_t permissions;
     uint64_t start_address, end_address, offset;
     // The name we write out to the core.
-    string filename;
-    string data;
+    std::string filename;
+    std::string data;
   };
   std::map<uint64_t, Mapping> mappings;
 
@@ -342,11 +341,11 @@ struct CrashedProcess {
   // We gather them for merging later on into the list of maps.
   struct Signature {
     char guid[40];
-    string filename;
+    std::string filename;
   };
   std::map<uintptr_t, Signature> signatures;
 
-  string dynamic_data;
+  std::string dynamic_data;
   MDRawDebug debug;
   std::vector<MDRawLinkMap> link_map;
 };
@@ -828,8 +827,8 @@ ParseMaps(const Options& options, CrashedProcess* crashinfo,
        ptr < range.data() + range.length();) {
     const uint8_t* eol = (uint8_t*)memchr(ptr, '\n',
                                        range.data() + range.length() - ptr);
-    string line((const char*)ptr,
-                eol ? eol - ptr : range.data() + range.length() - ptr);
+    std::string line((const char*)ptr,
+                     eol ? eol - ptr : range.data() + range.length() - ptr);
     ptr = eol ? eol + 1 : range.data() + range.length();
     unsigned long long start, stop, offset;
     char* permissions = nullptr;
@@ -1130,7 +1129,8 @@ ParseModuleStream(const Options& options, CrashedProcess* crashinfo,
             record->signature.data4[4], record->signature.data4[5],
             record->signature.data4[6], record->signature.data4[7]);
 
-    string filename = full_file.GetAsciiMDString(rawmodule->module_name_rva);
+    std::string filename =
+        full_file.GetAsciiMDString(rawmodule->module_name_rva);
 
     CrashedProcess::Signature signature;
     strcpy(signature.guid, guid);
@@ -1150,9 +1150,8 @@ ParseModuleStream(const Options& options, CrashedProcess* crashinfo,
   }
 }
 
-static void
-AddDataToMapping(CrashedProcess* crashinfo, const string& data,
-                 uintptr_t addr) {
+static void AddDataToMapping(CrashedProcess* crashinfo, const std::string& data,
+                             uintptr_t addr) {
   for (std::map<uint64_t, CrashedProcess::Mapping>::iterator
          iter = crashinfo->mappings.begin();
        iter != crashinfo->mappings.end();
@@ -1206,7 +1205,7 @@ AugmentMappings(const Options& options, CrashedProcess* crashinfo,
   for (unsigned i = 0; i < crashinfo->threads.size(); ++i) {
     const CrashedProcess::Thread& thread = crashinfo->threads[i];
     AddDataToMapping(crashinfo,
-                     string((char*)thread.stack, thread.stack_length),
+                     std::string((char*)thread.stack, thread.stack_length),
                      thread.stack_addr);
   }
 
@@ -1214,7 +1213,7 @@ AugmentMappings(const Options& options, CrashedProcess* crashinfo,
   // the beginning of the address space, as this area should always be
   // available.
   static const uintptr_t start_addr = 4096;
-  string data;
+  std::string data;
   struct r_debug debug = { 0 };
   debug.r_version = crashinfo->debug.version;
   debug.r_brk = (ElfW(Addr))crashinfo->debug.brk;
@@ -1234,7 +1233,7 @@ AugmentMappings(const Options& options, CrashedProcess* crashinfo,
     link_map.l_ld = (ElfW(Dyn)*)iter->ld;
     link_map.l_prev = prev;
     prev = (struct link_map*)(start_addr + data.size());
-    string filename = full_file.GetAsciiMDString(iter->name);
+    std::string filename = full_file.GetAsciiMDString(iter->name);
 
     // Look up signature for this filename. If available, change filename
     // to point to GUID, instead.
@@ -1245,21 +1244,21 @@ AugmentMappings(const Options& options, CrashedProcess* crashinfo,
       // old_filename: The path as found via SONAME (e.g. /lib/libpthread.so.0).
       // sig_filename: The path on disk (e.g. /lib/libpthread-2.19.so).
       const char* guid = sig->second.guid;
-      string sig_filename = sig->second.filename;
-      string old_filename = filename.empty() ? sig_filename : filename;
-      string new_filename;
+      std::string sig_filename = sig->second.filename;
+      std::string old_filename = filename.empty() ? sig_filename : filename;
+      std::string new_filename;
 
       // First set up the leading path.  We assume dirname always ends with a
       // trailing slash (as needed), so we won't be appending one manually.
       if (options.so_basedir.empty()) {
-        string dirname;
+        std::string dirname;
         if (options.use_filename) {
           dirname = sig_filename;
         } else {
           dirname = old_filename;
         }
         size_t slash = dirname.find_last_of('/');
-        if (slash != string::npos) {
+        if (slash != std::string::npos) {
           new_filename = dirname.substr(0, slash + 1);
         }
       } else {

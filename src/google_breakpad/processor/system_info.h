@@ -36,8 +36,6 @@
 
 #include <string>
 
-#include "common/using_std_string.h"
-
 namespace google_breakpad {
 
 struct SystemInfo {
@@ -62,7 +60,7 @@ struct SystemInfo {
   // "Mac OS X", or "Linux".  If the information is present in the dump but
   // its value is unknown, this field will contain a numeric value.  If
   // the information is not present in the dump, this field will be empty.
-  string os;
+  std::string os;
 
   // A short form of the os string, using lowercase letters and no spaces,
   // suitable for use in a filesystem.  Possible values include "windows",
@@ -70,34 +68,34 @@ struct SystemInfo {
   // in the dump or if the OS given by the dump is unknown.  The values
   // stored in this field should match those used by
   // MinidumpSystemInfo::GetOS.
-  string os_short;
+  std::string os_short;
 
   // A string identifying the version of the operating system, such as
   // "5.1.2600 Service Pack 2" or "10.4.8 8L2127".  If the dump does not
   // contain this information, this field will be empty.
-  string os_version;
+  std::string os_version;
 
   // A string identifying the basic CPU family, such as "x86" or "ppc".
   // If this information is present in the dump but its value is unknown,
   // this field will contain a numeric value.  If the information is not
   // present in the dump, this field will be empty.  The values stored in
   // this field should match those used by MinidumpSystemInfo::GetCPU.
-  string cpu;
+  std::string cpu;
 
   // A string further identifying the specific CPU, such as
   // "GenuineIntel level 6 model 13 stepping 8".  If the information is not
   // present in the dump, or additional identifying information is not
   // defined for the CPU family, this field will be empty.
-  string cpu_info;
+  std::string cpu_info;
 
   // The number of processors in the system.  Will be greater than one for
   // multi-core systems.
   int cpu_count;
 
   // The GPU information. Currently only populated in microdumps.
-  string gl_version;
-  string gl_vendor;
-  string gl_renderer;
+  std::string gl_version;
+  std::string gl_vendor;
+  std::string gl_renderer;
 };
 
 }  // namespace google_breakpad

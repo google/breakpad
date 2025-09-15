@@ -36,8 +36,6 @@
 #include <cstddef>
 #include <ostream>
 
-#include "common/using_std_string.h"
-
 namespace google_breakpad {
 
 // A StringView is a string reference to a string object, but not own the
@@ -70,9 +68,10 @@ class StringView {
   }
 
   // Construct a StringView from an std::string.
-  StringView(const string& str) : data_(str.data()), length_(str.length()) {}
+  StringView(const std::string& str)
+      : data_(str.data()), length_(str.length()) {}
 
-  string str() const { return string(data_, length_); }
+  std::string str() const { return std::string(data_, length_); }
 
   const char* data() const { return data_; }
 

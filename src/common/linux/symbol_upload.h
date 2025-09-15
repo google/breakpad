@@ -35,8 +35,6 @@
 
 #include <string>
 
-#include "common/using_std_string.h"
-
 namespace google_breakpad {
 namespace sym_upload {
 
@@ -50,20 +48,20 @@ constexpr char kBreakpadSymbolType[] = "BREAKPAD";
 struct Options {
   Options() : upload_protocol(UploadProtocol::SYM_UPLOAD_V1), force(false) {}
 
-  string symbolsPath;
-  string uploadURLStr;
-  string proxy;
-  string proxy_user_pwd;
-  string version;
+  std::string symbolsPath;
+  std::string uploadURLStr;
+  std::string proxy;
+  std::string proxy_user_pwd;
+  std::string version;
   bool success;
   UploadProtocol upload_protocol;
   bool force;
-  string api_key;
+  std::string api_key;
 
   // These only need to be set for native symbol uploads.
-  string code_file;
-  string debug_id;
-  string type;
+  std::string code_file;
+  std::string debug_id;
+  std::string type;
 };
 
 // Starts upload to symbol server with options.

@@ -47,7 +47,6 @@
 
 #include "breakpad_googletest_includes.h"
 #include "common/module.h"
-#include "common/using_std_string.h"
 
 using google_breakpad::Module;
 using google_breakpad::StringView;
@@ -77,7 +76,7 @@ TEST(Module, WriteHeader) {
   stringstream s;
   Module m(MODULE_NAME, MODULE_OS, MODULE_ARCH, MODULE_ID);
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
   EXPECT_STREQ("MODULE os-name architecture id-string name with spaces\n",
                contents.c_str());
 }
@@ -86,7 +85,7 @@ TEST(Module, WriteHeaderCodeId) {
   stringstream s;
   Module m(MODULE_NAME, MODULE_OS, MODULE_ARCH, MODULE_ID, MODULE_CODE_ID);
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
   EXPECT_STREQ("MODULE os-name architecture id-string name with spaces\n"
                "INFO CODE_ID code-id-string\n",
                contents.c_str());
@@ -108,7 +107,7 @@ TEST(Module, WriteOneLineFunc) {
   m.AddFunction(function);
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
   EXPECT_STREQ("MODULE os-name architecture id-string name with spaces\n"
                "FILE 0 file_name.cc\n"
                "FUNC e165bf8023b9d9ab 1e4bb0eb1cbf5b09 772beee89114358a"
@@ -158,7 +157,7 @@ TEST(Module, WriteRelativeLoadAddress) {
   m.SetLoadAddress(0x2ab698b0b6407073ULL);
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
   EXPECT_STREQ("MODULE os-name architecture id-string name with spaces\n"
                "FILE 0 filename-a.cc\n"
                "FILE 1 filename-b.cc\n"
@@ -206,7 +205,7 @@ TEST(Module, WritePreserveLoadAddress) {
 
   bool preserve_load_address = true;
   m.Write(s, ALL_SYMBOL_DATA, preserve_load_address);
-  string contents = s.str();
+  std::string contents = s.str();
   EXPECT_STREQ("MODULE os-name architecture id-string name with spaces\n"
                "FILE 0 filename-a.cc\n"
                "FUNC 110 210 50 do_stuff\n"
@@ -256,7 +255,7 @@ TEST(Module, WriteOmitUnusedFiles) {
 
   stringstream s;
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
   EXPECT_STREQ("MODULE os-name architecture id-string name with spaces\n"
                "FILE 0 filename1\n"
                "FILE 1 filename3\n"
@@ -304,7 +303,7 @@ TEST(Module, WriteNoCFI) {
   m.SetLoadAddress(0x2ab698b0b6407073ULL);
 
   m.Write(s, SYMBOLS_AND_FILES | INLINES);
-  string contents = s.str();
+  std::string contents = s.str();
   EXPECT_STREQ("MODULE os-name architecture id-string name with spaces\n"
                "FILE 0 filename.cc\n"
                "FUNC 9410dc39a798c580 2922088f98d3f6fc e5e9aa008bd5f0d0"
@@ -339,7 +338,7 @@ TEST(Module, ConstructAddFunction) {
     m.AddFunction(func);
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
   EXPECT_STREQ("MODULE os-name architecture id-string name with spaces\n"
                "FUNC 2987743d0b35b13f b369db048deb3010 938e556cb5a79988"
                " _and_void\n"
@@ -443,7 +442,7 @@ TEST(Module, ConstructAddFrames) {
 
   // Check that Write writes STACK CFI records properly.
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
   EXPECT_STREQ("MODULE os-name architecture id-string name with spaces\n"
                "STACK CFI INIT ddb5f41285aa7757 1486493370dc5073 \n"
                "STACK CFI INIT 8064f3af5e067e38 de2a5ee55509407"
@@ -497,8 +496,8 @@ TEST(Module, ConstructAddFrames) {
 TEST(Module, ConstructUniqueFiles) {
   Module m(MODULE_NAME, MODULE_OS, MODULE_ARCH, MODULE_ID);
   Module::File* file1 = m.FindFile("foo");
-  Module::File* file2 = m.FindFile(string("bar"));
-  Module::File* file3 = m.FindFile(string("foo"));
+  Module::File* file2 = m.FindFile(std::string("bar"));
+  Module::File* file3 = m.FindFile(std::string("foo"));
   Module::File* file4 = m.FindFile("bar");
   EXPECT_NE(file1, file2);
   EXPECT_EQ(file1, file3);
@@ -522,7 +521,7 @@ TEST(Module, ConstructDuplicateFunctions) {
   delete function2;
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
   EXPECT_STREQ("MODULE os-name architecture id-string name with spaces\n"
                "FUNC d35402aac7a7ad5c 200b26e605f99071 f14ac4fed48c4a99"
                " _without_form\n",
@@ -541,7 +540,7 @@ TEST(Module, ConstructFunctionsWithSameAddress) {
   m.AddFunction(function2);
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
   EXPECT_STREQ("MODULE os-name architecture id-string name with spaces\n"
                "FUNC d35402aac7a7ad5c 200b26e605f99071 f14ac4fed48c4a99"
                " _and_void\n"
@@ -570,7 +569,7 @@ TEST(Module, ConstructFunctionsWithSameAddressMultiple) {
   delete function2;
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
   EXPECT_STREQ(
       "MODULE os-name architecture id-string name with spaces\n"
       "FUNC m d35402aac7a7ad5c 200b26e605f99071 f14ac4fed48c4a99"
@@ -594,7 +593,7 @@ TEST(Module, ConstructExterns) {
   m.AddExtern(std::move(extern2));
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
 
   EXPECT_STREQ("MODULE " MODULE_OS " " MODULE_ARCH " "
                MODULE_ID " " MODULE_NAME "\n"
@@ -619,7 +618,7 @@ TEST(Module, ConstructDuplicateExterns) {
   m.AddExtern(std::move(extern2));
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
 
   EXPECT_STREQ("MODULE " MODULE_OS " " MODULE_ARCH " "
                MODULE_ID " " MODULE_NAME "\n"
@@ -642,7 +641,7 @@ TEST(Module, ConstructDuplicateExternsMultiple) {
   m.AddExtern(std::move(extern2));
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
 
   EXPECT_STREQ("MODULE " MODULE_OS " " MODULE_ARCH " " MODULE_ID " " MODULE_NAME
                "\n"
@@ -672,7 +671,7 @@ TEST(Module, ConstructFunctionsAndExternsWithSameAddress) {
   m.AddFunction(function);
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
 
   EXPECT_STREQ("MODULE " MODULE_OS " " MODULE_ARCH " "
                MODULE_ID " " MODULE_NAME "\n"
@@ -703,7 +702,7 @@ TEST(Module, ConstructFunctionsAndExternsWithSameAddressPreferExternName) {
   m.AddFunction(function);
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
 
   EXPECT_STREQ("MODULE " MODULE_OS " " MODULE_ARCH " " MODULE_ID " " MODULE_NAME
                "\n"
@@ -734,7 +733,7 @@ TEST(Module, ConstructFunctionsAndExternsWithSameAddressMultiple) {
   m.AddFunction(function);
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
 
   EXPECT_STREQ("MODULE " MODULE_OS " " MODULE_ARCH " " MODULE_ID " " MODULE_NAME
                "\n"
@@ -772,7 +771,7 @@ TEST(Module, ConstructFunctionsAndThumbExternsWithSameAddress) {
   m.AddFunction(function);
 
   m.Write(s, ALL_SYMBOL_DATA);
-  string contents = s.str();
+  std::string contents = s.str();
 
   EXPECT_STREQ("MODULE " MODULE_OS " arm "
                MODULE_ID " " MODULE_NAME "\n"

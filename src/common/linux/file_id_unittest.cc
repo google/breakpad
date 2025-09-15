@@ -49,7 +49,6 @@
 #include "common/test_assembler.h"
 #include "common/tests/auto_tempdir.h"
 #include "common/tests/file_utils.h"
-#include "common/using_std_string.h"
 #include "breakpad_googletest_includes.h"
 
 using namespace google_breakpad;
@@ -88,7 +87,7 @@ TEST(FileIDStripTest, StripSelf) {
 
   // copy our binary to a temp file, and strip it
   AutoTempDir temp_dir;
-  string templ = temp_dir.path() + "/file-id-unittest";
+  std::string templ = temp_dir.path() + "/file-id-unittest";
   ASSERT_TRUE(CopyFile(exe_name, templ));
   pid_t pid;
   char* argv[] = {
@@ -111,9 +110,9 @@ TEST(FileIDStripTest, StripSelf) {
   FileID fileid2(templ.c_str());
   EXPECT_TRUE(fileid2.ElfFileIdentifier(identifier2));
 
-  string identifier_string1 =
+  std::string identifier_string1 =
       FileID::ConvertIdentifierToUUIDString(identifier1);
-  string identifier_string2 =
+  std::string identifier_string2 =
       FileID::ConvertIdentifierToUUIDString(identifier2);
   EXPECT_EQ(identifier_string1, identifier_string2);
 }
@@ -123,7 +122,7 @@ template<typename ElfClass>
 class FileIDTest : public testing::Test {
 public:
   void GetElfContents(ELF& elf) {
-    string contents;
+    std::string contents;
     ASSERT_TRUE(elf.GetContents(&contents));
     ASSERT_LT(0U, contents.size());
 
@@ -136,8 +135,8 @@ public:
     return id_vector(&allocator, kDefaultBuildIdSize);
   }
 
-  template<size_t N>
-  string get_file_id(const uint8_t (&data)[N]) {
+  template <size_t N>
+  std::string get_file_id(const uint8_t (&data)[N]) {
     id_vector expected_identifier(make_vector());
     expected_identifier.insert(expected_identifier.end(),
                                &data[0],
@@ -172,7 +171,8 @@ TYPED_TEST(FileIDTest, ElfClass) {
   EXPECT_TRUE(FileID::ElfFileIdentifierFromMappedFile(this->elfdata,
                                                       identifier));
 
-  string identifier_string = FileID::ConvertIdentifierToUUIDString(identifier);
+  std::string identifier_string =
+      FileID::ConvertIdentifierToUUIDString(identifier);
   EXPECT_EQ(expected_identifier_string, identifier_string);
 }
 
@@ -197,7 +197,8 @@ TYPED_TEST(FileIDTest, ZephyrTextSection) {
   EXPECT_TRUE(FileID::ElfFileIdentifierFromMappedFile(this->elfdata,
                                                       identifier));
 
-  string identifier_string = FileID::ConvertIdentifierToUUIDString(identifier);
+  std::string identifier_string =
+      FileID::ConvertIdentifierToUUIDString(identifier);
   EXPECT_EQ(expected_identifier_string, identifier_string);
 }
 
@@ -206,7 +207,7 @@ TYPED_TEST(FileIDTest, BuildID) {
     {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
      0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
      0x10, 0x11, 0x12, 0x13};
-  const string expected_identifier_string =
+  const std::string expected_identifier_string =
       this->get_file_id(kExpectedIdentifierBytes);
 
   ELF elf(EM_386, TypeParam::kClass, kLittleEndian);
@@ -225,7 +226,8 @@ TYPED_TEST(FileIDTest, BuildID) {
                                                       identifier));
   EXPECT_EQ(sizeof(kExpectedIdentifierBytes), identifier.size());
 
-  string identifier_string = FileID::ConvertIdentifierToUUIDString(identifier);
+  std::string identifier_string =
+      FileID::ConvertIdentifierToUUIDString(identifier);
   EXPECT_EQ(expected_identifier_string, identifier_string);
 }
 
@@ -233,7 +235,7 @@ TYPED_TEST(FileIDTest, BuildID) {
 TYPED_TEST(FileIDTest, BuildIDShort) {
   const uint8_t kExpectedIdentifierBytes[] =
     {0x00, 0x01, 0x02, 0x03};
-  const string expected_identifier_string =
+  const std::string expected_identifier_string =
       this->get_file_id(kExpectedIdentifierBytes);
 
   ELF elf(EM_386, TypeParam::kClass, kLittleEndian);
@@ -252,7 +254,8 @@ TYPED_TEST(FileIDTest, BuildIDShort) {
                                                       identifier));
   EXPECT_EQ(sizeof(kExpectedIdentifierBytes), identifier.size());
 
-  string identifier_string = FileID::ConvertIdentifierToUUIDString(identifier);
+  std::string identifier_string =
+      FileID::ConvertIdentifierToUUIDString(identifier);
   EXPECT_EQ(expected_identifier_string, identifier_string);
 }
 
@@ -263,7 +266,7 @@ TYPED_TEST(FileIDTest, BuildIDLong) {
      0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
      0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
      0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F};
-  const string expected_identifier_string =
+  const std::string expected_identifier_string =
       this->get_file_id(kExpectedIdentifierBytes);
 
   ELF elf(EM_386, TypeParam::kClass, kLittleEndian);
@@ -282,7 +285,8 @@ TYPED_TEST(FileIDTest, BuildIDLong) {
                                                       identifier));
   EXPECT_EQ(sizeof(kExpectedIdentifierBytes), identifier.size());
 
-  string identifier_string = FileID::ConvertIdentifierToUUIDString(identifier);
+  std::string identifier_string =
+      FileID::ConvertIdentifierToUUIDString(identifier);
   EXPECT_EQ(expected_identifier_string, identifier_string);
 }
 
@@ -291,7 +295,7 @@ TYPED_TEST(FileIDTest, BuildIDPH) {
     {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
      0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
      0x10, 0x11, 0x12, 0x13};
-  const string expected_identifier_string =
+  const std::string expected_identifier_string =
       this->get_file_id(kExpectedIdentifierBytes);
 
   ELF elf(EM_386, TypeParam::kClass, kLittleEndian);
@@ -313,7 +317,8 @@ TYPED_TEST(FileIDTest, BuildIDPH) {
                                                       identifier));
   EXPECT_EQ(sizeof(kExpectedIdentifierBytes), identifier.size());
 
-  string identifier_string = FileID::ConvertIdentifierToUUIDString(identifier);
+  std::string identifier_string =
+      FileID::ConvertIdentifierToUUIDString(identifier);
   EXPECT_EQ(expected_identifier_string, identifier_string);
 }
 
@@ -322,7 +327,7 @@ TYPED_TEST(FileIDTest, BuildIDMultiplePH) {
     {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
      0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
      0x10, 0x11, 0x12, 0x13};
-  const string expected_identifier_string =
+  const std::string expected_identifier_string =
       this->get_file_id(kExpectedIdentifierBytes);
 
   ELF elf(EM_386, TypeParam::kClass, kLittleEndian);
@@ -347,7 +352,8 @@ TYPED_TEST(FileIDTest, BuildIDMultiplePH) {
                                                       identifier));
   EXPECT_EQ(sizeof(kExpectedIdentifierBytes), identifier.size());
 
-  string identifier_string = FileID::ConvertIdentifierToUUIDString(identifier);
+  std::string identifier_string =
+      FileID::ConvertIdentifierToUUIDString(identifier);
   EXPECT_EQ(expected_identifier_string, identifier_string);
 }
 
@@ -356,7 +362,7 @@ TYPED_TEST(FileIDTest, BuildIDMultiplePHPreferGNU) {
     {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
      0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
      0x10, 0x11, 0x12, 0x13};
-  const string expected_identifier_string =
+  const std::string expected_identifier_string =
       this->get_file_id(kExpectedIdentifierBytes);
 
   ELF elf(EM_386, TypeParam::kClass, kLittleEndian);
@@ -386,7 +392,8 @@ TYPED_TEST(FileIDTest, BuildIDMultiplePHPreferGNU) {
                                                       identifier));
   EXPECT_EQ(sizeof(kExpectedIdentifierBytes), identifier.size());
 
-  string identifier_string = FileID::ConvertIdentifierToUUIDString(identifier);
+  std::string identifier_string =
+      FileID::ConvertIdentifierToUUIDString(identifier);
   EXPECT_EQ(expected_identifier_string, identifier_string);
 }
 
@@ -408,7 +415,7 @@ TYPED_TEST(FileIDTest, UniqueHashes) {
   id_vector identifier_1(this->make_vector());
   EXPECT_TRUE(FileID::ElfFileIdentifierFromMappedFile(this->elfdata,
                                                       identifier_1));
-  string identifier_string_1 =
+  std::string identifier_string_1 =
       FileID::ConvertIdentifierToUUIDString(identifier_1);
 
   {
@@ -426,7 +433,7 @@ TYPED_TEST(FileIDTest, UniqueHashes) {
   id_vector identifier_2(this->make_vector());
   EXPECT_TRUE(FileID::ElfFileIdentifierFromMappedFile(this->elfdata,
                                                       identifier_2));
-  string identifier_string_2 =
+  std::string identifier_string_2 =
       FileID::ConvertIdentifierToUUIDString(identifier_2);
 
   EXPECT_NE(identifier_string_1, identifier_string_2);

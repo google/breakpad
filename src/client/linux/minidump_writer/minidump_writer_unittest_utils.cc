@@ -38,24 +38,23 @@
 
 #include "client/linux/minidump_writer/minidump_writer_unittest_utils.h"
 #include "common/linux/safe_readlink.h"
-#include "common/using_std_string.h"
 
 namespace google_breakpad {
 
-string GetHelperBinary() {
-  string helper_path;
+std::string GetHelperBinary() {
+  std::string helper_path;
   char* bindir = getenv("bindir");
   if (bindir) {
-    helper_path = string(bindir) + "/";
+    helper_path = std::string(bindir) + "/";
   } else {
     // Locate helper binary next to the current binary.
     char self_path[PATH_MAX];
     if (!SafeReadLink("/proc/self/exe", self_path)) {
       return "";
     }
-    helper_path = string(self_path);
+    helper_path = std::string(self_path);
     size_t pos = helper_path.rfind('/');
-    if (pos == string::npos) {
+    if (pos == std::string::npos) {
       return "";
     }
     helper_path.erase(pos + 1);

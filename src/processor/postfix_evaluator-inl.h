@@ -57,18 +57,16 @@ using std::ostringstream;
 // before returning failure.
 class AutoStackClearer {
  public:
-  explicit AutoStackClearer(vector<string>* stack) : stack_(stack) {}
+  explicit AutoStackClearer(vector<std::string>* stack) : stack_(stack) {}
   ~AutoStackClearer() { stack_->clear(); }
 
  private:
-  vector<string>* stack_;
+  vector<std::string>* stack_;
 };
 
-
-template<typename ValueType>
+template <typename ValueType>
 bool PostfixEvaluator<ValueType>::EvaluateToken(
-    const string& token,
-    const string& expression,
+    const std::string& token, const std::string& expression,
     DictionaryValidityType* assigned) {
   // There are enough binary operations that do exactly the same thing
   // (other than the specific operation, of course) that it makes sense
@@ -174,7 +172,7 @@ bool PostfixEvaluator<ValueType>::EvaluateToken(
     // Assignment is only meaningful when assigning into an identifier.
     // The identifier must name a variable, not a constant.  Variables
     // begin with '$'.
-    string identifier;
+    std::string identifier;
     if (PopValueOrIdentifier(nullptr, &identifier) != POP_RESULT_IDENTIFIER) {
       BPLOG(ERROR) << "PopValueOrIdentifier returned a value, but an "
                       "identifier is needed to assign " <<
@@ -200,13 +198,12 @@ bool PostfixEvaluator<ValueType>::EvaluateToken(
   return true;
 }
 
-template<typename ValueType>
+template <typename ValueType>
 bool PostfixEvaluator<ValueType>::EvaluateInternal(
-    const string& expression,
-    DictionaryValidityType* assigned) {
+    const std::string& expression, DictionaryValidityType* assigned) {
   // Tokenize, splitting on whitespace.
   istringstream stream(expression);
-  string token;
+  std::string token;
   while (stream >> token) {
     // Normally, tokens are whitespace-separated, but occasionally, the
     // assignment operator is smashed up against the next token, i.e.
@@ -229,8 +226,8 @@ bool PostfixEvaluator<ValueType>::EvaluateInternal(
   return true;
 }
 
-template<typename ValueType>
-bool PostfixEvaluator<ValueType>::Evaluate(const string& expression,
+template <typename ValueType>
+bool PostfixEvaluator<ValueType>::Evaluate(const std::string& expression,
                                            DictionaryValidityType* assigned) {
   // Ensure that the stack is cleared before returning.
   AutoStackClearer clearer(&stack_);
@@ -248,9 +245,9 @@ bool PostfixEvaluator<ValueType>::Evaluate(const string& expression,
   return false;
 }
 
-template<typename ValueType>
-bool PostfixEvaluator<ValueType>::EvaluateForValue(const string& expression,
-                                                   ValueType* result) {
+template <typename ValueType>
+bool PostfixEvaluator<ValueType>::EvaluateForValue(
+    const std::string& expression, ValueType* result) {
   // Ensure that the stack is cleared before returning.
   AutoStackClearer clearer(&stack_);
 
@@ -267,15 +264,15 @@ bool PostfixEvaluator<ValueType>::EvaluateForValue(const string& expression,
   return PopValue(result);
 }
 
-template<typename ValueType>
+template <typename ValueType>
 typename PostfixEvaluator<ValueType>::PopResult
-PostfixEvaluator<ValueType>::PopValueOrIdentifier(
-    ValueType* value, string* identifier) {
+PostfixEvaluator<ValueType>::PopValueOrIdentifier(ValueType* value,
+                                                  std::string* identifier) {
   // There needs to be at least one element on the stack to pop.
   if (!stack_.size())
     return POP_RESULT_FAIL;
 
-  string token = stack_.back();
+  std::string token = stack_.back();
   stack_.pop_back();
 
   // First, try to treat the value as a literal. Literals may have leading
@@ -311,11 +308,10 @@ PostfixEvaluator<ValueType>::PopValueOrIdentifier(
   }
 }
 
-
 template<typename ValueType>
 bool PostfixEvaluator<ValueType>::PopValue(ValueType* value) {
   ValueType literal = ValueType();
-  string token;
+  std::string token;
   PopResult result;
   if ((result = PopValueOrIdentifier(&literal, &token)) == POP_RESULT_FAIL) {
     return false;

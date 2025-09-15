@@ -39,18 +39,18 @@
 
 namespace google_breakpad {
 
-string BaseName(const string& path) {
+std::string BaseName(const std::string& path) {
   char* path_tmp = strdup(path.c_str());
   assert(path_tmp);
-  string result(basename(path_tmp));
+  std::string result(basename(path_tmp));
   free(path_tmp);
   return result;
 }
 
-string DirName(const string& path) {
+std::string DirName(const std::string& path) {
   char* path_tmp = strdup(path.c_str());
   assert(path_tmp);
-  string result(dirname(path_tmp));
+  std::string result(dirname(path_tmp));
   free(path_tmp);
   return result;
 }

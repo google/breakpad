@@ -44,6 +44,7 @@
 #include <limits>
 #include <map>
 #include <memory>
+#include <string>
 #include <utility>
 #include <vector>
 
@@ -112,10 +113,9 @@ BasicSourceLineResolver::BasicSourceLineResolver() :
     SourceLineResolverBase(new BasicModuleFactory) { }
 
 // static
-void BasicSourceLineResolver::Module::LogParseError(
-   const string& message,
-   int line_number,
-   int* num_errors) {
+void BasicSourceLineResolver::Module::LogParseError(const std::string& message,
+                                                    int line_number,
+                                                    int* num_errors) {
   if (++(*num_errors) <= kMaxErrorsPrinted) {
     if (line_number > 0) {
       BPLOG(ERROR) << "Line " << line_number << ": " << message;
@@ -290,7 +290,7 @@ void BasicSourceLineResolver::Module::ConstructInlineFrames(
 
   // Update the source file and source line for each inlined frame.
   if (!inlined_frames->empty()) {
-    string parent_frame_source_file_name = frame->source_file_name;
+    std::string parent_frame_source_file_name = frame->source_file_name;
     int parent_frame_source_line = frame->source_line;
     frame->source_file_name = inlined_frames->back()->source_file_name;
     frame->source_line = inlined_frames->back()->source_line;
@@ -402,7 +402,7 @@ CFIFrameInfo* BasicSourceLineResolver::Module::FindCFIFrameInfo(
     const StackFrame* frame) const {
   MemAddr address = frame->instruction - frame->module->base_address();
   MemAddr initial_base, initial_size;
-  string initial_rules;
+  std::string initial_rules;
 
   // Find the initial rule whose range covers this address. That
   // provides an initial set of register recovery rules. Then, walk
@@ -420,8 +420,8 @@ CFIFrameInfo* BasicSourceLineResolver::Module::FindCFIFrameInfo(
     return nullptr;
 
   // Find the first delta rule that falls within the initial rule's range.
-  map<MemAddr, string>::const_iterator delta =
-    cfi_delta_rules_.lower_bound(initial_base);
+  map<MemAddr, std::string>::const_iterator delta =
+      cfi_delta_rules_.lower_bound(initial_base);
 
   // Apply delta rules up to and including the frame's address.
   while (delta != cfi_delta_rules_.end() && delta->first <= address) {
@@ -436,7 +436,7 @@ bool BasicSourceLineResolver::Module::ParseFile(char* file_line) {
   long index;
   char* filename;
   if (SymbolParseHelper::ParseFile(file_line, &index, &filename)) {
-    files_.insert(make_pair(index, string(filename)));
+    files_.insert(make_pair(index, std::string(filename)));
     return true;
   }
   return false;

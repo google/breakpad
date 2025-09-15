@@ -79,14 +79,14 @@ class ModuleSerializer {
   // Given the string format symbol_data, produces a chunk of serialized data.
   // Caller takes ownership of the serialized data (on heap), and owner should
   // call delete [] to free the memory after use.
-  char* SerializeSymbolFileData(const string& symbol_data,
+  char* SerializeSymbolFileData(const std::string& symbol_data,
                                 size_t* size = nullptr);
 
   // Serializes one loaded module with given moduleid in the basic source line
   // resolver, and loads the serialized data into the fast source line resolver.
   // Return false if the basic source line doesn't have a module with the given
   // moduleid.
-  bool ConvertOneModule(const string& moduleid,
+  bool ConvertOneModule(const std::string& moduleid,
                         const BasicSourceLineResolver* basic_resolver,
                         FastSourceLineResolver* fast_resolver);
 
@@ -115,13 +115,13 @@ class ModuleSerializer {
   uint64_t map_sizes_[kNumberMaps_];
 
   // Serializers for each individual map component in Module class.
-  StdMapSerializer<int, string> files_serializer_;
+  StdMapSerializer<int, std::string> files_serializer_;
   RangeMapSerializer<MemAddr, linked_ptr<Function> > functions_serializer_;
   AddressMapSerializer<MemAddr, linked_ptr<PublicSymbol> > pubsym_serializer_;
   ContainedRangeMapSerializer<MemAddr,
                               linked_ptr<WindowsFrameInfo> > wfi_serializer_;
-  RangeMapSerializer<MemAddr, string> cfi_init_rules_serializer_;
-  StdMapSerializer<MemAddr, string> cfi_delta_rules_serializer_;
+  RangeMapSerializer<MemAddr, std::string> cfi_init_rules_serializer_;
+  StdMapSerializer<MemAddr, std::string> cfi_delta_rules_serializer_;
   StdMapSerializer<int, linked_ptr<InlineOrigin>> inline_origin_serializer_;
 };
 

@@ -32,7 +32,6 @@
 #include <assert.h>
 #include <string>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 #include "google_breakpad/processor/process_result.h"
 
@@ -69,7 +68,7 @@ class MinidumpProcessor {
   ~MinidumpProcessor();
 
   // Processes the minidump file and fills process_state with the result.
-  ProcessResult Process(const string& minidump_file,
+  ProcessResult Process(const std::string& minidump_file,
                         ProcessState* process_state);
 
   // Processes the minidump structure and fills process_state with the
@@ -103,8 +102,8 @@ class MinidumpProcessor {
   // instructions or divisions by zero, or a data address when the crash
   // was caused by a memory access violation. If enable_objdump is set, this
   // may use disassembly to compute the faulting address.
-  static string GetCrashReason(Minidump* dump, uint64_t* address,
-                               bool enable_objdump);
+  static std::string GetCrashReason(Minidump* dump, uint64_t* address,
+                                    bool enable_objdump);
 
   // This function returns true if the passed-in error code is
   // something unrecoverable(i.e. retry should not happen).  For
@@ -124,7 +123,7 @@ class MinidumpProcessor {
   // Returns a textual representation of an assertion included
   // in the minidump.  Returns an empty string if this information
   // does not exist or cannot be determined.
-  static string GetAssertion(Minidump* dump);
+  static std::string GetAssertion(Minidump* dump);
 
   // Sets the flag to enable/disable use of objdump during normal crash
   // processing. This is independent from the flag for use of objdump during

@@ -35,7 +35,6 @@
 
 #include <string>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 #include "google_breakpad/processor/dump_context.h"
 #include "google_breakpad/processor/memory_region.h"
@@ -91,17 +90,17 @@ class DisassemblerObjdump {
   // Returns the operation part of the disassembly, without any prefixes:
   //   "pop" eax
   //   lock "xchg" eax, edx
-  const string& operation() const { return operation_; }
+  const std::string& operation() const { return operation_; }
 
   // Returns the destination operand of the disassembly, without memory operand
   // size prefixes:
   //   mov DWORD PTR "[rax + 16]", edx
-  const string& dest() const { return dest_; }
+  const std::string& dest() const { return dest_; }
 
   // Returns the source operand of the disassembly, without memory operand
   // size prefixes:
   //   mov rax, QWORD PTR "[rdx]"
-  const string& src() const { return src_; }
+  const std::string& src() const { return src_; }
 
  private:
   friend class DisassemblerObjdumpForTest;
@@ -113,15 +112,16 @@ class DisassemblerObjdump {
   // `instruction`.
   static bool DisassembleInstruction(uint32_t cpu, const uint8_t* raw_bytes,
                                      unsigned int raw_bytes_len,
-                                     string& instruction);
+                                     std::string& instruction);
 
   // Splits an `instruction` into three parts, the "main" `operation` and
   // the `dest` and `src` operands.
   // Example:
   //   instruction = "lock cmpxchg QWORD PTR [rdi], rsi"
   //   operation = "cmpxchg", dest = "[rdi]", src = "rsi"
-  static bool TokenizeInstruction(const string& instruction, string& operation,
-                                  string& dest, string& src);
+  static bool TokenizeInstruction(const std::string& instruction,
+                                  std::string& operation, std::string& dest,
+                                  std::string& src);
 
   // Compute the address referenced by `expression` in `context`.
   // Supports memory operands in the form
@@ -129,13 +129,13 @@ class DisassemblerObjdump {
   // Returns false if evaluation fails, or if the operand is not a supported
   // memory operand.
   static bool CalculateAddress(const DumpContext& context,
-                               const string& expression,
+                               const std::string& expression,
                                uint64_t& address);
 
   // The parsed components of the disassembly for the instruction.
-  string operation_ = "";
-  string dest_ = "";
-  string src_ = "";
+  std::string operation_ = "";
+  std::string dest_ = "";
+  std::string src_ = "";
 };
 }  // namespace google_breakpad
 

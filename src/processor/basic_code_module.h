@@ -42,7 +42,6 @@
 
 #include <string>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/code_module.h"
 
 namespace google_breakpad {
@@ -65,12 +64,11 @@ class BasicCodeModule : public CodeModule {
         is_unloaded_(that->is_unloaded()) {}
 
   BasicCodeModule(uint64_t base_address, uint64_t size,
-                  const string& code_file,
-                  const string& code_identifier,
-                  const string& debug_file,
-                  const string& debug_identifier,
-                  const string& version,
-                  const bool is_unloaded = false)
+                  const std::string& code_file,
+                  const std::string& code_identifier,
+                  const std::string& debug_file,
+                  const std::string& debug_identifier,
+                  const std::string& version, const bool is_unloaded = false)
       : base_address_(base_address),
         size_(size),
         shrink_down_delta_(0),
@@ -79,8 +77,7 @@ class BasicCodeModule : public CodeModule {
         debug_file_(debug_file),
         debug_identifier_(debug_identifier),
         version_(version),
-        is_unloaded_(is_unloaded)
-    {}
+        is_unloaded_(is_unloaded) {}
   virtual ~BasicCodeModule() {}
 
   // See code_module.h for descriptions of these methods and the associated
@@ -91,11 +88,11 @@ class BasicCodeModule : public CodeModule {
   virtual void SetShrinkDownDelta(uint64_t shrink_down_delta) {
     shrink_down_delta_ = shrink_down_delta;
   }
-  virtual string code_file() const { return code_file_; }
-  virtual string code_identifier() const { return code_identifier_; }
-  virtual string debug_file() const { return debug_file_; }
-  virtual string debug_identifier() const { return debug_identifier_; }
-  virtual string version() const { return version_; }
+  virtual std::string code_file() const { return code_file_; }
+  virtual std::string code_identifier() const { return code_identifier_; }
+  virtual std::string debug_file() const { return debug_file_; }
+  virtual std::string debug_identifier() const { return debug_identifier_; }
+  virtual std::string version() const { return version_; }
   virtual CodeModule* Copy() const { return new BasicCodeModule(this); }
   virtual bool is_unloaded() const { return is_unloaded_; }
 
@@ -103,11 +100,11 @@ class BasicCodeModule : public CodeModule {
   uint64_t base_address_;
   uint64_t size_;
   uint64_t shrink_down_delta_;
-  string code_file_;
-  string code_identifier_;
-  string debug_file_;
-  string debug_identifier_;
-  string version_;
+  std::string code_file_;
+  std::string code_identifier_;
+  std::string debug_file_;
+  std::string debug_identifier_;
+  std::string version_;
   bool is_unloaded_;
 
   // Disallow copy constructor and assignment operator.

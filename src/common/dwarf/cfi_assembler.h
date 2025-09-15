@@ -40,7 +40,6 @@
 
 #include "common/dwarf/dwarf2enums.h"
 #include "common/test_assembler.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 
 namespace google_breakpad {
@@ -132,11 +131,9 @@ class CFISection: public Section {
   // CIE's position in the section.
   CFISection& CIEHeader(uint64_t code_alignment_factor,
                         int data_alignment_factor,
-                        unsigned return_address_register,
-                        uint8_t version = 3,
-                        const string& augmentation = "",
-                        bool dwarf64 = false,
-                        uint8_t address_size = 8,
+                        unsigned return_address_register, uint8_t version = 3,
+                        const std::string& augmentation = "",
+                        bool dwarf64 = false, uint8_t address_size = 8,
                         uint8_t segment_size = 0);
 
   // Append a Frame Description Entry header to this section with the
@@ -162,7 +159,7 @@ class CFISection: public Section {
 
   // Append the contents of BLOCK as a DW_FORM_block value: an
   // unsigned LEB128 length, followed by that many bytes of data.
-  CFISection& Block(const string& block) {
+  CFISection& Block(const std::string& block) {
     ULEB128(block.size());
     Append(block);
     return *this;

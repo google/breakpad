@@ -42,7 +42,6 @@
 #include "common/linux/memory_mapped_file.h"
 #include "common/tests/file_utils.h"
 #include "common/linux/tests/crash_generator.h"
-#include "common/using_std_string.h"
 
 using google_breakpad::AutoTempDir;
 using google_breakpad::CrashGenerator;
@@ -67,7 +66,7 @@ TEST(ElfCoreDumpTest, TestElfHeader) {
   memset(&header, 0, sizeof(header));
 
   AutoTempDir temp_dir;
-  string core_path = temp_dir.path() + "/core";
+  std::string core_path = temp_dir.path() + "/core";
   const char* core_file = core_path.c_str();
   MemoryMappedFile mapped_core_file;
   ElfCoreDump core;

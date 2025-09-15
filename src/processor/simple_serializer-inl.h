@@ -27,7 +27,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // simple_serializer-inl.h: template specializations for following types:
-// bool, const char *(C-string), string,
+// bool, const char *(C-string), std::string,
 // Line, Function, PublicSymbol, WindowsFrameInfo and their linked pointers.
 //
 // See simple_serializer.h for moredocumentation.
@@ -68,13 +68,13 @@ class SimpleSerializer<bool> {
   }
 };
 
-// Specializations of SimpleSerializer: string
-template<>
-class SimpleSerializer<string> {
+// Specializations of SimpleSerializer: std::string
+template <>
+class SimpleSerializer<std::string> {
  public:
-  static size_t SizeOf(const string& str) { return str.size() + 1; }
+  static size_t SizeOf(const std::string& str) { return str.size() + 1; }
 
-  static char* Write(const string& str, char* dest) {
+  static char* Write(const std::string& str, char* dest) {
     strcpy(dest, str.c_str());
     return dest + SizeOf(str);
   }
@@ -123,12 +123,12 @@ class SimpleSerializer<BasicSourceLineResolver::InlineOrigin> {
   static size_t SizeOf(const InlineOrigin& origin) {
     return SimpleSerializer<bool>::SizeOf(origin.has_file_id) +
            SimpleSerializer<int32_t>::SizeOf(origin.source_file_id) +
-           SimpleSerializer<string>::SizeOf(origin.name);
+           SimpleSerializer<std::string>::SizeOf(origin.name);
   }
   static char* Write(const InlineOrigin& origin, char* dest) {
     dest = SimpleSerializer<bool>::Write(origin.has_file_id, dest);
     dest = SimpleSerializer<int32_t>::Write(origin.source_file_id, dest);
-    dest = SimpleSerializer<string>::Write(origin.name, dest);
+    dest = SimpleSerializer<std::string>::Write(origin.name, dest);
     return dest;
   }
 };
@@ -139,13 +139,13 @@ class SimpleSerializer<BasicSourceLineResolver::PublicSymbol> {
   typedef BasicSourceLineResolver::PublicSymbol PublicSymbol;
  public:
   static size_t SizeOf(const PublicSymbol& pubsymbol) {
-    return SimpleSerializer<string>::SizeOf(pubsymbol.name)
-         + SimpleSerializer<MemAddr>::SizeOf(pubsymbol.address)
-         + SimpleSerializer<int32_t>::SizeOf(pubsymbol.parameter_size)
-         + SimpleSerializer<bool>::SizeOf(pubsymbol.is_multiple);
+    return SimpleSerializer<std::string>::SizeOf(pubsymbol.name) +
+           SimpleSerializer<MemAddr>::SizeOf(pubsymbol.address) +
+           SimpleSerializer<int32_t>::SizeOf(pubsymbol.parameter_size) +
+           SimpleSerializer<bool>::SizeOf(pubsymbol.is_multiple);
   }
   static char* Write(const PublicSymbol& pubsymbol, char* dest) {
-    dest = SimpleSerializer<string>::Write(pubsymbol.name, dest);
+    dest = SimpleSerializer<std::string>::Write(pubsymbol.name, dest);
     dest = SimpleSerializer<MemAddr>::Write(pubsymbol.address, dest);
     dest = SimpleSerializer<int32_t>::Write(pubsymbol.parameter_size, dest);
     dest = SimpleSerializer<bool>::Write(pubsymbol.is_multiple, dest);
@@ -168,7 +168,7 @@ class SimpleSerializer<WindowsFrameInfo> {
     size += SimpleSerializer<uint32_t>::SizeOf(wfi.local_size);
     size += SimpleSerializer<uint32_t>::SizeOf(wfi.max_stack_size);
     size += SimpleSerializer<bool>::SizeOf(wfi.allocates_base_pointer);
-    size += SimpleSerializer<string>::SizeOf(wfi.program_string);
+    size += SimpleSerializer<std::string>::SizeOf(wfi.program_string);
     return size;
   }
   static char* Write(const WindowsFrameInfo& wfi, char* dest) {
@@ -182,7 +182,7 @@ class SimpleSerializer<WindowsFrameInfo> {
     dest = SimpleSerializer<uint32_t>::Write(wfi.local_size, dest);
     dest = SimpleSerializer<uint32_t>::Write(wfi.max_stack_size, dest);
     dest = SimpleSerializer<bool>::Write(wfi.allocates_base_pointer, dest);
-    return SimpleSerializer<string>::Write(wfi.program_string, dest);
+    return SimpleSerializer<std::string>::Write(wfi.program_string, dest);
   }
 };
 
@@ -286,7 +286,7 @@ class SimpleSerializer<BasicSourceLineResolver::Function> {
  public:
   static size_t SizeOf(const Function& func) {
     unsigned int size = 0;
-    size += SimpleSerializer<string>::SizeOf(func.name);
+    size += SimpleSerializer<std::string>::SizeOf(func.name);
     size += SimpleSerializer<MemAddr>::SizeOf(func.address);
     size += SimpleSerializer<MemAddr>::SizeOf(func.size);
     size += SimpleSerializer<int32_t>::SizeOf(func.parameter_size);
@@ -300,7 +300,7 @@ class SimpleSerializer<BasicSourceLineResolver::Function> {
   }
 
   static char* Write(const Function& func, char* dest) {
-    dest = SimpleSerializer<string>::Write(func.name, dest);
+    dest = SimpleSerializer<std::string>::Write(func.name, dest);
     dest = SimpleSerializer<MemAddr>::Write(func.address, dest);
     dest = SimpleSerializer<MemAddr>::Write(func.size, dest);
     dest = SimpleSerializer<int32_t>::Write(func.parameter_size, dest);

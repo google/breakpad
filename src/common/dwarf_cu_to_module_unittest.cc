@@ -42,7 +42,6 @@
 
 #include "breakpad_googletest_includes.h"
 #include "common/dwarf_cu_to_module.h"
-#include "common/using_std_string.h"
 
 using std::make_pair;
 using std::vector;
@@ -69,7 +68,7 @@ using ::testing::ValuesIn;
 
 class MockLineToModuleHandler: public DwarfCUToModule::LineToModuleHandler {
  public:
-  MOCK_METHOD1(StartCompilationUnit, void(const string& compilation_dir));
+  MOCK_METHOD1(StartCompilationUnit, void(const std::string& compilation_dir));
   MOCK_METHOD9(ReadProgram, void(const uint8_t* program, uint64_t length,
                                  const uint8_t* string_section,
                                  uint64_t string_section_length,
@@ -81,17 +80,17 @@ class MockLineToModuleHandler: public DwarfCUToModule::LineToModuleHandler {
 
 class MockWarningReporter: public DwarfCUToModule::WarningReporter {
  public:
-  MockWarningReporter(const string& filename, uint64_t cu_offset)
-      : DwarfCUToModule::WarningReporter(filename, cu_offset) { }
-  MOCK_METHOD1(SetCUName, void(const string& name));
+  MockWarningReporter(const std::string& filename, uint64_t cu_offset)
+      : DwarfCUToModule::WarningReporter(filename, cu_offset) {}
+  MOCK_METHOD1(SetCUName, void(const std::string& name));
   MOCK_METHOD2(UnknownSpecification, void(uint64_t offset, uint64_t target));
   MOCK_METHOD2(UnknownAbstractOrigin, void(uint64_t offset, uint64_t target));
-  MOCK_METHOD1(MissingSection, void(const string& section_name));
+  MOCK_METHOD1(MissingSection, void(const std::string& section_name));
   MOCK_METHOD1(BadLineInfoOffset, void(uint64_t offset));
   MOCK_METHOD1(UncoveredFunction, void(const Module::Function& function));
   MOCK_METHOD1(UncoveredLine, void(const Module::Line& line));
   MOCK_METHOD1(UnnamedFunction, void(uint64_t offset));
-  MOCK_METHOD1(DemangleError, void(const string& input));
+  MOCK_METHOD1(DemangleError, void(const std::string& input));
   MOCK_METHOD2(UnhandledInterCUReference, void(uint64_t offset, uint64_t target));
 };
 
@@ -174,7 +173,7 @@ class CUFixtureBase {
   // when it invokes its LineToModuleHandler. Call this before calling
   // StartCU.
   void PushLine(Module::Address address, Module::Address size,
-                const string& filename, int line_number);
+                const std::string& filename, int line_number);
 
   // Use LANGUAGE for the compilation unit. More precisely, arrange
   // for StartCU to pass the compilation unit's root DIE a
@@ -201,7 +200,7 @@ class CUFixtureBase {
   // the handler ready to hear about children: call EndAttributes, but
   // not Finish.
   DIEHandler* StartNamedDIE(DIEHandler* parent, DwarfTag tag,
-                            const string& name);
+                            const std::string& name);
 
   // Start a child DIE of PARENT with the given tag and a
   // DW_AT_specification attribute whose value is SPECIFICATION. Leave
@@ -217,7 +216,7 @@ class CUFixtureBase {
   // will be written as an address; otherwise it will be written as the
   // function's size. Call EndAttributes and Finish; one cannot define
   // children of the defined function's DIE.
-  void DefineFunction(DIEHandler* parent, const string& name,
+  void DefineFunction(DIEHandler* parent, const std::string& name,
                       Module::Address address, Module::Address size,
                       const char* mangled_name,
                       DwarfForm high_pc_form = google_breakpad::DW_FORM_addr);
@@ -225,18 +224,17 @@ class CUFixtureBase {
   // Create a declaration DIE as a child of PARENT with the given
   // offset, tag and name. If NAME is the empty string, don't provide
   // a DW_AT_name attribute. Call EndAttributes and Finish.
-  void DeclarationDIE(DIEHandler* parent, uint64_t offset,
-                      DwarfTag tag, const string& name,
-                      const string& mangled_name);
+  void DeclarationDIE(DIEHandler* parent, uint64_t offset, DwarfTag tag,
+                      const std::string& name, const std::string& mangled_name);
 
   // Create a definition DIE as a child of PARENT with the given tag
   // that refers to the declaration DIE at offset SPECIFICATION as its
   // specification. If NAME is non-empty, pass it as the DW_AT_name
   // attribute. If SIZE is non-zero, record ADDRESS and SIZE as
   // low_pc/high_pc attributes.
-  void DefinitionDIE(DIEHandler* parent, DwarfTag tag,
-                     uint64_t specification, const string& name,
-                     Module::Address address = 0, Module::Address size = 0);
+  void DefinitionDIE(DIEHandler* parent, DwarfTag tag, uint64_t specification,
+                     const std::string& name, Module::Address address = 0,
+                     Module::Address size = 0);
 
   // Create an inline DW_TAG_subprogram DIE as a child of PARENT.  If
   // SPECIFICATION is non-zero, then the DIE refers to the declaration DIE at
@@ -244,13 +242,13 @@ class CUFixtureBase {
   // as the DW_AT_name attribute.
   void AbstractInstanceDIE(DIEHandler* parent, uint64_t offset,
                            DwarfInline type, uint64_t specification,
-                           const string& name,
+                           const std::string& name,
                            DwarfForm form = google_breakpad::DW_FORM_data1);
 
   // Create a DW_TAG_subprogram DIE as a child of PARENT that refers to
   // ORIGIN in its DW_AT_abstract_origin attribute.  If NAME is the empty
   // string, don't provide a DW_AT_name attribute.
-  void DefineInlineInstanceDIE(DIEHandler* parent, const string& name,
+  void DefineInlineInstanceDIE(DIEHandler* parent, const std::string& name,
                                uint64_t origin, Module::Address address,
                                Module::Address size);
 
@@ -265,8 +263,8 @@ class CUFixtureBase {
   // Test that the I'th function (ordered by address) in the module
   // this.module_ has the given name, address, and size, and that its
   // parameter size is zero.
-  void TestFunction(int i, const string& name,
-                    Module::Address address, Module::Address size);
+  void TestFunction(int i, const std::string& name, Module::Address address,
+                    Module::Address size);
 
   // Test that the I'th function (ordered by address) in the module
   // this.module_ has the given prefer_extern_name.
@@ -280,7 +278,7 @@ class CUFixtureBase {
   // (again, by address) has the given address, size, filename, and
   // line number.
   void TestLine(int i, int j, Module::Address address, Module::Address size,
-                const string& filename, int number);
+                const std::string& filename, int number);
 
   // Actual objects under test.
   Module module_;
@@ -296,7 +294,7 @@ class CUFixtureBase {
 
   // If this is not empty, we'll give the CU a DW_AT_comp_dir attribute that
   // indicates the path that this compilation unit was compiled in.
-  string compilation_dir_;
+  std::string compilation_dir_;
 
   // If this is not empty, we'll give the CU a DW_AT_stmt_list
   // attribute that, when passed to line_reader_, adds these lines to the
@@ -328,7 +326,7 @@ const size_t CUFixtureBase::dummy_line_size_ =
     sizeof(CUFixtureBase::dummy_line_program_);
 
 void CUFixtureBase::PushLine(Module::Address address, Module::Address size,
-                             const string& filename, int line_number) {
+                             const std::string& filename, int line_number) {
   Module::Line l;
   l.address = address;
   l.size = size;
@@ -405,9 +403,8 @@ void CUFixtureBase::ProcessStrangeAttributes(
                                   "strange string");
 }
 
-DIEHandler* CUFixtureBase::StartNamedDIE(DIEHandler* parent,
-                                         DwarfTag tag,
-                                         const string& name) {
+DIEHandler* CUFixtureBase::StartNamedDIE(DIEHandler* parent, DwarfTag tag,
+                                         const std::string& name) {
   google_breakpad::DIEHandler* handler
     = parent->FindChildHandler(0x8f4c783c0467c989ULL, tag);
   if (!handler)
@@ -450,7 +447,8 @@ DIEHandler* CUFixtureBase::StartSpecifiedDIE(DIEHandler* parent,
 }
 
 void CUFixtureBase::DefineFunction(google_breakpad::DIEHandler* parent,
-                                   const string& name, Module::Address address,
+                                   const std::string& name,
+                                   Module::Address address,
                                    Module::Address size,
                                    const char* mangled_name,
                                    DwarfForm high_pc_form) {
@@ -485,9 +483,8 @@ void CUFixtureBase::DefineFunction(google_breakpad::DIEHandler* parent,
 }
 
 void CUFixtureBase::DeclarationDIE(DIEHandler* parent, uint64_t offset,
-                                   DwarfTag tag,
-                                   const string& name,
-                                   const string& mangled_name) {
+                                   DwarfTag tag, const std::string& name,
+                                   const std::string& mangled_name) {
   google_breakpad::DIEHandler* die = parent->FindChildHandler(offset, tag);
   ASSERT_TRUE(die != nullptr);
   if (!name.empty())
@@ -507,10 +504,9 @@ void CUFixtureBase::DeclarationDIE(DIEHandler* parent, uint64_t offset,
   delete die;
 }
 
-void CUFixtureBase::DefinitionDIE(DIEHandler* parent,
-                                  DwarfTag tag,
+void CUFixtureBase::DefinitionDIE(DIEHandler* parent, DwarfTag tag,
                                   uint64_t specification,
-                                  const string& name,
+                                  const std::string& name,
                                   Module::Address address,
                                   Module::Address size) {
   google_breakpad::DIEHandler* die
@@ -536,11 +532,10 @@ void CUFixtureBase::DefinitionDIE(DIEHandler* parent,
   delete die;
 }
 
-void CUFixtureBase::AbstractInstanceDIE(DIEHandler* parent,
-                                        uint64_t offset,
+void CUFixtureBase::AbstractInstanceDIE(DIEHandler* parent, uint64_t offset,
                                         DwarfInline type,
                                         uint64_t specification,
-                                        const string& name,
+                                        const std::string& name,
                                         DwarfForm form) {
   google_breakpad::DIEHandler* die
     = parent->FindChildHandler(offset, google_breakpad::DW_TAG_subprogram);
@@ -565,7 +560,7 @@ void CUFixtureBase::AbstractInstanceDIE(DIEHandler* parent,
 }
 
 void CUFixtureBase::DefineInlineInstanceDIE(DIEHandler* parent,
-                                            const string& name,
+                                            const std::string& name,
                                             uint64_t origin,
                                             Module::Address address,
                                             Module::Address size) {
@@ -607,7 +602,7 @@ void CUFixtureBase::TestFunctionCount(size_t expected) {
   ASSERT_EQ(expected, functions_.size());
 }
 
-void CUFixtureBase::TestFunction(int i, const string& name,
+void CUFixtureBase::TestFunction(int i, const std::string& name,
                                  Module::Address address,
                                  Module::Address size) {
   FillFunctions();
@@ -636,9 +631,9 @@ void CUFixtureBase::TestLineCount(int i, size_t expected) {
   ASSERT_EQ(expected, functions_[i]->lines.size());
 }
 
-void CUFixtureBase::TestLine(int i, int j,
-                             Module::Address address, Module::Address size,
-                             const string& filename, int number) {
+void CUFixtureBase::TestLine(int i, int j, Module::Address address,
+                             Module::Address size, const std::string& filename,
+                             int number) {
   FillFunctions();
   ASSERT_LT((size_t) i, functions_.size());
   ASSERT_LT((size_t) j, functions_[i]->lines.size());
@@ -1252,7 +1247,7 @@ TEST_F(Specifications, MangledNameSwift) {
   SetLanguage(google_breakpad::DW_LANG_Swift);
   PushLine(0x93cd3dfc1aa10097ULL, 0x0397d47a0b4ca0d4ULL, "line-file", 54883661);
   StartCU();
-  const string kName = "_TFC9swifttest5Shape17simpleDescriptionfS0_FT_Si";
+  const std::string kName = "_TFC9swifttest5Shape17simpleDescriptionfS0_FT_Si";
   DeclarationDIE(&root_handler_, 0xcd3c51b946fb1eeeLL,
                  google_breakpad::DW_TAG_subprogram, "declaration-name",
                  kName);
@@ -1271,7 +1266,7 @@ TEST_F(Specifications, MangledNameRust) {
   PushLine(0x93cd3dfc1aa10097ULL, 0x0397d47a0b4ca0d4ULL, "line-file", 54883661);
 
   StartCU();
-  const string kName = "_ZN14rustc_demangle8demangle17h373defa94bffacdeE";
+  const std::string kName = "_ZN14rustc_demangle8demangle17h373defa94bffacdeE";
   DeclarationDIE(&root_handler_, 0xcd3c51b946fb1eeeLL,
                  google_breakpad::DW_TAG_subprogram, "declaration-name",
                  kName);

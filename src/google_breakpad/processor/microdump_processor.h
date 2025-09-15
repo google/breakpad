@@ -34,7 +34,6 @@
 
 #include <string>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/process_result.h"
 
 namespace google_breakpad {

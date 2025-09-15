@@ -46,7 +46,6 @@
 #include "common/dwarf/bytereader-inl.h"
 #include "common/dwarf/dwarf2reader_test_common.h"
 #include "common/dwarf/dwarf2reader.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 
 using google_breakpad::test_assembler::Endianness;
@@ -99,10 +98,9 @@ class MockDwarf2Handler: public Dwarf2Handler {
                                             enum DwarfForm form,
                                             const uint8_t* data,
                                             uint64_t len));
-  MOCK_METHOD4(ProcessAttributeString, void(uint64_t offset,
-                                            enum DwarfAttribute attr,
-                                            enum DwarfForm form,
-                                            const string& data));
+  MOCK_METHOD4(ProcessAttributeString,
+               void(uint64_t offset, enum DwarfAttribute attr,
+                    enum DwarfForm form, const std::string& data));
   MOCK_METHOD4(ProcessAttributeSignature, void(uint64_t offset,
                                                DwarfAttribute attr,
                                                enum DwarfForm form,
@@ -150,7 +148,7 @@ struct DIEFixture {
   TestCompilationUnit info;
   TestAbbrevTable abbrevs;
   MockDwarf2Handler handler;
-  string abbrevs_contents, info_contents;
+  std::string abbrevs_contents, info_contents;
   SectionMap section_map;
 };
 
@@ -800,7 +798,7 @@ TEST(RangeList, Dwarf5ReadRangeList_rnglists) {
   section_size2 = rnglists2.Size() - length_size;
 
   rnglists1.Append(rnglists2);
-  string rnglists_contents;
+  std::string rnglists_contents;
   assert(rnglists1.GetContents(&rnglists_contents));
 
   RangeListReader::CURangesInfo cu_info;
@@ -923,7 +921,7 @@ TEST(RangeList, Dwarf5ReadRangeList_sec_offset) {
   section_size2 = rnglists2.Size() - length_size;
 
   rnglists1.Append(rnglists2);
-  string rnglists_contents;
+  std::string rnglists_contents;
   assert(rnglists1.GetContents(&rnglists_contents));
 
   RangeListReader::CURangesInfo cu_info;

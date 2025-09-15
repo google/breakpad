@@ -40,7 +40,6 @@
 #include "common/linux/tests/crash_generator.h"
 #include "common/tests/auto_tempdir.h"
 #include "common/tests/file_utils.h"
-#include "common/using_std_string.h"
 
 namespace google_breakpad {
 
@@ -97,8 +96,8 @@ TEST_F(LinuxCoreDumperTest, VerifyDumpWithMultipleThreads) {
   ASSERT_TRUE(crash_generator.CreateChildCrash(kNumOfThreads, kCrashThread,
                                                kCrashSignal, &child_pid));
 
-  const string core_file = crash_generator.GetCoreFilePath();
-  const string procfs_path = crash_generator.GetDirectoryOfProcFilesCopy();
+  const std::string core_file = crash_generator.GetCoreFilePath();
+  const std::string procfs_path = crash_generator.GetDirectoryOfProcFilesCopy();
 
 #if defined(__ANDROID__)
   struct stat st;
@@ -162,8 +161,8 @@ TEST_F(LinuxCoreDumperTest, VerifyExceptionDetails) {
   ASSERT_TRUE(crash_generator.CreateChildCrash(kNumOfThreads, kCrashThread,
                                                kCrashSignal, &child_pid));
 
-  const string core_file = crash_generator.GetCoreFilePath();
-  const string procfs_path = crash_generator.GetDirectoryOfProcFilesCopy();
+  const std::string core_file = crash_generator.GetCoreFilePath();
+  const std::string procfs_path = crash_generator.GetDirectoryOfProcFilesCopy();
 
 #if defined(__ANDROID__)
   struct stat st;
@@ -209,7 +208,7 @@ TEST_F(LinuxCoreDumperTest, EnumerateMappings) {
       "00000005-00000006 rw-p 00000000 00:00 0    /app/libfoo.so\n"
       "00000006-00000007 rw-p 00000000 00:00 0    [anno]\n";
 
-  string test_file = temp_dir.path() + "/maps";
+  std::string test_file = temp_dir.path() + "/maps";
   ASSERT_TRUE(WriteFile(test_file.c_str(), proc_maps_content,
                         sizeof(proc_maps_content)));
 
@@ -230,7 +229,7 @@ TEST_F(LinuxCoreDumperTest, EnumerateMappings_diffname) {
       "00000003-00000004 rw-p 00000000 00:00 0    /app/libbar.so\n"
       "00000004-00000005 rw-p 00000000 00:00 0    [anno]\n";
 
-  string test_file = temp_dir.path() + "/maps";
+  std::string test_file = temp_dir.path() + "/maps";
   ASSERT_TRUE(WriteFile(test_file.c_str(), proc_maps_content,
                         sizeof(proc_maps_content)));
 
@@ -253,7 +252,7 @@ TEST_F(LinuxCoreDumperTest, EnumerateMappings_merge) {
       "00000003-00000004 rw-p 00000000 00:00 0    /app/libfoo.so\n"
       "00000004-00000005 rw-p 00000000 00:00 0    [anno]\n";
 
-  string test_file = temp_dir.path() + "/maps";
+  std::string test_file = temp_dir.path() + "/maps";
   ASSERT_TRUE(WriteFile(test_file.c_str(), proc_maps_content,
                         sizeof(proc_maps_content)));
 
@@ -277,7 +276,7 @@ TEST_F(LinuxCoreDumperTest, EnumerateMappings_16K_padding) {
       "00000006-00000007 rw-p 00000000 00:00 0    /app/libfoo.so\n"
       "00000007-00000008 rw-p 00000000 00:00 0    [anno]\n";
 
-  string test_file = temp_dir.path() + "/maps";
+  std::string test_file = temp_dir.path() + "/maps";
   ASSERT_TRUE(WriteFile(test_file.c_str(), proc_maps_content,
                         sizeof(proc_maps_content)));
 

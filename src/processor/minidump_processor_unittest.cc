@@ -42,7 +42,6 @@
 #include <utility>
 
 #include "breakpad_googletest_includes.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/basic_source_line_resolver.h"
 #include "google_breakpad/processor/call_stack.h"
 #include "google_breakpad/processor/code_module.h"
@@ -64,7 +63,7 @@ class MockMinidump : public Minidump {
   }
 
   MOCK_METHOD0(Read, bool());
-  MOCK_CONST_METHOD0(path, string());
+  MOCK_CONST_METHOD0(path, std::string());
   MOCK_CONST_METHOD0(header, const MDRawHeader*());
   MOCK_METHOD0(GetThreadList, MinidumpThreadList*());
   MOCK_METHOD0(GetSystemInfo, MinidumpSystemInfo*());
@@ -121,8 +120,8 @@ class MockMinidumpThread : public MinidumpThread {
 // MinidumpMemoryRegion.
 class MockMinidumpMemoryRegion : public MinidumpMemoryRegion {
  public:
-  MockMinidumpMemoryRegion(uint64_t base, const string& contents) :
-      MinidumpMemoryRegion(nullptr) {
+  MockMinidumpMemoryRegion(uint64_t base, const std::string& contents)
+      : MinidumpMemoryRegion(nullptr) {
     region_.Init(base, contents);
   }
 
@@ -204,10 +203,10 @@ static const char* kSystemInfoCPUInfo =
 
 #define ASSERT_EQ_ABORT(e1, e2) ASSERT_TRUE_ABORT((e1) == (e2))
 
-static string GetTestDataPath() {
+static std::string GetTestDataPath() {
   char* srcdir = getenv("srcdir");
 
-  return string(srcdir ? srcdir : ".") + "/src/processor/testdata/";
+  return std::string(srcdir ? srcdir : ".") + "/src/processor/testdata/";
 }
 
 class TestSymbolSupplier : public SymbolSupplier {
@@ -216,16 +215,16 @@ class TestSymbolSupplier : public SymbolSupplier {
 
   virtual SymbolResult GetSymbolFile(const CodeModule* module,
                                      const SystemInfo* system_info,
-                                     string* symbol_file);
+                                     std::string* symbol_file);
 
   virtual SymbolResult GetSymbolFile(const CodeModule* module,
                                      const SystemInfo* system_info,
-                                     string* symbol_file,
-                                     string* symbol_data);
+                                     std::string* symbol_file,
+                                     std::string* symbol_data);
 
   virtual SymbolResult GetCStringSymbolData(const CodeModule* module,
                                             const SystemInfo* system_info,
-                                            string* symbol_file,
+                                            std::string* symbol_file,
                                             char** symbol_data,
                                             size_t* symbol_data_size);
 
@@ -236,13 +235,12 @@ class TestSymbolSupplier : public SymbolSupplier {
 
  private:
   bool interrupt_;
-  map<string, char*> memory_buffers_;
+  map<std::string, char*> memory_buffers_;
 };
 
 SymbolSupplier::SymbolResult TestSymbolSupplier::GetSymbolFile(
-    const CodeModule* module,
-    const SystemInfo* system_info,
-    string* symbol_file) {
+    const CodeModule* module, const SystemInfo* system_info,
+    std::string* symbol_file) {
   ASSERT_TRUE_ABORT(module);
   ASSERT_TRUE_ABORT(system_info);
   ASSERT_EQ_ABORT(system_info->cpu, kSystemInfoCPU);
@@ -265,16 +263,15 @@ SymbolSupplier::SymbolResult TestSymbolSupplier::GetSymbolFile(
 }
 
 SymbolSupplier::SymbolResult TestSymbolSupplier::GetSymbolFile(
-    const CodeModule* module,
-    const SystemInfo* system_info,
-    string* symbol_file,
-    string* symbol_data) {
+    const CodeModule* module, const SystemInfo* system_info,
+    std::string* symbol_file, std::string* symbol_data) {
   SymbolSupplier::SymbolResult s = GetSymbolFile(module, system_info,
                                                  symbol_file);
   if (s == FOUND) {
     std::ifstream in(symbol_file->c_str());
-    std::getline(in, *symbol_data, string::traits_type::to_char_type(
-                     string::traits_type::eof()));
+    std::getline(in, *symbol_data,
+                 std::string::traits_type::to_char_type(
+                     std::string::traits_type::eof()));
     in.close();
   }
 
@@ -282,12 +279,9 @@ SymbolSupplier::SymbolResult TestSymbolSupplier::GetSymbolFile(
 }
 
 SymbolSupplier::SymbolResult TestSymbolSupplier::GetCStringSymbolData(
-    const CodeModule* module,
-    const SystemInfo* system_info,
-    string* symbol_file,
-    char** symbol_data,
-    size_t* symbol_data_size) {
-  string symbol_data_string;
+    const CodeModule* module, const SystemInfo* system_info,
+    std::string* symbol_file, char** symbol_data, size_t* symbol_data_size) {
+  std::string symbol_data_string;
   SymbolSupplier::SymbolResult s = GetSymbolFile(module,
                                                  system_info,
                                                  symbol_file,
@@ -309,7 +303,8 @@ SymbolSupplier::SymbolResult TestSymbolSupplier::GetCStringSymbolData(
 }
 
 void TestSymbolSupplier::FreeSymbolData(const CodeModule* module) {
-  map<string, char*>::iterator it = memory_buffers_.find(module->code_file());
+  map<std::string, char*>::iterator it =
+      memory_buffers_.find(module->code_file());
   if (it != memory_buffers_.end()) {
     delete [] it->second;
     memory_buffers_.erase(it);
@@ -324,7 +319,7 @@ class TestMinidumpSystemInfo : public MinidumpSystemInfo {
       MinidumpSystemInfo(nullptr) {
     valid_ = true;
     system_info_ = info;
-    csd_version_ = new string("");
+    csd_version_ = new std::string("");
   }
 };
 
@@ -465,7 +460,7 @@ TEST_F(MinidumpProcessorTest, TestSymbolSupplierLookupCounts) {
   BasicSourceLineResolver resolver;
   MinidumpProcessor processor(&supplier, &resolver);
 
-  string minidump_file = GetTestDataPath() + "minidump2.dmp";
+  std::string minidump_file = GetTestDataPath() + "minidump2.dmp";
   ProcessState state;
   EXPECT_CALL(supplier, GetCStringSymbolData(
       Property(&google_breakpad::CodeModule::code_file,
@@ -505,7 +500,7 @@ TEST_F(MinidumpProcessorTest, TestBasicProcessing) {
   BasicSourceLineResolver resolver;
   MinidumpProcessor processor(&supplier, &resolver);
 
-  string minidump_file = GetTestDataPath() + "minidump2.dmp";
+  std::string minidump_file = GetTestDataPath() + "minidump2.dmp";
 
   ProcessState state;
   ASSERT_EQ(processor.Process(minidump_file, &state),
@@ -747,7 +742,8 @@ TEST_F(MinidumpProcessorTest, Test32BitCrashingAddress) {
   BasicSourceLineResolver resolver;
   MinidumpProcessor processor(&supplier, &resolver);
 
-  string minidump_file = GetTestDataPath() + "minidump_32bit_crash_addr.dmp";
+  std::string minidump_file =
+      GetTestDataPath() + "minidump_32bit_crash_addr.dmp";
 
   ProcessState state;
   ASSERT_EQ(processor.Process(minidump_file, &state),
@@ -767,8 +763,8 @@ TEST_F(MinidumpProcessorTest, TestXStateX86ContextMinidump) {
   // context. Dump is captured from a toy executable and is readable by windbg.
   MinidumpProcessor processor(nullptr, nullptr /*&supplier, &resolver*/);
 
-  string minidump_file = GetTestDataPath()
-                         + "tiny-exe-with-cet-xsave-x86.dmp";
+  std::string minidump_file =
+      GetTestDataPath() + "tiny-exe-with-cet-xsave-x86.dmp";
 
   ProcessState state;
   ASSERT_EQ(processor.Process(minidump_file, &state),
@@ -790,8 +786,7 @@ TEST_F(MinidumpProcessorTest, TestXStateAmd64ContextMinidump) {
   // context. Dump is captured from a toy executable and is readable by windbg.
   MinidumpProcessor processor(nullptr, nullptr /*&supplier, &resolver*/);
 
-  string minidump_file = GetTestDataPath()
-                         + "tiny-exe-with-cet-xsave.dmp";
+  std::string minidump_file = GetTestDataPath() + "tiny-exe-with-cet-xsave.dmp";
 
   ProcessState state;
   ASSERT_EQ(processor.Process(minidump_file, &state),
@@ -813,8 +808,7 @@ TEST_F(MinidumpProcessorTest, TestFastFailException) {
   // Dump is captured from a toy executable and is readable by windbg.
   MinidumpProcessor processor(nullptr, nullptr /*&supplier, &resolver*/);
 
-  string minidump_file = GetTestDataPath()
-                         + "tiny-exe-fastfail.dmp";
+  std::string minidump_file = GetTestDataPath() + "tiny-exe-fastfail.dmp";
 
   ProcessState state;
   ASSERT_EQ(processor.Process(minidump_file, &state),
@@ -832,8 +826,7 @@ TEST_F(MinidumpProcessorTest, TestNonCanonicalAddress) {
   MinidumpProcessor processor(nullptr, nullptr /*&supplier, &resolver*/);
   processor.set_enable_objdump(true);
 
-  string minidump_file = GetTestDataPath()
-                         + "write_av_non_canonical.dmp";
+  std::string minidump_file = GetTestDataPath() + "write_av_non_canonical.dmp";
 
   ProcessState state;
   ASSERT_EQ(processor.Process(minidump_file, &state),

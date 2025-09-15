@@ -164,7 +164,6 @@
 #include "common/dwarf/types.h"
 #include "common/dwarf/dwarf2enums.h"
 #include "common/dwarf/dwarf2reader.h"
-#include "common/using_std_string.h"
 
 namespace google_breakpad {
 
@@ -212,7 +211,7 @@ class DIEHandler {
                                       uint64_t len) { }
   virtual void ProcessAttributeString(enum DwarfAttribute attr,
                                       enum DwarfForm form,
-                                      const string& data) { }
+                                      const std::string& data) {}
   virtual void ProcessAttributeSignature(enum DwarfAttribute attr,
                                          enum DwarfForm form,
                                          uint64_t signture) { }
@@ -316,10 +315,8 @@ class DIEDispatcher: public Dwarf2Handler {
                               enum DwarfForm form,
                               const uint8_t* data,
                               uint64_t len);
-  void ProcessAttributeString(uint64_t offset,
-                              enum DwarfAttribute attr,
-                              enum DwarfForm form,
-                              const string& data);
+  void ProcessAttributeString(uint64_t offset, enum DwarfAttribute attr,
+                              enum DwarfForm form, const std::string& data);
   void ProcessAttributeSignature(uint64_t offset,
                                  enum DwarfAttribute attr,
                                  enum DwarfForm form,

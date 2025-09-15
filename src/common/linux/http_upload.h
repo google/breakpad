@@ -36,8 +36,6 @@
 #include <map>
 #include <string>
 
-#include "common/using_std_string.h"
-
 namespace google_breakpad {
 
 using std::map;
@@ -57,21 +55,20 @@ class HTTPUpload {
   // received (or 0 if the request failed before getting an HTTP response).
   // If the send fails, a description of the error will be
   // returned in error_description.
-  static bool SendRequest(const string& url,
-                          const map<string, string>& parameters,
-                          const map<string, string>& files,
-                          const string& proxy,
-                          const string& proxy_user_pwd,
-                          const string& ca_certificate_file,
-                          string* response_body,
-                          long* response_code,
-                          string* error_description);
+  static bool SendRequest(const std::string& url,
+                          const map<std::string, std::string>& parameters,
+                          const map<std::string, std::string>& files,
+                          const std::string& proxy,
+                          const std::string& proxy_user_pwd,
+                          const std::string& ca_certificate_file,
+                          std::string* response_body, long* response_code,
+                          std::string* error_description);
 
  private:
   // Checks that the given list of parameters has only printable
   // ASCII characters in the parameter name, and does not contain
   // any quote (") characters.  Returns true if so.
-  static bool CheckParameters(const map<string, string>& parameters);
+  static bool CheckParameters(const map<std::string, std::string>& parameters);
 
   // Checks the curl_lib parameter points to a valid curl lib.
   static bool CheckCurlLib(void* curl_lib);

@@ -36,6 +36,7 @@
 
 #include <iostream>
 #include <regex>
+#include <string>
 
 #include "common/linux/libcurl_wrapper.h"
 
@@ -45,13 +46,13 @@ namespace sym_upload {
 // static
 bool SymbolCollectorClient::CreateUploadUrl(
     LibcurlWrapper* libcurl_wrapper,
-    const string& api_url,
-    const string& api_key,
+    const std::string& api_url,
+    const std::string& api_key,
     UploadUrlResponse* uploadUrlResponse) {
-  string header, response;
+  std::string header, response;
   long response_code;
 
-  string url = api_url + "/v1/uploads:create";
+  std::string url = api_url + "/v1/uploads:create";
   if (!api_key.empty()) {
     url += "?key=" + api_key;
   }
@@ -81,7 +82,7 @@ bool SymbolCollectorClient::CreateUploadUrl(
     printf("%s\n", response.c_str());
     return false;
   }
-  string upload_url = upload_url_match[1].str();
+  std::string upload_url = upload_url_match[1].str();
 
   std::smatch upload_key_match;
   if (!std::regex_search(response, upload_key_match, upload_key_regex) ||
@@ -91,7 +92,7 @@ bool SymbolCollectorClient::CreateUploadUrl(
     printf("%s\n", response.c_str());
     return false;
   }
-  string upload_key = upload_key_match[1].str();
+  std::string upload_key = upload_key_match[1].str();
 
   uploadUrlResponse->upload_url = upload_url;
   uploadUrlResponse->upload_key = upload_key;
@@ -101,20 +102,20 @@ bool SymbolCollectorClient::CreateUploadUrl(
 // static
 CompleteUploadResult SymbolCollectorClient::CompleteUpload(
     LibcurlWrapper* libcurl_wrapper,
-    const string& api_url,
-    const string& api_key,
-    const string& upload_key,
-    const string& debug_file,
-    const string& debug_id,
-    const string& type) {
-  string header, response;
+    const std::string& api_url,
+    const std::string& api_key,
+    const std::string& upload_key,
+    const std::string& debug_file,
+    const std::string& debug_id,
+    const std::string& type) {
+  std::string header, response;
   long response_code;
 
-  string url = api_url + "/v1/uploads/" + upload_key + ":complete";
+  std::string url = api_url + "/v1/uploads/" + upload_key + ":complete";
   if (!api_key.empty()) {
     url += "?key=" + api_key;
   }
-  string body =
+  std::string body =
       "{ symbol_id: {"
       "debug_file: \"" + debug_file + "\", "
       "debug_id: \"" + debug_id + "\" }, "
@@ -142,7 +143,7 @@ CompleteUploadResult SymbolCollectorClient::CompleteUpload(
     printf("%s\n", response.c_str());
     return CompleteUploadResult::Error;
   }
-  string result = result_match[1].str();
+  std::string result = result_match[1].str();
 
   if (result.compare("DUPLICATE_DATA") == 0) {
     return CompleteUploadResult::DuplicateData;
@@ -154,13 +155,13 @@ CompleteUploadResult SymbolCollectorClient::CompleteUpload(
 // static
 SymbolStatus SymbolCollectorClient::CheckSymbolStatus(
     LibcurlWrapper* libcurl_wrapper,
-    const string& api_url,
-    const string& api_key,
-    const string& debug_file,
-    const string& debug_id) {
-  string header, response;
+    const std::string& api_url,
+    const std::string& api_key,
+    const std::string& debug_file,
+    const std::string& debug_id) {
+  std::string header, response;
   long response_code;
-  string url = api_url +
+  std::string url = api_url +
                "/v1/symbols/" + debug_file + "/" + debug_id + ":checkStatus";
   if (!api_key.empty()) {
     url += "?key=" + api_key;
@@ -187,7 +188,7 @@ SymbolStatus SymbolCollectorClient::CheckSymbolStatus(
     printf("%s\n", response.c_str());
     return SymbolStatus::Unknown;
   }
-  string status = status_match[1].str();
+  std::string status = status_match[1].str();
 
   return (status.compare("FOUND") == 0) ?
       SymbolStatus::Found :

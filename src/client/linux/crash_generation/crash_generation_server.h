@@ -33,8 +33,6 @@
 
 #include <string>
 
-#include "common/using_std_string.h"
-
 namespace google_breakpad {
 
 class ClientInfo;
@@ -44,49 +42,48 @@ public:
   // WARNING: callbacks may be invoked on a different thread
   // than that which creates the CrashGenerationServer.  They must
   // be thread safe.
-  typedef void (*OnClientDumpRequestCallback)(void* context,
-                                              const ClientInfo* client_info,
-                                              const string* file_path);
+ typedef void (*OnClientDumpRequestCallback)(void* context,
+                                             const ClientInfo* client_info,
+                                             const std::string* file_path);
 
-  typedef void (*OnClientExitingCallback)(void* context,
-                                          const ClientInfo* client_info);
+ typedef void (*OnClientExitingCallback)(void* context,
+                                         const ClientInfo* client_info);
 
-  // Create an instance with the given parameters.
-  //
-  // Parameter listen_fd: The server fd created by CreateReportChannel().
-  // Parameter dump_callback: Callback for a client crash dump request.
-  // Parameter dump_context: Context for client crash dump request callback.
-  // Parameter exit_callback: Callback for client process exit.
-  // Parameter exit_context: Context for client exit callback.
-  // Parameter generate_dumps: Whether to automatically generate dumps.
-  //     Client code of this class might want to generate dumps explicitly
-  //     in the crash dump request callback. In that case, false can be
-  //     passed for this parameter.
-  // Parameter dump_path: Path for generating dumps; required only if true is
-  //     passed for generateDumps parameter; NULL can be passed otherwise.
-  CrashGenerationServer(const int listen_fd,
-                        OnClientDumpRequestCallback dump_callback,
-                        void* dump_context,
-                        OnClientExitingCallback exit_callback,
-                        void* exit_context,
-                        bool generate_dumps,
-                        const string* dump_path);
+ // Create an instance with the given parameters.
+ //
+ // Parameter listen_fd: The server fd created by CreateReportChannel().
+ // Parameter dump_callback: Callback for a client crash dump request.
+ // Parameter dump_context: Context for client crash dump request callback.
+ // Parameter exit_callback: Callback for client process exit.
+ // Parameter exit_context: Context for client exit callback.
+ // Parameter generate_dumps: Whether to automatically generate dumps.
+ //     Client code of this class might want to generate dumps explicitly
+ //     in the crash dump request callback. In that case, false can be
+ //     passed for this parameter.
+ // Parameter dump_path: Path for generating dumps; required only if true is
+ //     passed for generateDumps parameter; NULL can be passed otherwise.
+ CrashGenerationServer(const int listen_fd,
+                       OnClientDumpRequestCallback dump_callback,
+                       void* dump_context,
+                       OnClientExitingCallback exit_callback,
+                       void* exit_context, bool generate_dumps,
+                       const std::string* dump_path);
 
-  ~CrashGenerationServer();
+ ~CrashGenerationServer();
 
-  // Perform initialization steps needed to start listening to clients.
-  //
-  // Return true if initialization is successful; false otherwise.
-  bool Start();
+ // Perform initialization steps needed to start listening to clients.
+ //
+ // Return true if initialization is successful; false otherwise.
+ bool Start();
 
-  // Stop the server.
-  void Stop();
+ // Stop the server.
+ void Stop();
 
-  // Create a "channel" that can be used by clients to report crashes
-  // to a CrashGenerationServer.  |*server_fd| should be passed to
-  // this class's constructor, and |*client_fd| should be passed to
-  // the ExceptionHandler constructor in the client process.
-  static bool CreateReportChannel(int* server_fd, int* client_fd);
+ // Create a "channel" that can be used by clients to report crashes
+ // to a CrashGenerationServer.  |*server_fd| should be passed to
+ // this class's constructor, and |*client_fd| should be passed to
+ // the ExceptionHandler constructor in the client process.
+ static bool CreateReportChannel(int* server_fd, int* client_fd);
 
 private:
   // Run the server's event loop
@@ -101,7 +98,7 @@ private:
   bool ControlEvent(short revents);
 
   // Return a unique filename at which a minidump can be written
-  bool MakeMinidumpFilename(string& outFilename);
+  bool MakeMinidumpFilename(std::string& outFilename);
 
   // Trampoline to |Run()|
   static void* ThreadMain(void* arg);
@@ -116,7 +113,7 @@ private:
 
   bool generate_dumps_;
 
-  string dump_dir_;
+  std::string dump_dir_;
 
   bool started_;
 

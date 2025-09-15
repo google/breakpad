@@ -67,7 +67,6 @@ extern "C" {
 #include "common/dwarf/bytereader-inl.h"
 #include "common/dwarf/cfi_assembler.h"
 #include "common/dwarf/dwarf2reader.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 
 using google_breakpad::CFISection;
@@ -104,7 +103,7 @@ void WriteELFFrameSection(const char *filename, const char *section_name,
 class MockCallFrameInfoHandler: public CallFrameInfo::Handler {
  public:
   MOCK_METHOD6(Entry, bool(size_t offset, uint64_t address, uint64_t length,
-                           uint8_t version, const string& augmentation,
+                           uint8_t version, const std::string& augmentation,
                            unsigned return_address));
   MOCK_METHOD2(UndefinedRule, bool(uint64_t address, int reg));
   MOCK_METHOD2(SameValueRule, bool(uint64_t address, int reg));
@@ -113,12 +112,12 @@ class MockCallFrameInfoHandler: public CallFrameInfo::Handler {
   MOCK_METHOD4(ValOffsetRule, bool(uint64_t address, int reg, int base_register,
                                    long offset));
   MOCK_METHOD3(RegisterRule, bool(uint64_t address, int reg, int base_register));
-  MOCK_METHOD3(ExpressionRule, bool(uint64_t address, int reg,
-                                    const string& expression));
-  MOCK_METHOD3(ValExpressionRule, bool(uint64_t address, int reg,
-                                       const string& expression));
+  MOCK_METHOD3(ExpressionRule,
+               bool(uint64_t address, int reg, const std::string& expression));
+  MOCK_METHOD3(ValExpressionRule,
+               bool(uint64_t address, int reg, const std::string& expression));
   MOCK_METHOD0(End, bool());
-  MOCK_METHOD0(Architecture, string());
+  MOCK_METHOD0(Architecture, std::string());
   MOCK_METHOD2(PersonalityRoutine, bool(uint64_t address, bool indirect));
   MOCK_METHOD2(LanguageSpecificDataArea, bool(uint64_t address, bool indirect));
   MOCK_METHOD0(SignalHandler, bool());
@@ -134,7 +133,7 @@ class MockCallFrameErrorReporter: public CallFrameInfo::Reporter {
   MOCK_METHOD2(UnexpectedAddressSize, void(uint64_t, uint8_t));
   MOCK_METHOD2(UnexpectedSegmentSize, void(uint64_t, uint8_t));
   MOCK_METHOD2(UnrecognizedVersion, void(uint64_t, int version));
-  MOCK_METHOD2(UnrecognizedAugmentation, void(uint64_t, const string&));
+  MOCK_METHOD2(UnrecognizedAugmentation, void(uint64_t, const std::string&));
   MOCK_METHOD2(InvalidPointerEncoding, void(uint64_t, uint8_t));
   MOCK_METHOD2(UnusablePointerEncoding, void(uint64_t, uint8_t));
   MOCK_METHOD2(RestoreInCIE, void(uint64_t, uint64_t));
@@ -218,7 +217,7 @@ TEST_F(CFI, IncompleteLength32) {
   EXPECT_CALL(reporter, Incomplete(_, CallFrameInfo::kUnknown))
       .WillOnce(Return());
 
-  string contents;
+  std::string contents;
   ASSERT_TRUE(section.GetContents(&contents));
 
   ByteReader byte_reader(ENDIANNESS_BIG);
@@ -244,7 +243,7 @@ TEST_F(CFI, IncompleteLength64) {
   EXPECT_CALL(reporter, Incomplete(_, CallFrameInfo::kUnknown))
       .WillOnce(Return());
 
-  string contents;
+  std::string contents;
   ASSERT_TRUE(section.GetContents(&contents));
 
   ByteReader byte_reader(ENDIANNESS_LITTLE);
@@ -269,7 +268,7 @@ TEST_F(CFI, IncompleteId32) {
   EXPECT_CALL(reporter, Incomplete(_, CallFrameInfo::kUnknown))
       .WillOnce(Return());
 
-  string contents;
+  std::string contents;
   ASSERT_TRUE(section.GetContents(&contents));
 
   ByteReader byte_reader(ENDIANNESS_BIG);
@@ -296,7 +295,7 @@ TEST_F(CFI, BadId32) {
   EXPECT_CALL(reporter, CIEPointerOutOfRange(_, 0xe802fade))
       .WillOnce(Return());
 
-  string contents;
+  std::string contents;
   ASSERT_TRUE(section.GetContents(&contents));
 
   ByteReader byte_reader(ENDIANNESS_BIG);
@@ -319,7 +318,7 @@ TEST_F(CFI, SingleCIE) {
   EXPECT_CALL(handler, Entry(_, _, _, _, _, _)).Times(0);
   EXPECT_CALL(handler, End()).Times(0);
 
-  string contents;
+  std::string contents;
   EXPECT_TRUE(section.GetContents(&contents));
   ByteReader byte_reader(ENDIANNESS_LITTLE);
   byte_reader.SetAddressSize(4);
@@ -350,7 +349,7 @@ TEST_F(CFI, OneFDE) {
     EXPECT_CALL(handler, End()).WillOnce(Return(true));
   }
 
-  string contents;
+  std::string contents;
   EXPECT_TRUE(section.GetContents(&contents));
   ByteReader byte_reader(ENDIANNESS_BIG);
   byte_reader.SetAddressSize(4);
@@ -394,7 +393,7 @@ TEST_F(CFI, TwoFDEsOneCIE) {
     EXPECT_CALL(handler, End()).WillOnce(Return(true));
   }
 
-  string contents;
+  std::string contents;
   EXPECT_TRUE(section.GetContents(&contents));
   ByteReader byte_reader(ENDIANNESS_BIG);
   byte_reader.SetAddressSize(4);
@@ -444,7 +443,7 @@ TEST_F(CFI, TwoFDEsTwoCIEs) {
     EXPECT_CALL(handler, End()).WillOnce(Return(true));
   }
 
-  string contents;
+  std::string contents;
   EXPECT_TRUE(section.GetContents(&contents));
   ByteReader byte_reader(ENDIANNESS_LITTLE);
   byte_reader.SetAddressSize(8);
@@ -489,7 +488,7 @@ TEST_F(CFI, BadVersion) {
         .WillOnce(Return(true));
   }
 
-  string contents;
+  std::string contents;
   EXPECT_TRUE(section.GetContents(&contents));
   ByteReader byte_reader(ENDIANNESS_BIG);
   byte_reader.SetAddressSize(4);
@@ -534,7 +533,7 @@ TEST_F(CFI, BadAugmentation) {
         .WillOnce(Return(true));
   }
 
-  string contents;
+  std::string contents;
   EXPECT_TRUE(section.GetContents(&contents));
   ByteReader byte_reader(ENDIANNESS_BIG);
   byte_reader.SetAddressSize(4);
@@ -569,7 +568,7 @@ TEST_F(CFI, CIEVersion1ReturnColumn) {
     EXPECT_CALL(handler, End()).WillOnce(Return(true));
   }
 
-  string contents;
+  std::string contents;
   EXPECT_TRUE(section.GetContents(&contents));
   ByteReader byte_reader(ENDIANNESS_BIG);
   byte_reader.SetAddressSize(4);
@@ -604,7 +603,7 @@ TEST_F(CFI, CIEVersion3ReturnColumn) {
     EXPECT_CALL(handler, End()).WillOnce(Return(true));
   }
 
-  string contents;
+  std::string contents;
   EXPECT_TRUE(section.GetContents(&contents));
   ByteReader byte_reader(ENDIANNESS_BIG);
   byte_reader.SetAddressSize(4);
@@ -635,7 +634,7 @@ TEST_F(CFI, CIEVersion4AdditionalFields) {
     EXPECT_CALL(handler, End()).WillOnce(Return(true));
   }
 
-  string contents;
+  std::string contents;
   EXPECT_TRUE(section.GetContents(&contents));
   ByteReader byte_reader(ENDIANNESS_BIG);
   CallFrameInfo parser(reinterpret_cast<const uint8_t*>(contents.data()),
@@ -665,7 +664,7 @@ TEST_F(CFI, CIEVersion4AdditionalFields32BitAddress) {
     EXPECT_CALL(handler, End()).WillOnce(Return(true));
   }
 
-  string contents;
+  std::string contents;
   EXPECT_TRUE(section.GetContents(&contents));
   ByteReader byte_reader(ENDIANNESS_BIG);
   CallFrameInfo parser(reinterpret_cast<const uint8_t*>(contents.data()),
@@ -692,7 +691,7 @@ TEST_F(CFI, CIEVersion4AdditionalFieldsUnexpectedAddressSize) {
   EXPECT_CALL(reporter, UnexpectedAddressSize(_, 3))
     .WillOnce(Return());
 
-  string contents;
+  std::string contents;
   EXPECT_TRUE(section.GetContents(&contents));
   ByteReader byte_reader(ENDIANNESS_BIG);
   CallFrameInfo parser(reinterpret_cast<const uint8_t*>(contents.data()),
@@ -717,7 +716,7 @@ TEST_F(CFI, CIEVersion4AdditionalFieldsUnexpectedSegmentSize) {
   EXPECT_CALL(reporter, UnexpectedSegmentSize(_, 7))
     .WillOnce(Return());
 
-  string contents;
+  std::string contents;
   EXPECT_TRUE(section.GetContents(&contents));
   ByteReader byte_reader(ENDIANNESS_BIG);
   CallFrameInfo parser(reinterpret_cast<const uint8_t*>(contents.data()),
@@ -791,7 +790,7 @@ struct CFIInsnFixture: public CFIFixture {
   // Run the contents of SECTION through a CallFrameInfo parser,
   // expecting parser.Start to return SUCCEEDS
   void ParseSection(CFISection *section, bool succeeds = true) {
-    string contents;
+    std::string contents;
     EXPECT_TRUE(section->GetContents(&contents));
     google_breakpad::Endianness endianness;
     if (section->endianness() == kBigEndian)
@@ -2115,7 +2114,7 @@ struct EHFrameFixture: public CFIInsnFixture {
   // .eh_frame data, supplying stock base addresses.
   void ParseEHFrameSection(CFISection *section, bool succeeds = true) {
     EXPECT_TRUE(section->ContainsEHFrame());
-    string contents;
+    std::string contents;
     EXPECT_TRUE(section->GetContents(&contents));
     google_breakpad::Endianness endianness;
     if (section->endianness() == kBigEndian)
@@ -2563,7 +2562,7 @@ void WriteELFFrameSection(const char *filename, const char *cfi_name,
       .Mark(&cfi_header.file_offset)
       .Append(cfi);
 
-  string contents;
+  std::string contents;
   if (!elf.GetContents(&contents)) {
     fprintf(stderr, "failed to get ELF file contents\n");
     exit(1);

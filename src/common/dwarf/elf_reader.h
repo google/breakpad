@@ -20,7 +20,6 @@
 #include <vector>
 
 #include "common/dwarf/types.h"
-#include "common/using_std_string.h"
 
 using std::vector;
 using std::pair;
@@ -35,7 +34,7 @@ class ElfReaderImpl;
 
 class ElfReader {
  public:
-  explicit ElfReader(const string& path);
+  explicit ElfReader(const std::string& path);
   ~ElfReader();
 
   // Parse the ELF prologue of this file and return whether it was
@@ -112,7 +111,7 @@ class ElfReader {
   // and store the size in "size".  On error, return NULL.  The
   // returned section data is only valid until the ElfReader gets
   // destroyed.
-  const char* GetSectionByName(const string& section_name, size_t* size);
+  const char* GetSectionByName(const std::string& section_name, size_t* size);
 
   // This is like GetSectionByName() but it returns a lot of extra information
   // about the section. The SectionInfo structure is almost identical to
@@ -130,17 +129,17 @@ class ElfReader {
     uint64_t addralign;         // Section alignment.
     uint64_t entsize;           // Entry size if section holds a table.
   };
-  const char* GetSectionInfoByName(const string& section_name,
+  const char* GetSectionInfoByName(const std::string& section_name,
                                    SectionInfo* info);
 
   // Check if "path" is an ELF binary that has not been stripped of symbol
   // tables.  This function supports both 32-bit and 64-bit ELF binaries.
-  static bool IsNonStrippedELFBinary(const string& path);
+  static bool IsNonStrippedELFBinary(const std::string& path);
 
   // Check if "path" is an ELF binary that has not been stripped of debug
   // info. Unlike IsNonStrippedELFBinary, this function will return
   // false for binaries passed through "strip -S".
-  static bool IsNonDebugStrippedELFBinary(const string& path);
+  static bool IsNonDebugStrippedELFBinary(const std::string& path);
 
   // Match a requested section name with the section name as it
   // appears in the elf-file, adjusting for compressed debug section
@@ -156,7 +155,7 @@ class ElfReader {
   ElfReaderImpl<Elf64>* GetImpl64();
 
   // Path of the file we're reading.
-  const string path_;
+  const std::string path_;
   // Read-only file descriptor for the file. May be -1 if there was an
   // error during open.
   int fd_;

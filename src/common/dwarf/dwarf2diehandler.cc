@@ -41,7 +41,6 @@
 #include <string>
 
 #include "common/dwarf/dwarf2diehandler.h"
-#include "common/using_std_string.h"
 
 namespace google_breakpad {
 
@@ -183,7 +182,7 @@ void DIEDispatcher::ProcessAttributeBuffer(uint64_t offset,
 void DIEDispatcher::ProcessAttributeString(uint64_t offset,
                                            enum DwarfAttribute attr,
                                            enum DwarfForm form,
-                                           const string& data) {
+                                           const std::string& data) {
   HandlerStack& current = die_handlers_.top();
   // This had better be an attribute of the DIE we were meant to handle.
   assert(offset == current.offset_);

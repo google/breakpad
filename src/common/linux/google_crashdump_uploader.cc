@@ -40,21 +40,14 @@
 #include <iostream>
 #include <utility>
 
-#include "common/using_std_string.h"
-
 namespace google_breakpad {
 
-GoogleCrashdumpUploader::GoogleCrashdumpUploader(const string& product,
-                                                 const string& version,
-                                                 const string& guid,
-                                                 const string& ptime,
-                                                 const string& ctime,
-                                                 const string& email,
-                                                 const string& comments,
-                                                 const string& minidump_pathname,
-                                                 const string& crash_server,
-                                                 const string& proxy_host,
-                                                 const string& proxy_userpassword) {
+GoogleCrashdumpUploader::GoogleCrashdumpUploader(
+    const std::string& product, const std::string& version,
+    const std::string& guid, const std::string& ptime, const std::string& ctime,
+    const std::string& email, const std::string& comments,
+    const std::string& minidump_pathname, const std::string& crash_server,
+    const std::string& proxy_host, const std::string& proxy_userpassword) {
   std::unique_ptr<LibcurlWrapper> http_layer{new LibcurlWrapper()};
   Init(product,
        version,
@@ -71,17 +64,11 @@ GoogleCrashdumpUploader::GoogleCrashdumpUploader(const string& product,
 }
 
 GoogleCrashdumpUploader::GoogleCrashdumpUploader(
-    const string& product,
-    const string& version,
-    const string& guid,
-    const string& ptime,
-    const string& ctime,
-    const string& email,
-    const string& comments,
-    const string& minidump_pathname,
-    const string& crash_server,
-    const string& proxy_host,
-    const string& proxy_userpassword,
+    const std::string& product, const std::string& version,
+    const std::string& guid, const std::string& ptime, const std::string& ctime,
+    const std::string& email, const std::string& comments,
+    const std::string& minidump_pathname, const std::string& crash_server,
+    const std::string& proxy_host, const std::string& proxy_userpassword,
     std::unique_ptr<LibcurlWrapper> http_layer) {
   Init(product,
        version,
@@ -97,18 +84,13 @@ GoogleCrashdumpUploader::GoogleCrashdumpUploader(
        std::move(http_layer));
 }
 
-void GoogleCrashdumpUploader::Init(const string& product,
-                                   const string& version,
-                                   const string& guid,
-                                   const string& ptime,
-                                   const string& ctime,
-                                   const string& email,
-                                   const string& comments,
-                                   const string& minidump_pathname,
-                                   const string& crash_server,
-                                   const string& proxy_host,
-                                   const string& proxy_userpassword,
-                                   std::unique_ptr<LibcurlWrapper> http_layer) {
+void GoogleCrashdumpUploader::Init(
+    const std::string& product, const std::string& version,
+    const std::string& guid, const std::string& ptime, const std::string& ctime,
+    const std::string& email, const std::string& comments,
+    const std::string& minidump_pathname, const std::string& crash_server,
+    const std::string& proxy_host, const std::string& proxy_userpassword,
+    std::unique_ptr<LibcurlWrapper> http_layer) {
   product_ = product;
   version_ = version;
   guid_ = guid;
@@ -141,7 +123,7 @@ void GoogleCrashdumpUploader::Init(const string& product,
 }
 
 bool GoogleCrashdumpUploader::CheckRequiredParametersArePresent() {
-  string error_text;
+  std::string error_text;
   if (product_.empty()) {
     error_text.append("\nProduct name must be specified.");
   }
@@ -167,8 +149,8 @@ bool GoogleCrashdumpUploader::CheckRequiredParametersArePresent() {
 }
 
 bool GoogleCrashdumpUploader::Upload(int* http_status_code,
-                                     string* http_response_header,
-                                     string* http_response_body) {
+                                     std::string* http_response_header,
+                                     std::string* http_response_body) {
   bool ok = http_layer_->Init();
   if (!ok) {
     std::cout << "http layer init failed";

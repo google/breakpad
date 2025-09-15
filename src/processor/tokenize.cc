@@ -36,8 +36,6 @@
 #include <string>
 #include <vector>
 
-#include "common/using_std_string.h"
-
 namespace google_breakpad {
 
 #ifdef _MSC_VER
@@ -73,7 +71,7 @@ bool Tokenize(char* line,
   return tokens->size() == static_cast<unsigned int>(max_tokens);
 }
 
-void StringToVector(const string& str, vector<char>& vec) {
+void StringToVector(const std::string& str, vector<char>& vec) {
   vec.resize(str.length() + 1);
   std::copy(str.begin(), str.end(), vec.begin());
   vec[str.length()] = '\0';

@@ -161,7 +161,7 @@ public SourceLineResolverBase::PublicSymbol {
 
 class FastSourceLineResolver::Module: public SourceLineResolverBase::Module {
  public:
-  explicit Module(const string& name) : name_(name), is_corrupt_(false) { }
+  explicit Module(const std::string& name) : name_(name), is_corrupt_(false) {}
   virtual ~Module() { }
 
   // Looks up the given relative address, and fills the StackFrame struct
@@ -209,7 +209,7 @@ class FastSourceLineResolver::Module: public SourceLineResolverBase::Module {
   friend class ModuleComparer;
   typedef StaticMap<int, char> FileMap;
 
-  string name_;
+  std::string name_;
   StaticMap<int, char> files_;
   StaticRangeMap<MemAddr, Function> functions_;
   StaticAddressMap<MemAddr, PublicSymbol> public_symbols_;

@@ -41,6 +41,7 @@
 #include <algorithm>
 #include <iostream>
 #include <memory>
+#include <string>
 #include <utility>
 #include <vector>
 
@@ -55,15 +56,15 @@ using std::vector;
 struct Options {
   Options() = default;
 
-  string srcPath;
-  string dsymPath;
+  std::string srcPath;
+  std::string dsymPath;
   std::optional<ArchInfo> arch;
   bool header_only = false;
   bool cfi = true;
   bool handle_inter_cu_refs = true;
   bool handle_inlines = false;
   bool enable_multiple = false;
-  string module_name;
+  std::string module_name;
   bool prefer_extern_name = false;
   bool report_warnings = false;
 };
@@ -155,7 +156,7 @@ static bool Start(const Options& options) {
   // data from the source Mach-O file.
   bool split_module =
     !options.dsymPath.empty() && !options.srcPath.empty() && options.cfi;
-  const string& primary_file =
+  const std::string& primary_file =
     split_module ? options.dsymPath : options.srcPath;
 
   dump_symbols.SetReportWarnings(options.report_warnings);

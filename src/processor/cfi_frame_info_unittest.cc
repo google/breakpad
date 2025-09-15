@@ -38,7 +38,6 @@
 #include <string.h>
 
 #include "breakpad_googletest_includes.h"
-#include "common/using_std_string.h"
 #include "processor/cfi_frame_info.h"
 #include "google_breakpad/processor/memory_region.h"
 
@@ -296,9 +295,9 @@ TEST_F(Scope, SeparateTempsRA) {
 
 class MockCFIRuleParserHandler: public CFIRuleParser::Handler {
  public:
-  MOCK_METHOD1(CFARule, void(const string&));
-  MOCK_METHOD1(RARule,  void(const string&));
-  MOCK_METHOD2(RegisterRule, void(const string&, const string&));
+  MOCK_METHOD1(CFARule, void(const std::string&));
+  MOCK_METHOD1(RARule, void(const std::string&));
+  MOCK_METHOD2(RegisterRule, void(const std::string&, const std::string&));
 };
 
 // A fixture class for testing CFIRuleParser.

@@ -38,18 +38,20 @@
 
 #include "processor/pathname_stripper.h"
 
+#include <string>
+
 namespace google_breakpad {
 
 // static
-string PathnameStripper::File(const string& path) {
-  string::size_type slash = path.rfind('/');
-  string::size_type backslash = path.rfind('\\');
+std::string PathnameStripper::File(const std::string& path) {
+  std::string::size_type slash = path.rfind('/');
+  std::string::size_type backslash = path.rfind('\\');
 
-  string::size_type file_start = 0;
-  if (slash != string::npos &&
-      (backslash == string::npos || slash > backslash)) {
+  std::string::size_type file_start = 0;
+  if (slash != std::string::npos &&
+      (backslash == std::string::npos || slash > backslash)) {
     file_start = slash + 1;
-  } else if (backslash != string::npos) {
+  } else if (backslash != std::string::npos) {
     file_start = backslash + 1;
   }
 

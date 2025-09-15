@@ -56,7 +56,7 @@
 
 namespace google_breakpad {
 
-bool ModuleComparer::Compare(const string& symbol_data) {
+bool ModuleComparer::Compare(const std::string& symbol_data) {
   std::unique_ptr<BasicModule> basic_module(new BasicModule("test_module"));
   std::unique_ptr<FastModule> fast_module(new FastModule("test_module"));
 
@@ -100,7 +100,7 @@ bool ModuleComparer::CompareModule(const BasicModule *basic_module,
     while (iter1 != basic_module->files_.end()
         && iter2 != fast_module->files_.end()) {
       ASSERT_TRUE(iter1->first == iter2.GetKey());
-      string tmp(iter2.GetValuePtr());
+      std::string tmp(iter2.GetValuePtr());
       ASSERT_TRUE(iter1->second == tmp);
       ++iter1;
       ++iter2;
@@ -154,7 +154,7 @@ bool ModuleComparer::CompareModule(const BasicModule *basic_module,
 
   // Compare cfi_initial_rules_:
   {
-    RangeMap<MemAddr, string>::MapConstIterator iter1;
+    RangeMap<MemAddr, std::string>::MapConstIterator iter1;
     StaticRangeMap<MemAddr, char>::MapConstIterator iter2;
     iter1 = basic_module->cfi_initial_rules_.map_.begin();
     iter2 = fast_module->cfi_initial_rules_.map_.begin();
@@ -162,7 +162,7 @@ bool ModuleComparer::CompareModule(const BasicModule *basic_module,
         && iter2 != fast_module->cfi_initial_rules_.map_.end()) {
       ASSERT_TRUE(iter1->first == iter2.GetKey());
       ASSERT_TRUE(iter1->second.base() == iter2.GetValuePtr()->base());
-      string tmp(iter2.GetValuePtr()->entryptr());
+      std::string tmp(iter2.GetValuePtr()->entryptr());
       ASSERT_TRUE(iter1->second.entry() == tmp);
       ++iter1;
       ++iter2;
@@ -173,14 +173,14 @@ bool ModuleComparer::CompareModule(const BasicModule *basic_module,
 
   // Compare cfi_delta_rules_:
   {
-    map<MemAddr, string>::const_iterator iter1;
+    map<MemAddr, std::string>::const_iterator iter1;
     StaticMap<MemAddr, char>::iterator iter2;
     iter1 = basic_module->cfi_delta_rules_.begin();
     iter2 = fast_module->cfi_delta_rules_.begin();
     while (iter1 != basic_module->cfi_delta_rules_.end()
         && iter2 != fast_module->cfi_delta_rules_.end()) {
       ASSERT_TRUE(iter1->first == iter2.GetKey());
-      string tmp(iter2.GetValuePtr());
+      std::string tmp(iter2.GetValuePtr());
       ASSERT_TRUE(iter1->second == tmp);
       ++iter1;
       ++iter2;

@@ -94,7 +94,7 @@ StackFrameSymbolizer::SymbolizerResult StackFrameSymbolizer::FillSourceLineInfo(
   }
 
   // Start fetching symbol from supplier.
-  string symbol_file;
+  std::string symbol_file;
   char* symbol_data = nullptr;
   size_t symbol_data_size;
   SymbolSupplier::SymbolResult symbol_result = supplier_->GetCStringSymbolData(

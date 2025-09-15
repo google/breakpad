@@ -137,7 +137,7 @@ int main(int argc, char** argv) {
     }
   }
   const char* binary;
-  std::vector<string> debug_dirs;
+  std::vector<std::string> debug_dirs;
   binary = argv[arg_index];
   for (int debug_dir_index = arg_index + 1;
        debug_dir_index < argc;

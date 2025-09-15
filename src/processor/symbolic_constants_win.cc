@@ -45,8 +45,8 @@
 
 namespace google_breakpad {
 
-string NTStatusToString(uint32_t ntstatus) {
-  string reason;
+std::string NTStatusToString(uint32_t ntstatus) {
+  std::string reason;
   // The content of this switch was created from ntstatus.h in the 8.1 SDK with
   //
   // egrep '#define [A-Z_0-9]+\s+\(\(NTSTATUS\)0xC[0-9A-F]+L\)' ntstatus.h

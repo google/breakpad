@@ -43,7 +43,6 @@
 #include "common/linux/memory_mapped_file.h"
 #include "common/tests/auto_tempdir.h"
 #include "common/tests/file_utils.h"
-#include "common/using_std_string.h"
 
 using google_breakpad::AutoTempDir;
 using google_breakpad::MemoryMappedFile;
@@ -86,7 +85,7 @@ TEST_F(MemoryMappedFileTest, MapNonexistentFile) {
 
 TEST_F(MemoryMappedFileTest, MapEmptyFile) {
   AutoTempDir temp_dir;
-  string test_file = temp_dir.path() + "/empty_file";
+  std::string test_file = temp_dir.path() + "/empty_file";
   ASSERT_TRUE(WriteFile(test_file.c_str(), nullptr, 0));
 
   {
@@ -108,7 +107,7 @@ TEST_F(MemoryMappedFileTest, MapNonEmptyFile) {
   }
 
   AutoTempDir temp_dir;
-  string test_file = temp_dir.path() + "/test_file";
+  std::string test_file = temp_dir.path() + "/test_file";
   ASSERT_TRUE(WriteFile(test_file.c_str(), data, data_size));
 
   {
@@ -142,8 +141,8 @@ TEST_F(MemoryMappedFileTest, RemapAfterMap) {
   }
 
   AutoTempDir temp_dir;
-  string test_file1 = temp_dir.path() + "/test_file1";
-  string test_file2 = temp_dir.path() + "/test_file2";
+  std::string test_file1 = temp_dir.path() + "/test_file1";
+  std::string test_file2 = temp_dir.path() + "/test_file2";
   ASSERT_TRUE(WriteFile(test_file1.c_str(), data1, data1_size));
   ASSERT_TRUE(WriteFile(test_file2.c_str(), data2, data2_size));
 
@@ -187,7 +186,7 @@ TEST_F(MemoryMappedFileTest, MapWithOffset) {
   }
 
   AutoTempDir temp_dir;
-  string test_file1 = temp_dir.path() + "/test_file1";
+  std::string test_file1 = temp_dir.path() + "/test_file1";
   ASSERT_TRUE(WriteFile(test_file1.c_str(), data1, data1_size));
   {
     MemoryMappedFile mapped_file(test_file1.c_str(), page_size);

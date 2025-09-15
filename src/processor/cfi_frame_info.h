@@ -40,7 +40,6 @@
 #include <map>
 #include <string>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 
 namespace google_breakpad {
@@ -65,15 +64,16 @@ class MemoryRegion;
 class CFIFrameInfo {
  public:
   // A map from register names onto values.
-  template<typename ValueType> class RegisterValueMap: 
-    public map<string, ValueType> { };
+  template <typename ValueType>
+  class RegisterValueMap : public map<std::string, ValueType> {};
 
   // Set the expression for computing a call frame address, return
   // address, or register's value. At least the CFA rule and the RA
   // rule must be set before calling FindCallerRegs.
-  void SetCFARule(const string& expression) { cfa_rule_ = expression; }
-  void SetRARule(const string& expression)  { ra_rule_ = expression; }
-  void SetRegisterRule(const string& register_name, const string& expression) {
+  void SetCFARule(const std::string& expression) { cfa_rule_ = expression; }
+  void SetRARule(const std::string& expression) { ra_rule_ = expression; }
+  void SetRegisterRule(const std::string& register_name,
+                       const std::string& expression) {
     register_rules_[register_name] = expression;
   }
 
@@ -101,12 +101,12 @@ class CFIFrameInfo {
 
   // Serialize the rules in this object into a string in the format
   // of STACK CFI records.
-  string Serialize() const;
+  std::string Serialize() const;
 
  private:
 
-  // A map from register names onto evaluation rules. 
-  typedef map<string, string> RuleMap;
+  // A map from register names onto evaluation rules.
+  typedef map<std::string, std::string> RuleMap;
 
   // In this type, a "postfix expression" is an expression of the sort
   // interpreted by google_breakpad::PostfixEvaluator.
@@ -116,7 +116,7 @@ class CFIFrameInfo {
   // remains unchanged throughout the frame's lifetime. You should
   // evaluate this expression with a dictionary initially populated
   // with the values of the current frame's known registers.
-  string cfa_rule_;
+  std::string cfa_rule_;
 
   // The following expressions should be evaluated with a dictionary
   // initially populated with the values of the current frame's known
@@ -124,8 +124,8 @@ class CFIFrameInfo {
   // cfa_rule expression, above.
 
   // A postfix expression for computing the current frame's return
-  // address. 
-  string ra_rule_;
+  // address.
+  std::string ra_rule_;
 
   // For a register named REG, rules[REG] is a postfix expression
   // which leaves the value of REG in the calling frame on the top of
@@ -147,11 +147,12 @@ class CFIRuleParser {
     virtual ~Handler() { }
 
     // The input specifies EXPRESSION as the CFA/RA computation rule.
-    virtual void CFARule(const string& expression) = 0;
-    virtual void RARule(const string& expression) = 0;
+    virtual void CFARule(const std::string& expression) = 0;
+    virtual void RARule(const std::string& expression) = 0;
 
     // The input specifies EXPRESSION as the recovery rule for register NAME.
-    virtual void RegisterRule(const string& name, const string& expression) = 0;
+    virtual void RegisterRule(const std::string& name,
+                              const std::string& expression) = 0;
   };
     
   // Construct a parser which feeds its results to HANDLER.
@@ -161,7 +162,7 @@ class CFIRuleParser {
   // recovery rules, as appearing in STACK CFI records. Report the
   // results of parsing by making the appropriate calls to handler_.
   // Return true if parsing was successful, false otherwise.
-  bool Parse(const string& rule_set);
+  bool Parse(const std::string& rule_set);
 
  private:
   // Report any accumulated rule to handler_
@@ -171,7 +172,7 @@ class CFIRuleParser {
   Handler* handler_;
 
   // Working data.
-  string name_, expression_;
+  std::string name_, expression_;
 };
 
 // A handler for rule set parsing that populates a CFIFrameInfo with
@@ -182,9 +183,9 @@ class CFIFrameInfoParseHandler: public CFIRuleParser::Handler {
   CFIFrameInfoParseHandler(CFIFrameInfo* frame_info)
       : frame_info_(frame_info) { }
 
-  void CFARule(const string& expression);
-  void RARule(const string& expression);
-  void RegisterRule(const string& name, const string& expression);
+  void CFARule(const std::string& expression);
+  void RARule(const std::string& expression);
+  void RegisterRule(const std::string& name, const std::string& expression);
 
  private:
   CFIFrameInfo* frame_info_;

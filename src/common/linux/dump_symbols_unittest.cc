@@ -48,17 +48,15 @@
 #include "common/linux/dump_symbols.h"
 #include "common/linux/synth_elf.h"
 #include "common/module.h"
-#include "common/using_std_string.h"
 
 namespace google_breakpad {
 
 bool ReadSymbolDataInternal(const uint8_t* obj_file,
-                            const string& obj_filename,
-                            const string& obj_os,
-                            const string& module_id,
-                            const std::vector<string>& debug_dir,
-                            const DumpOptions& options,
-                            Module** module);
+                            const std::string& obj_filename,
+                            const std::string& obj_os,
+                            const std::string& module_id,
+                            const std::vector<std::string>& debug_dir,
+                            const DumpOptions& options, Module** module);
 
 using google_breakpad::synth_elf::ELF;
 using google_breakpad::synth_elf::Notes;
@@ -75,7 +73,7 @@ template<typename ElfClass>
 class DumpSymbols : public Test {
  public:
   void GetElfContents(ELF& elf) {
-    string contents;
+    std::string contents;
     ASSERT_TRUE(elf.GetContents(&contents));
     ASSERT_LT(0U, contents.size());
 
@@ -98,12 +96,8 @@ TYPED_TEST(DumpSymbols, Invalid) {
   Module* module;
   DumpOptions options(ALL_SYMBOL_DATA, true, false, false);
   EXPECT_FALSE(ReadSymbolDataInternal(reinterpret_cast<uint8_t*>(&header),
-                                      "foo",
-                                      "Linux",
-                                      "",
-                                      vector<string>(),
-                                      options,
-                                      &module));
+                                      "foo", "Linux", "", vector<std::string>(),
+                                      options, &module));
 }
 
 TYPED_TEST(DumpSymbols, SimplePublic) {
@@ -135,21 +129,16 @@ TYPED_TEST(DumpSymbols, SimplePublic) {
 
   Module* module;
   DumpOptions options(ALL_SYMBOL_DATA, true, false, false);
-  EXPECT_TRUE(ReadSymbolDataInternal(this->elfdata,
-                                     "foo",
-                                     "Linux",
-                                     "",
-                                     vector<string>(),
-                                     options,
-                                     &module));
+  EXPECT_TRUE(ReadSymbolDataInternal(this->elfdata, "foo", "Linux", "",
+                                     vector<std::string>(), options, &module));
 
   stringstream s;
   module->Write(s, ALL_SYMBOL_DATA);
-  const string expected =
-    string("MODULE Linux ") + TypeParam::kMachineName
-    + " 000000000000000000000000000000000 foo\n"
-    "INFO CODE_ID 00000000000000000000000000000000\n"
-    "PUBLIC 1000 0 superfunc\n";
+  const std::string expected = std::string("MODULE Linux ") +
+                               TypeParam::kMachineName +
+                               " 000000000000000000000000000000000 foo\n"
+                               "INFO CODE_ID 00000000000000000000000000000000\n"
+                               "PUBLIC 1000 0 superfunc\n";
   EXPECT_EQ(expected, s.str());
   delete module;
 }
@@ -183,21 +172,17 @@ TYPED_TEST(DumpSymbols, ModuleIdOverride) {
 
   Module* module;
   DumpOptions options(ALL_SYMBOL_DATA, true, false, false);
-  EXPECT_TRUE(ReadSymbolDataInternal(this->elfdata,
-                                     "foo",
-                                     "Linux",
-                                     "some_module_id",
-                                     vector<string>(),
-                                     options,
-                                     &module));
+  EXPECT_TRUE(ReadSymbolDataInternal(this->elfdata, "foo", "Linux",
+                                     "some_module_id", vector<std::string>(),
+                                     options, &module));
 
   stringstream s;
   module->Write(s, ALL_SYMBOL_DATA);
-  const string expected =
-    string("MODULE Linux ") + TypeParam::kMachineName
-    + " some_module_id foo\n"
-    "INFO CODE_ID 00000000000000000000000000000000\n"
-    "PUBLIC 1000 0 superfunc\n";
+  const std::string expected = std::string("MODULE Linux ") +
+                               TypeParam::kMachineName +
+                               " some_module_id foo\n"
+                               "INFO CODE_ID 00000000000000000000000000000000\n"
+                               "PUBLIC 1000 0 superfunc\n";
   EXPECT_EQ(expected, s.str());
   delete module;
 }
@@ -241,21 +226,16 @@ TYPED_TEST(DumpSymbols, SimpleBuildID) {
 
   Module* module;
   DumpOptions options(ALL_SYMBOL_DATA, true, false, false);
-  EXPECT_TRUE(ReadSymbolDataInternal(this->elfdata,
-                                     "foo",
-                                     "Linux",
-                                     "",
-                                     vector<string>(),
-                                     options,
-                                     &module));
+  EXPECT_TRUE(ReadSymbolDataInternal(this->elfdata, "foo", "Linux", "",
+                                     vector<std::string>(), options, &module));
 
   stringstream s;
   module->Write(s, ALL_SYMBOL_DATA);
-  const string expected =
-    string("MODULE Linux ") + TypeParam::kMachineName
-    + " 030201000504070608090A0B0C0D0E0F0 foo\n"
-    "INFO CODE_ID 000102030405060708090A0B0C0D0E0F10111213\n"
-    "PUBLIC 1000 0 superfunc\n";
+  const std::string expected =
+      std::string("MODULE Linux ") + TypeParam::kMachineName +
+      " 030201000504070608090A0B0C0D0E0F0 foo\n"
+      "INFO CODE_ID 000102030405060708090A0B0C0D0E0F10111213\n"
+      "PUBLIC 1000 0 superfunc\n";
   EXPECT_EQ(expected, s.str());
   delete module;
 }

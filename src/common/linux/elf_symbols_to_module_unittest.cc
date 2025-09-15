@@ -37,6 +37,7 @@
 
 #include <elf.h>
 
+#include <cstdint>
 #include <string>
 #include <vector>
 
@@ -45,7 +46,6 @@
 #include "common/linux/synth_elf.h"
 #include "common/module.h"
 #include "common/test_assembler.h"
-#include "common/using_std_string.h"
 
 using google_breakpad::Module;
 using google_breakpad::synth_elf::StringTable;
@@ -67,7 +67,7 @@ public:
                                                      value_size(value_size) {}
 
   bool ProcessSection() {
-    string section_contents, table_contents;
+    std::string section_contents, table_contents;
     section.GetContents(&section_contents);
     table.GetContents(&table_contents);
 
@@ -85,7 +85,7 @@ public:
   Module module;
   Section section;
   StringTable table;
-  string section_contents;
+  std::string section_contents;
   // 4 or 8 (bytes)
   size_t value_size;
 
@@ -97,8 +97,8 @@ class ELFSymbolsToModuleTest32 : public ELFSymbolsToModuleTestFixture,
 public:
   ELFSymbolsToModuleTest32() : ELFSymbolsToModuleTestFixture(GetParam(), 4) {}
 
-  void AddElf32Sym(const string& name, uint32_t value,
-                   uint32_t size, unsigned info, uint16_t shndx) {
+  void AddElf32Sym(const std::string& name, uint32_t value, uint32_t size,
+                   unsigned info, uint16_t shndx) {
     section
       .D32(table.Add(name))
       .D32(value)
@@ -116,7 +116,7 @@ TEST_P(ELFSymbolsToModuleTest32, NoFuncs) {
 }
 
 TEST_P(ELFSymbolsToModuleTest32, OneFunc) {
-  const string kFuncName = "superfunc";
+  const std::string kFuncName = "superfunc";
   const uint32_t kFuncAddr = 0x1000;
   const uint32_t kFuncSize = 0x10;
 
@@ -134,7 +134,7 @@ TEST_P(ELFSymbolsToModuleTest32, OneFunc) {
 }
 
 TEST_P(ELFSymbolsToModuleTest32, NameOutOfBounds) {
-  const string kFuncName = "";
+  const std::string kFuncName = "";
   const uint32_t kFuncAddr = 0x1000;
   const uint32_t kFuncSize = 0x10;
 
@@ -158,7 +158,7 @@ TEST_P(ELFSymbolsToModuleTest32, NameOutOfBounds) {
 }
 
 TEST_P(ELFSymbolsToModuleTest32, NonTerminatedStringTable) {
-  const string kFuncName = "";
+  const std::string kFuncName = "";
   const uint32_t kFuncAddr = 0x1000;
   const uint32_t kFuncSize = 0x10;
 
@@ -187,13 +187,13 @@ TEST_P(ELFSymbolsToModuleTest32, NonTerminatedStringTable) {
 }
 
 TEST_P(ELFSymbolsToModuleTest32, MultipleFuncs) {
-  const string kFuncName1 = "superfunc";
+  const std::string kFuncName1 = "superfunc";
   const uint32_t kFuncAddr1 = 0x10001000;
   const uint32_t kFuncSize1 = 0x10;
-  const string kFuncName2 = "awesomefunc";
+  const std::string kFuncName2 = "awesomefunc";
   const uint32_t kFuncAddr2 = 0x20002000;
   const uint32_t kFuncSize2 = 0x2f;
-  const string kFuncName3 = "megafunc";
+  const std::string kFuncName3 = "megafunc";
   const uint32_t kFuncAddr3 = 0x30003000;
   const uint32_t kFuncSize3 = 0x3c;
 
@@ -225,7 +225,7 @@ TEST_P(ELFSymbolsToModuleTest32, MultipleFuncs) {
 }
 
 TEST_P(ELFSymbolsToModuleTest32, SkipStuff) {
-  const string kFuncName = "superfunc";
+  const std::string kFuncName = "superfunc";
   const uint32_t kFuncAddr = 0x1000;
   const uint32_t kFuncSize = 0x10;
 
@@ -267,8 +267,8 @@ class ELFSymbolsToModuleTest64 : public ELFSymbolsToModuleTestFixture,
 public:
   ELFSymbolsToModuleTest64() : ELFSymbolsToModuleTestFixture(GetParam(), 8) {}
 
-  void AddElf64Sym(const string& name, uint64_t value,
-                   uint64_t size, unsigned info, uint16_t shndx) {
+  void AddElf64Sym(const std::string& name, uint64_t value, uint64_t size,
+                   unsigned info, uint16_t shndx) {
     section
       .D32(table.Add(name))
       .D8(info)
@@ -286,7 +286,7 @@ TEST_P(ELFSymbolsToModuleTest64, NoFuncs) {
 }
 
 TEST_P(ELFSymbolsToModuleTest64, OneFunc) {
-  const string kFuncName = "superfunc";
+  const std::string kFuncName = "superfunc";
   const uint64_t kFuncAddr = 0x1000200030004000ULL;
   const uint64_t kFuncSize = 0x1000;
 
@@ -304,13 +304,13 @@ TEST_P(ELFSymbolsToModuleTest64, OneFunc) {
 }
 
 TEST_P(ELFSymbolsToModuleTest64, MultipleFuncs) {
-  const string kFuncName1 = "superfunc";
+  const std::string kFuncName1 = "superfunc";
   const uint64_t kFuncAddr1 = 0x1000100010001000ULL;
   const uint64_t kFuncSize1 = 0x1000;
-  const string kFuncName2 = "awesomefunc";
+  const std::string kFuncName2 = "awesomefunc";
   const uint64_t kFuncAddr2 = 0x2000200020002000ULL;
   const uint64_t kFuncSize2 = 0x2f00;
-  const string kFuncName3 = "megafunc";
+  const std::string kFuncName3 = "megafunc";
   const uint64_t kFuncAddr3 = 0x3000300030003000ULL;
   const uint64_t kFuncSize3 = 0x3c00;
 
@@ -342,7 +342,7 @@ TEST_P(ELFSymbolsToModuleTest64, MultipleFuncs) {
 }
 
 TEST_P(ELFSymbolsToModuleTest64, SkipStuff) {
-  const string kFuncName = "superfunc";
+  const std::string kFuncName = "superfunc";
   const uint64_t kFuncAddr = 0x1000100010001000ULL;
   const uint64_t kFuncSize = 0x1000;
 

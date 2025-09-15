@@ -53,7 +53,6 @@
 #include "common/linux/eintr_wrapper.h"
 #include "common/tests/auto_tempdir.h"
 #include "common/tests/file_utils.h"
-#include "common/using_std_string.h"
 
 namespace {
 
@@ -116,11 +115,11 @@ bool CrashGenerator::HasDefaultCorePattern() const {
          buffer_size == 5 && memcmp(buffer, "core", 4) == 0;
 }
 
-string CrashGenerator::GetCoreFilePath() const {
+std::string CrashGenerator::GetCoreFilePath() const {
   return temp_dir_.path() + "/core";
 }
 
-string CrashGenerator::GetDirectoryOfProcFilesCopy() const {
+std::string CrashGenerator::GetDirectoryOfProcFilesCopy() const {
   return temp_dir_.path() + "/proc";
 }
 
@@ -209,7 +208,7 @@ bool CrashGenerator::CreateChildCrash(
     }
     if (SetCoreFileSizeLimit(kCoreSizeLimit)) {
       CreateThreadsInChildProcess(num_threads);
-      string proc_dir = GetDirectoryOfProcFilesCopy();
+      std::string proc_dir = GetDirectoryOfProcFilesCopy();
       if (mkdir(proc_dir.c_str(), 0755) == -1) {
         perror("CrashGenerator: Failed to create proc directory");
         exit(1);

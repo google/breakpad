@@ -31,7 +31,6 @@
 
 #include <string>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 
 namespace google_breakpad {
@@ -71,7 +70,7 @@ struct StackFrame {
 
   // Return a string describing how this stack frame was found
   // by the stackwalker.
-  string trust_description() const {
+  std::string trust_description() const {
     switch (trust) {
       case StackFrame::FRAME_TRUST_CONTEXT:
         return "given as instruction pointer in context";
@@ -125,14 +124,14 @@ struct StackFrame {
   const CodeModule *module;
 
   // The function name, may be omitted if debug symbols are not available.
-  string function_name;
+  std::string function_name;
 
   // The start address of the function, may be omitted if debug symbols
   // are not available.
   uint64_t function_base;
 
   // The source file name, may be omitted if debug symbols are not available.
-  string source_file_name;
+  std::string source_file_name;
 
   // The (1-based) source line number, may be omitted if debug symbols are
   // not available.

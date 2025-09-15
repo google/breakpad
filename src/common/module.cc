@@ -101,11 +101,9 @@ void Module::InlineOriginMap::SetReference(uint64_t offset,
   references_[offset] = specification_offset;
 }
 
-Module::Module(const string& name,
-               const string& os,
-               const string& architecture,
-               const string& id,
-               const string& code_id /* = "" */,
+Module::Module(const std::string& name, const std::string& os,
+               const std::string& architecture, const std::string& id,
+               const std::string& code_id /* = "" */,
                bool enable_multiple_field /* = false*/,
                bool prefer_extern_name /* = false*/)
     : name_(name),
@@ -166,7 +164,7 @@ bool Module::AddFunction(Function* function) {
       // Don't mark multiple in this case.
       if (name_mismatch &&
           (function->name == "<name omitted>" ||
-           found_ext->name.find(function->name.str()) != string::npos)) {
+           found_ext->name.find(function->name.str()) != std::string::npos)) {
         is_multiple_based_on_name = false;
       } else {
         is_multiple_based_on_name = name_mismatch;
@@ -244,7 +242,7 @@ void Module::GetExterns(vector<Extern*>* vec,
   }
 }
 
-Module::File* Module::FindFile(const string& name) {
+Module::File* Module::FindFile(const std::string& name) {
   // A tricky bit here.  The key of each map entry needs to be a
   // pointer to the entry's File's name string.  This means that we
   // can't do the initial lookup with any operation that would create
@@ -267,11 +265,11 @@ Module::File* Module::FindFile(const string& name) {
 }
 
 Module::File* Module::FindFile(const char* name) {
-  string name_string = name;
+  std::string name_string = name;
   return FindFile(name_string);
 }
 
-Module::File* Module::FindExistingFile(const string& name) {
+Module::File* Module::FindExistingFile(const std::string& name) {
   FileByNameMap::iterator it = files_.find(&name);
   return (it == files_.end()) ? nullptr : it->second;
 }

@@ -8,7 +8,6 @@
 #include <string>
 #include <vector>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 
 namespace google_breakpad {
@@ -44,15 +43,15 @@ struct MappedMemoryRegion {
   // NOTE: path names aren't guaranteed to point at valid files. For example,
   // "[heap]" and "[stack]" are used to represent the location of the process'
   // heap and stack, respectively.
-  string path;
+  std::string path;
 
   // The line from /proc/<pid>/maps that this struct represents.
-  string line;
+  std::string line;
 };
 
 // Parses /proc/<pid>/maps input data and stores in |regions|. Returns true
 // and updates |regions| if and only if all of |input| was successfully parsed.
-bool ParseProcMaps(const string& input,
+bool ParseProcMaps(const std::string& input,
                    std::vector<MappedMemoryRegion>* regions);
 
 }  // namespace google_breakpad

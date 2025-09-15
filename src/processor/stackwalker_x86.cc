@@ -278,7 +278,7 @@ StackFrameX86* StackwalkerX86::GetCallerByWindowsFrameInfo(
   // function. Because of bugs described below, the stack may need to be
   // scanned for these values. The results of program string evaluation
   // will be used to determine whether to scan for better values.
-  string program_string;
+  std::string program_string;
   bool recover_ebp = true;
 
   trust = StackFrame::FRAME_TRUST_CFI;
@@ -373,7 +373,7 @@ StackFrameX86* StackwalkerX86::GetCallerByWindowsFrameInfo(
   // For some more details on this topic, take a look at the following thread:
   // https://groups.google.com/forum/#!topic/google-breakpad-dev/ZP1FA9B1JjM
   if ((StackFrameX86::CONTEXT_VALID_EBP & last_frame->context_validity) != 0 &&
-      program_string.find('@') != string::npos) {
+      program_string.find('@') != std::string::npos) {
     raSearchStart = last_frame->context.ebp + 4;
   }
 

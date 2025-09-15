@@ -44,27 +44,27 @@
 //    using google_breakpad::SynthMinidump::Dump;
 //    using google_breakpad::SynthMinidump::Memory;
 //    using google_breakpad::SynthMinidump::Thread;
-//    
+//
 //    Dump minidump(MD_NORMAL, kLittleEndian);
-//    
+//
 //    Memory stack1(minidump, 0x569eb0a9);
 //    ... build contents of stack1 with test_assembler::Section functions ...
-//    
+//
 //    MDRawContextX86 x86_context1;
 //    x86_context1.context_flags = MD_CONTEXT_X86;
 //    x86_context1.eip = 0x7c90eb94;
 //    x86_context1.esp = 0x569eb0a9;
 //    x86_context1.ebp = x86_context1.esp + something appropriate;
 //    Context context1(minidump, x86_context1);
-//    
+//
 //    Thread thread1(minidump, 0xe4a4821d, stack1, context1);
-//    
+//
 //    minidump.Add(&stack1);
 //    minidump.Add(&context1);
 //    minidump.Add(&thread1);
 //    minidump.Finish();
-//    
-//    string contents;
+//
+//    std::string contents;
 //    EXPECT_TRUE(minidump.GetContents(&contents));
 //    // contents now holds the bytes of a minidump file
 //
@@ -76,7 +76,7 @@
 // been placed by the time we call dump.GetContents to obtain the
 // bytes, all the Labels' values will be known, and everything will
 // get patched up appropriately.
-//   
+//
 // The dump.Add(thing) functions append THINGS's contents to the
 // minidump, but they also do two other things:
 //
@@ -113,7 +113,6 @@
 #include <string>
 
 #include "common/test_assembler.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 #include "google_breakpad/common/minidump_format.h"
 
@@ -192,13 +191,13 @@ class SystemInfo: public Stream {
   // Stock MDRawSystemInfo information and associated strings, for
   // writing tests.
   static const MDRawSystemInfo windows_x86;
-  static const string windows_x86_csd_version;
+  static const std::string windows_x86_csd_version;
 };
 
 // An MDString: a string preceded by a 32-bit length.
 class String: public Section {
  public:
-  String(const Dump& dump, const string& value);
+  String(const Dump& dump, const std::string& value);
 
   // Append an MDRVA referring to this string to SECTION.
   void CiteStringIn(test_assembler::Section* section) const;

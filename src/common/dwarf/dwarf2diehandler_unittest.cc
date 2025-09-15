@@ -44,7 +44,6 @@
 #include "breakpad_googletest_includes.h"
 
 #include "common/dwarf/dwarf2diehandler.h"
-#include "common/using_std_string.h"
 
 using std::make_pair;
 
@@ -75,7 +74,7 @@ class MockDIEHandler: public DIEHandler {
   MOCK_METHOD4(ProcessAttributeBuffer,
                void(DwarfAttribute, DwarfForm, const uint8_t*, uint64_t));
   MOCK_METHOD3(ProcessAttributeString,
-               void(DwarfAttribute, DwarfForm, const string&));
+               void(DwarfAttribute, DwarfForm, const std::string&));
   MOCK_METHOD3(ProcessAttributeSignature,
                void(DwarfAttribute, DwarfForm, uint64_t));
   MOCK_METHOD0(EndAttributes, bool());
@@ -94,7 +93,7 @@ class MockRootDIEHandler: public RootDIEHandler {
   MOCK_METHOD4(ProcessAttributeBuffer,
                void(DwarfAttribute, DwarfForm, const uint8_t*, uint64_t));
   MOCK_METHOD3(ProcessAttributeString,
-               void(DwarfAttribute, DwarfForm, const string&));
+               void(DwarfAttribute, DwarfForm, const std::string&));
   MOCK_METHOD3(ProcessAttributeSignature,
                void(DwarfAttribute, DwarfForm, uint64_t));
   MOCK_METHOD0(EndAttributes, bool());
@@ -195,7 +194,7 @@ TEST(Dwarf2DIEHandler, PassAttributeValues) {
   const uint8_t buffer[10] = {
     0x24, 0x24, 0x35, 0x9a, 0xca, 0xcf, 0xa8, 0x84, 0xa7, 0x18
   };
-  string str = "\xc8\x26\x2e\x0d\xa4\x9c\x37\xd6\xfb\x1d";
+  std::string str = "\xc8\x26\x2e\x0d\xa4\x9c\x37\xd6\xfb\x1d";
 
   // Set expectations.
   {

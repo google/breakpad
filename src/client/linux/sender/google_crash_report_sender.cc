@@ -36,8 +36,6 @@
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 
-#include "common/using_std_string.h"
-
 DEFINE_string(crash_server, "https://clients2.google.com/cr",
               "The crash server to upload minidumps to.");
 DEFINE_string(product_name, "",
@@ -63,7 +61,7 @@ DEFINE_string(proxy_userpasswd, "",
 
 
 bool CheckForRequiredFlagsOrDie() {
-  string error_text = "";
+  std::string error_text = "";
   if (FLAGS_product_name.empty()) {
     error_text.append("\nProduct name must be specified.");
   }

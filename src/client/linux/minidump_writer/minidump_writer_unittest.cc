@@ -53,7 +53,6 @@
 #include "common/scoped_ptr.h"
 #include "common/tests/auto_tempdir.h"
 #include "common/tests/file_utils.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/minidump.h"
 
 using namespace google_breakpad;
@@ -84,7 +83,7 @@ TEST(MinidumpWriterTest, SetupWithPath) {
   memset(&context, 0, sizeof(context));
 
   AutoTempDir temp_dir;
-  string templ = temp_dir.path() + kMDWriterUnitTestFileName;
+  std::string templ = temp_dir.path() + kMDWriterUnitTestFileName;
   // Set a non-zero tid to avoid tripping asserts.
   context.tid = child;
   ASSERT_TRUE(WriteMinidump(templ.c_str(), child, &context, sizeof(context)));
@@ -114,7 +113,7 @@ TEST(MinidumpWriterTest, SetupWithFD) {
   memset(&context, 0, sizeof(context));
 
   AutoTempDir temp_dir;
-  string templ = temp_dir.path() + kMDWriterUnitTestFileName;
+  std::string templ = temp_dir.path() + kMDWriterUnitTestFileName;
   int fd = open(templ.c_str(), O_CREAT | O_WRONLY, S_IRWXU);
   // Set a non-zero tid to avoid tripping asserts.
   context.tid = child;
@@ -141,7 +140,7 @@ TEST(MinidumpWriterTest, MappingInfo) {
     0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
     0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF
   };
-  const string module_identifier = "33221100554477668899AABBCCDDEEFF0";
+  const std::string module_identifier = "33221100554477668899AABBCCDDEEFF0";
 
   // Get some memory.
   char* memory =
@@ -170,7 +169,7 @@ TEST(MinidumpWriterTest, MappingInfo) {
   context.tid = child;
 
   AutoTempDir temp_dir;
-  string templ = temp_dir.path() + kMDWriterUnitTestFileName;
+  std::string templ = temp_dir.path() + kMDWriterUnitTestFileName;
 
   // Add information about the mapped memory.
   MappingInfo info;
@@ -246,7 +245,7 @@ TEST(MinidumpWriterTest, MinidumpSkippedIfRequested) {
   context.tid = child;
 
   AutoTempDir temp_dir;
-  string templ = temp_dir.path() + kMDWriterUnitTestFileName;
+  std::string templ = temp_dir.path() + kMDWriterUnitTestFileName;
 
   // pass an invalid principal mapping address, which will force
   // WriteMinidump to not write a minidump.
@@ -291,7 +290,7 @@ TEST(MinidumpWriterTest, MinidumpStacksSkippedIfRequested) {
   context.tid = child;
 
   AutoTempDir temp_dir;
-  string templ = temp_dir.path() + kMDWriterUnitTestFileName;
+  std::string templ = temp_dir.path() + kMDWriterUnitTestFileName;
 
   // Pass an invalid principal mapping address, which will force
   // WriteMinidump to not dump any thread stacks.
@@ -342,7 +341,7 @@ TEST(MinidumpWriterTest, StacksAreSanitizedIfRequested) {
   context.tid = child;
 
   AutoTempDir temp_dir;
-  string templ = temp_dir.path() + kMDWriterUnitTestFileName;
+  std::string templ = temp_dir.path() + kMDWriterUnitTestFileName;
   // pass an invalid principal mapping address, which will force
   // WriteMinidump to not dump any thread stacks.
   ASSERT_TRUE(WriteMinidump(templ.c_str(), child, &context, sizeof(context),
@@ -395,7 +394,7 @@ TEST(MinidumpWriterTest, BuildIDLong) {
   context.tid = child;
 
   AutoTempDir temp_dir;
-  const string dump_path = temp_dir.path() + kMDWriterUnitTestFileName;
+  const std::string dump_path = temp_dir.path() + kMDWriterUnitTestFileName;
 
   EXPECT_TRUE(WriteMinidump(dump_path.c_str(),
                             child, &context, sizeof(context)));
@@ -410,9 +409,9 @@ TEST(MinidumpWriterTest, BuildIDLong) {
   ASSERT_TRUE(module_list);
   const MinidumpModule* module = module_list->GetMainModule();
   ASSERT_TRUE(module);
-  const string module_identifier = "030201000504070608090A0B0C0D0E0F0";
+  const std::string module_identifier = "030201000504070608090A0B0C0D0E0F0";
   // This is passed explicitly to the linker in Makefile.am
-  const string build_id =
+  const std::string build_id =
       "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f";
   EXPECT_EQ(module_identifier, module->debug_identifier());
   EXPECT_EQ(build_id, module->code_identifier());
@@ -435,11 +434,11 @@ TEST(MinidumpWriterTest, MappingInfoContained) {
     0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
     0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF
   };
-  const string module_identifier = "33221100554477668899AABBCCDDEEFF0";
+  const std::string module_identifier = "33221100554477668899AABBCCDDEEFF0";
 
   // mmap a file
   AutoTempDir temp_dir;
-  string tempfile = temp_dir.path() + "/minidump-writer-unittest-temp";
+  std::string tempfile = temp_dir.path() + "/minidump-writer-unittest-temp";
   int fd = open(tempfile.c_str(), O_RDWR | O_CREAT, 0);
   ASSERT_NE(-1, fd);
   unlink(tempfile.c_str());
@@ -474,7 +473,7 @@ TEST(MinidumpWriterTest, MappingInfoContained) {
   memset(&context, 0, sizeof(context));
   context.tid = 1;
 
-  string dumpfile = temp_dir.path() + kMDWriterUnitTestFileName;
+  std::string dumpfile = temp_dir.path() + kMDWriterUnitTestFileName;
 
   // Add information about the mapped memory. Report it as being larger than
   // it actually is.
@@ -516,8 +515,8 @@ TEST(MinidumpWriterTest, MappingInfoContained) {
 }
 
 TEST(MinidumpWriterTest, DeletedBinary) {
-  const string kNumberOfThreadsArgument = "1";
-  const string helper_path(GetHelperBinary());
+  const std::string kNumberOfThreadsArgument = "1";
+  const std::string helper_path(GetHelperBinary());
   if (helper_path.empty()) {
     FAIL() << "Couldn't find helper binary";
     exit(1);
@@ -525,7 +524,7 @@ TEST(MinidumpWriterTest, DeletedBinary) {
 
   // Copy binary to a temp file.
   AutoTempDir temp_dir;
-  string binpath = temp_dir.path() + "/linux-dumper-unittest-helper";
+  std::string binpath = temp_dir.path() + "/linux-dumper-unittest-helper";
   ASSERT_TRUE(CopyFile(helper_path, binpath))
       << "Failed to copy " << helper_path << " to " << binpath;
   ASSERT_EQ(0, chmod(binpath.c_str(), 0755));
@@ -569,7 +568,7 @@ TEST(MinidumpWriterTest, DeletedBinary) {
   ExceptionHandler::CrashContext context;
   memset(&context, 0, sizeof(context));
 
-  string templ = temp_dir.path() + kMDWriterUnitTestFileName;
+  std::string templ = temp_dir.path() + kMDWriterUnitTestFileName;
   // Set a non-zero tid to avoid tripping asserts.
   context.tid = child_pid;
   ASSERT_TRUE(WriteMinidump(templ.c_str(), child_pid, &context,
@@ -593,11 +592,12 @@ TEST(MinidumpWriterTest, DeletedBinary) {
   PageAllocator allocator;
   wasteful_vector<uint8_t> identifier(&allocator, kDefaultBuildIdSize);
   EXPECT_TRUE(fileid.ElfFileIdentifier(identifier));
-  string identifier_string = FileID::ConvertIdentifierToUUIDString(identifier);
-  string module_identifier(identifier_string);
+  std::string identifier_string =
+      FileID::ConvertIdentifierToUUIDString(identifier);
+  std::string module_identifier(identifier_string);
   // Strip out dashes
   size_t pos;
-  while ((pos = module_identifier.find('-')) != string::npos) {
+  while ((pos = module_identifier.find('-')) != std::string::npos) {
     module_identifier.erase(pos, 1);
   }
   // And append a zero, because module IDs include an "age" field
@@ -646,7 +646,7 @@ TEST(MinidumpWriterTest, AdditionalMemory) {
   context.tid = child;
 
   AutoTempDir temp_dir;
-  string templ = temp_dir.path() + kMDWriterUnitTestFileName;
+  std::string templ = temp_dir.path() + kMDWriterUnitTestFileName;
   unlink(templ.c_str());
 
   MappingList mappings;
@@ -728,7 +728,7 @@ TEST(MinidumpWriterTest, InvalidStackPointer) {
 #endif
 
   AutoTempDir temp_dir;
-  string templ = temp_dir.path() + kMDWriterUnitTestFileName;
+  std::string templ = temp_dir.path() + kMDWriterUnitTestFileName;
   // NOTE: In previous versions of Breakpad, WriteMinidump() would fail if
   // presented with an invalid stack pointer.
   ASSERT_TRUE(WriteMinidump(templ.c_str(), child, &context, sizeof(context)));
@@ -771,7 +771,7 @@ TEST(MinidumpWriterTest, MinidumpSizeLimit) {
   char number_of_threads_arg[3];
   sprintf(number_of_threads_arg, "%d", kNumberOfThreadsInHelperProgram);
 
-  string helper_path(GetHelperBinary());
+  std::string helper_path(GetHelperBinary());
   if (helper_path.empty()) {
     FAIL() << "Couldn't find helper binary";
     exit(1);
@@ -826,8 +826,7 @@ TEST(MinidumpWriterTest, MinidumpSizeLimit) {
 
   // First, write a minidump with no size limit.
   {
-    string normal_dump = temp_dir.path() +
-        "/minidump-writer-unittest.dmp";
+    std::string normal_dump = temp_dir.path() + "/minidump-writer-unittest.dmp";
     ASSERT_TRUE(WriteMinidump(normal_dump.c_str(), -1,
                               child_pid, nullptr, 0,
                               MappingList(), AppMemoryList()));
@@ -857,8 +856,8 @@ TEST(MinidumpWriterTest, MinidumpSizeLimit) {
     // that the limiting code will not kick in.
     const off_t minidump_size_limit = normal_file_size + 1024*1024;
 
-    string same_dump = temp_dir.path() +
-        "/minidump-writer-unittest-same.dmp";
+    std::string same_dump =
+        temp_dir.path() + "/minidump-writer-unittest-same.dmp";
     ASSERT_TRUE(WriteMinidump(same_dump.c_str(), minidump_size_limit,
                               child_pid, nullptr, 0,
                               MappingList(), AppMemoryList()));
@@ -890,8 +889,8 @@ TEST(MinidumpWriterTest, MinidumpSizeLimit) {
     if (normal_file_size < minidump_size_limit)
       minidump_size_limit = normal_file_size;
 
-    string limit_dump = temp_dir.path() +
-        "/minidump-writer-unittest-limit.dmp";
+    std::string limit_dump =
+        temp_dir.path() + "/minidump-writer-unittest-limit.dmp";
     ASSERT_TRUE(WriteMinidump(limit_dump.c_str(), minidump_size_limit,
                               child_pid, nullptr, 0,
                               MappingList(), AppMemoryList()));

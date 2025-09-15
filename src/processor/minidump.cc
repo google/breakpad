@@ -258,8 +258,8 @@ inline void Swap(uint16_t* data, size_t size_in_bytes) {
 // parameter, a converter that uses iconv would also need to take the host
 // CPU's endianness into consideration.  It doesn't seems worth the trouble
 // of making it a dependency when we don't care about anything but UTF-16.
-string* UTF16ToUTF8(const vector<uint16_t>& in, bool swap) {
-  std::unique_ptr<string> out(new string());
+std::string* UTF16ToUTF8(const vector<uint16_t>& in, bool swap) {
+  std::unique_ptr<std::string> out(new std::string());
 
   // Set the string's initial capacity to the number of UTF-16 characters,
   // because the UTF-8 representation will always be at least this long.
@@ -352,8 +352,7 @@ inline void Swap(MDTimeZoneInformation* time_zone) {
 
 void ConvertUTF16BufferToUTF8String(const uint16_t* utf16_data,
                                     size_t max_length_in_bytes,
-                                    string* utf8_result,
-                                    bool swap) {
+                                    std::string* utf8_result, bool swap) {
   // Since there is no explicit byte length for each string, use
   // UTF16codeunits to calculate word length, then derive byte
   // length from that.
@@ -363,7 +362,7 @@ void ConvertUTF16BufferToUTF8String(const uint16_t* utf16_data,
     size_t byte_length = word_length * sizeof(utf16_data[0]);
     vector<uint16_t> utf16_vector(word_length);
     memcpy(&utf16_vector[0], &utf16_data[0], byte_length);
-    std::unique_ptr<string> temp(UTF16ToUTF8(utf16_vector, swap));
+    std::unique_ptr<std::string> temp(UTF16ToUTF8(utf16_vector, swap));
     if (temp.get()) {
       utf8_result->assign(*temp);
     }
@@ -371,7 +370,6 @@ void ConvertUTF16BufferToUTF8String(const uint16_t* utf16_data,
     utf8_result->clear();
   }
 }
-
 
 // For fields that may or may not be valid, PrintValueOrInvalid will print the
 // string "(invalid)" if the field is not valid, and will print the value if
@@ -395,7 +393,7 @@ void PrintValueOrInvalid(bool valid,
 }
 
 // Converts a time_t to a string showing the time in UTC.
-string TimeTToUTCString(time_t tt) {
+std::string TimeTToUTCString(time_t tt) {
   struct tm timestruct;
 #ifdef _WIN32
   gmtime_s(&timestruct, &tt);
@@ -406,13 +404,13 @@ string TimeTToUTCString(time_t tt) {
   char timestr[20];
   size_t rv = strftime(timestr, 20, "%Y-%m-%d %H:%M:%S", &timestruct);
   if (rv == 0) {
-    return string();
+    return std::string();
   }
 
-  return string(timestr);
+  return std::string(timestr);
 }
 
-string MDGUIDToString(const MDGUID& uuid) {
+std::string MDGUIDToString(const MDGUID& uuid) {
   char buf[37];
   snprintf(buf, sizeof(buf), "%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x",
            uuid.data1,
@@ -429,8 +427,8 @@ string MDGUIDToString(const MDGUID& uuid) {
   return std::string(buf);
 }
 
-bool IsDevAshmem(const string& filename) {
-  const string kDevAshmem("/dev/ashmem/");
+bool IsDevAshmem(const std::string& filename) {
+  const std::string kDevAshmem("/dev/ashmem/");
   return filename.compare(0, kDevAshmem.length(), kDevAshmem) == 0;
 }
 
@@ -2133,7 +2131,7 @@ bool MinidumpThreadName::GetThreadID(uint32_t* thread_id) const {
   return true;
 }
 
-string MinidumpThreadName::GetThreadName() const {
+std::string MinidumpThreadName::GetThreadName() const {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid MinidumpThreadName for GetThreadName";
     return "";
@@ -2402,8 +2400,7 @@ bool MinidumpModule::ReadAuxiliaryData() {
   return true;
 }
 
-
-string MinidumpModule::code_file() const {
+std::string MinidumpModule::code_file() const {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid MinidumpModule for code_file";
     return "";
@@ -2412,8 +2409,7 @@ string MinidumpModule::code_file() const {
   return *name_;
 }
 
-
-string MinidumpModule::code_identifier() const {
+std::string MinidumpModule::code_identifier() const {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid MinidumpModule for code_identifier";
     return "";
@@ -2435,7 +2431,7 @@ string MinidumpModule::code_identifier() const {
     return "";
   }
 
-  string identifier;
+  std::string identifier;
 
   switch (raw_system_info->platform_id) {
     case MD_OS_WIN32_NT:
@@ -2496,8 +2492,7 @@ string MinidumpModule::code_identifier() const {
   return identifier;
 }
 
-
-string MinidumpModule::debug_file() const {
+std::string MinidumpModule::debug_file() const {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid MinidumpModule for debug_file";
     return "";
@@ -2506,7 +2501,7 @@ string MinidumpModule::debug_file() const {
   if (!has_debug_info_)
     return "";
 
-  string file;
+  std::string file;
   // Prefer the CodeView record if present.
   if (cv_record_) {
     if (cv_record_signature_ == MD_CVINFOPDB70_SIGNATURE) {
@@ -2546,7 +2541,7 @@ string MinidumpModule::debug_file() const {
       if (!misc_record->unicode) {
         // If it's not Unicode, just stuff it into the string.  It's unclear
         // if misc_record->data is 0-terminated, so use an explicit size.
-        file = string(
+        file = std::string(
             reinterpret_cast<const char*>(misc_record->data),
             module_.misc_record.data_size - MDImageDebugMisc_minsize);
       } else {
@@ -2569,9 +2564,10 @@ string MinidumpModule::debug_file() const {
 
           // GetMiscRecord already byte-swapped the data[] field if it contains
           // UTF-16, so pass false as the swap argument.
-          std::unique_ptr<string> new_file(UTF16ToUTF8(string_utf16, false));
+          std::unique_ptr<std::string> new_file(
+              UTF16ToUTF8(string_utf16, false));
           if (new_file.get() != nullptr) {
-            file = string(*new_file);
+            file = std::string(*new_file);
           }
         }
       }
@@ -2585,8 +2581,7 @@ string MinidumpModule::debug_file() const {
   return file;
 }
 
-static string guid_and_age_to_debug_id(const MDGUID& guid,
-                                       uint32_t age) {
+static std::string guid_and_age_to_debug_id(const MDGUID& guid, uint32_t age) {
   char identifier_string[41];
   snprintf(identifier_string, sizeof(identifier_string),
            "%08X%04X%04X%02X%02X%02X%02X%02X%02X%02X%02X%x",
@@ -2605,7 +2600,7 @@ static string guid_and_age_to_debug_id(const MDGUID& guid,
   return identifier_string;
 }
 
-string MinidumpModule::debug_identifier() const {
+std::string MinidumpModule::debug_identifier() const {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid MinidumpModule for debug_identifier";
     return "";
@@ -2614,7 +2609,7 @@ string MinidumpModule::debug_identifier() const {
   if (!has_debug_info_)
     return "";
 
-  string identifier;
+  std::string identifier;
 
   // Use the CodeView record if present.
   if (cv_record_) {
@@ -2675,14 +2670,13 @@ string MinidumpModule::debug_identifier() const {
   return identifier;
 }
 
-
-string MinidumpModule::version() const {
+std::string MinidumpModule::version() const {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid MinidumpModule for version";
     return "";
   }
 
-  string version;
+  std::string version;
 
   if (module_.version_info.signature == MD_VSFIXEDFILEINFO_SIGNATURE &&
       module_.version_info.struct_version & MD_VSFIXEDFILEINFO_VERSION) {
@@ -2706,7 +2700,6 @@ string MinidumpModule::version() const {
 
   return version;
 }
-
 
 CodeModule* MinidumpModule::Copy() const {
   return new BasicCodeModule(this);
@@ -3065,7 +3058,7 @@ void MinidumpModule::Print() {
     printf("  (misc_record).unicode           = %d\n",
            misc_record->unicode);
     if (misc_record->unicode) {
-      string misc_record_data_utf8;
+      std::string misc_record_data_utf8;
       ConvertUTF16BufferToUTF8String(
           reinterpret_cast<const uint16_t*>(misc_record->data),
           misc_record->length - offsetof(MDImageDebugMisc, data),
@@ -3891,9 +3884,8 @@ bool MinidumpSystemInfo::Read(uint32_t expected_size) {
   return true;
 }
 
-
-string MinidumpSystemInfo::GetOS() {
-  string os;
+std::string MinidumpSystemInfo::GetOS() {
+  std::string os;
 
   if (!valid_) {
     BPLOG(ERROR) << "Invalid MinidumpSystemInfo for GetOS";
@@ -3947,14 +3939,13 @@ string MinidumpSystemInfo::GetOS() {
   return os;
 }
 
-
-string MinidumpSystemInfo::GetCPU() {
+std::string MinidumpSystemInfo::GetCPU() {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid MinidumpSystemInfo for GetCPU";
     return "";
   }
 
-  string cpu;
+  std::string cpu;
 
   switch (system_info_.processor_architecture) {
     case MD_CPU_ARCHITECTURE_X86:
@@ -4004,8 +3995,7 @@ string MinidumpSystemInfo::GetCPU() {
   return cpu;
 }
 
-
-const string* MinidumpSystemInfo::GetCSDVersion() {
+const std::string* MinidumpSystemInfo::GetCSDVersion() {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid MinidumpSystemInfo for GetCSDVersion";
     return nullptr;
@@ -4020,8 +4010,7 @@ const string* MinidumpSystemInfo::GetCSDVersion() {
   return csd_version_;
 }
 
-
-const string* MinidumpSystemInfo::GetCPUVendor() {
+const std::string* MinidumpSystemInfo::GetCPUVendor() {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid MinidumpSystemInfo for GetCPUVendor";
     return nullptr;
@@ -4046,12 +4035,11 @@ const string* MinidumpSystemInfo::GetCPUVendor() {
              (system_info_.cpu.x86_cpu_info.vendor_id[2] >> 8) & 0xff,
              (system_info_.cpu.x86_cpu_info.vendor_id[2] >> 16) & 0xff,
              (system_info_.cpu.x86_cpu_info.vendor_id[2] >> 24) & 0xff);
-    cpu_vendor_ = new string(cpu_vendor_string);
+    cpu_vendor_ = new std::string(cpu_vendor_string);
   }
 
   return cpu_vendor_;
 }
-
 
 void MinidumpSystemInfo::Print() {
   if (!valid_) {
@@ -4106,14 +4094,14 @@ void MinidumpSystemInfo::Print() {
              i, system_info_.cpu.other_cpu_info.processor_features[i]);
     }
   }
-  const string* csd_version = GetCSDVersion();
+  const std::string* csd_version = GetCSDVersion();
   if (csd_version) {
     printf("  (csd_version)                              = \"%s\"\n",
            csd_version->c_str());
   } else {
     printf("  (csd_version)                              = (null)\n");
   }
-  const string* cpu_vendor = GetCPUVendor();
+  const std::string* cpu_vendor = GetCPUVendor();
   if (cpu_vendor) {
     printf("  (cpu_vendor)                               = \"%s\"\n",
            cpu_vendor->c_str());
@@ -4141,7 +4129,7 @@ MinidumpUnloadedModule::~MinidumpUnloadedModule() {
   delete name_;
 }
 
-string MinidumpUnloadedModule::code_file() const {
+std::string MinidumpUnloadedModule::code_file() const {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid MinidumpUnloadedModule for code_file";
     return "";
@@ -4150,7 +4138,7 @@ string MinidumpUnloadedModule::code_file() const {
   return *name_;
 }
 
-string MinidumpUnloadedModule::code_identifier() const {
+std::string MinidumpUnloadedModule::code_identifier() const {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid MinidumpUnloadedModule for code_identifier";
     return "";
@@ -4170,7 +4158,7 @@ string MinidumpUnloadedModule::code_identifier() const {
     return "";
   }
 
-  string identifier;
+  std::string identifier;
 
   switch (raw_system_info->platform_id) {
     case MD_OS_WIN32_NT:
@@ -4212,15 +4200,15 @@ string MinidumpUnloadedModule::code_identifier() const {
   return identifier;
 }
 
-string MinidumpUnloadedModule::debug_file() const {
+std::string MinidumpUnloadedModule::debug_file() const {
   return "";  // No debug info provided with unloaded modules
 }
 
-string MinidumpUnloadedModule::debug_identifier() const {
+std::string MinidumpUnloadedModule::debug_identifier() const {
   return "";  // No debug info provided with unloaded modules
 }
 
-string MinidumpUnloadedModule::version() const {
+std::string MinidumpUnloadedModule::version() const {
   return "";  // No version info provided with unloaded modules
 }
 
@@ -5257,7 +5245,7 @@ bool MinidumpLinuxMapsList::Read(uint32_t expected_size) {
     BPLOG(ERROR) << "MinidumpLinuxMapsList failed to read bytes";
     return false;
   }
-  string map_string(mapping_bytes.begin(), mapping_bytes.end());
+  std::string map_string(mapping_bytes.begin(), mapping_bytes.end());
   vector<MappedMemoryRegion> all_regions;
 
   // Parse string into mapping data.
@@ -5555,8 +5543,8 @@ void MinidumpCrashpadInfo::Print() {
 uint32_t Minidump::max_streams_ = 128;
 unsigned int Minidump::max_string_length_ = 1024;
 
-
-Minidump::Minidump(const string& path, bool hexdump, unsigned int hexdump_width)
+Minidump::Minidump(const std::string& path, bool hexdump,
+                   unsigned int hexdump_width)
     : header_(),
       directory_(nullptr),
       stream_map_(new MinidumpStreamMap()),
@@ -5566,8 +5554,7 @@ Minidump::Minidump(const string& path, bool hexdump, unsigned int hexdump_width)
       is_big_endian_(false),
       valid_(false),
       hexdump_(hexdump),
-      hexdump_width_(hexdump_width) {
-}
+      hexdump_width_(hexdump_width) {}
 
 Minidump::Minidump(istream& stream)
     : header_(),
@@ -5605,7 +5592,7 @@ bool Minidump::Open() {
 
   stream_ = new ifstream(path_.c_str(), std::ios::in | std::ios::binary);
   if (!stream_ || !stream_->good()) {
-    string error_string;
+    std::string error_string;
     int error_code = ErrnoString(&error_string);
     BPLOG(ERROR) << "Minidump could not open minidump " << path_ <<
                     ", error " << error_code << ": " << error_string;
@@ -6092,7 +6079,7 @@ bool Minidump::ReadBytes(void* bytes, size_t count) {
   stream_->read(static_cast<char*>(bytes), count);
   std::streamsize bytes_read = stream_->gcount();
   if (bytes_read == -1) {
-    string error_string;
+    std::string error_string;
     int error_code = ErrnoString(&error_string);
     BPLOG(ERROR) << "ReadBytes: error " << error_code << ": " << error_string;
     return false;
@@ -6123,7 +6110,7 @@ bool Minidump::SeekSet(off_t offset) {
   }
   stream_->seekg(offset, std::ios_base::beg);
   if (!stream_->good()) {
-    string error_string;
+    std::string error_string;
     int error_code = ErrnoString(&error_string);
     BPLOG(ERROR) << "SeekSet: error " << error_code << ": " << error_string;
     return false;
@@ -6147,8 +6134,7 @@ off_t Minidump::Tell() {
   }
 }
 
-
-string* Minidump::ReadString(off_t offset) {
+std::string* Minidump::ReadString(off_t offset) {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid Minidump for ReadString";
     return nullptr;
@@ -6194,8 +6180,7 @@ string* Minidump::ReadString(off_t offset) {
   return UTF16ToUTF8(string_utf16, swap_);
 }
 
-
-bool Minidump::ReadUTF8String(off_t offset, string* string_utf8) {
+bool Minidump::ReadUTF8String(off_t offset, std::string* string_utf8) {
   if (!valid_) {
     BPLOG(ERROR) << "Invalid Minidump for ReadString";
     return false;
@@ -6235,7 +6220,6 @@ bool Minidump::ReadUTF8String(off_t offset, string* string_utf8) {
   return true;
 }
 
-
 bool Minidump::ReadStringList(
     off_t offset,
     std::vector<std::string>* string_list) {
@@ -6270,7 +6254,7 @@ bool Minidump::ReadStringList(
       Swap(&rvas[index]);
     }
 
-    string entry;
+    std::string entry;
     if (!ReadUTF8String(rvas[index], &entry)) {
       BPLOG(ERROR) << "Minidump could not read string_list entry";
       return false;
@@ -6321,13 +6305,13 @@ bool Minidump::ReadSimpleStringDictionary(
       Swap(&entries[index]);
     }
 
-    string key;
+    std::string key;
     if (!ReadUTF8String(entries[index].key, &key)) {
       BPLOG(ERROR) << "Minidump could not read simple_string_dictionary key";
       return false;
     }
 
-    string value;
+    std::string value;
     if (!ReadUTF8String(entries[index].value, &value)) {
       BPLOG(ERROR) << "Minidump could not read simple_string_dictionary value";
       return false;
@@ -6383,7 +6367,7 @@ bool Minidump::ReadCrashpadAnnotationsList(
       Swap(&annotation);
     }
 
-    string name;
+    std::string name;
     if (!ReadUTF8String(annotation.name, &name)) {
       BPLOG(ERROR) << "Minidump could not read annotation name";
       return false;

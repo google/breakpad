@@ -111,11 +111,12 @@ const MDRawSystemInfo SystemInfo::windows_x86 = {
   }
 };
 
-const string SystemInfo::windows_x86_csd_version = "Service Pack 2";
+const std::string SystemInfo::windows_x86_csd_version = "Service Pack 2";
 
-String::String(const Dump& dump, const string& contents) : Section(dump) {
+String::String(const Dump& dump, const std::string& contents) : Section(dump) {
   D32(contents.size() * 2);
-  for (string::const_iterator i = contents.begin(); i != contents.end(); i++)
+  for (std::string::const_iterator i = contents.begin(); i != contents.end();
+       i++)
     D16(*i);
 }
 

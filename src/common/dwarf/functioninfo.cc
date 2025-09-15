@@ -44,35 +44,33 @@
 
 #include "common/dwarf/functioninfo.h"
 #include "common/dwarf/bytereader.h"
-#include "common/using_std_string.h"
 
 namespace google_breakpad {
 
 CULineInfoHandler::CULineInfoHandler(std::vector<SourceFileInfo>* files,
-                                     std::vector<string>* dirs,
-                                     LineMap* linemap):linemap_(linemap),
-                                                       files_(files),
-                                                       dirs_(dirs) {
+                                     std::vector<std::string>* dirs,
+                                     LineMap* linemap)
+    : linemap_(linemap), files_(files), dirs_(dirs) {
   // In dwarf4, the dirs and files are 1 indexed, and in dwarf5 they are zero
   // indexed. This is handled in the LineInfo reader, so empty files are not
   // needed here.
 }
 
-void CULineInfoHandler::DefineDir(const string& name, uint32_t dir_num) {
+void CULineInfoHandler::DefineDir(const std::string& name, uint32_t dir_num) {
   // These should never come out of order, actually
   assert(dir_num == dirs_->size());
   dirs_->push_back(name);
 }
 
-void CULineInfoHandler::DefineFile(const string& name,
-                                   int32 file_num, uint32_t dir_num,
-                                   uint64_t mod_time, uint64_t length) {
+void CULineInfoHandler::DefineFile(const std::string& name, int32 file_num,
+                                   uint32_t dir_num, uint64_t mod_time,
+                                   uint64_t length) {
   assert(dir_num >= 0);
   assert(dir_num < dirs_->size());
 
   // These should never come out of order, actually.
   if (file_num == (int32)files_->size() || file_num == -1) {
-    string dir = dirs_->at(dir_num);
+    std::string dir = dirs_->at(dir_num);
 
     SourceFileInfo s;
     s.lowpc = ULLONG_MAX;
@@ -146,7 +144,7 @@ bool CUFunctionInfoHandler::StartDIE(uint64_t offset, enum DwarfTag tag) {
 void CUFunctionInfoHandler::ProcessAttributeString(uint64_t offset,
                                                    enum DwarfAttribute attr,
                                                    enum DwarfForm form,
-                                                   const string& data) {
+                                                   const std::string& data) {
   if (current_function_info_) {
     if (attr == DW_AT_name)
       current_function_info_->name = data;

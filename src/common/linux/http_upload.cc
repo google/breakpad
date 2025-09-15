@@ -36,6 +36,8 @@
 #include <dlfcn.h>
 #include "third_party/curl/curl.h"
 
+#include <string>
+
 namespace {
 
 // Callback to get the response data from server.
@@ -44,7 +46,7 @@ static size_t WriteCallback(void* ptr, size_t size,
   if (!userp)
     return 0;
 
-  string* response = reinterpret_cast<string*>(userp);
+  std::string* response = reinterpret_cast<std::string*>(userp);
   size_t real_size = size * nmemb;
   response->append(reinterpret_cast<char*>(ptr), real_size);
   return real_size;
@@ -57,15 +59,15 @@ namespace google_breakpad {
 static const char kUserAgent[] = "Breakpad/1.0 (Linux)";
 
 // static
-bool HTTPUpload::SendRequest(const string& url,
-                             const map<string, string>& parameters,
-                             const map<string, string>& files,
-                             const string& proxy,
-                             const string& proxy_user_pwd,
-                             const string& ca_certificate_file,
-                             string* response_body,
+bool HTTPUpload::SendRequest(const std::string& url,
+                             const map<std::string, std::string>& parameters,
+                             const map<std::string, std::string>& files,
+                             const std::string& proxy,
+                             const std::string& proxy_user_pwd,
+                             const std::string& ca_certificate_file,
+                             std::string* response_body,
                              long* response_code,
-                             string* error_description) {
+                             std::string* error_description) {
   if (response_code != nullptr)
     *response_code = 0;
 
@@ -136,7 +138,7 @@ bool HTTPUpload::SendRequest(const string& url,
   // Add form data.
   CURLFORMcode (*curl_formadd)(struct curl_httppost**, struct curl_httppost**, ...);
   *(void**) (&curl_formadd) = dlsym(curl_lib, "curl_formadd");
-  map<string, string>::const_iterator iter = parameters.begin();
+  map<std::string, std::string>::const_iterator iter = parameters.begin();
   for (; iter != parameters.end(); ++iter)
     (*curl_formadd)(&formpost, &lastptr,
                  CURLFORM_COPYNAME, iter->first.c_str(),
@@ -214,12 +216,12 @@ bool HTTPUpload::CheckCurlLib(void* curl_lib) {
 }
 
 // static
-bool HTTPUpload::CheckParameters(const map<string, string>& parameters) {
-  for (map<string, string>::const_iterator pos = parameters.begin();
+bool HTTPUpload::CheckParameters(
+    const map<std::string, std::string>& parameters) {
+  for (map<std::string, std::string>::const_iterator pos = parameters.begin();
        pos != parameters.end(); ++pos) {
-    const string& str = pos->first;
-    if (str.size() == 0)
-      return false;  // disallow empty parameter names
+    const std::string& str = pos->first;
+    if (str.size() == 0) return false;  // disallow empty parameter names
     for (unsigned int i = 0; i < str.size(); ++i) {
       int c = str[i];
       if (c < 32 || c == '"' || c > 127) {

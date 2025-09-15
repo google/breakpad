@@ -45,32 +45,31 @@
 
 #include "common/linux/http_upload.h"
 #include "common/path_helper.h"
-#include "common/using_std_string.h"
 
 using google_breakpad::HTTPUpload;
 
 struct Options {
-  string minidumpPath;
-  string uploadURLStr;
-  string product;
-  string version;
-  string proxy;
-  string proxy_user_pwd;
+  std::string minidumpPath;
+  std::string uploadURLStr;
+  std::string product;
+  std::string version;
+  std::string proxy;
+  std::string proxy_user_pwd;
   bool success;
 };
 
 //=============================================================================
 static void Start(Options *options) {
-  std::map<string, string> parameters;
+  std::map<std::string, std::string> parameters;
   // Add parameters
   parameters["prod"] = options->product;
   parameters["ver"] = options->version;
 
-  std::map<string, string> files;
+  std::map<std::string, std::string> files;
   files["upload_file_minidump"] = options->minidumpPath;
 
   // Send it
-  string response, error;
+  std::string response, error;
   bool success = HTTPUpload::SendRequest(options->uploadURLStr,
                                          parameters,
                                          files,

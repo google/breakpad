@@ -36,7 +36,6 @@
 
 #include <string>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 
 namespace google_breakpad {
@@ -54,13 +53,13 @@ class CodeModule {
 
   // The path or file name that the code module was loaded from.  Empty on
   // error.
-  virtual string code_file() const = 0;
+  virtual std::string code_file() const = 0;
 
   // An identifying string used to discriminate between multiple versions and
   // builds of the same code module.  This may contain a uuid, timestamp,
   // version number, or any combination of this or other information, in an
   // implementation-defined format.  Empty on error.
-  virtual string code_identifier() const = 0;
+  virtual std::string code_identifier() const = 0;
 
   // The filename containing debugging information associated with the code
   // module.  If debugging information is stored in a file separate from the
@@ -68,18 +67,18 @@ class CodeModule {
   // this will be different from code_file.  If debugging information is
   // stored in the code module itself (possibly prior to stripping), this
   // will be the same as code_file.  Empty on error.
-  virtual string debug_file() const = 0;
+  virtual std::string debug_file() const = 0;
 
   // An identifying string similar to code_identifier, but identifies a
   // specific version and build of the associated debug file.  This may be
   // the same as code_identifier when the debug_file and code_file are
   // identical or when the same identifier is used to identify distinct
   // debug and code files.
-  virtual string debug_identifier() const = 0;
+  virtual std::string debug_identifier() const = 0;
 
   // A human-readable representation of the code module's version.  Empty on
   // error.
-  virtual string version() const = 0;
+  virtual std::string version() const = 0;
 
   // Creates a new copy of this CodeModule object, which the caller takes
   // ownership of.  The new CodeModule may be of a different concrete class

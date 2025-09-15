@@ -42,7 +42,6 @@
 #include "common/dwarf/bytereader.h"
 #include "common/dwarf/bytereader-inl.h"
 #include "common/dwarf/cfi_assembler.h"
-#include "common/using_std_string.h"
 
 using google_breakpad::ByteReader;
 using google_breakpad::DwarfPointerEncoding;
@@ -56,7 +55,7 @@ using google_breakpad::test_assembler::Section;
 using testing::Test;
 
 struct ReaderFixture {
-  string contents;
+  std::string contents;
   size_t pointer_size;
 };
 

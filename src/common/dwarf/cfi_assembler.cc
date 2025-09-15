@@ -41,15 +41,13 @@
 #include <stdlib.h>
 
 namespace google_breakpad {
-  
+
 CFISection& CFISection::CIEHeader(uint64_t code_alignment_factor,
                                   int data_alignment_factor,
                                   unsigned return_address_register,
                                   uint8_t version,
-                                  const string& augmentation,
-                                  bool dwarf64,
-                                  uint8_t address_size,
-                                  uint8_t segment_size) {
+                                  const std::string& augmentation, bool dwarf64,
+                                  uint8_t address_size, uint8_t segment_size) {
   assert(!entry_length_);
   entry_length_ = new PendingLength();
   in_fde_ = false;

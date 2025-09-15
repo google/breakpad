@@ -53,7 +53,6 @@
 #include "common/dwarf/bytereader.h"
 #include "common/dwarf/dwarf2enums.h"
 #include "common/dwarf/types.h"
-#include "common/using_std_string.h"
 #include "common/dwarf/elf_reader.h"
 
 namespace google_breakpad {
@@ -64,7 +63,7 @@ class DwpReader;
 
 // This maps from a string naming a section to a pair containing a
 // the data for the section, and the size of the section.
-typedef std::map<string, std::pair<const uint8_t*, uint64_t> > SectionMap;
+typedef std::map<std::string, std::pair<const uint8_t*, uint64_t> > SectionMap;
 
 // Abstract away the difference between elf and mach-o section names.
 // Elf-names use ".section_name, mach-o uses "__section_name".  Pass "name" in
@@ -213,7 +212,7 @@ class LineInfoHandler {
 
   // Called when we define a directory.  NAME is the directory name,
   // DIR_NUM is the directory number
-  virtual void DefineDir(const string& name, uint32_t dir_num) { }
+  virtual void DefineDir(const std::string& name, uint32_t dir_num) {}
 
   // Called when we define a filename. NAME is the filename, FILE_NUM
   // is the file number which is -1 if the file index is the next
@@ -222,9 +221,9 @@ class LineInfoHandler {
   // directory index for the directory name of this file, MOD_TIME is
   // the modification time of the file, and LENGTH is the length of
   // the file
-  virtual void DefineFile(const string& name, int32_t file_num,
+  virtual void DefineFile(const std::string& name, int32_t file_num,
                           uint32_t dir_num, uint64_t mod_time,
-                          uint64_t length) { }
+                          uint64_t length) {}
 
   // Called when the line info reader has a new line, address pair
   // ready for us. ADDRESS is the address of the code, LENGTH is the
@@ -394,10 +393,9 @@ class Dwarf2Handler {
   // The attribute is for the DIE at OFFSET from the beginning of the
   // .debug_info section. Its name is ATTR, its form is FORM, and its value is
   // DATA.
-  virtual void ProcessAttributeString(uint64_t offset,
-                                      enum DwarfAttribute attr,
+  virtual void ProcessAttributeString(uint64_t offset, enum DwarfAttribute attr,
                                       enum DwarfForm form,
-                                      const string& data) { }
+                                      const std::string& data) {}
 
   // Called when we have an attribute whose value is the 64-bit signature
   // of a type unit in the .debug_types section. OFFSET is the offset of
@@ -457,7 +455,7 @@ class CompilationUnit {
   // Initialize a compilation unit.  This requires a map of sections,
   // the offset of this compilation unit in the .debug_info section, a
   // ByteReader, and a Dwarf2Handler class to call callbacks in.
-  CompilationUnit(const string& path, const SectionMap& sections,
+  CompilationUnit(const std::string& path, const SectionMap& sections,
                   uint64_t offset, ByteReader* reader, Dwarf2Handler* handler);
   virtual ~CompilationUnit() {
     if (abbrevs_) delete abbrevs_;
@@ -679,7 +677,7 @@ class CompilationUnit {
                                 SectionMap* sections);
 
   // Path of the file containing the debug information.
-  const string path_;
+  const std::string path_;
 
   // Offset from section start is the offset of this compilation unit
   // from the beginning of the .debug_info/.debug_info.dwo section.
@@ -1160,7 +1158,7 @@ class CallFrameInfo {
   // A common information entry (CIE).
   struct CIE: public Entry {
     uint8_t version;                      // CFI data version number
-    string augmentation;                // vendor format extension markers
+    std::string augmentation;             // vendor format extension markers
     uint64_t code_alignment_factor;       // scale for code address adjustments
     int data_alignment_factor;          // scale for stack pointer adjustments
     unsigned return_address_register;   // which register holds the return addr
@@ -1299,7 +1297,7 @@ class CallFrameInfo::Handler {
   // process a given FDE, the parser reiterates the appropriate CIE's
   // contents at the beginning of the FDE's rules.
   virtual bool Entry(size_t offset, uint64_t address, uint64_t length,
-                     uint8_t version, const string& augmentation,
+                     uint8_t version, const std::string& augmentation,
                      unsigned return_address) = 0;
 
   // When the Entry function returns true, the parser calls these
@@ -1348,13 +1346,13 @@ class CallFrameInfo::Handler {
   // At ADDRESS, the DWARF expression EXPRESSION yields the address at
   // which REG was saved.
   virtual bool ExpressionRule(uint64_t address, int reg,
-                              const string& expression) = 0;
+                              const std::string& expression) = 0;
 
   // At ADDRESS, the DWARF expression EXPRESSION yields the caller's
   // value for REG. (This rule doesn't provide an address at which the
   // register's value is saved.)
   virtual bool ValExpressionRule(uint64_t address, int reg,
-                                 const string& expression) = 0;
+                                 const std::string& expression) = 0;
 
   // Indicate that the rules for the address range reported by the
   // last call to Entry are complete.  End should return true if
@@ -1363,7 +1361,7 @@ class CallFrameInfo::Handler {
   virtual bool End() = 0;
 
   // The target architecture for the data.
-  virtual string Architecture() = 0;
+  virtual std::string Architecture() = 0;
 
   // Handler functions for Linux C++ exception handling data. These are
   // only called if the data includes 'z' augmentation strings.
@@ -1434,9 +1432,9 @@ class CallFrameInfo::Reporter {
   // in a Mach-O section named __debug_frame. If we support
   // Linux-style exception handling data, we could be reading an
   // .eh_frame section.
-  Reporter(const string& filename,
-           const string& section = ".debug_frame")
-      : filename_(filename), section_(section) { }
+  Reporter(const std::string& filename,
+           const std::string& section = ".debug_frame")
+      : filename_(filename), section_(section) {}
   virtual ~Reporter() { }
 
   // The CFI entry at OFFSET ends too early to be well-formed. KIND
@@ -1475,7 +1473,7 @@ class CallFrameInfo::Reporter {
   // which we don't recognize. We cannot parse DWARF CFI if it uses
   // augmentations we don't recognize.
   virtual void UnrecognizedAugmentation(uint64_t offset,
-                                        const string& augmentation);
+                                        const std::string& augmentation);
 
   // The pointer encoding ENCODING, specified by the CIE at OFFSET, is not
   // a valid encoding.
@@ -1516,10 +1514,10 @@ class CallFrameInfo::Reporter {
 
  protected:
   // The name of the file whose CFI we're reading.
-  string filename_;
+  std::string filename_;
 
   // The name of the CFI section in that file.
-  string section_;
+  std::string section_;
 };
 
 }  // namespace google_breakpad

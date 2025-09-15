@@ -37,7 +37,6 @@
 #include <string>
 
 #include "breakpad_googletest_includes.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/basic_source_line_resolver.h"
 #include "google_breakpad/processor/code_module.h"
 #include "google_breakpad/processor/stack_frame.h"
@@ -59,16 +58,16 @@ using google_breakpad::SymbolParseHelper;
 
 class TestCodeModule : public CodeModule {
  public:
-  TestCodeModule(const string& code_file) : code_file_(code_file) {}
+  TestCodeModule(const std::string& code_file) : code_file_(code_file) {}
   virtual ~TestCodeModule() {}
 
   virtual uint64_t base_address() const { return 0; }
   virtual uint64_t size() const { return 0xb000; }
-  virtual string code_file() const { return code_file_; }
-  virtual string code_identifier() const { return ""; }
-  virtual string debug_file() const { return ""; }
-  virtual string debug_identifier() const { return ""; }
-  virtual string version() const { return ""; }
+  virtual std::string code_file() const { return code_file_; }
+  virtual std::string code_identifier() const { return ""; }
+  virtual std::string debug_file() const { return ""; }
+  virtual std::string debug_identifier() const { return ""; }
+  virtual std::string version() const { return ""; }
   virtual CodeModule* Copy() const {
     return new TestCodeModule(code_file_);
   }
@@ -77,7 +76,7 @@ class TestCodeModule : public CodeModule {
   virtual void SetShrinkDownDelta(uint64_t shrink_down_delta) {}
 
  private:
-  string code_file_;
+  std::string code_file_;
 };
 
 // A mock memory region object, for use by the STACK CFI tests.
@@ -167,12 +166,12 @@ static void ClearSourceLineInfo(StackFrame* frame) {
 class TestBasicSourceLineResolver : public ::testing::Test {
  public:
   void SetUp() {
-    testdata_dir = string(getenv("srcdir") ? getenv("srcdir") : ".") +
-                         "/src/processor/testdata";
+    testdata_dir = std::string(getenv("srcdir") ? getenv("srcdir") : ".") +
+                   "/src/processor/testdata";
   }
 
   BasicSourceLineResolver resolver;
-  string testdata_dir;
+  std::string testdata_dir;
 };
 
 TEST_F(TestBasicSourceLineResolver, TestLoadAndResolve)
@@ -346,13 +345,13 @@ TEST_F(TestBasicSourceLineResolver, TestLoadAndResolve)
   frame.instruction = 0x2900;
   frame.module = &module1;
   resolver.FillSourceLineInfo(&frame, nullptr);
-  ASSERT_EQ(frame.function_name, string("PublicSymbol"));
+  ASSERT_EQ(frame.function_name, std::string("PublicSymbol"));
   EXPECT_EQ(frame.is_multiple, true);
 
   frame.instruction = 0x4000;
   frame.module = &module1;
   resolver.FillSourceLineInfo(&frame, nullptr);
-  ASSERT_EQ(frame.function_name, string("LargeFunction"));
+  ASSERT_EQ(frame.function_name, std::string("LargeFunction"));
 
   frame.instruction = 0x2181;
   frame.module = &module2;
@@ -518,13 +517,13 @@ TEST(SymbolParseHelper, ParseFileValid) {
   char kTestLine[] = "FILE 1 file name";
   ASSERT_TRUE(SymbolParseHelper::ParseFile(kTestLine, &index, &filename));
   EXPECT_EQ(1, index);
-  EXPECT_EQ("file name", string(filename));
+  EXPECT_EQ("file name", std::string(filename));
 
   // 0 is a valid index.
   char kTestLine1[] = "FILE 0 file name";
   ASSERT_TRUE(SymbolParseHelper::ParseFile(kTestLine1, &index, &filename));
   EXPECT_EQ(0, index);
-  EXPECT_EQ("file name", string(filename));
+  EXPECT_EQ("file name", std::string(filename));
 }
 
 // Test parsing of invalid FILE lines.  The format is:
@@ -567,7 +566,7 @@ TEST(SymbolParseHelper, ParseFunctionValid) {
   EXPECT_EQ(1ULL, address);
   EXPECT_EQ(2ULL, size);
   EXPECT_EQ(3, stack_param_size);
-  EXPECT_EQ("function name", string(name));
+  EXPECT_EQ("function name", std::string(name));
 
   // Test hex address, size, and param size.
   char kTestLine1[] = "FUNC a1 a2 a3 function name";
@@ -578,7 +577,7 @@ TEST(SymbolParseHelper, ParseFunctionValid) {
   EXPECT_EQ(0xa1ULL, address);
   EXPECT_EQ(0xa2ULL, size);
   EXPECT_EQ(0xa3, stack_param_size);
-  EXPECT_EQ("function name", string(name));
+  EXPECT_EQ("function name", std::string(name));
 
   char kTestLine2[] = "FUNC 0 0 0 function name";
   ASSERT_TRUE(SymbolParseHelper::ParseFunction(kTestLine2, &multiple, &address,
@@ -588,7 +587,7 @@ TEST(SymbolParseHelper, ParseFunctionValid) {
   EXPECT_EQ(0ULL, address);
   EXPECT_EQ(0ULL, size);
   EXPECT_EQ(0, stack_param_size);
-  EXPECT_EQ("function name", string(name));
+  EXPECT_EQ("function name", std::string(name));
 
   // Test optional multiple field.
   char kTestLine3[] = "FUNC m a1 a2 a3 function name";
@@ -599,7 +598,7 @@ TEST(SymbolParseHelper, ParseFunctionValid) {
   EXPECT_EQ(0xa1ULL, address);
   EXPECT_EQ(0xa2ULL, size);
   EXPECT_EQ(0xa3, stack_param_size);
-  EXPECT_EQ("function name", string(name));
+  EXPECT_EQ("function name", std::string(name));
 }
 
 // Test parsing of invalid FUNC lines.  The format is:
@@ -754,7 +753,7 @@ TEST(SymbolParseHelper, ParsePublicSymbolValid) {
   EXPECT_FALSE(multiple);
   EXPECT_EQ(1ULL, address);
   EXPECT_EQ(2, stack_param_size);
-  EXPECT_EQ("3", string(name));
+  EXPECT_EQ("3", std::string(name));
 
   // Test hex size and address.
   char kTestLine1[] = "PUBLIC a1 a2 function name";
@@ -764,7 +763,7 @@ TEST(SymbolParseHelper, ParsePublicSymbolValid) {
   EXPECT_FALSE(multiple);
   EXPECT_EQ(0xa1ULL, address);
   EXPECT_EQ(0xa2, stack_param_size);
-  EXPECT_EQ("function name", string(name));
+  EXPECT_EQ("function name", std::string(name));
 
   // Test 0 is a valid address.
   char kTestLine2[] = "PUBLIC 0 a2 function name";
@@ -774,7 +773,7 @@ TEST(SymbolParseHelper, ParsePublicSymbolValid) {
   EXPECT_FALSE(multiple);
   EXPECT_EQ(0ULL, address);
   EXPECT_EQ(0xa2, stack_param_size);
-  EXPECT_EQ("function name", string(name));
+  EXPECT_EQ("function name", std::string(name));
 
   // Test optional multiple field.
   char kTestLine3[] = "PUBLIC m a1 a2 function name";
@@ -784,7 +783,7 @@ TEST(SymbolParseHelper, ParsePublicSymbolValid) {
   EXPECT_TRUE(multiple);
   EXPECT_EQ(0xa1ULL, address);
   EXPECT_EQ(0xa2, stack_param_size);
-  EXPECT_EQ("function name", string(name));
+  EXPECT_EQ("function name", std::string(name));
 }
 
 // Test parsing of invalid PUBLIC lines.  The format is:
@@ -849,7 +848,7 @@ TEST(SymbolParseHelper, ParseInlineOriginValid) {
   EXPECT_EQ(true, has_file_id);
   EXPECT_EQ(1, origin_id);
   EXPECT_EQ(1, file_id);
-  EXPECT_EQ("function name", string(name));
+  EXPECT_EQ("function name", std::string(name));
 
   // -1 is a file id, which is used when the function is artifical.
   char kTestLine1[] = "INLINE_ORIGIN 0 -1 function name";
@@ -858,7 +857,7 @@ TEST(SymbolParseHelper, ParseInlineOriginValid) {
   EXPECT_EQ(true, has_file_id);
   EXPECT_EQ(0, origin_id);
   EXPECT_EQ(-1, file_id);
-  EXPECT_EQ("function name", string(name));
+  EXPECT_EQ("function name", std::string(name));
 
   // Test for new format.
   char kTestLine2[] = "INLINE_ORIGIN 0 function name";
@@ -866,14 +865,14 @@ TEST(SymbolParseHelper, ParseInlineOriginValid) {
       kTestLine2, &has_file_id, &origin_id, &file_id, &name));
   EXPECT_EQ(false, has_file_id);
   EXPECT_EQ(0, origin_id);
-  EXPECT_EQ("function name", string(name));
+  EXPECT_EQ("function name", std::string(name));
 
   char kTestLine3[] = "INLINE_ORIGIN 0 function";
   ASSERT_TRUE(SymbolParseHelper::ParseInlineOrigin(
       kTestLine3, &has_file_id, &origin_id, &file_id, &name));
   EXPECT_EQ(false, has_file_id);
   EXPECT_EQ(0, origin_id);
-  EXPECT_EQ("function", string(name));
+  EXPECT_EQ("function", std::string(name));
 }
 
 // Test parsing of valid INLINE ORIGIN lines.  The format is:

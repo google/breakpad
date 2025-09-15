@@ -44,7 +44,6 @@
 #include <utility>
 
 #include "common/stdio_wrapper.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/call_stack.h"
 #include "google_breakpad/processor/minidump.h"
 #include "google_breakpad/processor/process_state.h"
@@ -219,7 +218,7 @@ ProcessResult MinidumpProcessor::Process(
   frame_symbolizer_->Reset();
 
   MinidumpThreadNameList* thread_names = dump->GetThreadNameList();
-  std::map<uint32_t, string> thread_id_to_name;
+  std::map<uint32_t, std::string> thread_id_to_name;
   if (thread_names) {
     const unsigned int thread_name_count = thread_names->thread_name_count();
     for (unsigned int thread_name_index = 0;
@@ -248,7 +247,7 @@ ProcessResult MinidumpProcessor::Process(
     char thread_string_buffer[64];
     snprintf(thread_string_buffer, sizeof(thread_string_buffer), "%d/%d",
              thread_index, thread_count);
-    string thread_string = dump->path() + ":" + thread_string_buffer;
+    std::string thread_string = dump->path() + ":" + thread_string_buffer;
 
     MinidumpThread* thread = threads->GetThreadAtIndex(thread_index);
     if (!thread) {
@@ -264,7 +263,7 @@ ProcessResult MinidumpProcessor::Process(
 
     thread_string += " id " + HexString(thread_id);
     auto thread_name_iter = thread_id_to_name.find(thread_id);
-    string thread_name;
+    std::string thread_name;
     if (thread_name_iter != thread_id_to_name.end()) {
       thread_name = thread_name_iter->second;
     }
@@ -408,8 +407,8 @@ ProcessResult MinidumpProcessor::Process(
   return PROCESS_OK;
 }
 
-ProcessResult MinidumpProcessor::Process(
-    const string& minidump_file, ProcessState* process_state) {
+ProcessResult MinidumpProcessor::Process(const std::string& minidump_file,
+                                         ProcessState* process_state) {
   BPLOG(INFO) << "Processing minidump in file " << minidump_file;
 
   Minidump dump(minidump_file);
@@ -460,7 +459,7 @@ static uint64_t GetAddressForArchitecture(const MDCPUArchitecture architecture,
 // raw_info: pointer to source MDRawSystemInfo.
 // cpu_info: address of target string, cpu info text will be appended to it.
 static void GetARMCpuInfo(const MDRawSystemInfo* raw_info,
-                          string* cpu_info) {
+                          std::string* cpu_info) {
   assert(raw_info != nullptr && cpu_info != nullptr);
 
   // Write ARM architecture version.
@@ -600,7 +599,7 @@ bool MinidumpProcessor::GetCPUInfo(Minidump* dump, SystemInfo* info) {
       else
         info->cpu = "amd64";
 
-      const string* cpu_vendor = system_info->GetCPUVendor();
+      const std::string* cpu_vendor = system_info->GetCPUVendor();
       if (cpu_vendor) {
         info->cpu_info = *cpu_vendor;
         info->cpu_info.append(" ");
@@ -760,7 +759,7 @@ bool MinidumpProcessor::GetOSInfo(Minidump* dump, SystemInfo* info) {
            raw_system_info->build_number);
   info->os_version = os_version_string;
 
-  const string* csd_version = system_info->GetCSDVersion();
+  const std::string* csd_version = system_info->GetCSDVersion();
   if (csd_version) {
     info->os_version.append(" ");
     info->os_version.append(*csd_version);
@@ -870,8 +869,8 @@ static void CalculateFaultAddressFromInstruction(Minidump* dump,
 #endif // __linux__
 
 // static
-string MinidumpProcessor::GetCrashReason(Minidump* dump, uint64_t* address,
-                                         bool enable_objdump) {
+std::string MinidumpProcessor::GetCrashReason(Minidump* dump, uint64_t* address,
+                                              bool enable_objdump) {
   MinidumpException* exception = dump->GetException();
   if (!exception)
     return "";
@@ -894,7 +893,7 @@ string MinidumpProcessor::GetCrashReason(Minidump* dump, uint64_t* address,
   snprintf(flags_string, sizeof(flags_string), "0x%08x", exception_flags);
   snprintf(reason_string, sizeof(reason_string), "0x%08x / %s", exception_code,
            flags_string);
-  string reason = reason_string;
+  std::string reason = reason_string;
 
   const MDRawSystemInfo* raw_system_info = GetSystemInfo(dump, nullptr);
   if (!raw_system_info)
@@ -2137,7 +2136,7 @@ string MinidumpProcessor::GetCrashReason(Minidump* dump, uint64_t* address,
 }
 
 // static
-string MinidumpProcessor::GetAssertion(Minidump* dump) {
+std::string MinidumpProcessor::GetAssertion(Minidump* dump) {
   MinidumpAssertion* assertion = dump->GetAssertion();
   if (!assertion)
     return "";
@@ -2146,7 +2145,7 @@ string MinidumpProcessor::GetAssertion(Minidump* dump) {
   if (!raw_assertion)
     return "";
 
-  string assertion_string;
+  std::string assertion_string;
   switch (raw_assertion->type) {
   case MD_ASSERTION_INFO_TYPE_INVALID_PARAMETER:
     assertion_string = "Invalid parameter passed to library function";
@@ -2164,17 +2163,17 @@ string MinidumpProcessor::GetAssertion(Minidump* dump) {
   }
   }
 
-  string expression = assertion->expression();
+  std::string expression = assertion->expression();
   if (!expression.empty()) {
     assertion_string.append(" " + expression);
   }
 
-  string function = assertion->function();
+  std::string function = assertion->function();
   if (!function.empty()) {
     assertion_string.append(" in function " + function);
   }
 
-  string file = assertion->file();
+  std::string file = assertion->file();
   if (!file.empty()) {
     assertion_string.append(", in file " + file);
   }

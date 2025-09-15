@@ -40,6 +40,7 @@
 
 #include <functional>
 #include <iostream>
+#include <string>
 #include <vector>
 
 #include "common/linux/http_upload.h"
@@ -49,11 +50,11 @@
 namespace google_breakpad {
 namespace sym_upload {
 
-void TokenizeByChar(const string& source_string, int c,
-                    std::vector<string>* results) {
+void TokenizeByChar(const std::string& source_string, int c,
+                    std::vector<std::string>* results) {
   assert(results);
-  string::size_type cur_pos = 0, next_pos = 0;
-  while ((next_pos = source_string.find(c, cur_pos)) != string::npos) {
+  std::string::size_type cur_pos = 0, next_pos = 0;
+  while ((next_pos = source_string.find(c, cur_pos)) != std::string::npos) {
     if (next_pos != cur_pos)
       results->push_back(source_string.substr(cur_pos, next_pos - cur_pos));
     cur_pos = next_pos + 1;
@@ -65,17 +66,17 @@ void TokenizeByChar(const string& source_string, int c,
 //=============================================================================
 // Parse out the module line which have 5 parts.
 // MODULE <os> <cpu> <uuid> <module-name>
-bool ModuleDataForSymbolFile(const string& file,
-                             std::vector<string>* module_parts) {
+bool ModuleDataForSymbolFile(const std::string& file,
+                             std::vector<std::string>* module_parts) {
   assert(module_parts);
   const size_t kModulePartNumber = 5;
   FILE* fp = fopen(file.c_str(), "r");
   if (fp) {
     char buffer[1024];
     if (fgets(buffer, sizeof(buffer), fp)) {
-      string line(buffer);
-      string::size_type line_break_pos = line.find_first_of('\n');
-      if (line_break_pos == string::npos) {
+      std::string line(buffer);
+      std::string::size_type line_break_pos = line.find_first_of('\n');
+      if (line_break_pos == std::string::npos) {
         assert(0 && "The file is invalid!");
         fclose(fp);
         return false;
@@ -93,10 +94,10 @@ bool ModuleDataForSymbolFile(const string& file,
 }
 
 //=============================================================================
-string CompactIdentifier(const string& uuid) {
-  std::vector<string> components;
+std::string CompactIdentifier(const std::string& uuid) {
+  std::vector<std::string> components;
   TokenizeByChar(uuid, '-', &components);
-  string result;
+  std::string result;
   for (size_t i = 0; i < components.size(); ++i)
     result += components[i];
   return result;
@@ -109,9 +110,9 @@ string CompactIdentifier(const string& uuid) {
 // file being uploaded, with all hyphens removed.
 bool SymUploadV1Start(
     const Options& options,
-    std::vector<string> module_parts,
-    const string& compacted_id) {
-  std::map<string, string> parameters;
+    std::vector<std::string> module_parts,
+    const std::string& compacted_id) {
+  std::map<std::string, std::string> parameters;
   // Add parameters
   if (!options.version.empty())
     parameters["version"] = options.version;
@@ -124,10 +125,10 @@ bool SymUploadV1Start(
   parameters["code_file"] = module_parts[4];
   parameters["debug_identifier"] = compacted_id;
 
-  std::map<string, string> files;
+  std::map<std::string, std::string> files;
   files["symbol_file"] = options.symbolsPath;
 
-  string response, error;
+  std::string response, error;
   long response_code;
   bool success = HTTPUpload::SendRequest(options.uploadURLStr,
                                          parameters,
@@ -164,9 +165,9 @@ bool SymUploadV1Start(
 // uploaded.
 bool SymUploadV2Start(
     const Options& options,
-    const string& code_file,
-    const string& debug_id,
-    const string& type) {
+    const std::string& code_file,
+    const std::string& debug_id,
+    const std::string& type) {
   google_breakpad::LibcurlWrapper libcurl_wrapper;
   if (!libcurl_wrapper.Init()) {
     printf("Failed to init google_breakpad::LibcurlWrapper.\n");
@@ -200,10 +201,10 @@ bool SymUploadV2Start(
     return false;
   }
 
-  string signed_url = uploadUrlResponse.upload_url;
-  string upload_key = uploadUrlResponse.upload_key;
-  string header;
-  string response;
+  std::string signed_url = uploadUrlResponse.upload_url;
+  std::string upload_key = uploadUrlResponse.upload_key;
+  std::string header;
+  std::string response;
   long response_code;
 
   if (!libcurl_wrapper.SendPutRequest(signed_url,
@@ -250,13 +251,13 @@ bool SymUploadV2Start(
 //=============================================================================
 void Start(Options* options) {
   if (options->upload_protocol == UploadProtocol::SYM_UPLOAD_V2) {
-    string code_file;
-    string debug_id;
-    string type;
+    std::string code_file;
+    std::string debug_id;
+    std::string type;
 
     if (options->type.empty() || options->type == kBreakpadSymbolType) {
       // Breakpad upload so read these from input file.
-      std::vector<string> module_parts;
+      std::vector<std::string> module_parts;
       if (!ModuleDataForSymbolFile(options->symbolsPath, &module_parts)) {
         fprintf(stderr, "Failed to parse symbol file!\n");
         return;
@@ -273,12 +274,12 @@ void Start(Options* options) {
 
     options->success = SymUploadV2Start(*options, code_file, debug_id, type);
   } else {
-    std::vector<string> module_parts;
+    std::vector<std::string> module_parts;
     if (!ModuleDataForSymbolFile(options->symbolsPath, &module_parts)) {
       fprintf(stderr, "Failed to parse symbol file!\n");
       return;
     }
-    const string compacted_id = CompactIdentifier(module_parts[3]);
+    const std::string compacted_id = CompactIdentifier(module_parts[3]);
     options->success = SymUploadV1Start(*options, module_parts, compacted_id);
   }
 }

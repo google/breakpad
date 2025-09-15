@@ -39,7 +39,6 @@
 
 #include "breakpad_googletest_includes.h"
 #include "common/test_assembler.h"
-#include "common/using_std_string.h"
 
 using google_breakpad::test_assembler::Label;
 using google_breakpad::test_assembler::Section;
@@ -734,7 +733,7 @@ TEST(ConstructSection, WithEndian) {
 class SectionFixture {
  public:
   Section section;
-  string contents;
+  std::string contents;
   static const uint8_t data[];
   static const size_t data_size;
 };
@@ -783,8 +782,8 @@ TEST_F(Append, BytesTwice) {
 }
 
 TEST_F(Append, String) {
-  string s1 = "howdy ";
-  string s2 = "there";
+  std::string s1 = "howdy ";
+  std::string s2 = "there";
   section.Append(s1);
   section.Append(s2);
   ASSERT_TRUE(section.GetContents(&contents));
@@ -796,7 +795,7 @@ TEST_F(Append, CString) {
   section.AppendCString("");
   section.AppendCString("there");
   ASSERT_TRUE(section.GetContents(&contents));
-  ASSERT_EQ(string("howdy\0\0there\0", 13), contents);
+  ASSERT_EQ(std::string("howdy\0\0there\0", 13), contents);
 }
 
 TEST_F(Append, CStringSize) {
@@ -806,7 +805,7 @@ TEST_F(Append, CStringSize) {
   section.AppendCString("natalie", 0);
   section.AppendCString("", 10);
   ASSERT_TRUE(section.GetContents(&contents));
-  ASSERT_EQ(string("howtherefred\0\0\0\0\0\0\0\0\0\0\0\0", 24), contents);
+  ASSERT_EQ(std::string("howtherefred\0\0\0\0\0\0\0\0\0\0\0\0", 24), contents);
 }
 
 TEST_F(Append, RepeatedBytes) {
@@ -1418,175 +1417,175 @@ TEST_F(Append, SectionRefs) {
 TEST_F(Append, LEB128_0) {
   section.LEB128(0);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\0", 1), contents);
+  EXPECT_EQ(std::string("\0", 1), contents);
 }
 
 TEST_F(Append, LEB128_0x3f) {
   section.LEB128(0x3f);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x3f", 1), contents);
+  EXPECT_EQ(std::string("\x3f", 1), contents);
 }
 
 TEST_F(Append, LEB128_0x40) {
   section.LEB128(0x40);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\xc0\x00", 2), contents);
+  EXPECT_EQ(std::string("\xc0\x00", 2), contents);
 }
 
 TEST_F(Append, LEB128_0x7f) {
   section.LEB128(0x7f);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\xff\x00", 2), contents);
+  EXPECT_EQ(std::string("\xff\x00", 2), contents);
 }
 
 TEST_F(Append, LEB128_0x80) {
   section.LEB128(0x80);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x80\x01", 2), contents);
+  EXPECT_EQ(std::string("\x80\x01", 2), contents);
 }
 
 TEST_F(Append, LEB128_0xff) {
   section.LEB128(0xff);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\xff\x01", 2), contents);
+  EXPECT_EQ(std::string("\xff\x01", 2), contents);
 }
 
 TEST_F(Append, LEB128_0x1fff) {
   section.LEB128(0x1fff);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\xff\x3f", 2), contents);
+  EXPECT_EQ(std::string("\xff\x3f", 2), contents);
 }
 
 TEST_F(Append, LEB128_0x2000) {
   section.LEB128(0x2000);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x80\xc0\x00", 3), contents);
+  EXPECT_EQ(std::string("\x80\xc0\x00", 3), contents);
 }
 
 TEST_F(Append, LEB128_n1) {
   section.LEB128(-1);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x7f", 1), contents);
+  EXPECT_EQ(std::string("\x7f", 1), contents);
 }
 
 TEST_F(Append, LEB128_n0x40) {
   section.LEB128(-0x40);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x40", 1), contents);
+  EXPECT_EQ(std::string("\x40", 1), contents);
 }
 
 TEST_F(Append, LEB128_n0x41) {
   section.LEB128(-0x41);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\xbf\x7f", 2), contents);
+  EXPECT_EQ(std::string("\xbf\x7f", 2), contents);
 }
 
 TEST_F(Append, LEB128_n0x7f) {
   section.LEB128(-0x7f);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x81\x7f", 2), contents);
+  EXPECT_EQ(std::string("\x81\x7f", 2), contents);
 }
 
 TEST_F(Append, LEB128_n0x80) {
   section.LEB128(-0x80);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x80\x7f", 2), contents);
+  EXPECT_EQ(std::string("\x80\x7f", 2), contents);
 }
 
 TEST_F(Append, LEB128_n0x2000) {
   section.LEB128(-0x2000);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x80\x40", 2), contents);
+  EXPECT_EQ(std::string("\x80\x40", 2), contents);
 }
 
 TEST_F(Append, LEB128_n0x2001) {
   section.LEB128(-0x2001);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\xff\xbf\x7f", 3), contents);
+  EXPECT_EQ(std::string("\xff\xbf\x7f", 3), contents);
 }
 
 TEST_F(Append,ULEB128_0) {
   section.ULEB128(0);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\0", 1), contents);
+  EXPECT_EQ(std::string("\0", 1), contents);
 }
 
 TEST_F(Append,ULEB128_1) {
   section.ULEB128(1);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x01", 1), contents);
+  EXPECT_EQ(std::string("\x01", 1), contents);
 }
 
 TEST_F(Append,ULEB128_0x3f) {
   section.ULEB128(0x3f);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x3f", 1), contents);
+  EXPECT_EQ(std::string("\x3f", 1), contents);
 }
 
 TEST_F(Append,ULEB128_0x40) {
   section.ULEB128(0x40);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x40", 1), contents);
+  EXPECT_EQ(std::string("\x40", 1), contents);
 }
 
 TEST_F(Append,ULEB128_0x7f) {
   section.ULEB128(0x7f);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x7f", 1), contents);
+  EXPECT_EQ(std::string("\x7f", 1), contents);
 }
 
 TEST_F(Append,ULEB128_0x80) {
   section.ULEB128(0x80);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x80\x01", 2), contents);
+  EXPECT_EQ(std::string("\x80\x01", 2), contents);
 }
 
 TEST_F(Append,ULEB128_0xff) {
   section.ULEB128(0xff);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\xff\x01", 2), contents);
+  EXPECT_EQ(std::string("\xff\x01", 2), contents);
 }
 
 TEST_F(Append,ULEB128_0x100) {
   section.ULEB128(0x100);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x80\x02", 2), contents);
+  EXPECT_EQ(std::string("\x80\x02", 2), contents);
 }
 
 TEST_F(Append,ULEB128_0x1fff) {
   section.ULEB128(0x1fff);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\xff\x3f", 2), contents);
+  EXPECT_EQ(std::string("\xff\x3f", 2), contents);
 }
 
 TEST_F(Append,ULEB128_0x2000) {
   section.ULEB128(0x2000);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x80\x40", 2), contents);
+  EXPECT_EQ(std::string("\x80\x40", 2), contents);
 }
 
 TEST_F(Append,ULEB128_0x3fff) {
   section.ULEB128(0x3fff);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\xff\x7f", 2), contents);
+  EXPECT_EQ(std::string("\xff\x7f", 2), contents);
 }
 
 TEST_F(Append,ULEB128_0x4000) {
   section.ULEB128(0x4000);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x80\x80\x01", 3), contents);
+  EXPECT_EQ(std::string("\x80\x80\x01", 3), contents);
 }
 
 TEST_F(Append,ULEB128_12857) {
   section.ULEB128(12857);
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\xb9\x64", 2), contents);
+  EXPECT_EQ(std::string("\xb9\x64", 2), contents);
 }
 
 TEST_F(Append, LEBChain) {
   section.LEB128(-0x80).ULEB128(12857).Append("*");
   EXPECT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x80\x7f\xb9\x64*", 5), contents);
+  EXPECT_EQ(std::string("\x80\x7f\xb9\x64*", 5), contents);
 }
 
 
@@ -1644,7 +1643,7 @@ TEST_F(Miscellanea, AlignPad) {
   section.Append("*").Align(2, ' ');
   EXPECT_EQ(6U, section.Size());
   ASSERT_TRUE(section.GetContents(&contents));
-  ASSERT_EQ(string("*   **"), contents);
+  ASSERT_EQ(std::string("*   **"), contents);
 }
 
 TEST_F(Miscellanea, StartHereMark) {

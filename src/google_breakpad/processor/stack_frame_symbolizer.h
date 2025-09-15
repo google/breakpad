@@ -40,7 +40,6 @@
 #include <string>
 #include <vector>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 #include "google_breakpad/processor/code_module.h"
 
@@ -105,7 +104,7 @@ class StackFrameSymbolizer {
   SourceLineResolverInterface* resolver_;
   // A list of modules known to have symbols missing. This helps avoid
   // repeated lookups for the missing symbols within one minidump.
-  std::set<string> no_symbol_modules_;
+  std::set<std::string> no_symbol_modules_;
 };
 
 }  // namespace google_breakpad

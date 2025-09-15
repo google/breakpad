@@ -7,7 +7,6 @@
 #endif
 
 #include "breakpad_googletest_includes.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/proc_maps_linux.h"
 
 namespace {
@@ -232,16 +231,16 @@ TEST(ProcMapsTest, ParseProcMapsEmptyString) {
 // - File name has whitespaces.
 TEST(ProcMapsTest, ParseProcMapsWeirdCorrectInput) {
   std::vector<google_breakpad::MappedMemoryRegion> regions;
-  const string kContents =
-    "00400000-0040b000 r-xp 00000000 fc:00 2106562 "
+  const std::string kContents =
+      "00400000-0040b000 r-xp 00000000 fc:00 2106562 "
       "               /bin/cat\r\n"
-    "7f53b7dad000-7f53b7f62000 r-xp 00000000 fc:00 263011 "
+      "7f53b7dad000-7f53b7f62000 r-xp 00000000 fc:00 263011 "
       "       /lib/x86_64-linux-gnu/libc-2.15.so\n\r"
-    "7f53b816d000-7f53b818f000 r-xp 00000000 fc:00 264284 "
+      "7f53b816d000-7f53b818f000 r-xp 00000000 fc:00 264284 "
       "        /lib/x86_64-linux-gnu/ld-2.15.so\n"
-    "7fff9c7ff000-7fff9c800000 r-xp 00000000 00:00 0 "
+      "7fff9c7ff000-7fff9c800000 r-xp 00000000 00:00 0 "
       "               \"vd so\"\n"
-    "ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0 "
+      "ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0 "
       "               [vsys call]\n";
   EXPECT_TRUE(ParseProcMaps(kContents, &regions));
   EXPECT_EQ(5ULL, regions.size());

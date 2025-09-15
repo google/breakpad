@@ -36,7 +36,6 @@
 #include <string>
 
 #include "common/linux/libcurl_wrapper.h"
-#include "common/using_std_string.h"
 
 namespace google_breakpad {
 LibcurlWrapper::LibcurlWrapper()
@@ -56,8 +55,8 @@ LibcurlWrapper::~LibcurlWrapper() {
   }
 }
 
-bool LibcurlWrapper::SetProxy(const string& proxy_host,
-                              const string& proxy_userpwd) {
+bool LibcurlWrapper::SetProxy(const std::string& proxy_host,
+                              const std::string& proxy_userpwd) {
   if (!CheckInit()) return false;
 
   // Set proxy information if necessary.
@@ -77,8 +76,8 @@ bool LibcurlWrapper::SetProxy(const string& proxy_host,
   return true;
 }
 
-bool LibcurlWrapper::AddFile(const string& upload_file_path,
-                             const string& basename) {
+bool LibcurlWrapper::AddFile(const std::string& upload_file_path,
+                             const std::string& basename) {
   if (!CheckInit()) return false;
 
   std::cout << "Adding " << upload_file_path << " to form upload.";
@@ -97,20 +96,20 @@ static size_t WriteCallback(void* ptr, size_t size,
   if (!userp)
     return 0;
 
-  string* response = reinterpret_cast<string*>(userp);
+  std::string* response = reinterpret_cast<std::string*>(userp);
   size_t real_size = size * nmemb;
   response->append(reinterpret_cast<char*>(ptr), real_size);
   return real_size;
 }
 
-bool LibcurlWrapper::SendRequest(const string& url,
-                                 const std::map<string, string>& parameters,
-                                 long* http_status_code,
-                                 string* http_header_data,
-                                 string* http_response_data) {
+bool LibcurlWrapper::SendRequest(
+    const std::string& url,
+    const std::map<std::string, std::string>& parameters,
+    long* http_status_code, std::string* http_header_data,
+    std::string* http_response_data) {
   if (!CheckInit()) return false;
 
-  std::map<string, string>::const_iterator iter = parameters.begin();
+  std::map<std::string, std::string>::const_iterator iter = parameters.begin();
   for (; iter != parameters.end(); ++iter)
     (*formadd_)(&formpost_, &lastptr_,
                 CURLFORM_COPYNAME, iter->first.c_str(),
@@ -123,10 +122,10 @@ bool LibcurlWrapper::SendRequest(const string& url,
                           http_response_data);
 }
 
-bool LibcurlWrapper::SendGetRequest(const string& url,
+bool LibcurlWrapper::SendGetRequest(const std::string& url,
                                     long* http_status_code,
-                                    string* http_header_data,
-                                    string* http_response_data) {
+                                    std::string* http_header_data,
+                                    std::string* http_response_data) {
   if (!CheckInit()) return false;
 
   (*easy_setopt_)(curl_, CURLOPT_HTTPGET, 1L);
@@ -135,11 +134,11 @@ bool LibcurlWrapper::SendGetRequest(const string& url,
                           http_response_data);
 }
 
-bool LibcurlWrapper::SendPutRequest(const string& url,
-                                    const string& path,
+bool LibcurlWrapper::SendPutRequest(const std::string& url,
+                                    const std::string& path,
                                     long* http_status_code,
-                                    string* http_header_data,
-                                    string* http_response_data) {
+                                    std::string* http_header_data,
+                                    std::string* http_response_data) {
   if (!CheckInit()) return false;
 
   FILE* file = fopen(path.c_str(), "rb");
@@ -154,19 +153,19 @@ bool LibcurlWrapper::SendPutRequest(const string& url,
   return success;
 }
 
-bool LibcurlWrapper::SendSimplePostRequest(const string& url,
-                                           const string& body,
-                                           const string& content_type,
+bool LibcurlWrapper::SendSimplePostRequest(const std::string& url,
+                                           const std::string& body,
+                                           const std::string& content_type,
                                            long* http_status_code,
-                                           string* http_header_data,
-                                           string* http_response_data) {
+                                           std::string* http_header_data,
+                                           std::string* http_response_data) {
   if (!CheckInit()) return false;
 
   (*easy_setopt_)(curl_, CURLOPT_POSTFIELDSIZE, body.size());
   (*easy_setopt_)(curl_, CURLOPT_COPYPOSTFIELDS, body.c_str());
 
   if (!content_type.empty()) {
-    string content_type_header = "Content-Type: " + content_type;
+    std::string content_type_header = "Content-Type: " + content_type;
     headerlist_ = (*slist_append_)(
         headerlist_,
         content_type_header.c_str());
@@ -274,11 +273,11 @@ bool LibcurlWrapper::SetFunctionPointers() {
   return true;
 }
 
-bool LibcurlWrapper::SendRequestInner(const string& url,
+bool LibcurlWrapper::SendRequestInner(const std::string& url,
                                       long* http_status_code,
-                                      string* http_header_data,
-                                      string* http_response_data) {
-  string url_copy(url);
+                                      std::string* http_header_data,
+                                      std::string* http_response_data) {
+  std::string url_copy(url);
   (*easy_setopt_)(curl_, CURLOPT_URL, url_copy.c_str());
 
   // Disable 100-continue header.

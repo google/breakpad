@@ -71,14 +71,13 @@ class SourceLineResolverBase::AutoFileCloser {
 
 struct SourceLineResolverBase::InlineOrigin {
   InlineOrigin() {}
-  InlineOrigin(bool has_file_id, int32_t source_file_id, const string& name)
-      : has_file_id(has_file_id),
-        source_file_id(source_file_id),
-        name(name) {}
+  InlineOrigin(bool has_file_id, int32_t source_file_id,
+               const std::string& name)
+      : has_file_id(has_file_id), source_file_id(source_file_id), name(name) {}
   // If it's old format, source file id is set, otherwise not useful.
   bool has_file_id;
   int32_t source_file_id;
-  string name;
+  std::string name;
 };
 
 struct SourceLineResolverBase::Inline {
@@ -122,15 +121,15 @@ struct SourceLineResolverBase::Line {
 
 struct SourceLineResolverBase::Function {
   Function() { }
-  Function(const string& function_name,
-           MemAddr function_address,
-           MemAddr code_size,
-           int set_parameter_size,
-           bool is_multiple)
-      : name(function_name), address(function_address), size(code_size),
-        parameter_size(set_parameter_size), is_multiple(is_multiple) { }
+  Function(const std::string& function_name, MemAddr function_address,
+           MemAddr code_size, int set_parameter_size, bool is_multiple)
+      : name(function_name),
+        address(function_address),
+        size(code_size),
+        parameter_size(set_parameter_size),
+        is_multiple(is_multiple) {}
 
-  string name;
+  std::string name;
   MemAddr address;
   MemAddr size;
 
@@ -143,16 +142,14 @@ struct SourceLineResolverBase::Function {
 
 struct SourceLineResolverBase::PublicSymbol {
   PublicSymbol() { }
-  PublicSymbol(const string& set_name,
-               MemAddr set_address,
-               int set_parameter_size,
-               bool is_multiple)
+  PublicSymbol(const std::string& set_name, MemAddr set_address,
+               int set_parameter_size, bool is_multiple)
       : name(set_name),
         address(set_address),
         parameter_size(set_parameter_size),
         is_multiple(is_multiple) {}
 
-  string name;
+  std::string name;
   MemAddr address;
 
   // If the public symbol is used as a function entry point, parameter_size
@@ -200,7 +197,7 @@ class SourceLineResolverBase::Module {
   // returned CFIFrameInfo object.
   virtual CFIFrameInfo* FindCFIFrameInfo(const StackFrame* frame) const = 0;
  protected:
-  virtual bool ParseCFIRuleSet(const string& rule_set,
+  virtual bool ParseCFIRuleSet(const std::string& rule_set,
                                CFIFrameInfo* frame_info) const;
 };
 

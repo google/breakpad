@@ -43,7 +43,6 @@
 #include <vector>
 
 #include "common/path_helper.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/basic_source_line_resolver.h"
 #include "google_breakpad/processor/microdump.h"
 #include "google_breakpad/processor/microdump_processor.h"
@@ -60,8 +59,8 @@ struct Options {
   bool machine_readable;
   bool output_stack_contents;
 
-  string microdump_file;
-  std::vector<string> symbol_paths;
+  std::string microdump_file;
+  std::vector<std::string> symbol_paths;
 };
 
 using google_breakpad::BasicSourceLineResolver;
@@ -93,7 +92,7 @@ int PrintMicrodumpProcess(const Options& options) {
   }
   file_stream.seekg(0, std::ios_base::beg);
   file_stream.read(&bytes[0], bytes.size());
-  string microdump_content(&bytes[0], bytes.size());
+  std::string microdump_content(&bytes[0], bytes.size());
 
   std::unique_ptr<SimpleSymbolSupplier> symbol_supplier;
   if (!options.symbol_paths.empty()) {

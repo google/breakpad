@@ -39,7 +39,6 @@
 
 #include "breakpad_googletest_includes.h"
 #include "common/test_assembler.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/common/minidump_format.h"
 #include "google_breakpad/processor/basic_source_line_resolver.h"
 #include "google_breakpad/processor/call_stack.h"
@@ -116,7 +115,7 @@ class StackwalkerX86Fixture {
 
   // Set the Breakpad symbol information that supplier should return for
   // MODULE to INFO.
-  void SetModuleSymbols(MockCodeModule* module, const string& info) {
+  void SetModuleSymbols(MockCodeModule* module, const std::string& info) {
     size_t buffer_size;
     char *buffer = supplier.CopySymbolDataAndOwnTheCopy(info, &buffer_size);
     EXPECT_CALL(supplier, GetCStringSymbolData(module, &system_info, _, _, _))
@@ -128,7 +127,7 @@ class StackwalkerX86Fixture {
   // Populate stack_region with the contents of stack_section. Use
   // stack_section.start() as the region's starting address.
   void RegionFromSection() {
-    string contents;
+    std::string contents;
     ASSERT_TRUE(stack_section.GetContents(&contents));
     stack_region.Init(stack_section.start().Value(), contents);
   }
@@ -1815,24 +1814,24 @@ void GetCallerFrame::IPAddressIsNotInKnownModuleTestImpl(
     bool has_corrupt_symbols) {
   MockCodeModule remoting_core_dll(0x54080000, 0x501000, "remoting_core.dll",
                                    "version1");
-  string symbols_func_section =
+  std::string symbols_func_section =
       "FUNC 137214 17d 10 PK11_Verify\n"
       "FUNC 15c834 37 14 nsc_ECDSAVerifyStub\n"
       "FUNC 1611d3 91 14 NSC_Verify\n"
       "FUNC 162ff7 60 4 sftk_SessionFromHandle\n";
-  string symbols_stack_section =
-                   "STACK WIN 4 137214 17d 9 0 10 0 10 0 1 $T0 $ebp = "
-                   "$eip $T0 4 + ^ = $ebp $T0 ^ = $esp $T0 8 + =\n"
-                   "STACK WIN 4 15c834 37 6 0 14 0 18 0 1 $T0 $ebp = "
-                   "$eip $T0 4 + ^ = $ebp $T0 ^ = $esp $T0 8 + =\n"
-                   "STACK WIN 4 1611d3 91 7 0 14 0 8 0 1 $T0 $ebp = "
-                   "$eip $T0 4 + ^ = $ebp $T0 ^ = $esp $T0 8 + =\n"
-                   "STACK WIN 4 162ff7 60 5 0 4 0 0 0 1 $T0 $ebp = "
-                   "$eip $T0 4 + ^ = $ebp $T0 ^ = $esp $T0 8 + =\n";
+  std::string symbols_stack_section =
+      "STACK WIN 4 137214 17d 9 0 10 0 10 0 1 $T0 $ebp = "
+      "$eip $T0 4 + ^ = $ebp $T0 ^ = $esp $T0 8 + =\n"
+      "STACK WIN 4 15c834 37 6 0 14 0 18 0 1 $T0 $ebp = "
+      "$eip $T0 4 + ^ = $ebp $T0 ^ = $esp $T0 8 + =\n"
+      "STACK WIN 4 1611d3 91 7 0 14 0 8 0 1 $T0 $ebp = "
+      "$eip $T0 4 + ^ = $ebp $T0 ^ = $esp $T0 8 + =\n"
+      "STACK WIN 4 162ff7 60 5 0 4 0 0 0 1 $T0 $ebp = "
+      "$eip $T0 4 + ^ = $ebp $T0 ^ = $esp $T0 8 + =\n";
 
-  string symbols = symbols_func_section;
+  std::string symbols = symbols_func_section;
   if (has_corrupt_symbols) {
-    symbols.append(string(1, '\0'));           // null terminator in the middle
+    symbols.append(std::string(1, '\0'));  // null terminator in the middle
     symbols.append("\n");
     symbols.append("FUNC 1234\n"               // invalid FUNC records
                    "FUNNC 1234\n"

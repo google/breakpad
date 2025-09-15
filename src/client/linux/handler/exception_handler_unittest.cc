@@ -54,7 +54,6 @@
 #include "common/linux/linux_libc_support.h"
 #include "common/scoped_ptr.h"
 #include "common/tests/auto_tempdir.h"
-#include "common/using_std_string.h"
 #include "third_party/lss/linux_syscall_support.h"
 #include "google_breakpad/processor/minidump.h"
 
@@ -101,8 +100,8 @@ void FlushInstructionCache(const char* memory, uint32_t memory_size) {
 
 void sigchld_handler(int signo) { }
 
-int CreateTMPFile(const string& dir, string* path) {
-  string file = dir + "/exception-handler-unittest.XXXXXX";
+int CreateTMPFile(const std::string& dir, std::string* path) {
+  std::string file = dir + "/exception-handler-unittest.XXXXXX";
   const char* c_file = file.c_str();
   // Copy that string, mkstemp needs a C string it can modify.
   char* c_path = strdup(c_file);
@@ -139,7 +138,7 @@ void WaitForProcessToTerminate(pid_t process_id, int expected_status) {
 }
 
 // Reads the minidump path sent over the pipe |fd| and sets it in |path|.
-void ReadMinidumpPathFromPipe(int fd, string* path) {
+void ReadMinidumpPathFromPipe(int fd, std::string* path) {
   struct pollfd pfd;
   memset(&pfd, 0, sizeof(pfd));
   pfd.fd = fd;
@@ -167,14 +166,14 @@ TEST(ExceptionHandlerTest, SimpleWithPath) {
   ExceptionHandler handler(
       MinidumpDescriptor(temp_dir.path()), nullptr, nullptr, nullptr, true, -1);
   EXPECT_EQ(temp_dir.path(), handler.minidump_descriptor().directory());
-  string temp_subdir = temp_dir.path() + "/subdir";
+  std::string temp_subdir = temp_dir.path() + "/subdir";
   handler.set_minidump_descriptor(MinidumpDescriptor(temp_subdir));
   EXPECT_EQ(temp_subdir, handler.minidump_descriptor().directory());
 }
 
 TEST(ExceptionHandlerTest, SimpleWithFD) {
   AutoTempDir temp_dir;
-  string path;
+  std::string path;
   const int fd = CreateTMPFile(temp_dir.path(), &path);
   ExceptionHandler handler(
       MinidumpDescriptor(fd), nullptr, nullptr, nullptr, true, -1);
@@ -217,7 +216,7 @@ void ChildCrash(bool use_fd) {
   AutoTempDir temp_dir;
   int fds[2] = {0};
   int minidump_fd = -1;
-  string minidump_path;
+  std::string minidump_path;
   if (use_fd) {
     minidump_fd = CreateTMPFile(temp_dir.path(), &minidump_path);
   } else {
@@ -383,7 +382,7 @@ static bool InstallRaiseSIGKILL() {
 
 static void CrashWithCallbacks(ExceptionHandler::FilterCallback filter,
                                ExceptionHandler::MinidumpCallback done,
-                               const string& path) {
+                               const std::string& path) {
   ExceptionHandler handler(
       MinidumpDescriptor(path), filter, done, nullptr, true, -1);
   // Crash with the exception handler in scope.
@@ -633,7 +632,7 @@ TEST(ExceptionHandlerTest, InstructionPointerMemory) {
 
   ASSERT_NO_FATAL_FAILURE(WaitForProcessToTerminate(child, SIGILL));
 
-  string minidump_path;
+  std::string minidump_path;
   ASSERT_NO_FATAL_FAILURE(ReadMinidumpPathFromPipe(fds[0], &minidump_path));
 
   struct stat st;
@@ -725,7 +724,7 @@ TEST(ExceptionHandlerTest, InstructionPointerMemoryMinBound) {
 
   ASSERT_NO_FATAL_FAILURE(WaitForProcessToTerminate(child, SIGILL));
 
-  string minidump_path;
+  std::string minidump_path;
   ASSERT_NO_FATAL_FAILURE(ReadMinidumpPathFromPipe(fds[0], &minidump_path));
 
   struct stat st;
@@ -816,7 +815,7 @@ TEST(ExceptionHandlerTest, InstructionPointerMemoryMaxBound) {
 
   ASSERT_NO_FATAL_FAILURE(WaitForProcessToTerminate(child, SIGILL));
 
-  string minidump_path;
+  std::string minidump_path;
   ASSERT_NO_FATAL_FAILURE(ReadMinidumpPathFromPipe(fds[0], &minidump_path));
 
   struct stat st;
@@ -888,7 +887,7 @@ TEST(ExceptionHandlerTest, InstructionPointerMemoryNullPointer) {
 
   ASSERT_NO_FATAL_FAILURE(WaitForProcessToTerminate(child, SIGSEGV));
 
-  string minidump_path;
+  std::string minidump_path;
   ASSERT_NO_FATAL_FAILURE(ReadMinidumpPathFromPipe(fds[0], &minidump_path));
 
   struct stat st;
@@ -943,7 +942,7 @@ TEST(ExceptionHandlerTest, ModuleInfo) {
     0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
     0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF
   };
-  const string module_identifier = "33221100554477668899AABBCCDDEEFF0";
+  const std::string module_identifier = "33221100554477668899AABBCCDDEEFF0";
 
   // Get some memory.
   char* memory =
@@ -1099,7 +1098,7 @@ TEST(ExceptionHandlerTest, ExternalDumper) {
   ASSERT_NE(signal_fd, -1);
 
   AutoTempDir temp_dir;
-  string templ = temp_dir.path() + "/exception-handler-unittest";
+  std::string templ = temp_dir.path() + "/exception-handler-unittest";
   ASSERT_TRUE(WriteMinidump(templ.c_str(), crashing_pid, context,
                             kCrashContextSize));
   static const char b = 0;
@@ -1122,7 +1121,7 @@ TEST(ExceptionHandlerTest, WriteMinidumpExceptionStream) {
                            nullptr, nullptr, false, -1);
   ASSERT_TRUE(handler.WriteMinidump());
 
-  string minidump_path = handler.minidump_descriptor().path();
+  std::string minidump_path = handler.minidump_descriptor().path();
 
   // Read the minidump and check the exception stream.
   Minidump minidump(minidump_path);
@@ -1137,7 +1136,7 @@ TEST(ExceptionHandlerTest, WriteMinidumpExceptionStream) {
 
 TEST(ExceptionHandlerTest, GenerateMultipleDumpsWithFD) {
   AutoTempDir temp_dir;
-  string path;
+  std::string path;
   const int fd = CreateTMPFile(temp_dir.path(), &path);
   ExceptionHandler handler(
       MinidumpDescriptor(fd), nullptr, nullptr, nullptr, false, -1);
@@ -1163,7 +1162,7 @@ TEST(ExceptionHandlerTest, GenerateMultipleDumpsWithPath) {
   struct stat st;
   ASSERT_EQ(0, stat(minidump_1.path(), &st));
   ASSERT_GT(st.st_size, 0);
-  string minidump_1_path(minidump_1.path());
+  std::string minidump_1_path(minidump_1.path());
   // Check it is a valid minidump.
   Minidump minidump1(minidump_1_path);
   ASSERT_TRUE(minidump1.Read());
@@ -1174,7 +1173,7 @@ TEST(ExceptionHandlerTest, GenerateMultipleDumpsWithPath) {
   const MinidumpDescriptor& minidump_2 = handler.minidump_descriptor();
   ASSERT_EQ(0, stat(minidump_2.path(), &st));
   ASSERT_GT(st.st_size, 0);
-  string minidump_2_path(minidump_2.path());
+  std::string minidump_2_path(minidump_2.path());
   // Check it is a valid minidump.
   Minidump minidump2(minidump_2_path);
   ASSERT_TRUE(minidump2.Read());
@@ -1266,7 +1265,7 @@ TEST(ExceptionHandlerTest, AdditionalMemoryRemove) {
 static bool SimpleCallback(const MinidumpDescriptor& descriptor,
                            void* context,
                            bool succeeded) {
-  string* filename = reinterpret_cast<string*>(context);
+  std::string* filename = reinterpret_cast<std::string*>(context);
   *filename = descriptor.path();
   return true;
 }
@@ -1286,7 +1285,7 @@ TEST(ExceptionHandlerTest, WriteMinidumpForChild) {
   close(fds[0]);
 
   AutoTempDir temp_dir;
-  string minidump_filename;
+  std::string minidump_filename;
   ASSERT_TRUE(
     ExceptionHandler::WriteMinidumpForChild(child, child,
                                             temp_dir.path(), SimpleCallback,

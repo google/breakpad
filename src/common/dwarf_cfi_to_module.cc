@@ -41,6 +41,7 @@
 
 #include <memory>
 #include <sstream>
+#include <string>
 #include <utility>
 
 #include "common/dwarf_cfi_to_module.h"
@@ -49,14 +50,13 @@ namespace google_breakpad {
 
 using std::ostringstream;
 
-vector<string> DwarfCFIToModule::RegisterNames::MakeVector(
-    const char * const *strings,
-    size_t size) {
-  vector<string> names(strings, strings + size);
+vector<std::string> DwarfCFIToModule::RegisterNames::MakeVector(
+    const char* const* strings, size_t size) {
+  vector<std::string> names(strings, strings + size);
   return names;
 }
 
-vector<string> DwarfCFIToModule::RegisterNames::I386() {
+vector<std::string> DwarfCFIToModule::RegisterNames::I386() {
   static const char *const names[] = {
     "$eax", "$ecx", "$edx", "$ebx", "$esp", "$ebp", "$esi", "$edi",
     "$eip", "$eflags", "$unused1",
@@ -72,7 +72,7 @@ vector<string> DwarfCFIToModule::RegisterNames::I386() {
   return MakeVector(names, sizeof(names) / sizeof(names[0]));
 }
 
-vector<string> DwarfCFIToModule::RegisterNames::X86_64() {
+vector<std::string> DwarfCFIToModule::RegisterNames::X86_64() {
   static const char *const names[] = {
     "$rax", "$rdx", "$rcx", "$rbx", "$rsi", "$rdi", "$rbp", "$rsp",
     "$r8",  "$r9",  "$r10", "$r11", "$r12", "$r13", "$r14", "$r15",
@@ -92,7 +92,7 @@ vector<string> DwarfCFIToModule::RegisterNames::X86_64() {
 }
 
 // Per ARM IHI 0040A, section 3.1
-vector<string> DwarfCFIToModule::RegisterNames::ARM() {
+vector<std::string> DwarfCFIToModule::RegisterNames::ARM() {
   static const char *const names[] = {
     "r0",  "r1",  "r2",  "r3",  "r4",  "r5",  "r6",  "r7",
     "r8",  "r9",  "r10", "r11", "r12", "sp",  "lr",  "pc",
@@ -113,7 +113,7 @@ vector<string> DwarfCFIToModule::RegisterNames::ARM() {
 }
 
 // Per ARM IHI 0057A, section 3.1
-vector<string> DwarfCFIToModule::RegisterNames::ARM64() {
+vector<std::string> DwarfCFIToModule::RegisterNames::ARM64() {
   static const char *const names[] = {
     "x0",  "x1",  "x2",  "x3",  "x4",  "x5",  "x6",  "x7",
     "x8",  "x9",  "x10", "x11", "x12", "x13", "x14", "x15",
@@ -132,7 +132,7 @@ vector<string> DwarfCFIToModule::RegisterNames::ARM64() {
   return MakeVector(names, sizeof(names) / sizeof(names[0]));
 }
 
-vector<string> DwarfCFIToModule::RegisterNames::MIPS() {
+vector<std::string> DwarfCFIToModule::RegisterNames::MIPS() {
   static const char* const kRegisterNames[] = {
     "$zero", "$at",  "$v0",  "$v1",  "$a0",   "$a1",  "$a2",  "$a3",
     "$t0",   "$t1",  "$t2",  "$t3",  "$t4",   "$t5",  "$t6",  "$t7",
@@ -149,7 +149,7 @@ vector<string> DwarfCFIToModule::RegisterNames::MIPS() {
                     sizeof(kRegisterNames) / sizeof(kRegisterNames[0]));
 }
 
-vector<string> DwarfCFIToModule::RegisterNames::RISCV() {
+vector<std::string> DwarfCFIToModule::RegisterNames::RISCV() {
   static const char *const names[] = {
     "pc",  "ra",  "sp",  "gp",  "tp",  "t0",  "t1",  "t2",
     "s0",  "s1",  "a0",  "a1",  "a2",  "a3",  "a4",  "a5",
@@ -173,7 +173,7 @@ vector<string> DwarfCFIToModule::RegisterNames::RISCV() {
 }
 
 bool DwarfCFIToModule::Entry(size_t offset, uint64_t address, uint64_t length,
-                             uint8_t version, const string& augmentation,
+                             uint8_t version, const std::string& augmentation,
                              unsigned return_address) {
   assert(!entry_);
 
@@ -199,7 +199,7 @@ bool DwarfCFIToModule::Entry(size_t offset, uint64_t address, uint64_t length,
   return true;
 }
 
-string DwarfCFIToModule::RegisterName(int i) {
+std::string DwarfCFIToModule::RegisterName(int i) {
   assert(entry_);
   if (i < 0) {
     assert(i == kCFARegister);
@@ -214,11 +214,11 @@ string DwarfCFIToModule::RegisterName(int i) {
     return register_names_[reg];
 
   reporter_->UnnamedRegister(entry_offset_, reg);
-  return string("unnamed_register") + std::to_string(reg);
+  return std::string("unnamed_register") + std::to_string(reg);
 }
 
 void DwarfCFIToModule::Record(Module::Address address, int reg,
-                              const string& rule) {
+                              const std::string& rule) {
   assert(entry_);
 
   // Place the name in our global set of strings, and then use the string
@@ -227,7 +227,7 @@ void DwarfCFIToModule::Record(Module::Address address, int reg,
   // so the effect is to have all our data structures share copies of rules
   // whenever possible. Since register names are drawn from a
   // vector<string>, register names are already shared.
-  string shared_rule = *common_strings_.insert(rule).first;
+  std::string shared_rule = *common_strings_.insert(rule).first;
 
   // Is this one of this entry's initial rules?
   if (address == entry_->address)
@@ -275,14 +275,14 @@ bool DwarfCFIToModule::RegisterRule(uint64_t address, int reg,
 }
 
 bool DwarfCFIToModule::ExpressionRule(uint64_t address, int reg,
-                                      const string& expression) {
+                                      const std::string& expression) {
   reporter_->ExpressionsNotSupported(entry_offset_, RegisterName(reg));
   // Treat this as a non-fatal error.
   return true;
 }
 
 bool DwarfCFIToModule::ValExpressionRule(uint64_t address, int reg,
-                                         const string& expression) {
+                                         const std::string& expression) {
   reporter_->ExpressionsNotSupported(entry_offset_, RegisterName(reg));
   // Treat this as a non-fatal error.
   return true;
@@ -293,9 +293,7 @@ bool DwarfCFIToModule::End() {
   return true;
 }
 
-string DwarfCFIToModule::Architecture() {
-  return module_->architecture();
-}
+std::string DwarfCFIToModule::Architecture() { return module_->architecture(); }
 
 void DwarfCFIToModule::Reporter::UnnamedRegister(size_t offset, int reg) {
   fprintf(stderr, "%s, section '%s': "
@@ -305,7 +303,7 @@ void DwarfCFIToModule::Reporter::UnnamedRegister(size_t offset, int reg) {
 }
 
 void DwarfCFIToModule::Reporter::UndefinedNotSupported(size_t offset,
-                                                       const string& reg) {
+                                                       const std::string& reg) {
   fprintf(stderr, "%s, section '%s': "
           "the call frame entry at offset 0x%zx sets the rule for "
           "register '%s' to 'undefined', but the Breakpad symbol file format"
@@ -313,8 +311,8 @@ void DwarfCFIToModule::Reporter::UndefinedNotSupported(size_t offset,
           file_.c_str(), section_.c_str(), offset, reg.c_str());
 }
 
-void DwarfCFIToModule::Reporter::ExpressionsNotSupported(size_t offset,
-                                                         const string& reg) {
+void DwarfCFIToModule::Reporter::ExpressionsNotSupported(
+    size_t offset, const std::string& reg) {
   fprintf(stderr, "%s, section '%s': "
           "the call frame entry at offset 0x%zx uses a DWARF expression to"
           " describe how to recover register '%s', "

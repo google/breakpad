@@ -45,7 +45,6 @@
 #include <vector>
 
 #include "common/stdio_wrapper.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/call_stack.h"
 #include "google_breakpad/processor/code_module.h"
 #include "google_breakpad/processor/code_modules.h"
@@ -102,24 +101,25 @@ static int PrintRegister64(const char* name, uint64_t value, int start_col) {
 
 // StripSeparator takes a string |original| and returns a copy
 // of the string with all occurences of |kOutputSeparator| removed.
-static string StripSeparator(const string& original) {
-  string result = original;
-  string::size_type position = 0;
-  while ((position = result.find(kOutputSeparator, position)) != string::npos) {
+static std::string StripSeparator(const std::string& original) {
+  std::string result = original;
+  std::string::size_type position = 0;
+  while ((position = result.find(kOutputSeparator, position)) !=
+         std::string::npos) {
     result.erase(position, 1);
   }
   position = 0;
-  while ((position = result.find('\n', position)) != string::npos) {
+  while ((position = result.find('\n', position)) != std::string::npos) {
     result.erase(position, 1);
   }
   return result;
 }
 
 // PrintStackContents prints the stack contents of the current frame to stdout.
-static void PrintStackContents(const string& indent,
+static void PrintStackContents(const std::string& indent,
                                const StackFrame* frame,
                                const StackFrame* prev_frame,
-                               const string& cpu,
+                               const std::string& cpu,
                                const MemoryRegion* memory,
                                const CodeModules* modules,
                                SourceLineResolverInterface* resolver) {
@@ -213,7 +213,7 @@ static void PrintStackContents(const string& indent,
 
     // Print data in hex.
     const int kBytesPerRow = 16;
-    string data_as_string;
+    std::string data_as_string;
     for (int i = 0; i < kBytesPerRow; ++i, ++address) {
       uint8_t value = 0;
       if (address < stack_end &&
@@ -287,7 +287,8 @@ static void PrintFrameHeader(const StackFrame* frame, int frame_index) {
     if (!frame->function_name.empty()) {
       printf("!%s", frame->function_name.c_str());
       if (!frame->source_file_name.empty()) {
-        string source_file = PathnameStripper::File(frame->source_file_name);
+        std::string source_file =
+            PathnameStripper::File(frame->source_file_name);
         printf(" [%s : %d + 0x%" PRIx64 "]", source_file.c_str(),
                frame->source_line,
                instruction_address - frame->source_line_base);
@@ -312,10 +313,8 @@ static void PrintFrameHeader(const StackFrame* frame, int frame_index) {
 //
 // If |cpu| is a recognized CPU name, relevant register state for each stack
 // frame printed is also output, if available.
-static void PrintStack(const CallStack* stack,
-                       const string& cpu,
-                       bool output_stack_contents,
-                       const MemoryRegion* memory,
+static void PrintStack(const CallStack* stack, const std::string& cpu,
+                       bool output_stack_contents, const MemoryRegion* memory,
                        const CodeModules* modules,
                        SourceLineResolverInterface* resolver) {
   int frame_count = stack->frames()->size();
@@ -941,7 +940,7 @@ static void PrintStack(const CallStack* stack,
 
     // Print stack contents.
     if (output_stack_contents && frame_index + 1 < frame_count) {
-      const string indent("    ");
+      const std::string indent("    ");
       PrintStackContents(indent, frame, stack->frames()->at(frame_index + 1),
                          cpu, memory, modules, resolver);
     }
@@ -1032,7 +1031,7 @@ static void PrintModule(
     const vector<const CodeModule*>* modules_without_symbols,
     const vector<const CodeModule*>* modules_with_corrupt_symbols,
     uint64_t main_address) {
-  string symbol_issues;
+  std::string symbol_issues;
   if (ContainsModule(modules_without_symbols, module)) {
     symbol_issues = "  (WARNING: No symbols, " +
         PathnameStripper::File(module->debug_file()) + ", " +
@@ -1123,8 +1122,8 @@ void PrintProcessState(const ProcessState& process_state,
                        bool output_requesting_thread_only,
                        SourceLineResolverInterface* resolver) {
   // Print OS and CPU information.
-  string cpu = process_state.system_info()->cpu;
-  string cpu_info = process_state.system_info()->cpu_info;
+  std::string cpu = process_state.system_info()->cpu;
+  std::string cpu_info = process_state.system_info()->cpu_info;
   printf("Operating system: %s\n", process_state.system_info()->os.c_str());
   printf("                  %s\n",
          process_state.system_info()->os_version.c_str());
@@ -1139,9 +1138,9 @@ void PrintProcessState(const ProcessState& process_state,
   printf("\n");
 
   // Print GPU information
-  string gl_version = process_state.system_info()->gl_version;
-  string gl_vendor = process_state.system_info()->gl_vendor;
-  string gl_renderer = process_state.system_info()->gl_renderer;
+  std::string gl_version = process_state.system_info()->gl_version;
+  std::string gl_vendor = process_state.system_info()->gl_vendor;
+  std::string gl_renderer = process_state.system_info()->gl_renderer;
   printf("GPU:");
   if (!gl_version.empty() || !gl_vendor.empty() || !gl_renderer.empty()) {
     printf(" %s\n", gl_version.c_str());
@@ -1160,7 +1159,7 @@ void PrintProcessState(const ProcessState& process_state,
     printf("No crash\n");
   }
 
-  string assertion = process_state.assertion();
+  std::string assertion = process_state.assertion();
   if (!assertion.empty()) {
     printf("Assertion: %s\n", assertion.c_str());
   }
@@ -1247,7 +1246,7 @@ void PrintProcessStateMachineReadable(const ProcessState& process_state) {
   } else {
     // print assertion info, if available, in place of crash reason,
     // instead of the unhelpful "No crash"
-    string assertion = process_state.assertion();
+    std::string assertion = process_state.assertion();
     if (!assertion.empty()) {
       printf("%s%c%c", StripSeparator(assertion).c_str(),
              kOutputSeparator, kOutputSeparator);

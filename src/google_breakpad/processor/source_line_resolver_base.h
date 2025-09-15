@@ -64,8 +64,7 @@ class SourceLineResolverBase : public SourceLineResolverInterface {
   // LoadMap() method.
   // Place dynamically allocated heap buffer in symbol_data. Caller has the
   // ownership of the buffer, and should call delete [] to free the buffer.
-  static bool ReadSymbolFile(const string& file_name,
-                             char** symbol_data,
+  static bool ReadSymbolFile(const std::string& file_name, char** symbol_data,
                              size_t* symbol_data_size);
 
  protected:
@@ -74,9 +73,10 @@ class SourceLineResolverBase : public SourceLineResolverInterface {
   virtual ~SourceLineResolverBase();
 
   // Virtual methods inherited from SourceLineResolverInterface.
-  virtual bool LoadModule(const CodeModule* module, const string& map_file);
+  virtual bool LoadModule(const CodeModule* module,
+                          const std::string& map_file);
   virtual bool LoadModuleUsingMapBuffer(const CodeModule* module,
-                                        const string& map_buffer);
+                                        const std::string& map_buffer);
   virtual bool LoadModuleUsingMemoryBuffer(const CodeModule* module,
                                            char* memory_buffer,
                                            size_t memory_buffer_size);
@@ -97,22 +97,22 @@ class SourceLineResolverBase : public SourceLineResolverInterface {
   struct Function;
   struct PublicSymbol;
   struct CompareString {
-    bool operator()(const string& s1, const string& s2) const;
+    bool operator()(const std::string& s1, const std::string& s2) const;
   };
   // Module is an interface for an in-memory symbol file.
   class Module;
   class AutoFileCloser;
 
   // All of the modules that are loaded.
-  typedef map<string, Module*, CompareString> ModuleMap;
+  typedef map<std::string, Module*, CompareString> ModuleMap;
   ModuleMap* modules_;
 
   // The loaded modules that were detecting to be corrupt during load.
-  typedef set<string, CompareString> ModuleSet;
+  typedef set<std::string, CompareString> ModuleSet;
   ModuleSet* corrupt_modules_;
 
   // All of heap-allocated buffers that are owned locally by resolver.
-  typedef std::map<string, char*, CompareString> MemoryMap;
+  typedef std::map<std::string, char*, CompareString> MemoryMap;
   MemoryMap* memory_buffers_;
 
   // Creates a concrete module at run-time.

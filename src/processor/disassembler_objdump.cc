@@ -57,7 +57,7 @@ namespace {
 
 const size_t kMaxX86InstructionLength = 15;
 
-bool IsInstructionPrefix(const string& token) {
+bool IsInstructionPrefix(const std::string& token) {
   if (token == "lock" || token == "rep" || token == "repz" ||
       token == "repnz") {
     return true;
@@ -65,7 +65,7 @@ bool IsInstructionPrefix(const string& token) {
   return false;
 }
 
-bool IsOperandSize(const string& token) {
+bool IsOperandSize(const std::string& token) {
   if (token == "BYTE" || token == "WORD" || token == "DWORD" ||
       token == "QWORD" || token == "PTR") {
     return true;
@@ -74,8 +74,7 @@ bool IsOperandSize(const string& token) {
 }
 
 bool GetSegmentAddressX86(const DumpContext& context,
-                          const string& segment_name,
-                          uint64_t& address) {
+                          const std::string& segment_name, uint64_t& address) {
   if (segment_name == "ds") {
     address = context.GetContextX86()->ds;
   } else if (segment_name == "es") {
@@ -93,7 +92,7 @@ bool GetSegmentAddressX86(const DumpContext& context,
 }
 
 bool GetSegmentAddressAMD64(const DumpContext& context,
-                            const string& segment_name,
+                            const std::string& segment_name,
                             uint64_t& address) {
   if (segment_name == "ds") {
     address = 0;
@@ -108,8 +107,7 @@ bool GetSegmentAddressAMD64(const DumpContext& context,
 }
 
 bool GetSegmentAddress(const DumpContext& context,
-                       const string& segment_name,
-                       uint64_t& address) {
+                       const std::string& segment_name, uint64_t& address) {
   if (context.GetContextCPU() == MD_CONTEXT_X86) {
     return GetSegmentAddressX86(context, segment_name, address);
   } else if (context.GetContextCPU() == MD_CONTEXT_AMD64) {
@@ -121,8 +119,7 @@ bool GetSegmentAddress(const DumpContext& context,
 }
 
 bool GetRegisterValueX86(const DumpContext& context,
-                         const string& register_name,
-                         uint64_t& value) {
+                         const std::string& register_name, uint64_t& value) {
   if (register_name == "eax") {
     value = context.GetContextX86()->eax;
   } else if (register_name == "ebx") {
@@ -150,8 +147,7 @@ bool GetRegisterValueX86(const DumpContext& context,
 }
 
 bool GetRegisterValueAMD64(const DumpContext& context,
-                           const string& register_name,
-                           uint64_t& value) {
+                           const std::string& register_name, uint64_t& value) {
   if (register_name == "rax") {
     value = context.GetContextAMD64()->rax;
   } else if (register_name == "rbx") {
@@ -199,8 +195,7 @@ bool GetRegisterValueAMD64(const DumpContext& context,
 // Support for non-full-size registers not implemented, since we're only using
 // this to evaluate address expressions.
 bool GetRegisterValue(const DumpContext& context,
-                      const string& register_name,
-                      uint64_t& value) {
+                      const std::string& register_name, uint64_t& value) {
   if (context.GetContextCPU() == MD_CONTEXT_X86) {
     return GetRegisterValueX86(context, register_name, value);
   } else if (context.GetContextCPU() == MD_CONTEXT_AMD64) {
@@ -216,7 +211,7 @@ bool GetRegisterValue(const DumpContext& context,
 bool DisassemblerObjdump::DisassembleInstruction(uint32_t cpu,
                                                  const uint8_t* raw_bytes,
                                                  unsigned int raw_bytes_len,
-                                                 string& instruction) {
+                                                 std::string& instruction) {
   // Always initialize outputs
   instruction = "";
 
@@ -226,7 +221,7 @@ bool DisassemblerObjdump::DisassembleInstruction(uint32_t cpu,
     return false;
   }
 
-  string architecture;
+  std::string architecture;
   if (cpu == MD_CONTEXT_X86) {
     architecture = "i386";
   } else if (cpu == MD_CONTEXT_AMD64) {
@@ -322,9 +317,10 @@ bool DisassemblerObjdump::DisassembleInstruction(uint32_t cpu,
 }
 
 // static
-bool DisassemblerObjdump::TokenizeInstruction(const string& instruction,
-                                              string& operation, string& dest,
-                                              string& src) {
+bool DisassemblerObjdump::TokenizeInstruction(const std::string& instruction,
+                                              std::string& operation,
+                                              std::string& dest,
+                                              std::string& src) {
   // Always initialize outputs.
   operation = "";
   dest = "";
@@ -384,7 +380,7 @@ bool DisassemblerObjdump::TokenizeInstruction(const string& instruction,
 
 // static
 bool DisassemblerObjdump::CalculateAddress(const DumpContext& context,
-                                           const string& expression,
+                                           const std::string& expression,
                                            uint64_t& address) {
   address = 0;
 
@@ -403,12 +399,12 @@ bool DisassemblerObjdump::CalculateAddress(const DumpContext& context,
     return false;
   }
 
-  string segment_name = match[1].str();
-  string register_name = match[2].str();
-  string index_name = match[3].str();
-  string index_stride = match[4].str();
-  string offset_sign = match[5].str();
-  string offset = match[6].str();
+  std::string segment_name = match[1].str();
+  std::string register_name = match[2].str();
+  std::string index_name = match[3].str();
+  std::string index_stride = match[4].str();
+  std::string offset_sign = match[5].str();
+  std::string offset = match[6].str();
 
   uint64_t segment_address = 0;
   uint64_t register_value = 0;
@@ -469,7 +465,7 @@ DisassemblerObjdump::DisassemblerObjdump(const uint32_t cpu,
     }
   }
 
-  string instruction;
+  std::string instruction;
   if (!DisassembleInstruction(cpu, ip_bytes, kMaxX86InstructionLength,
                               instruction)) {
     return;

@@ -45,7 +45,6 @@
 #include <vector>
 
 #include "common/path_helper.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/basic_source_line_resolver.h"
 #include "google_breakpad/processor/minidump.h"
 #include "google_breakpad/processor/minidump_processor.h"
@@ -63,8 +62,8 @@ struct Options {
   bool output_requesting_thread_only;
   bool brief;
 
-  string minidump_file;
-  std::vector<string> symbol_paths;
+  std::string minidump_file;
+  std::vector<std::string> symbol_paths;
 };
 
 using google_breakpad::BasicSourceLineResolver;

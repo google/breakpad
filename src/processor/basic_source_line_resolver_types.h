@@ -55,15 +55,9 @@ namespace google_breakpad {
 
 struct
 BasicSourceLineResolver::Function : public SourceLineResolverBase::Function {
-  Function(const string& function_name,
-           MemAddr function_address,
-           MemAddr code_size,
-           int set_parameter_size,
-           bool is_mutiple)
-      : Base(function_name,
-             function_address,
-             code_size,
-             set_parameter_size,
+  Function(const std::string& function_name, MemAddr function_address,
+           MemAddr code_size, int set_parameter_size, bool is_mutiple)
+      : Base(function_name, function_address, code_size, set_parameter_size,
              is_mutiple),
         inlines(true),
         last_added_inline_nest_level(0) {}
@@ -85,7 +79,7 @@ BasicSourceLineResolver::Function : public SourceLineResolverBase::Function {
 
 class BasicSourceLineResolver::Module : public SourceLineResolverBase::Module {
  public:
-  explicit Module(const string& name) : name_(name), is_corrupt_(false) { }
+  explicit Module(const std::string& name) : name_(name), is_corrupt_(false) {}
   virtual ~Module() { }
 
   // Loads a map from the given buffer in char* type.
@@ -135,14 +129,12 @@ class BasicSourceLineResolver::Module : public SourceLineResolverBase::Module {
   friend class ModuleComparer;
   friend class ModuleSerializer;
 
-  typedef std::map<int, string> FileMap;
+  typedef std::map<int, std::string> FileMap;
 
   // Logs parse errors.  |*num_errors| is increased every time LogParseError is
   // called.
-  static void LogParseError(
-      const string& message,
-      int line_number,
-      int* num_errors);
+  static void LogParseError(const std::string& message, int line_number,
+                            int* num_errors);
 
   // Parses a file declaration
   bool ParseFile(char* file_line);
@@ -170,7 +162,7 @@ class BasicSourceLineResolver::Module : public SourceLineResolverBase::Module {
   // Parses a STACK CFI record, storing it in cfi_frame_info_.
   bool ParseCFIFrameInfo(char* stack_info_line);
 
-  string name_;
+  std::string name_;
   FileMap files_;
   std::map<int, linked_ptr<InlineOrigin>> inline_origins_;
   RangeMap< MemAddr, linked_ptr<Function> > functions_;
@@ -193,14 +185,14 @@ class BasicSourceLineResolver::Module : public SourceLineResolverBase::Module {
   // STACK CFI INIT records: for each range, an initial set of register
   // recovery rules. The RangeMap's itself gives the starting and ending
   // addresses.
-  RangeMap<MemAddr, string> cfi_initial_rules_;
+  RangeMap<MemAddr, std::string> cfi_initial_rules_;
 
   // STACK CFI records: at a given address, the changes to the register
   // recovery rules that take effect at that address. The map key is the
   // starting address; the ending address is the key of the next entry in
   // this map, or the end of the range as given by the cfi_initial_rules_
   // entry (which FindCFIFrameInfo looks up first).
-  std::map<MemAddr, string> cfi_delta_rules_;
+  std::map<MemAddr, std::string> cfi_delta_rules_;
 };
 
 }  // namespace google_breakpad

@@ -117,14 +117,13 @@ struct DwarfCUToModule::FilePrivate {
   std::map<uint64_t, Module::Function*> forward_ref_die_to_func;
 };
 
-DwarfCUToModule::FileContext::FileContext(const string& filename,
+DwarfCUToModule::FileContext::FileContext(const std::string& filename,
                                           Module* module,
                                           bool handle_inter_cu_refs)
     : filename_(filename),
       module_(module),
       handle_inter_cu_refs_(handle_inter_cu_refs),
-      file_private_(new FilePrivate()) {
-}
+      file_private_(new FilePrivate()) {}
 
 DwarfCUToModule::FileContext::~FileContext() {
   for (std::vector<uint8_t *>::iterator i = uncompressed_sections_.begin();
@@ -134,12 +133,12 @@ DwarfCUToModule::FileContext::~FileContext() {
 }
 
 void DwarfCUToModule::FileContext::AddSectionToSectionMap(
-    const string& name, const uint8_t* contents, uint64_t length) {
+    const std::string& name, const uint8_t* contents, uint64_t length) {
   section_map_[name] = std::make_pair(contents, length);
 }
 
 void DwarfCUToModule::FileContext::AddManagedSectionToSectionMap(
-    const string& name, uint8_t* contents, uint64_t length) {
+    const std::string& name, uint8_t* contents, uint64_t length) {
   section_map_[name] = std::make_pair(contents, length);
   uncompressed_sections_.push_back(contents);
 }
@@ -321,9 +320,8 @@ class DwarfCUToModule::GenericDIEHandler: public DIEHandler {
 
   // Derived classes' ProcessAttributeReference can defer to this to
   // handle DW_AT_specification, or simply not override it.
-  void ProcessAttributeString(enum DwarfAttribute attr,
-                              enum DwarfForm form,
-                              const string& data);
+  void ProcessAttributeString(enum DwarfAttribute attr, enum DwarfForm form,
+                              const std::string& data);
 
  protected:
   // Compute and return the fully-qualified name of the DIE. If this
@@ -440,9 +438,7 @@ void DwarfCUToModule::GenericDIEHandler::ProcessAttributeReference(
 }
 
 void DwarfCUToModule::GenericDIEHandler::ProcessAttributeString(
-    enum DwarfAttribute attr,
-    enum DwarfForm form,
-    const string& data) {
+    enum DwarfAttribute attr, enum DwarfForm form, const std::string& data) {
   switch (attr) {
     case DW_AT_name:
       name_attribute_ =
@@ -450,7 +446,7 @@ void DwarfCUToModule::GenericDIEHandler::ProcessAttributeString(
       break;
     case DW_AT_MIPS_linkage_name:
     case DW_AT_linkage_name: {
-      string demangled;
+      std::string demangled;
       Language::DemangleResult result =
           cu_context_->language->DemangleName(data, &demangled);
       switch (result) {
@@ -525,7 +521,7 @@ StringView DwarfCUToModule::GenericDIEHandler::ComputeQualifiedName(
 
   // Prepare the return value before upcoming mutations possibly invalidate the
   // existing pointers.
-  string return_value;
+  std::string return_value;
   if (qualified_name) {
     return_value = qualified_name->str();
   } else if (unqualified_name && enclosing_name) {
@@ -1052,7 +1048,7 @@ void DwarfCUToModule::WarningReporter::UnknownAbstractOrigin(uint64_t offset,
           filename_.c_str(), offset, target);
 }
 
-void DwarfCUToModule::WarningReporter::MissingSection(const string& name) {
+void DwarfCUToModule::WarningReporter::MissingSection(const std::string& name) {
   CUHeading();
   fprintf(stderr, "%s: warning: couldn't find DWARF '%s' section\n",
           filename_.c_str(), name.c_str());
@@ -1099,7 +1095,7 @@ void DwarfCUToModule::WarningReporter::UnnamedFunction(uint64_t offset) {
           filename_.c_str(), offset);
 }
 
-void DwarfCUToModule::WarningReporter::DemangleError(const string& input) {
+void DwarfCUToModule::WarningReporter::DemangleError(const std::string& input) {
   CUHeading();
   fprintf(stderr, "%s: warning: failed to demangle %s\n",
           filename_.c_str(), input.c_str());
@@ -1200,7 +1196,7 @@ void DwarfCUToModule::ProcessAttributeUnsigned(enum DwarfAttribute attr,
 
 void DwarfCUToModule::ProcessAttributeString(enum DwarfAttribute attr,
                                              enum DwarfForm form,
-                                            const string& data) {
+                                             const std::string& data) {
   switch (attr) {
     case DW_AT_name:
       cu_context_->reporter->SetCUName(data);

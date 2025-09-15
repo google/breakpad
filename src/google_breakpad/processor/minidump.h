@@ -89,7 +89,6 @@
 #include <string>
 #include <vector>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/code_module.h"
 #include "google_breakpad/processor/code_modules.h"
 #include "google_breakpad/processor/dump_context.h"
@@ -411,7 +410,7 @@ class MinidumpThreadName : public MinidumpObject {
   MDRawThreadName thread_name_;
 
   // Cached thread name.
-  const string* name_;
+  const std::string* name_;
 };
 
 // MinidumpThreadNameList contains all of the names of the threads (as
@@ -475,11 +474,11 @@ class MinidumpModule : public MinidumpObject,
     return valid_ ? module_.base_of_image : static_cast<uint64_t>(-1);
   }
   uint64_t size() const override { return valid_ ? module_.size_of_image : 0; }
-  string code_file() const override;
-  string code_identifier() const override;
-  string debug_file() const override;
-  string debug_identifier() const override;
-  string version() const override;
+  std::string code_file() const override;
+  std::string code_identifier() const override;
+  std::string debug_file() const override;
+  std::string debug_identifier() const override;
+  std::string version() const override;
   CodeModule* Copy() const override;
   bool is_unloaded() const override { return false; }
 
@@ -552,7 +551,7 @@ class MinidumpModule : public MinidumpObject,
   MDRawModule       module_;
 
   // Cached module name.
-  const string*     name_;
+  const std::string* name_;
 
   // Cached CodeView record - this is MDCVInfoPDB20 or (likely)
   // MDCVInfoPDB70, or possibly something else entirely.  Stored as a uint8_t
@@ -752,17 +751,11 @@ class MinidumpAssertion : public MinidumpStream {
     return valid_ ? &assertion_ : nullptr;
   }
 
-  string expression() const {
-    return valid_ ? expression_ : "";
-  }
+  std::string expression() const { return valid_ ? expression_ : ""; }
 
-  string function() const {
-    return valid_ ? function_ : "";
-  }
+  std::string function() const { return valid_ ? function_ : ""; }
 
-  string file() const {
-    return valid_ ? file_ : "";
-  }
+  std::string file() const { return valid_ ? file_ : ""; }
 
   // Print a human-readable representation of the object to stdout.
   void Print();
@@ -777,9 +770,9 @@ class MinidumpAssertion : public MinidumpStream {
   bool Read(uint32_t expected_size) override;
 
   MDRawAssertionInfo assertion_;
-  string expression_;
-  string function_;
-  string file_;
+  std::string expression_;
+  std::string function_;
+  std::string file_;
 };
 
 
@@ -801,19 +794,19 @@ class MinidumpSystemInfo : public MinidumpStream {
   // GetOS() are "mac", "windows", and "linux".  Defined values for GetCPU
   // are "x86" and "ppc".  These methods return an empty string when their
   // values are unknown.
-  string GetOS();
-  string GetCPU();
+  std::string GetOS();
+  std::string GetCPU();
 
   // I don't know what CSD stands for, but this field is documented as
   // returning a textual representation of the OS service pack.  On other
   // platforms, this provides additional information about an OS version
   // level beyond major.minor.micro.  Returns NULL if unknown.
-  const string* GetCSDVersion();
+  const std::string* GetCSDVersion();
 
   // If a CPU vendor string can be determined, returns a pointer to it,
   // otherwise, returns NULL.  CPU vendor strings can be determined from
   // x86 CPUs with CPUID 0.
-  const string* GetCPUVendor();
+  const std::string* GetCPUVendor();
 
   // Print a human-readable representation of the object to stdout.
   void Print();
@@ -824,7 +817,7 @@ class MinidumpSystemInfo : public MinidumpStream {
 
   // Textual representation of the OS service pack, for minidumps produced
   // by MiniDumpWriteDump on Windows.
-  const string* csd_version_;
+  const std::string* csd_version_;
 
  private:
   friend class Minidump;
@@ -834,7 +827,7 @@ class MinidumpSystemInfo : public MinidumpStream {
   bool Read(uint32_t expected_size) override;
 
   // A string identifying the CPU vendor, if known.
-  const string* cpu_vendor_;
+  const std::string* cpu_vendor_;
 };
 
 
@@ -855,11 +848,11 @@ class MinidumpUnloadedModule : public MinidumpObject,
   uint64_t size() const override {
     return valid_ ? unloaded_module_.size_of_image : 0;
   }
-  string code_file() const override;
-  string code_identifier() const override;
-  string debug_file() const override;
-  string debug_identifier() const override;
-  string version() const override;
+  std::string code_file() const override;
+  std::string code_identifier() const override;
+  std::string debug_file() const override;
+  std::string debug_identifier() const override;
+  std::string version() const override;
   CodeModule* Copy() const override;
   bool is_unloaded() const override { return true; }
   uint64_t shrink_down_delta() const override;
@@ -890,7 +883,7 @@ class MinidumpUnloadedModule : public MinidumpObject,
   MDRawUnloadedModule unloaded_module_;
 
   // Cached module name
-  const string* name_;
+  const std::string* name_;
 };
 
 
@@ -978,10 +971,10 @@ class MinidumpMiscInfo : public MinidumpStream {
 
   // Populated by Read.  Contains the converted strings from the corresponding
   // UTF-16 fields in misc_info_
-  string standard_name_;
-  string daylight_name_;
-  string build_string_;
-  string dbg_bld_str_;
+  std::string standard_name_;
+  std::string daylight_name_;
+  std::string build_string_;
+  std::string dbg_bld_str_;
 };
 
 
@@ -1131,7 +1124,7 @@ class MinidumpLinuxMaps : public MinidumpObject {
   uint64_t GetInode() const { return valid_ ? region_.inode : 0; }
 
   // The pathname of the mapped region.
-  const string GetPathname() const { return valid_ ? region_.path : ""; }
+  const std::string GetPathname() const { return valid_ ? region_.path : ""; }
 
   // Print the contents of this mapping.
   void Print() const;
@@ -1238,9 +1231,8 @@ class MinidumpCrashpadInfo : public MinidumpStream {
 class Minidump {
  public:
   // path is the pathname of a file containing the minidump.
-  explicit Minidump(const string& path,
-                    bool hexdump=false,
-                    unsigned int hexdump_width=16);
+  explicit Minidump(const std::string& path, bool hexdump = false,
+                    unsigned int hexdump_width = 16);
   // input is an istream wrapping minidump data. Minidump holds a
   // weak pointer to input, and the caller must ensure that the stream
   // is valid as long as the Minidump object is.
@@ -1252,9 +1244,7 @@ class Minidump {
   virtual ~Minidump();
 
   // path may be empty if the minidump was not opened from a file
-  virtual string path() const {
-    return path_;
-  }
+  virtual std::string path() const { return path_; }
   static void set_max_streams(uint32_t max_streams) {
     max_streams_ = max_streams;
   }
@@ -1333,9 +1323,9 @@ class Minidump {
   // ReadString returns a string which is owned by the caller!  offset
   // specifies the offset that a length-encoded string is stored at in the
   // minidump file.
-  string* ReadString(off_t offset);
+  std::string* ReadString(off_t offset);
 
-  bool ReadUTF8String(off_t offset, string* string_utf8);
+  bool ReadUTF8String(off_t offset, std::string* string_utf8);
 
   bool ReadStringList(off_t offset, std::vector<std::string>* string_list);
 
@@ -1422,7 +1412,7 @@ class Minidump {
 
   // The pathname of the minidump file to process, set in the constructor.
   // This may be empty if the minidump was opened directly from a stream.
-  const string              path_;
+  const std::string path_;
 
   // The stream for all file I/O.  Used by ReadBytes and SeekSet.
   // Set based on the path in Open, or directly in the constructor.

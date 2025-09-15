@@ -155,13 +155,16 @@ const uint8_t dwarf4_line_program[] = {
 
 class MockLineInfoHandler: public LineInfoHandler {
  public:
-  MOCK_METHOD(void, DefineDir, (const string&, uint32_t dir_num), (override));
-  MOCK_METHOD(void, DefineFile, (const string& name, int32_t file_num,
-                                 uint32_t dir_num, uint64_t mod_time,
-                                 uint64_t length), (override));
-  MOCK_METHOD(void, AddLine, (uint64_t address, uint64_t length,
-                              uint32_t file_num, uint32_t line_num,
-                              uint32_t column_num), (override));
+  MOCK_METHOD(void, DefineDir, (const std::string&, uint32_t dir_num),
+              (override));
+  MOCK_METHOD(void, DefineFile,
+              (const std::string& name, int32_t file_num, uint32_t dir_num,
+               uint64_t mod_time, uint64_t length),
+              (override));
+  MOCK_METHOD(void, AddLine,
+              (uint64_t address, uint64_t length, uint32_t file_num,
+               uint32_t line_num, uint32_t column_num),
+              (override));
 };
 
 const uint8_t string_section[] = {'x', '/', 'a', '\0'};

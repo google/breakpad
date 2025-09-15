@@ -43,8 +43,6 @@
 #include <string>
 #include <utility>
 
-#include "common/using_std_string.h"
-
 namespace google_breakpad {
 namespace synth_elf {
 
@@ -71,7 +69,7 @@ public:
   // Add the string s to the string table, and return
   // a label containing the offset into the string table
   // at which it was added.
-  Label Add(const string& s) {
+  Label Add(const std::string& s) {
     if (strings_.find(s) != strings_.end())
       return strings_[s];
 
@@ -86,7 +84,7 @@ public:
   Label empty_string;
 
   // Avoid inserting duplicate strings.
-  map<string,Label> strings_;
+  map<std::string, Label> strings_;
 };
 
 // A Section representing an entire ELF file.
@@ -99,10 +97,10 @@ class ELF : public Section {
   // Add the Section section to the section header table and append it
   // to the file. Returns the index of the section in the section
   // header table.
-  int AddSection(const string& name, const Section& section,
-                 uint32_t type, uint32_t flags = 0, uint64_t addr = 0,
-                 uint32_t link = 0, uint64_t entsize = 0, uint64_t offset = 0);
-                  
+  int AddSection(const std::string& name, const Section& section, uint32_t type,
+                 uint32_t flags = 0, uint64_t addr = 0, uint32_t link = 0,
+                 uint64_t entsize = 0, uint64_t offset = 0);
+
   // Add a segment containing from section index start to section index end.
   // The indexes must have been gotten from AddSection.
   void AddSegment(int start, int end, uint32_t type, uint32_t flags = 0);
@@ -165,11 +163,11 @@ class SymbolTable : public Section {
   SymbolTable(Endianness endianness, size_t addr_size, StringTable& table);
 
   // Add an Elf32_Sym.
-  void AddSymbol(const string& name, uint32_t value,
-                 uint32_t size, unsigned info, uint16_t shndx);
+  void AddSymbol(const std::string& name, uint32_t value, uint32_t size,
+                 unsigned info, uint16_t shndx);
   // Add an Elf64_Sym.
-  void AddSymbol(const string& name, uint64_t value,
-                 uint64_t size, unsigned info, uint16_t shndx);
+  void AddSymbol(const std::string& name, uint64_t value, uint64_t size,
+                 unsigned info, uint16_t shndx);
 
  private:
 #ifndef NDEBUG
@@ -186,7 +184,7 @@ public:
   }
 
   // Add a note.
-  void AddNote(int type, const string& name, const uint8_t* desc_bytes,
+  void AddNote(int type, const std::string& name, const uint8_t* desc_bytes,
                size_t desc_size);
 };
 

@@ -40,18 +40,16 @@
 #include <vector>
 
 #include "common/dwarf/dwarf2reader.h"
-#include "common/using_std_string.h"
-
 
 namespace google_breakpad {
 
 struct FunctionInfo {
   // Name of the function
-  string name;
+  std::string name;
   // Mangled name of the function
-  string mangled_name;
+  std::string mangled_name;
   // File containing this function
-  string file;
+  std::string file;
   // Line number for start of function.
   uint32_t line;
   // Beginning address for this function
@@ -64,13 +62,13 @@ struct FunctionInfo {
 
 struct SourceFileInfo {
   // Name of the source file name
-  string name;
+  std::string name;
   // Low address of source file name
   uint64_t lowpc;
 };
 
 typedef std::map<uint64, FunctionInfo*> FunctionMap;
-typedef std::map<uint64, std::pair<string, uint32> > LineMap;
+typedef std::map<uint64, std::pair<std::string, uint32> > LineMap;
 
 // This class is a basic line info handler that fills in the dirs,
 // file, and linemap passed into it with the data produced from the
@@ -80,19 +78,17 @@ class CULineInfoHandler: public LineInfoHandler {
 
   //
   CULineInfoHandler(std::vector<SourceFileInfo>* files,
-                    std::vector<string>* dirs,
-                    LineMap* linemap);
+                    std::vector<std::string>* dirs, LineMap* linemap);
   virtual ~CULineInfoHandler() { }
 
   // Called when we define a directory.  We just place NAME into dirs_
   // at position DIR_NUM.
-  virtual void DefineDir(const string& name, uint32_t dir_num);
+  virtual void DefineDir(const std::string& name, uint32_t dir_num);
 
   // Called when we define a filename.  We just place
   // concat(dirs_[DIR_NUM], NAME) into files_ at position FILE_NUM.
-  virtual void DefineFile(const string& name, int32 file_num,
+  virtual void DefineFile(const std::string& name, int32 file_num,
                           uint32_t dir_num, uint64_t mod_time, uint64_t length);
-
 
   // Called when the line info reader has a new line, address pair
   // ready for us. ADDRESS is the address of the code, LENGTH is the
@@ -107,24 +103,26 @@ class CULineInfoHandler: public LineInfoHandler {
  private:
   LineMap* linemap_;
   std::vector<SourceFileInfo>* files_;
-  std::vector<string>* dirs_;
+  std::vector<std::string>* dirs_;
 };
 
 class CUFunctionInfoHandler: public Dwarf2Handler {
  public:
   CUFunctionInfoHandler(std::vector<SourceFileInfo>* files,
-                        std::vector<string>* dirs,
-                        LineMap* linemap,
+                        std::vector<std::string>* dirs, LineMap* linemap,
                         FunctionMap* offset_to_funcinfo,
                         FunctionMap* address_to_funcinfo,
                         CULineInfoHandler* linehandler,
-                        const SectionMap& sections,
-                        ByteReader* reader)
-      : files_(files), dirs_(dirs), linemap_(linemap),
+                        const SectionMap& sections, ByteReader* reader)
+      : files_(files),
+        dirs_(dirs),
+        linemap_(linemap),
         offset_to_funcinfo_(offset_to_funcinfo),
         address_to_funcinfo_(address_to_funcinfo),
-        linehandler_(linehandler), sections_(sections),
-        reader_(reader), current_function_info_(nullptr) { }
+        linehandler_(linehandler),
+        sections_(sections),
+        reader_(reader),
+        current_function_info_(nullptr) {}
 
   virtual ~CUFunctionInfoHandler() { }
 
@@ -163,10 +161,9 @@ class CUFunctionInfoHandler: public Dwarf2Handler {
   // our handler.  The attribute is for the DIE at OFFSET from the
   // beginning of the .debug_info section, has a name of ATTR, a form of
   // FORM, and the actual data of the attribute is in DATA.
-  virtual void ProcessAttributeString(uint64_t offset,
-                                      enum DwarfAttribute attr,
+  virtual void ProcessAttributeString(uint64_t offset, enum DwarfAttribute attr,
                                       enum DwarfForm form,
-                                      const string& data);
+                                      const std::string& data);
 
   // Called when finished processing the DIE at OFFSET.
   // Because DWARF2/3 specifies a tree of DIEs, you may get starts
@@ -176,7 +173,7 @@ class CUFunctionInfoHandler: public Dwarf2Handler {
 
  private:
   std::vector<SourceFileInfo>* files_;
-  std::vector<string>* dirs_;
+  std::vector<std::string>* dirs_;
   LineMap* linemap_;
   FunctionMap* offset_to_funcinfo_;
   FunctionMap* address_to_funcinfo_;

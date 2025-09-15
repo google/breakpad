@@ -62,11 +62,11 @@ using google_breakpad::StackFrameSymbolizer;
 class MicrodumpProcessorTest : public ::testing::Test {
  public:
   MicrodumpProcessorTest()
-    : files_path_(string(getenv("srcdir") ? getenv("srcdir") : ".") +
+    : files_path_(std::string(getenv("srcdir") ? getenv("srcdir") : ".") +
                   "/src/processor/testdata/") {
   }
 
-  void ReadFile(const string& file_name, string* file_contents) {
+  void ReadFile(const std::string& file_name, std::string* file_contents) {
     assert(file_contents);
     std::ifstream file_stream(file_name.c_str(), std::ios::in);
     ASSERT_TRUE(file_stream.good());
@@ -78,12 +78,12 @@ class MicrodumpProcessorTest : public ::testing::Test {
     ASSERT_TRUE(file_stream.good());
     file_stream.read(&bytes[0], bytes.size());
     ASSERT_TRUE(file_stream.good());
-    *file_contents = string(&bytes[0], bytes.size());
+    *file_contents = std::string(&bytes[0], bytes.size());
   }
 
   google_breakpad::ProcessResult ProcessMicrodump(
-      const string& symbols_file,
-      const string& microdump_contents,
+      const std::string& symbols_file,
+      const std::string& microdump_contents,
       ProcessState* state) {
     SimpleSymbolSupplier supplier(symbols_file);
     BasicSourceLineResolver resolver;
@@ -94,11 +94,12 @@ class MicrodumpProcessorTest : public ::testing::Test {
     return processor.Process(&microdump, state);
   }
 
-  void AnalyzeDump(const string& microdump_file_name, bool omit_symbols,
+  void AnalyzeDump(const std::string& microdump_file_name, bool omit_symbols,
                    int expected_cpu_count, ProcessState* state) {
-    string symbols_file = omit_symbols ? "" : files_path_ + "symbols/microdump";
-    string microdump_file_path = files_path_ + microdump_file_name;
-    string microdump_contents;
+    std::string symbols_file =
+        omit_symbols ? "" : files_path_ + "symbols/microdump";
+    std::string microdump_file_path = files_path_ + microdump_file_name;
+    std::string microdump_contents;
     ReadFile(microdump_file_path, &microdump_contents);
 
     google_breakpad::ProcessResult result =
@@ -114,7 +115,7 @@ class MicrodumpProcessorTest : public ::testing::Test {
     ASSERT_EQ("Android", state->system_info()->os);
   }
 
-  string files_path_;
+  std::string files_path_;
 };
 
 TEST_F(MicrodumpProcessorTest, TestProcess_Invalid) {
@@ -158,7 +159,7 @@ TEST_F(MicrodumpProcessorTest, TestProcess_MissingSymbols) {
 }
 
 TEST_F(MicrodumpProcessorTest, TestProcess_UnsupportedArch) {
-  string microdump_contents =
+  std::string microdump_contents =
       "W/google-breakpad(26491): -----BEGIN BREAKPAD MICRODUMP-----\n"
       "W/google-breakpad(26491): O A \"unsupported-arch\"\n"
       "W/google-breakpad(26491): S 0 A48BD840 A48BD000 00002000\n";

@@ -43,7 +43,6 @@
 #include <string>
 #include <vector>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 #include "processor/logging.h"
 #include "processor/tokenize.h"
@@ -87,15 +86,11 @@ struct WindowsFrameInfo {
                      allocates_base_pointer(0),
                      program_string() {}
 
-  WindowsFrameInfo(StackInfoTypes type,
-                 uint32_t set_prolog_size,
-                 uint32_t set_epilog_size,
-                 uint32_t set_parameter_size,
-                 uint32_t set_saved_register_size,
-                 uint32_t set_local_size,
-                 uint32_t set_max_stack_size,
-                 int set_allocates_base_pointer,
-                 const string& set_program_string)
+  WindowsFrameInfo(StackInfoTypes type, uint32_t set_prolog_size,
+                   uint32_t set_epilog_size, uint32_t set_parameter_size,
+                   uint32_t set_saved_register_size, uint32_t set_local_size,
+                   uint32_t set_max_stack_size, int set_allocates_base_pointer,
+                   const std::string& set_program_string)
       : type_(type),
         valid(VALID_ALL),
         prolog_size(set_prolog_size),
@@ -111,10 +106,8 @@ struct WindowsFrameInfo {
   // a string. Returns NULL if parsing fails, or a new object
   // otherwise. type, rva and code_size are present in the STACK line,
   // but not the StackFrameInfo structure, so return them as outparams.
-  static WindowsFrameInfo *ParseFromString(const string& string,
-                                           int& type,
-                                           uint64_t& rva,
-                                           uint64_t& code_size) {
+  static WindowsFrameInfo* ParseFromString(const std::string& string, int& type,
+                                           uint64_t& rva, uint64_t& code_size) {
     // The format of a STACK WIN record is documented at:
     //
     // https://chromium.googlesource.com/breakpad/breakpad/+/master/docs/symbol_files.md
@@ -199,7 +192,7 @@ struct WindowsFrameInfo {
   // Only one of allocates_base_pointer or program_string will be valid.
   // If program_string is empty, use allocates_base_pointer.
   bool allocates_base_pointer;
-  string program_string;
+  std::string program_string;
 };
 
 }  // namespace google_breakpad

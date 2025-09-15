@@ -225,7 +225,7 @@ static inline void InsertEndian(test_assembler::Endianness endianness,
 
 Section& Section::Append(Endianness endianness, size_t size, uint64_t number) {
   InsertEndian(endianness, size, number,
-               back_insert_iterator<string>(contents_));
+               back_insert_iterator<std::string>(contents_));
   return *this;
 }
 
@@ -250,11 +250,11 @@ Section& Section::Append(Endianness endianness, size_t size,
 #define ENDIANNESS_B kBigEndian
 #define ENDIANNESS(e) ENDIANNESS_ ## e
 
-#define DEFINE_SHORT_APPEND_NUMBER_ENDIAN(e, bits)                      \
-  Section& Section::e ## bits(uint ## bits ## _t v) {                   \
-    InsertEndian(ENDIANNESS(e), bits / 8, v,                            \
-                 back_insert_iterator<string>(contents_));              \
-    return *this;                                                       \
+#define DEFINE_SHORT_APPEND_NUMBER_ENDIAN(e, bits)              \
+  Section& Section::e##bits(uint##bits##_t v) {                 \
+    InsertEndian(ENDIANNESS(e), bits / 8, v,                    \
+                 back_insert_iterator<std::string>(contents_)); \
+    return *this;                                               \
   }
 
 #define DEFINE_SHORT_APPEND_LABEL_ENDIAN(e, bits)                       \
@@ -276,11 +276,11 @@ DEFINE_SHORT_APPEND_ENDIAN(B, 16);
 DEFINE_SHORT_APPEND_ENDIAN(B, 32);
 DEFINE_SHORT_APPEND_ENDIAN(B, 64);
 
-#define DEFINE_SHORT_APPEND_NUMBER_DEFAULT(bits)                        \
-  Section& Section::D ## bits(uint ## bits ## _t v) {                   \
-    InsertEndian(endianness_, bits / 8, v,                              \
-                 back_insert_iterator<string>(contents_));              \
-    return *this;                                                       \
+#define DEFINE_SHORT_APPEND_NUMBER_DEFAULT(bits)                \
+  Section& Section::D##bits(uint##bits##_t v) {                 \
+    InsertEndian(endianness_, bits / 8, v,                      \
+                 back_insert_iterator<std::string>(contents_)); \
+    return *this;                                               \
   }
 #define DEFINE_SHORT_APPEND_LABEL_DEFAULT(bits)                         \
   Section& Section::D ## bits(const Label& v) {                         \
@@ -340,7 +340,7 @@ void Section::Clear() {
   references_.clear();
 }
 
-bool Section::GetContents(string* contents) {
+bool Section::GetContents(std::string* contents) {
   // For each label reference, find the label's value, and patch it into
   // the section's contents.
   for (size_t i = 0; i < references_.size(); i++) {

@@ -34,6 +34,7 @@
 #ifndef GOOGLE_BREAKPAD_PROCESSOR_CODE_MODULES_H__
 #define GOOGLE_BREAKPAD_PROCESSOR_CODE_MODULES_H__
 
+#include <string>
 #include <vector>
 
 #include "google_breakpad/common/breakpad_types.h"

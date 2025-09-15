@@ -53,7 +53,7 @@ namespace {
 
 class MockLineInfoHandler: public LineInfoHandler {
  public:
-  MOCK_METHOD(void, DefineFile, (const string& name, int32_t file_num,
+  MOCK_METHOD(void, DefineFile, (const std::string& name, int32_t file_num,
                                  uint32_t dir_num, uint64_t mod_time,
                                  uint64_t length), (override));
   MOCK_METHOD(void, AddLine, (uint64_t address, uint64_t length,

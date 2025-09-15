@@ -41,7 +41,6 @@
 #include <string>
 
 #include "breakpad_googletest_includes.h"
-#include "common/using_std_string.h"
 #include "google_breakpad/common/minidump_format.h"
 #include "processor/synth_minidump.h"
 #include "processor/synth_minidump_unittest_data.h"
@@ -65,9 +64,9 @@ TEST(Section, Simple) {
   Section section(dump);
   section.L32(0x12345678);
   section.Finish(0);
-  string contents;
+  std::string contents;
   ASSERT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("\x78\x56\x34\x12", 4), contents);
+  EXPECT_EQ(std::string("\x78\x56\x34\x12", 4), contents);
 }
 
 TEST(Section, CiteLocationIn) {
@@ -77,9 +76,9 @@ TEST(Section, CiteLocationIn) {
   section2.Append("mayhem");
   section2.Finish(0x32287ec2);
   section2.CiteLocationIn(&section1);
-  string contents;
+  std::string contents;
   ASSERT_TRUE(section1.GetContents(&contents));
-  string expected("order\0\0\0\x06\x32\x28\x7e\xc2", 13);
+  std::string expected("order\0\0\0\x06\x32\x28\x7e\xc2", 13);
   EXPECT_EQ(expected, contents);
 }
 
@@ -91,13 +90,14 @@ TEST(Stream, CiteStreamIn) {
   section.Append("section contents");
   stream.Finish(0x41424344);
   stream.CiteStreamIn(&section);
-  string contents;
+  std::string contents;
   ASSERT_TRUE(section.GetContents(&contents));
-  string expected("section contents"
-                  "\xb3\xe2\xca\x40"
-                  "\x0f\0\0\0"
-                  "\x44\x43\x42\x41",
-                  16 + 4 + 4 + 4);
+  std::string expected(
+      "section contents"
+      "\xb3\xe2\xca\x40"
+      "\x0f\0\0\0"
+      "\x44\x43\x42\x41",
+      16 + 4 + 4 + 4);
   EXPECT_EQ(expected, contents);
 }
 
@@ -109,13 +109,14 @@ TEST(Memory, CiteMemoryIn) {
   section.Append("section contents");
   memory.Finish(0x51525354);
   memory.CiteMemoryIn(&section);
-  string contents;
+  std::string contents;
   ASSERT_TRUE(section.GetContents(&contents));
-  string expected("section contents"
-                  "\x76\xd0\x10\x87\x4a\xb0\x19\xf9"
-                  "\0\0\0\x0f"
-                  "\x51\x52\x53\x54",
-                  16 + 8 + 4 + 4);
+  std::string expected(
+      "section contents"
+      "\x76\xd0\x10\x87\x4a\xb0\x19\xf9"
+      "\0\0\0\x0f"
+      "\x51\x52\x53\x54",
+      16 + 8 + 4 + 4);
   EXPECT_EQ(contents, expected);
 }
 
@@ -131,7 +132,7 @@ TEST(Context, X86) {
   Dump dump(0, kLittleEndian);
   assert(x86_raw_context.context_flags & MD_CONTEXT_X86);
   Context context(dump, x86_raw_context);
-  string contents;
+  std::string contents;
   ASSERT_TRUE(context.GetContents(&contents));
   EXPECT_EQ(sizeof(x86_expected_contents), contents.size());
   EXPECT_TRUE(memcmp(contents.data(), x86_expected_contents, contents.size())
@@ -142,7 +143,7 @@ TEST(Context, ARM) {
   Dump dump(0, kLittleEndian);
   assert(arm_raw_context.context_flags & MD_CONTEXT_ARM);
   Context context(dump, arm_raw_context);
-  string contents;
+  std::string contents;
   ASSERT_TRUE(context.GetContents(&contents));
   EXPECT_EQ(sizeof(arm_expected_contents), contents.size());
   EXPECT_TRUE(memcmp(contents.data(), arm_expected_contents, contents.size())
@@ -188,7 +189,7 @@ TEST(Thread, Simple) {
       0xab352b82, // priority class
       0x2753d838, // priority
       0xeb2de4be3f29e3e9ULL); // thread environment block
-  string contents;
+  std::string contents;
   ASSERT_TRUE(thread.GetContents(&contents));
   static const uint8_t expected_bytes[] = {
     0x60, 0xc3, 0x7e, 0x3d, // thread id
@@ -216,7 +217,7 @@ TEST(Exception, Simple) {
                       0xdcba4321, // exception code
                       0xf0e0d0c0, // exception flags
                       0x0919a9b9c9d9e9f9ULL); // exception address
-  string contents;
+  std::string contents;
   ASSERT_TRUE(exception.GetContents(&contents));
   static const uint8_t expected_bytes[] = {
     0xcd, 0xab, 0x34, 0x12, // thread id
@@ -252,12 +253,12 @@ TEST(Exception, Simple) {
 TEST(String, Simple) {
   Dump dump(0, kBigEndian);
   String s(dump, "All mimsy were the borogoves");
-  string contents;
+  std::string contents;
   ASSERT_TRUE(s.GetContents(&contents));
   static const char expected[] = 
     "\x00\x00\x00\x38\0A\0l\0l\0 \0m\0i\0m\0s\0y\0 \0w\0e\0r\0e"
     "\0 \0t\0h\0e\0 \0b\0o\0r\0o\0g\0o\0v\0e\0s";
-  string expected_string(expected, sizeof(expected) - 1);
+  std::string expected_string(expected, sizeof(expected) - 1);
   EXPECT_EQ(expected_string, contents);
 }
 
@@ -268,9 +269,9 @@ TEST(String, CiteStringIn) {
   section.Append("initial");
   s.CiteStringIn(&section);
   s.Finish(0xdc2bb469);
-  string contents;
+  std::string contents;
   ASSERT_TRUE(section.GetContents(&contents));
-  EXPECT_EQ(string("initial\x69\xb4\x2b\xdc", 7 + 4), contents);
+  EXPECT_EQ(std::string("initial\x69\xb4\x2b\xdc", 7 + 4), contents);
 }
 
 TEST(List, Empty) {
@@ -278,9 +279,9 @@ TEST(List, Empty) {
   List<Section> list(dump, 0x2442779c);
   EXPECT_TRUE(list.Empty());
   list.Finish(0x84e09808);
-  string contents;
+  std::string contents;
   ASSERT_TRUE(list.GetContents(&contents));
-  EXPECT_EQ(string("\0\0\0\0", 4), contents);
+  EXPECT_EQ(std::string("\0\0\0\0", 4), contents);
 }
 
 TEST(List, Two) {
@@ -295,41 +296,42 @@ TEST(List, Two) {
   section2.Append("section two contents");
   list.Add(&section2);
   list.Finish(0x1e5bb60e);
-  string contents;
+  std::string contents;
   ASSERT_TRUE(list.GetContents(&contents));
-  EXPECT_EQ(string("\0\0\0\x02section one contentssection two contents", 44),
-            contents);
+  EXPECT_EQ(
+      std::string("\0\0\0\x02section one contentssection two contents", 44),
+      contents);
 }
 
 TEST(Dump, Header) {
   Dump dump(0x9f738b33685cc84cULL, kLittleEndian, 0xb3817faf, 0x2c741c0a);
   dump.Finish();
-  string contents;
+  std::string contents;
   ASSERT_TRUE(dump.GetContents(&contents));
-  ASSERT_EQ(string("\x4d\x44\x4d\x50"   // signature
-                   "\xaf\x7f\x81\xb3"   // version
-                   "\0\0\0\0"           // stream count
-                   "\x20\0\0\0"         // directory RVA (could be anything)
-                   "\0\0\0\0"           // checksum
-                   "\x0a\x1c\x74\x2c"   // time_date_stamp
-                   "\x4c\xc8\x5c\x68\x33\x8b\x73\x9f", // flags
-                   32),
+  ASSERT_EQ(std::string("\x4d\x44\x4d\x50"  // signature
+                        "\xaf\x7f\x81\xb3"  // version
+                        "\0\0\0\0"          // stream count
+                        "\x20\0\0\0"        // directory RVA (could be anything)
+                        "\0\0\0\0"          // checksum
+                        "\x0a\x1c\x74\x2c"  // time_date_stamp
+                        "\x4c\xc8\x5c\x68\x33\x8b\x73\x9f",  // flags
+                        32),
             contents);
 }
 
 TEST(Dump, HeaderBigEndian) {
   Dump dump(0x206ce3cc6fb8e0f0ULL, kBigEndian, 0x161693e2, 0x35667744);
   dump.Finish();
-  string contents;
+  std::string contents;
   ASSERT_TRUE(dump.GetContents(&contents));
-  ASSERT_EQ(string("\x50\x4d\x44\x4d"   // signature
-                   "\x16\x16\x93\xe2"   // version
-                   "\0\0\0\0"           // stream count
-                   "\0\0\0\x20"         // directory RVA (could be anything)
-                   "\0\0\0\0"           // checksum
-                   "\x35\x66\x77\x44"   // time_date_stamp
-                   "\x20\x6c\xe3\xcc\x6f\xb8\xe0\xf0", // flags
-                   32),
+  ASSERT_EQ(std::string("\x50\x4d\x44\x4d"  // signature
+                        "\x16\x16\x93\xe2"  // version
+                        "\0\0\0\0"          // stream count
+                        "\0\0\0\x20"        // directory RVA (could be anything)
+                        "\0\0\0\0"          // checksum
+                        "\x35\x66\x77\x44"  // time_date_stamp
+                        "\x20\x6c\xe3\xcc\x6f\xb8\xe0\xf0",  // flags
+                        32),
             contents);
 }
 
@@ -339,13 +341,13 @@ TEST(Dump, OneSection) {
   section.Append("section contents");
   dump.Add(&section);
   dump.Finish();
-  string dump_contents;
+  std::string dump_contents;
   // Just check for undefined labels; don't worry about the contents.
   ASSERT_TRUE(dump.GetContents(&dump_contents));
 
   Section referencing_section(dump);
   section.CiteLocationIn(&referencing_section);
-  string contents;
+  std::string contents;
   ASSERT_TRUE(referencing_section.GetContents(&contents));
-  ASSERT_EQ(string("\x10\0\0\0\x20\0\0\0", 8), contents);
+  ASSERT_EQ(std::string("\x10\0\0\0\x20\0\0\0", 8), contents);
 }

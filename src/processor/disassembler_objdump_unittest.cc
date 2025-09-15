@@ -31,6 +31,8 @@
 #endif
 
 #include <unistd.h>
+
+#include <string>
 #include <vector>
 
 #include "breakpad_googletest_includes.h"
@@ -207,7 +209,7 @@ TestDumpContext::~TestDumpContext() {
 }
 
 TEST(DisassemblerObjdumpTest, DisassembleInstructionX86) {
-  string instruction;
+  std::string instruction;
   ASSERT_FALSE(DisassemblerObjdumpForTest::DisassembleInstruction(
       MD_CONTEXT_X86, nullptr, 0, instruction));
   std::vector<uint8_t> pop_eax = {0x58};
@@ -217,7 +219,7 @@ TEST(DisassemblerObjdumpTest, DisassembleInstructionX86) {
 }
 
 TEST(DisassemblerObjdumpTest, DisassembleInstructionAMD64) {
-  string instruction;
+  std::string instruction;
   ASSERT_FALSE(DisassemblerObjdumpForTest::DisassembleInstruction(
       MD_CONTEXT_AMD64, nullptr, 0, instruction));
   std::vector<uint8_t> pop_rax = {0x58};
@@ -227,7 +229,7 @@ TEST(DisassemblerObjdumpTest, DisassembleInstructionAMD64) {
 }
 
 TEST(DisassemblerObjdumpTest, TokenizeInstruction) {
-  string operation, dest, src;
+  std::string operation, dest, src;
   ASSERT_TRUE(DisassemblerObjdumpForTest::TokenizeInstruction(
       "pop eax", operation, dest, src));
   ASSERT_EQ(operation, "pop");

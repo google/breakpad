@@ -47,6 +47,7 @@
 
 #include "google_breakpad/common/minidump_cpu_arm.h"
 #include "google_breakpad/processor/code_module.h"
+#include "google_breakpad/processor/system_info.h"
 #include "processor/basic_code_module.h"
 #include "processor/convert_old_arm64_context.h"
 #include "processor/linked_ptr.h"
@@ -71,15 +72,15 @@ static const char kMipsArchitecture[] = "mips";
 static const char kMips64Architecture[] = "mips64";
 static const char kGpuUnknown[] = "UNKNOWN";
 
-template<typename T>
-T HexStrToL(const string& str) {
+template <typename T>
+T HexStrToL(const std::string& str) {
   uint64_t res = 0;
   std::istringstream ss(str);
   ss >> std::hex >> res;
   return static_cast<T>(res);
 }
 
-std::vector<uint8_t> ParseHexBuf(const string& str) {
+std::vector<uint8_t> ParseHexBuf(const std::string& str) {
   std::vector<uint8_t> buf;
   for (size_t i = 0; i < str.length(); i += 2) {
     buf.push_back(HexStrToL<uint8_t>(str.substr(i, 2)));
@@ -87,7 +88,7 @@ std::vector<uint8_t> ParseHexBuf(const string& str) {
   return buf;
 }
 
-bool GetLine(std::istringstream* istream, string* str) {
+bool GetLine(std::istringstream* istream, std::string* str) {
   if (std::getline(*istream, *str)) {
     // Trim any trailing newline from the end of the line. Allows us
     // to seamlessly handle both Windows/DOS and Unix formatted input. The
@@ -215,47 +216,47 @@ void MicrodumpMemoryRegion::Print() const {
 //
 // Microdump
 //
-Microdump::Microdump(const string& contents)
-  : context_(new MicrodumpContext()),
-    stack_region_(new MicrodumpMemoryRegion()),
-    modules_(new MicrodumpModules()),
-    system_info_(new SystemInfo()),
-    crash_reason_(),
-    crash_address_(0u) {
+Microdump::Microdump(const std::string& contents)
+    : context_(new MicrodumpContext()),
+      stack_region_(new MicrodumpMemoryRegion()),
+      modules_(new MicrodumpModules()),
+      system_info_(new SystemInfo()),
+      crash_reason_(),
+      crash_address_(0u) {
   assert(!contents.empty());
 
   bool in_microdump = false;
-  string line;
+  std::string line;
   uint64_t stack_start = 0;
   std::vector<uint8_t> stack_content;
-  string arch;
+  std::string arch;
 
   std::istringstream stream(contents);
   while (GetLine(&stream, &line)) {
-    if (line.find(kGoogleBreakpadKey) == string::npos) {
+    if (line.find(kGoogleBreakpadKey) == std::string::npos) {
       continue;
     }
-    if (line.find(kMicrodumpBegin) != string::npos) {
+    if (line.find(kMicrodumpBegin) != std::string::npos) {
       in_microdump = true;
       continue;
     }
     if (!in_microdump) {
       continue;
     }
-    if (line.find(kMicrodumpEnd) != string::npos) {
+    if (line.find(kMicrodumpEnd) != std::string::npos) {
       break;
     }
 
     size_t pos;
-    if ((pos = line.find(kOsKey)) != string::npos) {
-      string os_str(line, pos + strlen(kOsKey));
+    if ((pos = line.find(kOsKey)) != std::string::npos) {
+      std::string os_str(line, pos + strlen(kOsKey));
       std::istringstream os_tokens(os_str);
-      string os_id;
-      string num_cpus;
-      string os_version;
+      std::string os_id;
+      std::string num_cpus;
+      std::string os_version;
       // This reflect the actual HW arch and might not match the arch emulated
       // for the execution (e.g., running a 32-bit binary on a 64-bit cpu).
-      string hw_arch;
+      std::string hw_arch;
 
       os_tokens >> os_id;
       os_tokens >> arch;
@@ -278,18 +279,18 @@ Microdump::Microdump(const string& contents)
       }
 
       // OS line also contains release and version for future use.
-    } else if ((pos = line.find(kStackKey)) != string::npos) {
-      if (line.find(kStackFirstLineKey) != string::npos) {
+    } else if ((pos = line.find(kStackKey)) != std::string::npos) {
+      if (line.find(kStackFirstLineKey) != std::string::npos) {
         // The first line of the stack (S 0 stack header) provides the value of
         // the stack pointer, the start address of the stack being dumped and
         // the length of the stack. We could use it in future to double check
         // that we received all the stack as expected.
         continue;
       }
-      string stack_str(line, pos + strlen(kStackKey));
+      std::string stack_str(line, pos + strlen(kStackKey));
       std::istringstream stack_tokens(stack_str);
-      string start_addr_str;
-      string raw_content;
+      std::string start_addr_str;
+      std::string raw_content;
       stack_tokens >> start_addr_str;
       stack_tokens >> raw_content;
       uint64_t start_addr = HexStrToL<uint64_t>(start_addr_str);
@@ -303,8 +304,8 @@ Microdump::Microdump(const string& contents)
       std::vector<uint8_t> chunk = ParseHexBuf(raw_content);
       stack_content.insert(stack_content.end(), chunk.begin(), chunk.end());
 
-    } else if ((pos = line.find(kCpuKey)) != string::npos) {
-      string cpu_state_str(line, pos + strlen(kCpuKey));
+    } else if ((pos = line.find(kCpuKey)) != std::string::npos) {
+      std::string cpu_state_str(line, pos + strlen(kCpuKey));
       std::vector<uint8_t> cpu_state_raw = ParseHexBuf(cpu_state_str);
       if (strcmp(arch.c_str(), kArmArchitecture) == 0) {
         if (cpu_state_raw.size() != sizeof(MDRawContextARM)) {
@@ -366,27 +367,27 @@ Microdump::Microdump(const string& contents)
       } else {
         std::cerr << "Unsupported architecture: " << arch << std::endl;
       }
-    } else if ((pos = line.find(kCrashReasonKey)) != string::npos) {
-      string crash_reason_str(line, pos + strlen(kCrashReasonKey));
+    } else if ((pos = line.find(kCrashReasonKey)) != std::string::npos) {
+      std::string crash_reason_str(line, pos + strlen(kCrashReasonKey));
       std::istringstream crash_reason_tokens(crash_reason_str);
-      string signal;
-      string address;
+      std::string signal;
+      std::string address;
       crash_reason_tokens >> signal;
       crash_reason_tokens >> crash_reason_;
       crash_reason_tokens >> address;
       crash_address_ = HexStrToL<uint64_t>(address);
-    } else if ((pos = line.find(kGpuKey)) != string::npos) {
-      string gpu_str(line, pos + strlen(kGpuKey));
+    } else if ((pos = line.find(kGpuKey)) != std::string::npos) {
+      std::string gpu_str(line, pos + strlen(kGpuKey));
       if (strcmp(gpu_str.c_str(), kGpuUnknown) != 0) {
         std::istringstream gpu_tokens(gpu_str);
         std::getline(gpu_tokens, system_info_->gl_version, '|');
         std::getline(gpu_tokens, system_info_->gl_vendor, '|');
         std::getline(gpu_tokens, system_info_->gl_renderer, '|');
       }
-    } else if ((pos = line.find(kMmapKey)) != string::npos) {
-      string mmap_line(line, pos + strlen(kMmapKey));
+    } else if ((pos = line.find(kMmapKey)) != std::string::npos) {
+      std::string mmap_line(line, pos + strlen(kMmapKey));
       std::istringstream mmap_tokens(mmap_line);
-      string addr, offset, size, identifier, filename;
+      std::string addr, offset, size, identifier, filename;
       mmap_tokens >> addr;
       mmap_tokens >> offset;
       mmap_tokens >> size;

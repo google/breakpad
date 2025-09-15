@@ -209,7 +209,7 @@ class DumpSymbols {
   // messages.  This is usually object_filename_, but if that refers to a
   // fat binary, it includes an indication of the particular architecture
   // within that binary.
-  string selected_object_name_;
+  std::string selected_object_name_;
 
   // Whether symbols sharing an address should be collapsed into a single entry
   // and marked with an `m` in the output. 

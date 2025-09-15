@@ -35,8 +35,6 @@
 
 #include <string>
 
-#include "common/using_std_string.h"
-
 namespace google_breakpad {
 
 class PathnameStripper {
@@ -44,7 +42,7 @@ class PathnameStripper {
   // Given path, a pathname with components separated by slashes (/) or
   // backslashes (\), returns the trailing component, without any separator.
   // If path ends in a separator character, returns an empty string.
-  static string File(const string& path);
+  static std::string File(const std::string& path);
 };
 
 }  // namespace google_breakpad

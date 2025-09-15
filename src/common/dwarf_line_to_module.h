@@ -41,7 +41,6 @@
 
 #include "common/module.h"
 #include "common/dwarf/dwarf2reader.h"
-#include "common/using_std_string.h"
 
 namespace google_breakpad {
 
@@ -119,8 +118,7 @@ class DwarfLineToModule: public LineInfoHandler {
   // end of the address space, we clip it. It's up to our client to
   // sort out which lines belong to which functions; we don't add them
   // to any particular function in MODULE ourselves.
-  DwarfLineToModule(Module* module,
-                    const string& compilation_dir,
+  DwarfLineToModule(Module* module, const std::string& compilation_dir,
                     vector<Module::Line>* lines,
                     std::map<uint32_t, Module::File*>* files)
       : module_(module),
@@ -130,20 +128,18 @@ class DwarfLineToModule: public LineInfoHandler {
         highest_file_number_(-1),
         omitted_line_end_(0),
         warned_bad_file_number_(false),
-        warned_bad_directory_number_(false) { }
+        warned_bad_directory_number_(false) {}
 
   ~DwarfLineToModule() { }
 
-  void DefineDir(const string& name, uint32_t dir_num);
-  void DefineFile(const string& name, int32_t file_num,
-                  uint32_t dir_num, uint64_t mod_time,
-                  uint64_t length);
+  void DefineDir(const std::string& name, uint32_t dir_num);
+  void DefineFile(const std::string& name, int32_t file_num, uint32_t dir_num,
+                  uint64_t mod_time, uint64_t length);
   void AddLine(uint64_t address, uint64_t length,
                uint32_t file_num, uint32_t line_num, uint32_t column_num);
 
  private:
-
-  typedef std::map<uint32_t, string> DirectoryTable;
+  typedef std::map<uint32_t, std::string> DirectoryTable;
   typedef std::map<uint32_t, Module::File*> FileTable;
 
   // The module we're contributing debugging info to. Owned by our
@@ -152,7 +148,7 @@ class DwarfLineToModule: public LineInfoHandler {
 
   // The compilation directory for the current compilation unit whose
   // lines are being accumulated.
-  string compilation_dir_;
+  std::string compilation_dir_;
 
   // The vector of lines we're accumulating. Owned by our client.
   //

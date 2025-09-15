@@ -38,10 +38,8 @@
 #define GOOGLE_BREAKPAD_PROCESSOR_BASIC_SOURCE_LINE_RESOLVER_H__
 
 #include <map>
-#include <string>
 #include <vector>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/source_line_resolver_base.h"
 
 namespace google_breakpad {

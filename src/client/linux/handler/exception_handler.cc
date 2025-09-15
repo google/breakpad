@@ -86,6 +86,7 @@
 #include <ucontext.h>
 
 #include <algorithm>
+#include <string>
 #include <utility>
 #include <vector>
 
@@ -642,7 +643,7 @@ bool ExceptionHandler::DoDump(pid_t crashing_process, const void* context,
 }
 
 // static
-bool ExceptionHandler::WriteMinidump(const string& dump_path,
+bool ExceptionHandler::WriteMinidump(const std::string& dump_path,
                                      MinidumpCallback callback,
                                      void* callback_context) {
   MinidumpDescriptor descriptor(dump_path);
@@ -737,11 +738,10 @@ bool ExceptionHandler::WriteMinidump() {
   return GenerateDump(&context);
 }
 
-void ExceptionHandler::AddMappingInfo(const string& name,
+void ExceptionHandler::AddMappingInfo(const std::string& name,
                                       const uint8_t identifier[sizeof(MDGUID)],
                                       uintptr_t start_address,
-                                      size_t mapping_size,
-                                      size_t file_offset) {
+                                      size_t mapping_size, size_t file_offset) {
   MappingInfo info;
   info.start_addr = start_address;
   info.size = mapping_size;
@@ -780,7 +780,7 @@ void ExceptionHandler::UnregisterAppMemory(void* ptr) {
 // static
 bool ExceptionHandler::WriteMinidumpForChild(pid_t child,
                                              pid_t child_blamed_thread,
-                                             const string& dump_path,
+                                             const std::string& dump_path,
                                              MinidumpCallback callback,
                                              void* callback_context) {
   // This function is not run in a compromised context.

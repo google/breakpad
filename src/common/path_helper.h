@@ -31,12 +31,10 @@
 
 #include <string>
 
-#include "common/using_std_string.h"
-
 namespace google_breakpad {
 
-string BaseName(const string& path);
-string DirName(const string& path);
+std::string BaseName(const std::string& path);
+std::string DirName(const std::string& path);
 
 }  // namespace google_breakpad
 

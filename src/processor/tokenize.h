@@ -34,8 +34,6 @@
 #include <string>
 #include <vector>
 
-#include "common/using_std_string.h"
-
 namespace google_breakpad {
 
 // Splits line into at most max_tokens tokens, separated by any of the
@@ -55,7 +53,7 @@ bool Tokenize(char* line,
               std::vector<char*>* tokens);
 // For convenience, since you need a char* to pass to Tokenize.
 // You can call StringToVector on a string, and use &vec[0].
-void StringToVector(const string& str, std::vector<char>& vec);
+void StringToVector(const std::string& str, std::vector<char>& vec);
 
 }  // namespace google_breakpad
 

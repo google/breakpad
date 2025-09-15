@@ -59,7 +59,6 @@
 #include "common/linux/ignore_ret.h"
 #include "common/linux/safe_readlink.h"
 #include "common/memory_allocator.h"
-#include "common/using_std_string.h"
 
 #ifndef PR_SET_PTRACER
 #define PR_SET_PTRACER 0x59616d61
@@ -83,7 +82,7 @@ pid_t SetupChildProcess(int number_of_threads) {
     // In child process.
     close(fds[0]);
 
-    string helper_path(GetHelperBinary());
+    std::string helper_path(GetHelperBinary());
     if (helper_path.empty()) {
       fprintf(stderr, "Couldn't find helper binary\n");
       _exit(1);
@@ -246,7 +245,7 @@ class LinuxPtraceDumperMappingsTest : public LinuxPtraceDumperChildTest {
  protected:
   virtual void SetUp();
 
-  string helper_path_;
+  std::string helper_path_;
   size_t page_size_;
   StackHelper helper_;
 };
@@ -420,9 +419,9 @@ TEST_F(LinuxPtraceDumperChildTest, FileIDsMatch) {
   FileID fileid(exe_name);
   EXPECT_TRUE(fileid.ElfFileIdentifier(identifier2));
 
-  string identifier_string1 =
+  std::string identifier_string1 =
       FileID::ConvertIdentifierToUUIDString(identifier1);
-  string identifier_string2 =
+  std::string identifier_string2 =
       FileID::ConvertIdentifierToUUIDString(identifier2);
   EXPECT_EQ(identifier_string1, identifier_string2);
 }

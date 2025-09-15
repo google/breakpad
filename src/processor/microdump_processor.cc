@@ -41,7 +41,6 @@
 #include <memory>
 #include <string>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/processor/call_stack.h"
 #include "google_breakpad/processor/microdump.h"
 #include "google_breakpad/processor/process_state.h"

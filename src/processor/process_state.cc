@@ -55,9 +55,8 @@ void ProcessState::Clear() {
   assertion_.clear();
   requesting_thread_ = -1;
   original_thread_count_ = 0;
-  for (vector<CallStack*>::const_iterator iterator = threads_.begin();
-       iterator != threads_.end();
-       ++iterator) {
+  for (std::vector<CallStack*>::const_iterator iterator = threads_.begin();
+       iterator != threads_.end(); ++iterator) {
     delete *iterator;
   }
   threads_.clear();

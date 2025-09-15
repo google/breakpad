@@ -53,7 +53,6 @@
 
 #include "third_party/musl/include/elf.h"
 #include "elf_reader.h"
-#include "common/using_std_string.h"
 
 // EM_AARCH64 is not defined by elf.h of GRTE v3 on x86.
 // TODO(dougkwan): Remove this when v17 is retired.
@@ -193,7 +192,7 @@ class Elf64 {
 template<class ElfArch>
 class ElfSectionReader {
  public:
-  ElfSectionReader(const char* cname, const string& path, int fd,
+  ElfSectionReader(const char* cname, const std::string& path, int fd,
                    const typename ElfArch::Shdr& section_header)
       : contents_aligned_(nullptr),
         contents_(nullptr),
@@ -332,12 +331,12 @@ class SymbolIterator {
 // Copied from strings/strutil.h.  Per chatham,
 // this library should not depend on strings.
 
-static inline bool MyHasSuffixString(const string& str, const string& suffix) {
+static inline bool MyHasSuffixString(const std::string& str,
+                                     const std::string& suffix) {
   int len = str.length();
   int suflen = suffix.length();
   return (suflen <= len) && (str.compare(len-suflen, suflen, suffix) == 0);
 }
-
 
 // ElfReader loads an ELF binary and can provide information about its
 // contents. It is most useful for matching addresses to function
@@ -348,7 +347,7 @@ static inline bool MyHasSuffixString(const string& str, const string& suffix) {
 template<class ElfArch>
 class ElfReaderImpl {
  public:
-  explicit ElfReaderImpl(const string& path, int fd)
+  explicit ElfReaderImpl(const std::string& path, int fd)
       : path_(path),
         fd_(fd),
         section_headers_(nullptr),
@@ -359,7 +358,7 @@ class ElfReaderImpl {
         plt_code_size_(0),
         plt0_size_(0),
         visited_relocation_entries_(false) {
-    string error;
+    std::string error;
     is_dwp_ = MyHasSuffixString(path, ".dwp");
     ParseHeaders(fd, path);
     // Currently we need some extra information for PowerPC64 binaries
@@ -406,7 +405,7 @@ class ElfReaderImpl {
   // to see if the ELF file appears to match the current
   // architecture. If error is non-NULL, it will be set with a reason
   // in case of failure.
-  static bool IsArchElfFile(int fd, string* error) {
+  static bool IsArchElfFile(int fd, std::string* error) {
     unsigned char header[EI_NIDENT];
     if (pread(fd, header, sizeof(header), 0) != sizeof(header)) {
       if (error != nullptr) *error = "Could not read header";
@@ -619,7 +618,7 @@ class ElfReaderImpl {
         if (section_type == SHT_DYNSYM &&
             static_cast<unsigned int>(symbol_index) < symbols_plt_offsets_.size() &&
             symbols_plt_offsets_[symbol_index] != 0) {
-          string plt_name = string(name) + kPLTFunctionSuffix;
+          std::string plt_name = std::string(name) + kPLTFunctionSuffix;
           if (plt_function_names_[symbol_index].empty()) {
             plt_function_names_[symbol_index] = plt_name;
           } else if (plt_function_names_[symbol_index] != plt_name) {
@@ -743,7 +742,7 @@ class ElfReaderImpl {
   // Return a pointer to the first section of the given name by
   // iterating through all section headers, and store the size in
   // "size".  Returns NULL if the section name is not found.
-  const char* GetSectionContentsByName(const string& section_name,
+  const char* GetSectionContentsByName(const std::string& section_name,
                                        size_t* size) {
     for (unsigned int k = 0u; k < GetNumSections(); ++k) {
       // When searching for sections in a .dwp file, the sections
@@ -766,7 +765,7 @@ class ElfReaderImpl {
 
   // This is like GetSectionContentsByName() but it returns a lot of extra
   // information about the section.
-  const char* GetSectionInfoByName(const string& section_name,
+  const char* GetSectionInfoByName(const std::string& section_name,
                                    ElfReader::SectionInfo* info) {
     for (unsigned int k = 0u; k < GetNumSections(); ++k) {
       // When searching for sections in a .dwp file, the sections
@@ -907,7 +906,7 @@ class ElfReaderImpl {
   // Parse out the overall header information from the file and assert
   // that it looks sane. This contains information like the magic
   // number and target architecture.
-  bool ParseHeaders(int fd, const string& path) {
+  bool ParseHeaders(int fd, const std::string& path) {
     // Read in the global ELF header.
     if (pread(fd, &header_, sizeof(header_), 0) != sizeof(header_)) {
       return false;
@@ -996,7 +995,7 @@ class ElfReaderImpl {
   friend class SymbolIterator<ElfArch>;
 
   // The file we're reading.
-  const string path_;
+  const std::string path_;
   // Open file descriptor for path_. Not owned by this object.
   const int fd_;
 
@@ -1042,7 +1041,7 @@ class ElfReaderImpl {
 
   // Container for PLT function name strings. These strings are passed by
   // reference to SymbolSink::AddSymbol() so they need to be stored somewhere.
-  std::vector<string> plt_function_names_;
+  std::vector<std::string> plt_function_names_;
 
   bool visited_relocation_entries_;
 
@@ -1050,7 +1049,7 @@ class ElfReaderImpl {
   bool is_dwp_;
 };
 
-ElfReader::ElfReader(const string& path)
+ElfReader::ElfReader(const std::string& path)
     : path_(path), fd_(-1), impl32_(nullptr), impl64_(nullptr) {
   // linux 2.6.XX kernel can show deleted files like this:
   //   /var/run/nscd/dbYLJYaE (deleted)
@@ -1087,7 +1086,7 @@ ElfReader::~ElfReader() {
 #endif
 
 template <typename ElfArch>
-static bool IsElfFile(const int fd, const string& path) {
+static bool IsElfFile(const int fd, const std::string& path) {
   if (fd < 0)
     return false;
   if (!ElfReaderImpl<ElfArch>::IsArchElfFile(fd, nullptr)) {
@@ -1204,7 +1203,7 @@ const char* ElfReader::GetSectionByIndex(int shndx, size_t* size) {
   }
 }
 
-const char* ElfReader::GetSectionByName(const string& section_name,
+const char* ElfReader::GetSectionByName(const std::string& section_name,
                                         size_t* size) {
   if (IsElf32File()) {
     return GetImpl32()->GetSectionContentsByName(section_name, size);
@@ -1215,7 +1214,7 @@ const char* ElfReader::GetSectionByName(const string& section_name,
   }
 }
 
-const char* ElfReader::GetSectionInfoByName(const string& section_name,
+const char* ElfReader::GetSectionInfoByName(const std::string& section_name,
                                             SectionInfo* info) {
   if (IsElf32File()) {
     return GetImpl32()->GetSectionInfoByName(section_name, info);
@@ -1267,7 +1266,7 @@ ElfReaderImpl<Elf64>* ElfReader::GetImpl64() {
 // debug info (debug_only=true) or symbol table (debug_only=false).
 // Otherwise, return false.
 template <typename ElfArch>
-static bool IsNonStrippedELFBinaryImpl(const string& path, const int fd,
+static bool IsNonStrippedELFBinaryImpl(const std::string& path, const int fd,
                                        bool debug_only) {
   if (!ElfReaderImpl<ElfArch>::IsArchElfFile(fd, nullptr)) return false;
   ElfReaderImpl<ElfArch> elf_reader(path, fd);
@@ -1277,7 +1276,7 @@ static bool IsNonStrippedELFBinaryImpl(const string& path, const int fd,
 }
 
 // Helper for the IsNon[Debug]StrippedELFBinary functions.
-static bool IsNonStrippedELFBinaryHelper(const string& path,
+static bool IsNonStrippedELFBinaryHelper(const std::string& path,
                                          bool debug_only) {
   const int fd = open(path.c_str(), O_RDONLY);
   if (fd == -1) {
@@ -1293,11 +1292,11 @@ static bool IsNonStrippedELFBinaryHelper(const string& path,
   return false;
 }
 
-bool ElfReader::IsNonStrippedELFBinary(const string& path) {
+bool ElfReader::IsNonStrippedELFBinary(const std::string& path) {
   return IsNonStrippedELFBinaryHelper(path, false);
 }
 
-bool ElfReader::IsNonDebugStrippedELFBinary(const string& path) {
+bool ElfReader::IsNonDebugStrippedELFBinary(const std::string& path) {
   return IsNonStrippedELFBinaryHelper(path, true);
 }
 }  // namespace google_breakpad

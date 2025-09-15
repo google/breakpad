@@ -36,7 +36,6 @@
 #include <string>
 #include <vector>
 
-#include "common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 #include "google_breakpad/processor/code_modules.h"
 #include "google_breakpad/processor/exception_record.h"
@@ -101,9 +100,9 @@ class ProcessState {
   uint32_t time_date_stamp() const { return time_date_stamp_; }
   uint32_t process_create_time() const { return process_create_time_; }
   bool crashed() const { return crashed_; }
-  string crash_reason() const { return crash_reason_; }
+  std::string crash_reason() const { return crash_reason_; }
   uint64_t crash_address() const { return crash_address_; }
-  string assertion() const { return assertion_; }
+  std::string assertion() const { return assertion_; }
   int requesting_thread() const { return requesting_thread_; }
   int original_thread_count() const { return original_thread_count_; }
   const ExceptionRecord* exception_record() const { return &exception_record_; }
@@ -111,7 +110,7 @@ class ProcessState {
   const vector<MemoryRegion*>* thread_memory_regions() const {
     return &thread_memory_regions_;
   }
-  const vector<string>* thread_names() const { return &thread_names_; }
+  const vector<std::string>* thread_names() const { return &thread_names_; }
   const SystemInfo* system_info() const { return &system_info_; }
   const CodeModules* modules() const { return modules_; }
   const CodeModules* unloaded_modules() const { return unloaded_modules_; }
@@ -146,7 +145,7 @@ class ProcessState {
   // specific.  For example, "EXCEPTION_ACCESS_VIOLATION" (Windows),
   // "EXC_BAD_ACCESS / KERN_INVALID_ADDRESS" (Mac OS X), "SIGSEGV"
   // (other Unix).
-  string crash_reason_;
+  std::string crash_reason_;
 
   // If the process crashed, and if crash_reason implicates memory,
   // the memory address that caused the crash.  For data access errors,
@@ -157,7 +156,7 @@ class ProcessState {
   // If there was an assertion that was hit, a textual representation
   // of that assertion, possibly including the file and line at which
   // it occurred.
-  string assertion_;
+  std::string assertion_;
 
   // The index of the thread that requested a dump be written in the
   // threads vector.  If a dump was produced as a result of a crash, this
@@ -186,7 +185,7 @@ class ProcessState {
   // threads_. Note that a thread's name might be empty if there was no
   // corresponding ThreadNamesStream in the minidump, or if a particular thread
   // ID was not present in the THREAD_NAME_LIST.
-  vector<string> thread_names_;
+  vector<std::string> thread_names_;
 
   // OS and CPU information.
   SystemInfo system_info_;
