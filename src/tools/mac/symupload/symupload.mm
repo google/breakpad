@@ -144,10 +144,10 @@ static void StartSymUploadProtocolV1(Options* options,
                                            encoding:NSUTF8StringEncoding];
   int status = [[ul response] statusCode];
 
-  fprintf(stdout, "Send: %s\n",
+  fprintf(stderr, "Send: %s\n",
           error ? [[error description] UTF8String] : "No Error");
-  fprintf(stdout, "Response: %d\n", status);
-  fprintf(stdout, "Result: %lu bytes\n%s\n", (unsigned long)[data length],
+  fprintf(stderr, "Response: %d\n", status);
+  fprintf(stderr, "Result: %lu bytes\n%s\n", (unsigned long)[data length],
           [result UTF8String]);
 
   [result release];
@@ -170,12 +170,12 @@ static void StartSymUploadProtocolV2(Options* options,
                                            withDebugFile:debugFile
                                              withDebugID:debugID];
     if (symbolStatus == SymbolStatusFound) {
-      fprintf(stdout, "Symbol file already exists, upload aborted."
+      fprintf(stderr, "Symbol file already exists, upload aborted."
                       " Use \"-f\" to overwrite.\n");
       options->result = kResultAlreadyExists;
       return;
     } else if (symbolStatus == SymbolStatusUnknown) {
-      fprintf(stdout, "Failed to get check for existing symbol.\n");
+      fprintf(stderr, "Failed to get check for existing symbol.\n");
       return;
     }
   }
@@ -199,10 +199,14 @@ static void StartSymUploadProtocolV2(Options* options,
   [putRequest release];
 
   if (error || responseCode != 200) {
-    fprintf(stdout, "Failed to upload symbol file.\n");
-    fprintf(stdout, "Response code: %d\n", responseCode);
-    fprintf(stdout, "Response:\n");
-    fprintf(stdout, "%s\n", [result UTF8String]);
+    fprintf(stderr, "Failed to upload symbol file.\n");
+    if (error) {
+      fprintf(stderr, "Error: %s\n", [[error description] UTF8String]);
+    }
+    fprintf(stderr, "Response code: %d\n", responseCode);
+    if (data) {
+      fprintf(stderr, "Response:\n%s\n", [result UTF8String]);
+    }
     return;
   }
 
@@ -216,13 +220,13 @@ static void StartSymUploadProtocolV2(Options* options,
                                     withProductName:options->productName];
   [URLResponse release];
   if (completeUploadResult == CompleteUploadResultError) {
-    fprintf(stdout, "Failed to complete upload.\n");
+    fprintf(stderr, "Failed to complete upload.\n");
     return;
   } else if (completeUploadResult == CompleteUploadResultDuplicateData) {
-    fprintf(stdout, "Uploaded file checksum matched existing file checksum,"
+    fprintf(stderr, "Uploaded file checksum matched existing file checksum,"
                     " no change necessary.\n");
   } else {
-    fprintf(stdout, "Successfully sent the symbol file.\n");
+    fprintf(stderr, "Successfully sent the symbol file.\n");
   }
   options->result = kResultSuccess;
 }
