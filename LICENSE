@@ -552,6 +552,25 @@ are permitted in any medium without royalty provided the copyright
 notice and this notice are preserved.
 
 --------------------------------------------------------------------
+License for src/third_party/musl/src/crypt/crypt_blowfish.c
+
+The implementation of blowfish crypt (src/crypt/crypt_blowfish.c) was
+originally written by Solar Designer and placed into the public domain. The
+code also comes with a fallback permissive license for use in jurisdictions that
+may not recognize the public domain.
+
+No copyright is claimed, and the software is hereby placed in the public
+domain. In case this attempt to disclaim copyright and place the software
+in the public domain is deemed null and void, then the software is
+Copyright (c) 1998-2011 Solar Designer and it is hereby released to the
+general public under the following terms:
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted.
+
+There's ABSOLUTELY NO WARRANTY, express or implied.
+
+--------------------------------------------------------------------
 License for src/common/mac/testing/GTMSenTestCase.h
 
 Redistribution and use in source and binary forms, with or without
@@ -574,143 +593,6 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
---------------------------------------------------------------------
-License for src/third_party//libdisasm
-
-          The "Clarified Artistic License"
-
-            Preamble
-
-The intent of this document is to state the conditions under which a
-Package may be copied, such that the Copyright Holder maintains some
-semblance of artistic control over the development of the package,
-while giving the users of the package the right to use and distribute
-the Package in a more-or-less customary fashion, plus the right to make
-reasonable modifications.
-
-Definitions:
-
-   "Package" refers to the collection of files distributed by the
-   Copyright Holder, and derivatives of that collection of files
-   created through textual modification.
-
-   "Standard Version" refers to such a Package if it has not been
-   modified, or has been modified in accordance with the wishes
-   of the Copyright Holder as specified below.
-
-   "Copyright Holder" is whoever is named in the copyright or
-   copyrights for the package.
-
-   "You" is you, if you're thinking about copying or distributing
-   this Package.
-
-   "Distribution fee" is a fee you charge for providing a copy of this
-   Package to another party.
-
-   "Freely Available" means that no fee is charged for the right to use
-   the item, though there may be fees involved in handling the item.
-
-1. You may make and give away verbatim copies of the source form of the
-Standard Version of this Package without restriction, provided that you
-duplicate all of the original copyright notices and associated disclaimers.
-
-2. You may apply bug fixes, portability fixes and other modifications
-derived from the Public Domain, or those made Freely Available, or from
-the Copyright Holder.  A Package modified in such a way shall still be
-considered the Standard Version.
-
-3. You may otherwise modify your copy of this Package in any way, provided
-that you insert a prominent notice in each changed file stating how and
-when you changed that file, and provided that you do at least ONE of the
-following:
-
-    a) place your modifications in the Public Domain or otherwise make them
-    Freely Available, such as by posting said modifications to Usenet or
-    an equivalent medium, or placing the modifications on a major archive
-    site allowing unrestricted access to them, or by allowing the Copyright
-    Holder to include your modifications in the Standard Version of the
-    Package.
-
-    b) use the modified Package only within your corporation or organization.
-
-    c) rename any non-standard executables so the names do not conflict
-    with standard executables, which must also be provided, and provide
-    a separate manual page for each non-standard executable that clearly
-    documents how it differs from the Standard Version.
-
-    d) make other distribution arrangements with the Copyright Holder.
-
-    e) permit and encourge anyone who receives a copy of the modified Package
-    permission to make your modifications Freely Available in some specific
-    way.
-
-4. You may distribute the programs of this Package in object code or
-executable form, provided that you do at least ONE of the following:
-
-    a) distribute a Standard Version of the executables and library files,
-    together with instructions (in the manual page or equivalent) on where
-    to get the Standard Version.
-
-    b) accompany the distribution with the machine-readable source of
-    the Package with your modifications.
-
-    c) give non-standard executables non-standard names, and clearly
-    document the differences in manual pages (or equivalent), together
-    with instructions on where to get the Standard Version.
-
-    d) make other distribution arrangements with the Copyright Holder.
-
-    e) offer the machine-readable source of the Package, with your
-    modifications, by mail order.
-
-5. You may charge a distribution fee for any distribution of this Package.
-If you offer support for this Package, you may charge any fee you choose
-for that support.  You may not charge a license fee for the right to use
-this Package itself.  You may distribute this Package in aggregate with
-other (possibly commercial and possibly nonfree) programs as part of a
-larger (possibly commercial and possibly nonfree) software distribution,
-and charge license fees for other parts of that software distribution,
-provided that you do not advertise this Package as a product of your own.
-If the Package includes an interpreter, You may embed this Package's
-interpreter within an executable of yours (by linking); this shall be
-construed as a mere form of aggregation, provided that the complete
-Standard Version of the interpreter is so embedded.
-
-6. The scripts and library files supplied as input to or produced as
-output from the programs of this Package do not automatically fall
-under the copyright of this Package, but belong to whoever generated
-them, and may be sold commercially, and may be aggregated with this
-Package.  If such scripts or library files are aggregated with this
-Package via the so-called "undump" or "unexec" methods of producing a
-binary executable image, then distribution of such an image shall
-neither be construed as a distribution of this Package nor shall it
-fall under the restrictions of Paragraphs 3 and 4, provided that you do
-not represent such an executable image as a Standard Version of this
-Package.
-
-7. C subroutines (or comparably compiled subroutines in other
-languages) supplied by you and linked into this Package in order to
-emulate subroutines and variables of the language defined by this
-Package shall not be considered part of this Package, but are the
-equivalent of input as in Paragraph 6, provided these subroutines do
-not change the language in any way that would cause it to fail the
-regression tests for the language.
-
-8. Aggregation of the Standard Version of the Package with a commercial
-distribution is always permitted provided that the use of this Package is
-embedded; that is, when no overt attempt is made to make this Package's
-interfaces visible to the end user of the commercial distribution.
-Such use shall not be construed as a distribution of this Package.
-
-9. The name of the Copyright Holder may not be used to endorse or promote
-products derived from this software without specific prior written permission.
-
-10. THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR
-IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
-WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-
-            The End
 
 --------------------------------------------------------------------
 License for src/common/md5.cc
@@ -748,7 +630,6 @@ Carnegie Mellon requests users of this software to return to
 any improvements or extensions that they make and grant Carnegie Mellon
 the rights to redistribute these changes.
 
-
 --------------------------------------------------------------------
 License for Makefile.in
 
@@ -766,64 +647,25 @@ This configure script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it.
 
 --------------------------------------------------------------------
-License for Autotools
+License for android/test-driver
 
-AUTOCONF CONFIGURE SCRIPT EXCEPTION
+Copyright (C) 2011-2013 Free Software Foundation, Inc.
 
-Version 3.0, 18 August 2009
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2, or (at your option) any later version.
 
-Copyright © 2009 Free Software Foundation, Inc. <http://fsf.org/>
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-Everyone is permitted to copy and distribute verbatim copies of this license
-document, but changing it is not allowed.
+You should have received a copy of the GNU General Public License along with
+this program. If not, see https://www.gnu.org/licenses/.
 
-This Exception is an additional permission under section 7 of the GNU General
-Public License, version 3 ("GPLv3"). It applies to a given file that bears a
-notice placed by the copyright holder of the file stating that the file is
-governed by GPLv3 along with this Exception.
-
-The purpose of this Exception is to allow distribution of Autoconf&apos;s
-typical output under terms of the recipient&apos;s choice (including
-proprietary).
-
-0. Definitions.
-"Covered Code" is the source or object code of a version of Autoconf that is a
-covered work under this License.
-
-"Normally Copied Code" for a version of Autoconf means all parts of its
-Covered Code which that version can copy from its code (i.e., not from its
-input file) into its minimally verbose, non-debugging and non-tracing output.
-
-"Ineligible Code" is Covered Code that is not Normally Copied Code.
-
-1. Grant of Additional Permission.
-You have permission to propagate output of Autoconf, even if such propagation
-would otherwise violate the terms of GPLv3. However, if by modifying Autoconf
-you cause any Ineligible Code of the version you received to become Normally
-Copied Code of your modified version, then you void this Exception for the
-resulting covered work. If you convey that resulting covered work, you must
-remove this Exception in accordance with the second paragraph of Section 7 of
-GPLv3.
-
-2. No Weakening of Autoconf Copyleft.
-The availability of this Exception does not imply any general presumption that
-third-party software is unaffected by the copyleft requirements of the license
-of Autoconf.
-
---------------------------------------------------------------------
-License for Autotools
-
-                    GNU GENERAL PUBLIC LICENSE
-                       Version 3, 29 June 2007
-
- Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
- Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed.
-
-                            Preamble
-
-  The GNU General Public License is a free, copyleft license for
-software and other kinds of works.
+As a special exception to the GNU General Public License, if you distribute
+this file as part of a program that contains a configuration script generated
+by Autoconf, you may include it under the same distribution terms that you use
+for the rest of that program.
 
   The licenses for most software and other practical works are designed
 to take away your freedom to share and change the works.  By contrast,
@@ -1434,3 +1276,48 @@ Program, unless a warranty or assumption of liability accompanies a
 copy of the Program in return for a fee.
 
                      END OF TERMS AND CONDITIONS
+
+AUTOCONF CONFIGURE SCRIPT EXCEPTION
+
+Version 3.0, 18 August 2009
+
+Copyright © 2009 Free Software Foundation, Inc. <http://fsf.org/>
+
+Everyone is permitted to copy and distribute verbatim copies of this license
+document, but changing it is not allowed.
+
+This Exception is an additional permission under section 7 of the GNU General
+Public License, version 3 ("GPLv3"). It applies to a given file that bears a
+notice placed by the copyright holder of the file stating that the file is
+governed by GPLv3 along with this Exception.
+
+The purpose of this Exception is to allow distribution of Autoconf&apos;s
+typical output under terms of the recipient&apos;s choice (including
+proprietary).
+
+0. Definitions.
+"Covered Code" is the source or object code of a version of Autoconf that is a
+covered work under this License.
+
+"Normally Copied Code" for a version of Autoconf means all parts of its
+Covered Code which that version can copy from its code (i.e., not from its
+input file) into its minimally verbose, non-debugging and non-tracing output.
+
+"Ineligible Code" is Covered Code that is not Normally Copied Code.
+
+1. Grant of Additional Permission.
+You have permission to propagate output of Autoconf, even if such propagation
+would otherwise violate the terms of GPLv3. However, if by modifying Autoconf
+you cause any Ineligible Code of the version you received to become Normally
+Copied Code of your modified version, then you void this Exception for the
+resulting covered work. If you convey that resulting covered work, you must
+remove this Exception in accordance with the second paragraph of Section 7 of
+GPLv3.
+
+2. No Weakening of Autoconf Copyleft.
+The availability of this Exception does not imply any general presumption that
+third-party software is unaffected by the copyleft requirements of the license
+of Autoconf.
+
+                     END OF TERMS AND CONDITIONS
+
