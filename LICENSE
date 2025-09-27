@@ -552,25 +552,6 @@ are permitted in any medium without royalty provided the copyright
 notice and this notice are preserved.
 
 --------------------------------------------------------------------
-License for src/third_party/musl/src/crypt/crypt_blowfish.c
-
-The implementation of blowfish crypt (src/crypt/crypt_blowfish.c) was
-originally written by Solar Designer and placed into the public domain. The
-code also comes with a fallback permissive license for use in jurisdictions that
-may not recognize the public domain.
-
-No copyright is claimed, and the software is hereby placed in the public
-domain. In case this attempt to disclaim copyright and place the software
-in the public domain is deemed null and void, then the software is
-Copyright (c) 1998-2011 Solar Designer and it is hereby released to the
-general public under the following terms:
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted.
-
-There's ABSOLUTELY NO WARRANTY, express or implied.
-
---------------------------------------------------------------------
 License for src/common/mac/testing/GTMSenTestCase.h
 
 Redistribution and use in source and binary forms, with or without
