@@ -30,11 +30,16 @@
 //
 // Author: Mark Mentovai
 
+// For <inttypes.h> PRI* macros, before anything else might #include it.
+#ifndef __STDC_FORMAT_MACROS
+#define __STDC_FORMAT_MACROS
+#endif  /* __STDC_FORMAT_MACROS */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>  // Must come first
 #endif
 
+#include <inttypes.h>
 #include <limits.h>
 #include <stdio.h>
 
@@ -332,11 +337,11 @@ static bool RetrieveIndexTest(TestMap* range_map, int set) {
   return true;
 }
 
-// Additional RetriveAtIndex test to expose the bug in RetrieveRangeAtIndex().
+// Additional RetrieveAtIndex test to expose the bug in RetrieveRangeAtIndex().
 // Bug info: RetrieveRangeAtIndex() previously retrieves the high address of
 // entry, however, it is supposed to retrieve the base address of entry as
 // stated in the comment in range_map.h.
-static bool RetriveAtIndexTest2() {
+static bool RetrieveAtIndexTest2() {
   scoped_ptr<TestMap> range_map(new TestMap());
 
   // Store ranges with base address = 2 * object_id:
@@ -360,7 +365,7 @@ static bool RetriveAtIndexTest2() {
 
     int expected_base = 2 * object->id();
     if (base != expected_base) {
-      fprintf(stderr, "FAILED: RetriveAtIndexTest2 index %d, "
+      fprintf(stderr, "FAILED: RetrieveAtIndexTest2 index %d, "
               "expected base %d, observed base %d",
               object_index, expected_base, base);
       return false;
@@ -504,7 +509,7 @@ static bool RunTests() {
     // The RangeMap's own count of objects should also match.
     if (range_map->GetCount() != stored_count) {
       fprintf(stderr, "FAILED: stored object count doesn't match GetCount, "
-              "expected %d, observed %d\n",
+              "expected %d, observed %" PRId64 "\n",
               stored_count, range_map->GetCount());
 
       return false;
@@ -542,7 +547,7 @@ static bool RunTests() {
     }
   }
 
-  if (!RetriveAtIndexTest2()) {
+  if (!RetrieveAtIndexTest2()) {
     fprintf(stderr, "FAILED: did not pass RetrieveAtIndexTest2()\n");
     return false;
   }

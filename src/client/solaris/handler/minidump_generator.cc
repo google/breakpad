@@ -32,18 +32,18 @@
 #include <config.h>  // Must come first
 #endif
 
+#include "client/solaris/handler/minidump_generator.h"
+
 #include <fcntl.h>
+#include <stdlib.h>
 #include <sys/frame.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/utsname.h>
 #include <sys/wait.h>
+#include <time.h>
 #include <unistd.h>
 
-#include <cstdlib>
-#include <ctime>
-
-#include "client/solaris/handler/minidump_generator.h"
 #include "client/minidump_file_writer-inl.h"
 #include "common/solaris/file_id.h"
 
@@ -337,7 +337,7 @@ bool WriteCPUInformation(MDRawSystemInfo* sys_info) {
   build = strchr(uts.version, '_');
   ++build;
   sys_info->build_number = atoi(build);
-  
+
   return true;
 }
 
@@ -596,8 +596,8 @@ bool WriteExceptionStream(MinidumpFileWriter* minidump_writer,
 
 #if TARGET_CPU_SPARC
   if (writer_args->sig_ctx != NULL) {
-    exception.get()->exception_record.exception_address = 
-      writer_args->sig_ctx->uc_mcontext.gregs[REG_PC];
+    exception.get()->exception_record.exception_address =
+        writer_args->sig_ctx->uc_mcontext.gregs[REG_PC];
   } else {
     return true;
   }
@@ -700,14 +700,14 @@ void* Write(void* argument) {
   if (writer_args->sighandler_ebp != 0 &&
       writer_args->lwp_lister->FindSigContext(writer_args->sighandler_ebp,
                                               &writer_args->sig_ctx)) {
-    writer_args->crashed_stack_bottom = 
-      writer_args->lwp_lister->GetLwpStackBottom(
+    writer_args->crashed_stack_bottom =
+        writer_args->lwp_lister->GetLwpStackBottom(
 #if TARGET_CPU_SPARC
-          writer_args->sig_ctx->uc_mcontext.gregs[REG_O6]
+            writer_args->sig_ctx->uc_mcontext.gregs[REG_O6]
 #elif TARGET_CPU_X86
-          writer_args->sig_ctx->uc_mcontext.gregs[UESP]
+            writer_args->sig_ctx->uc_mcontext.gregs[UESP]
 #endif
-      );
+        );
 
     int crashed_lwpid = FindCrashingLwp(writer_args->crashed_stack_bottom,
                                         writer_args->requester_pid,

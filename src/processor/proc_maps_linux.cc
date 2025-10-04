@@ -2,9 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// For <inttypes.h> PRI* macros, before anything else might #include it.
 #ifndef __STDC_FORMAT_MACROS
 #define __STDC_FORMAT_MACROS
-#endif
+#endif  /* __STDC_FORMAT_MACROS */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>  // Must come first

@@ -36,6 +36,10 @@
 #include <config.h>  // Must come first
 #endif
 
+#include "processor/stackwalker_arm64.h"
+
+#include <stdint.h>
+
 #include <vector>
 
 #include "common/scoped_ptr.h"
@@ -45,7 +49,6 @@
 #include "google_breakpad/processor/stack_frame_cpu.h"
 #include "processor/cfi_frame_info.h"
 #include "processor/logging.h"
-#include "processor/stackwalker_arm64.h"
 
 namespace google_breakpad {
 
@@ -269,11 +272,15 @@ void StackwalkerARM64::CorrectRegLRByFramePointer(
 
   // Searching for a real callee frame. Skipping inline frames since they
   // don't contain context (and cannot be downcasted to StackFrameARM64).
-  size_t last_frame_callee_id = frames.size() - 2;
+  int64_t last_frame_callee_id = frames.size() - 2;
   while (last_frame_callee_id >= 0 && frames[last_frame_callee_id]->trust ==
                                           StackFrame::FRAME_TRUST_INLINE) {
     last_frame_callee_id--;
   }
+  // last_frame_callee_id should not become negative because at the top of the
+  // stack trace we always have a context frame (FRAME_TRUST_CONTEXT) so the
+  // above loop should end before last_frame_callee_id gets negative. But we are
+  // being extra defensive here and bail if it ever becomes negative.
   if (last_frame_callee_id < 0) return;
   StackFrameARM64* last_frame_callee =
       static_cast<StackFrameARM64*>(frames[last_frame_callee_id]);
@@ -284,8 +291,6 @@ void StackwalkerARM64::CorrectRegLRByFramePointer(
   uint64_t last_fp = 0;
   if (last_frame_callee_fp &&
       !memory_->GetMemoryAtAddress(last_frame_callee_fp, &last_fp)) {
-    BPLOG(ERROR) << "Unable to read last_fp from last_last_fp: 0x" << std::hex
-                 << last_frame_callee_fp;
     return;
   }
   // Give up if STACK CFI doesn't agree with frame pointer.

@@ -33,6 +33,8 @@
 #include "google_breakpad/processor/minidump_processor.h"
 
 #include <assert.h>
+#include <stdint.h>
+#include <stdio.h>
 
 #include <algorithm>
 #include <limits>
@@ -64,7 +66,8 @@ MinidumpProcessor::MinidumpProcessor(SymbolSupplier* supplier,
       own_frame_symbolizer_(true),
       enable_exploitability_(false),
       enable_objdump_(false),
-      enable_objdump_for_exploitability_(false) {
+      enable_objdump_for_exploitability_(false),
+      max_thread_count_(-1) {
 }
 
 MinidumpProcessor::MinidumpProcessor(SymbolSupplier* supplier,
@@ -74,7 +77,8 @@ MinidumpProcessor::MinidumpProcessor(SymbolSupplier* supplier,
       own_frame_symbolizer_(true),
       enable_exploitability_(enable_exploitability),
       enable_objdump_(false),
-      enable_objdump_for_exploitability_(false) {
+      enable_objdump_for_exploitability_(false),
+      max_thread_count_(-1) {
 }
 
 MinidumpProcessor::MinidumpProcessor(StackFrameSymbolizer* frame_symbolizer,
@@ -83,7 +87,8 @@ MinidumpProcessor::MinidumpProcessor(StackFrameSymbolizer* frame_symbolizer,
       own_frame_symbolizer_(false),
       enable_exploitability_(enable_exploitability),
       enable_objdump_(false),
-      enable_objdump_for_exploitability_(false) {
+      enable_objdump_for_exploitability_(false),
+      max_thread_count_(-1) {
   assert(frame_symbolizer_);
 }
 
@@ -208,29 +213,32 @@ ProcessResult MinidumpProcessor::Process(
   bool interrupted = false;
   bool found_requesting_thread = false;
   unsigned int thread_count = threads->thread_count();
+  process_state->original_thread_count_ = thread_count;
 
   // Reset frame_symbolizer_ at the beginning of stackwalk for each minidump.
   frame_symbolizer_->Reset();
-
 
   MinidumpThreadNameList* thread_names = dump->GetThreadNameList();
   std::map<uint32_t, string> thread_id_to_name;
   if (thread_names) {
     const unsigned int thread_name_count = thread_names->thread_name_count();
     for (unsigned int thread_name_index = 0;
-         thread_name_index < thread_name_count;
-         ++thread_name_index) {
-      MinidumpThreadName* thread_name = thread_names->GetThreadNameAtIndex(thread_name_index);
+         thread_name_index < thread_name_count; ++thread_name_index) {
+      MinidumpThreadName* thread_name =
+          thread_names->GetThreadNameAtIndex(thread_name_index);
       if (!thread_name) {
-        BPLOG(ERROR) << "Could not get thread name for thread at index " << thread_name_index;
+        BPLOG(ERROR) << "Could not get thread name for thread at index "
+                     << thread_name_index;
         return PROCESS_ERROR_GETTING_THREAD_NAME;
       }
       uint32_t thread_id;
       if (!thread_name->GetThreadID(&thread_id)) {
-        BPLOG(ERROR) << "Could not get thread ID for thread at index " << thread_name_index;
+        BPLOG(ERROR) << "Could not get thread ID for thread at index "
+                     << thread_name_index;
         return PROCESS_ERROR_GETTING_THREAD_NAME;
       }
-      thread_id_to_name.insert(std::make_pair(thread_id, thread_name->GetThreadName()));
+      thread_id_to_name.insert(
+          std::make_pair(thread_id, thread_name->GetThreadName()));
     }
   }
 
@@ -270,6 +278,7 @@ ProcessResult MinidumpProcessor::Process(
     // dump of itself (when both its context and its stack are in flux),
     // processing that stack wouldn't provide much useful data.
     if (has_dump_thread && thread_id == dump_thread_id) {
+      process_state->original_thread_count_--;
       continue;
     }
 
@@ -290,6 +299,13 @@ ProcessResult MinidumpProcessor::Process(
       // be the index of the current thread when it's pushed into the
       // vector.
       process_state->requesting_thread_ = process_state->threads_.size();
+      if (max_thread_count_ >= 0) {
+        thread_count =
+            std::min(thread_count,
+                     std::max(static_cast<unsigned int>(
+                                  process_state->requesting_thread_ + 1),
+                              static_cast<unsigned int>(max_thread_count_)));
+      }
 
       found_requesting_thread = true;
 
@@ -823,8 +839,6 @@ static void CalculateFaultAddressFromInstruction(Minidump* dump,
 
   DisassemblerObjdump disassembler(context->GetContextCPU(), memory_region,
                                    instruction_ptr);
-  fprintf(stderr, "%s %s %s\n", disassembler.operation().c_str(),
-    disassembler.src().c_str(), disassembler.dest().c_str());
   if (!disassembler.IsValid()) {
     BPLOG(INFO) << "Disassembling fault instruction failed.";
     return;
@@ -1343,7 +1357,7 @@ string MinidumpProcessor::GetCrashReason(Minidump* dump, uint64_t* address,
           // an attempt to read data, 1 if it was an attempt to write data,
           // and 8 if this was a data execution violation.
           // exception_information[2] contains the underlying NTSTATUS code,
-          // which is the explanation for why this error occured.
+          // which is the explanation for why this error occurred.
           // This information is useful in addition to the code address, which
           // will be present in the crash thread's instruction field anyway.
           if (raw_exception->exception_record.number_parameters >= 1) {

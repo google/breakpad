@@ -71,7 +71,8 @@ class DumpSymbols {
         selected_object_name_(),
         enable_multiple_(enable_multiple),
         module_name_(module_name),
-        prefer_extern_name_(prefer_extern_name) {}
+        prefer_extern_name_(prefer_extern_name),
+        report_warnings_(true) {}
   ~DumpSymbols() = default;
 
   // Prepare to read debugging information from |filename|. |filename| may be
@@ -102,6 +103,9 @@ class DumpSymbols {
   // object file, then the dumper will dump the object file whose
   // architecture matches that of this dumper program.
   bool SetArchitecture(const ArchInfo& info);
+
+  // Set whether or not to report DWARF warnings
+  void SetReportWarnings(bool report_warnings);
 
   // Return a pointer to an array of SuperFatArch structures describing the
   // object files contained in this dumper's file. Set *|count| to the number
@@ -224,6 +228,9 @@ class DumpSymbols {
   // (which are placed in the Extern), not in the DWARF symbols (which are
   // placed in the Function).
   bool prefer_extern_name_;
+
+  // Whether or not to report warnings
+  bool report_warnings_;
 };
 
 }  // namespace google_breakpad

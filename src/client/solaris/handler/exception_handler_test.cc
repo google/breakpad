@@ -32,15 +32,15 @@
 #include <config.h>  // Must come first
 #endif
 
+#include "client/solaris/handler/exception_handler.h"
+
+#include <assert.h>
 #include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
-#include <cassert>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-
-#include "client/solaris/handler/exception_handler.h"
 #include "client/solaris/handler/solaris_lwp.h"
 
 using namespace google_breakpad;

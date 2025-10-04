@@ -31,12 +31,15 @@
 #endif
 
 #include "client/windows/crash_generation/crash_generation_server.h"
+
 #include <windows.h>
-#include <cassert>
+
+#include <assert.h>
+
 #include <list>
+
 #include "client/windows/common/auto_critical_section.h"
 #include "common/scoped_ptr.h"
-
 #include "client/windows/crash_generation/client_info.h"
 
 namespace google_breakpad {

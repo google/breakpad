@@ -562,6 +562,29 @@ static bool IsEmptyRange(const vector<Module::Range>& ranges) {
   return size == 0;
 }
 
+// A handler for DW_TAG_lexical_block DIEs.
+class DwarfCUToModule::LexicalBlockHandler : public GenericDIEHandler {
+ public:
+  LexicalBlockHandler(CUContext* cu_context,
+                      uint64_t offset,
+                      int inline_nest_level,
+                      vector<unique_ptr<Module::Inline>>& inlines)
+      : GenericDIEHandler(cu_context, nullptr, offset),
+        inline_nest_level_(inline_nest_level),
+        inlines_(inlines) {}
+
+  DIEHandler* FindChildHandler(uint64_t offset, enum DwarfTag tag);
+  bool EndAttributes() { return true; }
+  void Finish();
+
+ private:
+  int inline_nest_level_;
+  // A vector of inlines in the same nest level. It's owned by its parent
+  // function/inline. At Finish(), add this inline into the vector.
+  vector<unique_ptr<Module::Inline>>& inlines_;
+  // A vector of child inlines.
+  vector<unique_ptr<Module::Inline>> child_inlines_;
+};
 
 // A handler for DW_TAG_inlined_subroutine DIEs.
 class DwarfCUToModule::InlineHandler : public GenericDIEHandler {
@@ -645,6 +668,9 @@ DIEHandler* DwarfCUToModule::InlineHandler::FindChildHandler(
     case DW_TAG_inlined_subroutine:
       return new InlineHandler(cu_context_, nullptr, offset,
                                inline_nest_level_ + 1, child_inlines_);
+    case DW_TAG_lexical_block:
+      return new LexicalBlockHandler(cu_context_, offset,
+                                     inline_nest_level_ + 1, child_inlines_);
     default:
       return NULL;
   }
@@ -713,6 +739,29 @@ void DwarfCUToModule::InlineHandler::Finish() {
       new Module::Inline(origin, ranges, call_site_line_, call_site_file_id_,
                          inline_nest_level_, std::move(child_inlines_)));
   inlines_.push_back(std::move(in));
+}
+
+DIEHandler* DwarfCUToModule::LexicalBlockHandler::FindChildHandler(
+    uint64_t offset,
+    enum DwarfTag tag) {
+  switch (tag) {
+    case DW_TAG_inlined_subroutine:
+      return new InlineHandler(cu_context_, nullptr, offset, inline_nest_level_,
+                               child_inlines_);
+    case DW_TAG_lexical_block:
+      return new LexicalBlockHandler(cu_context_, offset, inline_nest_level_,
+                                     child_inlines_);
+    default:
+      return nullptr;
+  }
+}
+
+void DwarfCUToModule::LexicalBlockHandler::Finish() {
+  // Insert child inlines inside the lexical block into the inline vector from
+  // parent as if the block does not exit.
+  inlines_.insert(inlines_.end(),
+                  std::make_move_iterator(child_inlines_.begin()),
+                  std::make_move_iterator(child_inlines_.end()));
 }
 
 // A handler for DIEs that contain functions and contribute a
@@ -831,6 +880,9 @@ DIEHandler* DwarfCUToModule::FuncHandler::FindChildHandler(
     case DW_TAG_union_type:
       return new NamedScopeHandler(cu_context_, &child_context_, offset,
                                    handle_inline_);
+    case DW_TAG_lexical_block:
+      if (handle_inline_)
+        return new LexicalBlockHandler(cu_context_, offset, 0, child_inlines_);
     default:
       return NULL;
   }

@@ -41,15 +41,17 @@
 #endif
 
 #include "google_breakpad/processor/fast_source_line_resolver.h"
-#include "processor/fast_source_line_resolver_types.h"
 
-#include <cassert>
+#include <assert.h>
+#include <stdint.h>
+
 #include <map>
 #include <string>
 #include <utility>
 
 #include "common/scoped_ptr.h"
 #include "common/using_std_string.h"
+#include "processor/fast_source_line_resolver_types.h"
 #include "processor/logging.h"
 #include "processor/module_factory.h"
 #include "processor/simple_serializer-inl.h"
@@ -154,7 +156,7 @@ void FastSourceLineResolver::Module::ConstructInlineFrames(
       }
     }
 
-    // Use the starting adress of the inlined range as inlined function base.
+    // Use the starting address of the inlined range as inlined function base.
     new_frame->function_base = new_frame->module->base_address();
     for (const auto& range : in->inline_ranges) {
       if (address >= range.first && address < range.first + range.second) {
@@ -228,21 +230,21 @@ bool FastSourceLineResolver::Module::LoadMapFromMemory(
   const char* mem_buffer = memory_buffer;
   mem_buffer = SimpleSerializer<bool>::Read(mem_buffer, &is_corrupt_);
 
-  const uint32_t* map_sizes = reinterpret_cast<const uint32_t*>(mem_buffer);
+  const uint64_t* map_sizes = reinterpret_cast<const uint64_t*>(mem_buffer);
 
-  unsigned int header_size = kNumberMaps_ * sizeof(unsigned int);
+  unsigned int header_size = kNumberMaps_ * sizeof(uint64_t);
 
   // offsets[]: an array of offset addresses (with respect to mem_buffer),
   // for each "Static***Map" component of Module.
   // "Static***Map": static version of std::map or map wrapper, i.e., StaticMap,
   // StaticAddressMap, StaticContainedRangeMap, and StaticRangeMap.
-  unsigned int offsets[kNumberMaps_];
+  uint64_t offsets[kNumberMaps_];
   offsets[0] = header_size;
   for (int i = 1; i < kNumberMaps_; ++i) {
     offsets[i] = offsets[i - 1] + map_sizes[i - 1];
   }
-  unsigned int expected_size = sizeof(bool) + offsets[kNumberMaps_ - 1] +
-                               map_sizes[kNumberMaps_ - 1] + 1;
+  size_t expected_size = sizeof(bool) + offsets[kNumberMaps_ - 1] +
+                         map_sizes[kNumberMaps_ - 1] + 1;
   if (expected_size != memory_buffer_size &&
       // Allow for having an extra null terminator.
       expected_size != memory_buffer_size - 1) {

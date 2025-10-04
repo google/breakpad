@@ -30,20 +30,19 @@
 #include <config.h>  // Must come first
 #endif
 
-#include <algorithm>
-#include <cstdio>
+#include "client/mac/handler/minidump_generator.h"
 
+#include <CoreFoundation/CoreFoundation.h>
+#include <mach-o/dyld.h>
+#include <mach-o/loader.h>
 #include <mach/host_info.h>
 #include <mach/machine.h>
 #include <mach/vm_statistics.h>
-#include <mach-o/dyld.h>
-#include <mach-o/loader.h>
-#include <sys/sysctl.h>
+#include <stdio.h>
 #include <sys/resource.h>
+#include <sys/sysctl.h>
 
-#include <CoreFoundation/CoreFoundation.h>
-
-#include "client/mac/handler/minidump_generator.h"
+#include <algorithm>
 
 #if defined(HAS_ARM_SUPPORT) || defined(HAS_ARM64_SUPPORT)
 #include <mach/arm/thread_status.h>
@@ -1071,9 +1070,8 @@ bool MinidumpGenerator::WriteMemoryListStream(
         ip_memory_d.start_of_memory_range =
           std::max(uintptr_t(addr),
                    uintptr_t(ip - (kIPMemorySize / 2)));
-        uintptr_t end_of_range = 
-          std::min(uintptr_t(ip + (kIPMemorySize / 2)),
-                   uintptr_t(addr + size));
+        uintptr_t end_of_range = std::min(uintptr_t(ip + (kIPMemorySize / 2)),
+                                          uintptr_t(addr + size));
         uintptr_t range_diff = end_of_range -
             static_cast<uintptr_t>(ip_memory_d.start_of_memory_range);
         ip_memory_d.memory.data_size = static_cast<uint32_t>(range_diff);

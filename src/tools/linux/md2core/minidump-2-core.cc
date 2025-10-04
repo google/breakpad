@@ -349,6 +349,34 @@ struct CrashedProcess {
   std::vector<MDRawLinkMap> link_map;
 };
 
+/* NT_FILE note as defined by linux kernel in fs/binfmt_elf.c
+ * is structured as:
+ * long count     -- how many files are mapped
+ * long page_size -- units for file_ofs
+ * array of [COUNT] elements of
+ *   long start
+ *   long end
+ *   long file_ofs
+ * followed by COUNT filenames in ASCII: "FILE1" NUL "FILE2" NUL...
+ * we can re-use the file mappings info
+ */
+struct NtFileNote {
+  NtFileNote()
+  // XXX: we really should source page size from the minidump itself but
+  // I cannot find anywhere in the minidump generation code where this
+  // would be stashed.
+  : page_sz((unsigned long)getpagesize()),
+    filename_count(0),
+    filenames_length(0) {
+  }
+
+  unsigned long page_sz;
+  unsigned long filename_count;
+  std::vector<unsigned long> file_mappings;
+  std::vector<std::string> filenames;
+  size_t filenames_length;
+};
+
 #if defined(__i386__)
 static uint32_t
 U32(const uint8_t* data) {
@@ -1298,6 +1326,8 @@ AugmentMappings(const Options& options, CrashedProcess* crashinfo,
     }
     AddDataToMapping(crashinfo, crashinfo->dynamic_data,
                      (uintptr_t)crashinfo->debug.dynamic);
+  } else {
+    fprintf(stderr, "dynamic data empty\n");
   }
 }
 
@@ -1417,19 +1447,40 @@ main(int argc, const char* argv[]) {
   if (!writea(options.out_fd, &ehdr, sizeof(Ehdr)))
     return 1;
 
+  struct NtFileNote nt_file;
+  for (auto iter = crashinfo.mappings.begin();
+       iter != crashinfo.mappings.end(); iter++) {
+    if (iter->second.filename.empty())
+      continue;
+    nt_file.file_mappings.push_back(iter->second.start_address);
+    nt_file.file_mappings.push_back(iter->second.end_address);
+    nt_file.file_mappings.push_back(iter->second.offset);
+    nt_file.filenames.push_back(iter->second.filename);
+    nt_file.filenames_length += iter->second.filename.length() + 1;
+    nt_file.filename_count += 1;
+  }
+  // implementation of NT_FILE note seems to pad alignment by 4 bytes but
+  // keep the header size the true size of the note. so we keep nt_file_align
+  // as separate field.
+  size_t nt_file_data_sz = (2 * sizeof(unsigned long)) +
+      (nt_file.file_mappings.size() * sizeof(unsigned long)) +
+      nt_file.filenames_length;
+  size_t nt_file_align = nt_file_data_sz % 4 == 0 ? 0 : 4 -
+      (nt_file_data_sz % 4);
   size_t offset = sizeof(Ehdr) + ehdr.e_phnum * sizeof(Phdr);
   size_t filesz = sizeof(Nhdr) + 8 + sizeof(prpsinfo) +
-                  // sizeof(Nhdr) + 8 + sizeof(user) +
-                  sizeof(Nhdr) + 8 + crashinfo.auxv_length +
-                  crashinfo.threads.size() * (
-                    (sizeof(Nhdr) + 8 + sizeof(prstatus))
+      // sizeof(Nhdr) + 8 + sizeof(user) +
+      sizeof(Nhdr) + 8 + crashinfo.auxv_length +
+      sizeof(Nhdr) + 8 + nt_file_data_sz + nt_file_align +
+      crashinfo.threads.size() * (
+      (sizeof(Nhdr) + 8 + sizeof(prstatus))
 #if defined(__i386__) || defined(__x86_64__)
-                   + sizeof(Nhdr) + 8 + sizeof(user_fpregs_struct)
+      + sizeof(Nhdr) + 8 + sizeof(user_fpregs_struct)
 #endif
 #if defined(__i386__)
-                   + sizeof(Nhdr) + 8 + sizeof(user_fpxregs_struct)
+      + sizeof(Nhdr) + 8 + sizeof(user_fpxregs_struct)
 #endif
-                    );
+      );
 
   Phdr phdr;
   memset(&phdr, 0, sizeof(Phdr));
@@ -1491,6 +1542,28 @@ main(int argc, const char* argv[]) {
       !writea(options.out_fd, crashinfo.auxv, crashinfo.auxv_length)) {
     return 1;
   }
+
+  nhdr.n_descsz = nt_file_data_sz;
+  nhdr.n_type = NT_FILE;
+  if (!writea(options.out_fd, &nhdr, sizeof(nhdr)) ||
+      !writea(options.out_fd, "CORE\0\0\0\0", 8) ||
+      !writea(options.out_fd,
+      &nt_file.filename_count, sizeof(nt_file.filename_count)) ||
+      !writea(options.out_fd, &nt_file.page_sz, sizeof(nt_file.page_sz))) {
+    return 1;
+  }
+  for (auto iter = nt_file.file_mappings.begin();
+       iter != nt_file.file_mappings.end(); iter++) {
+    if (!writea(options.out_fd, &*iter, sizeof(*iter)))
+      return 1;
+  }
+  for (auto iter = nt_file.filenames.begin();
+       iter != nt_file.filenames.end(); iter++) {
+    if (!writea(options.out_fd, iter->c_str(), iter->length() + 1))
+      return 1;
+  }
+  if (!writea(options.out_fd, "\0\0\0\0", nt_file_align))
+    return 1;
 
   for (const auto& current_thread : crashinfo.threads) {
     if (current_thread.tid == crashinfo.exception.tid) {

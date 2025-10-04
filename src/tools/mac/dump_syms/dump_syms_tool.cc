@@ -55,28 +55,19 @@ using google_breakpad::scoped_ptr;
 using std::vector;
 
 struct Options {
-  Options()
-      : srcPath(),
-        dsymPath(),
-        arch(),
-        header_only(false),
-        cfi(true),
-        handle_inter_cu_refs(true),
-        handle_inlines(false),
-        enable_multiple(false),
-        module_name(),
-        prefer_extern_name(false) {}
+  Options() = default;
 
   string srcPath;
   string dsymPath;
   std::optional<ArchInfo> arch;
-  bool header_only;
-  bool cfi;
-  bool handle_inter_cu_refs;
-  bool handle_inlines;
-  bool enable_multiple;
+  bool header_only = false;
+  bool cfi = true;
+  bool handle_inter_cu_refs = true;
+  bool handle_inlines = false;
+  bool enable_multiple = false;
   string module_name;
-  bool prefer_extern_name;
+  bool prefer_extern_name = false;
+  bool report_warnings = false;
 };
 
 static bool StackFrameEntryComparator(const Module::StackFrameEntry* a,
@@ -169,6 +160,8 @@ static bool Start(const Options& options) {
   const string& primary_file =
     split_module ? options.dsymPath : options.srcPath;
 
+  dump_symbols.SetReportWarnings(options.report_warnings);
+
   if (!dump_symbols.Read(primary_file))
     return false;
 
@@ -250,6 +243,7 @@ static void Usage(int argc, const char *argv[]) {
           "[-n MODULE] [-x] <Mach-o file>\n",
           argv[0]);
   fprintf(stderr, "\t-i: Output module header information only.\n");
+  fprintf(stderr, "\t-w: Output warning information.\n");
   fprintf(stderr, "\t-a: Architecture type [default: native, or whatever is\n");
   fprintf(stderr, "\t    in the file, if it contains only one architecture]\n");
   fprintf(stderr, "\t-g: Debug symbol file (dSYM) to dump in addition to the "
@@ -275,10 +269,13 @@ static void SetupOptions(int argc, const char *argv[], Options *options) {
   extern int optind;
   signed char ch;
 
-  while ((ch = getopt(argc, (char* const*)argv, "ia:g:crdm?hn:x")) != -1) {
+  while ((ch = getopt(argc, (char* const*)argv, "iwa:g:crdm?hn:x")) != -1) {
     switch (ch) {
       case 'i':
         options->header_only = true;
+        break;
+      case 'w':
+        options->report_warnings = true;
         break;
       case 'a': {
         std::optional<ArchInfo> arch_info = GetArchInfoFromName(optarg);

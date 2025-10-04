@@ -147,7 +147,6 @@ StackFrameAMD64* StackwalkerAMD64::GetCallerByCFIFrameInfo(
     return NULL;
 
   if (!frame->context.rip || !frame->context.rsp) {
-    BPLOG(ERROR) << "invalid rip/rsp";
     return NULL;
   }
 

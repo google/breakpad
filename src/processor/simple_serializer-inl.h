@@ -39,7 +39,8 @@
 
 #include "processor/simple_serializer.h"
 
-#include <cstdint>
+#include <stdint.h>
+
 #include <string>
 
 #include "google_breakpad/processor/basic_source_line_resolver.h"

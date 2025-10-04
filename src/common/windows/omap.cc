@@ -106,10 +106,10 @@
 
 #include "common/windows/omap.h"
 
+#include <assert.h>
 #include <atlbase.h>
 
 #include <algorithm>
-#include <cassert>
 #include <set>
 
 #include "common/windows/dia_util.h"

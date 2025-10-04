@@ -31,8 +31,11 @@
 #endif
 
 #include "client/windows/crash_generation/crash_generation_client.h"
-#include <cassert>
+
+#include <assert.h>
+
 #include <utility>
+
 #include "client/windows/common/ipc_protocol.h"
 
 namespace google_breakpad {

@@ -39,7 +39,20 @@
 #include <string.h>
 
 #ifdef __APPLE__
+#include <Availability.h>
+#include <AvailabilityMacros.h>
+
+#if (defined(__IPHONE_OS_VERSION_MIN_REQUIRED) && defined(__IPHONE_16_0) &&    \
+     __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_16_0) ||                     \
+    (defined(MAC_OS_X_VERSION_MIN_REQUIRED) && defined(MAC_OS_VERSION_13_0) && \
+     MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_VERSION_13_0) ||                  \
+    (defined(__TV_OS_VERSION_MIN_REQUIRED) && defined(__TV_OS_VERSION_16_0) && \
+     __TV_OS_VERSION_MIN_REQUIRED >= __TVOS_16_0)
+#define HAS_MACHO_UTILS 1
 #include <mach-o/utils.h>
+#else
+#define HAS_MACHO_UTILS 0
+#endif
 #endif
 
 namespace {
@@ -95,40 +108,43 @@ ArchInfo GetLocalArchInfo(void) {
 #ifdef __APPLE__
 
 std::optional<ArchInfo> GetArchInfoFromName(const char* arch_name) {
+#if HAS_MACHO_UTILS
   if (__builtin_available(macOS 13.0, iOS 16.0, tvOS 16.0, *)) {
     cpu_type_t type;
     cpu_subtype_t subtype;
     if (macho_cpu_type_for_arch_name(arch_name, &type, &subtype)) {
       return ArchInfo{type, subtype};
     }
-  } else {
+    return std::nullopt;
+  }
+#endif
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    const NXArchInfo* info = NXGetArchInfoFromName(arch_name);
+  const NXArchInfo* info = NXGetArchInfoFromName(arch_name);
 #pragma clang diagnostic pop
-    if (info) {
-      return ArchInfo{info->cputype, info->cpusubtype};
-    }
+  if (info) {
+    return ArchInfo{info->cputype, info->cpusubtype};
   }
   return std::nullopt;
 }
 
 const char* GetNameFromCPUType(cpu_type_t cpu_type, cpu_subtype_t cpu_subtype) {
+#if HAS_MACHO_UTILS
   if (__builtin_available(macOS 13.0, iOS 16.0, tvOS 16.0, *)) {
     const char* name = macho_arch_name_for_cpu_type(cpu_type, cpu_subtype);
     if (name) {
       return name;
     }
-  } else {
+    return kUnknownArchName;
+  }
+#endif
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    const NXArchInfo* info = NXGetArchInfoFromCpuType(cpu_type, cpu_subtype);
+  const NXArchInfo* info = NXGetArchInfoFromCpuType(cpu_type, cpu_subtype);
 #pragma clang diagnostic pop
-    if (info) {
-      return info->name;
-    }
+  if (info) {
+    return info->name;
   }
-
   return kUnknownArchName;
 }
 

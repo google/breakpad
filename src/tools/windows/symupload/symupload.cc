@@ -47,18 +47,18 @@
 #endif
 
 #include <windows.h>
+
 #include <dbghelp.h>
+#include <stdio.h>
 #include <wininet.h>
 
-#include <cstdio>
 #include <map>
 #include <string>
 #include <vector>
 
-#include "common/windows/string_utils-inl.h"
-
 #include "common/windows/http_upload.h"
 #include "common/windows/pdb_source_line_writer.h"
+#include "common/windows/string_utils-inl.h"
 #include "common/windows/sym_upload_v2_protocol.h"
 #include "common/windows/symbol_collector_client.h"
 
@@ -305,12 +305,12 @@ int wmain(int argc, wchar_t* argv[]) {
 
   _wunlink(symbol_file.c_str());
 
-  if (success) {
-    wprintf(L"Uploaded breakpad symbols for windows-%s/%s/%s (%s %s)\n",
-            pdb_info.cpu.c_str(), pdb_info.debug_file.c_str(),
-            pdb_info.debug_identifier.c_str(), code_file.c_str(),
-            file_version.c_str());
-  }
+  fwprintf(success ? stdout : stderr,
+           L"%S breakpad symbols for windows-%s/%s/%s (%s %s)\n",
+           success ? "Uploaded" : "Failed to upload",
+           pdb_info.cpu.c_str(), pdb_info.debug_file.c_str(),
+           pdb_info.debug_identifier.c_str(), code_file.c_str(),
+           file_version.c_str());
 
   return success ? 0 : 1;
 }

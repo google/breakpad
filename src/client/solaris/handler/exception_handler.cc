@@ -32,16 +32,16 @@
 #include <config.h>  // Must come first
 #endif
 
+#include "client/solaris/handler/exception_handler.h"
+
+#include <assert.h>
 #include <signal.h>
+#include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <time.h>
 #include <unistd.h>
 
-#include <cassert>
-#include <cstdlib>
-#include <ctime>
-
-#include "client/solaris/handler/exception_handler.h"
 #include "common/solaris/guid_creator.h"
 #include "common/solaris/message_output.h"
 #include "google_breakpad/common/minidump_format.h"

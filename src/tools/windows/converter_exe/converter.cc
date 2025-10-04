@@ -35,9 +35,10 @@
 #include <config.h>  // Must come first
 #endif
 
-#include <cassert>
-#include <cstdio>
-#include <ctime>
+#include <assert.h>
+#include <stdio.h>
+#include <time.h>
+
 #include <map>
 #include <regex>
 #include <string>

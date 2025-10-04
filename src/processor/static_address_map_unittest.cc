@@ -34,9 +34,12 @@
 #include <config.h>  // Must come first
 #endif
 
-#include <climits>
-#include <cstdlib>
-#include <ctime>
+#include "processor/static_address_map-inl.h"
+
+#include <limits.h>
+#include <stdlib.h>
+#include <time.h>
+
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -44,7 +47,6 @@
 #include "breakpad_googletest_includes.h"
 #include "common/using_std_string.h"
 #include "processor/address_map-inl.h"
-#include "processor/static_address_map-inl.h"
 #include "processor/simple_serializer-inl.h"
 #include "map_serializers-inl.h"
 
@@ -124,7 +126,7 @@ class TestStaticAddressMap : public ::testing::Test {
 
     srand(time(0));
     for (int data_item = 0; data_item < testsize[testcase]; ++data_item) {
-      // Retrive (aka, search) for target address and compare results from
+      // Retrieve (aka, search) for target address and compare results from
       // AddressMap and StaticAddressMap.
 
       // First, assign the search target to be one of original testdata that is

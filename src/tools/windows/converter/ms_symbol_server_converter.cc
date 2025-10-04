@@ -37,14 +37,15 @@
 #include <config.h>  // Must come first
 #endif
 
+#include "tools/windows/converter/ms_symbol_server_converter.h"
+
 #include <windows.h>
+
+#include <assert.h>
 #include <dbghelp.h>
 #include <pathcch.h>
+#include <stdio.h>
 
-#include <cassert>
-#include <cstdio>
-
-#include "tools/windows/converter/ms_symbol_server_converter.h"
 #include "common/windows/pdb_source_line_writer.h"
 #include "common/windows/pe_source_line_writer.h"
 #include "common/windows/string_utils-inl.h"

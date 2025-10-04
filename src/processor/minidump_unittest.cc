@@ -111,7 +111,7 @@ TEST_F(MinidumpTest, TestMinidumpFromFile) {
 
 TEST_F(MinidumpTest, TestMinidumpFromStream) {
   // read minidump contents into memory, construct a stringstream around them
-  ifstream file_stream(minidump_file_.c_str(), std::ios::in);
+  ifstream file_stream(minidump_file_.c_str(), std::ios::in | std::ios::binary);
   ASSERT_TRUE(file_stream.good());
   vector<char> bytes;
   file_stream.seekg(0, std::ios_base::end);

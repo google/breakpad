@@ -32,11 +32,16 @@
 #include <config.h>  // Must come first
 #endif
 
+#include "client/solaris/handler/solaris_lwp.h"
+
+#include <assert.h>
 #include <dirent.h>
 #include <elf.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <sys/frame.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -44,12 +49,8 @@
 #include <unistd.h>
 
 #include <algorithm>
-#include <cassert>
-#include <cstdio>
-#include <cstdlib>
 #include <functional>
 
-#include "client/solaris/handler/solaris_lwp.h"
 #include "common/solaris/message_output.h"
 
 using namespace google_breakpad;
@@ -320,7 +321,7 @@ int SolarisLwp::ListModules(
     return -1;
 
   /*
-   * Determine number of mappings, this value must be 
+   * Determine number of mappings, this value must be
    * larger than the actual module count
    */
   size = status.st_size;
@@ -337,7 +338,7 @@ int SolarisLwp::ListModules(
   prmap_t* _maps;
   int _num;
   int module_count = 0;
-  
+
   /*
    * Scan each mapping - note it is assummed that the mappings are
    * presented in order.  We fill holes between mappings.  On intel

@@ -36,20 +36,19 @@
 #include <config.h>  // Must come first
 #endif
 
+#include "common/solaris/file_id.h"
+
+#include <assert.h>
 #include <elf.h>
 #include <fcntl.h>
 #include <gelf.h>
-#include <sys/mman.h>
-#include <sys/ksyms.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/ksyms.h>
+#include <sys/mman.h>
 #include <unistd.h>
 
-#include <cassert>
-#include <cstdio>
-
 #include "common/md5.h"
-#include "common/solaris/file_id.h"
 #include "common/solaris/message_output.h"
 #include "google_breakpad/common/minidump_format.h"
 

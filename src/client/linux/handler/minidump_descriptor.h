@@ -30,9 +30,9 @@
 #define CLIENT_LINUX_HANDLER_MINIDUMP_DESCRIPTOR_H_
 
 #include <assert.h>
+#include <stdint.h>
 #include <sys/types.h>
 
-#include <cstdint>
 #include <string>
 
 #include "client/linux/handler/microdump_extra_info.h"

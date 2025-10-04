@@ -99,6 +99,13 @@ static bool ElfClassBuildIDNoteIdentifier(const void* section, size_t length,
 // and copy it into |identifier|.
 static bool FindElfBuildIDNote(const void* elf_mapped_base,
                                wasteful_vector<uint8_t>& identifier) {
+  void* note_section;
+  size_t note_size;
+  if (FindElfSection(elf_mapped_base, ".note.gnu.build-id", SHT_NOTE,
+                     (const void**)&note_section, &note_size)) {
+    return ElfClassBuildIDNoteIdentifier(note_section, note_size, identifier);
+  }
+
   PageAllocator allocator;
   // lld normally creates 2 PT_NOTEs, gold normally creates 1.
   auto_wasteful_vector<ElfSegment, 2> segs(&allocator);
@@ -108,13 +115,6 @@ static bool FindElfBuildIDNote(const void* elf_mapped_base,
         return true;
       }
     }
-  }
-
-  void* note_section;
-  size_t note_size;
-  if (FindElfSection(elf_mapped_base, ".note.gnu.build-id", SHT_NOTE,
-                     (const void**)&note_section, &note_size)) {
-    return ElfClassBuildIDNoteIdentifier(note_section, note_size, identifier);
   }
 
   return false;
@@ -128,8 +128,10 @@ static bool HashElfTextSection(const void* elf_mapped_base,
 
   void* text_section;
   size_t text_size;
-  if (!FindElfSection(elf_mapped_base, ".text", SHT_PROGBITS,
-                      (const void**)&text_section, &text_size) ||
+  if ((!FindElfSection(elf_mapped_base, ".text", SHT_PROGBITS,
+                       (const void**)&text_section, &text_size) &&
+       !FindElfSection(elf_mapped_base, "text", SHT_PROGBITS,
+                       (const void**)&text_section, &text_size)) ||
       text_size == 0) {
     return false;
   }

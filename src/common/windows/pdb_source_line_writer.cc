@@ -105,7 +105,7 @@ void MaybeRecordSymbol(DWORD rva,
   // Take the 'least' symbol by lexicographical order of the decorated name. We
   // use the decorated rather than undecorated name because computing the latter
   // is expensive.
-  BSTR current_name, new_name;
+  CComBSTR current_name, new_name;
   loc->second.symbol->get_name(&current_name);
   symbol->get_name(&new_name);
   if (wcscmp(new_name, current_name) < 0) {
@@ -479,6 +479,28 @@ bool PDBSourceLineWriter::Open(const wstring& file, FileFormat format) {
   return true;
 }
 
+int PDBSourceLineWriter::GetCallsiteInlineOriginId(
+    CComPtr<IDiaSymbol>& callsite) {
+  wstring name;
+  {
+    CComBSTR name_bstr;
+    callsite->get_name(&name_bstr);
+    if (name.assign(name_bstr, name_bstr.Length()).empty()) {
+      name = L"<name omitted>";
+    }
+  }
+
+  const int next_id = inline_origins_.size();
+  auto iter_inserted = inline_origins_.emplace(std::move(name), next_id);
+  if (!iter_inserted.second) {
+    // `name` is already present. Return its previously-assigned unique id.
+    return iter_inserted.first->second;
+  }
+  // `name` was just inserted. Assign it the next id and return this value.
+  iter_inserted.first->second = next_id;
+  return next_id;
+}
+
 bool PDBSourceLineWriter::GetLine(IDiaLineNumber* dia_line, Line* line) const {
   if (FAILED(dia_line->get_relativeVirtualAddress(&line->rva))) {
     fprintf(stderr, "failed to get line rva\n");
@@ -783,17 +805,16 @@ bool PDBSourceLineWriter::PrintFunctions() {
 }
 
 void PDBSourceLineWriter::PrintInlineOrigins() const {
-  struct OriginCompare {
-    bool operator()(const InlineOrigin lhs, const InlineOrigin rhs) const {
-      return lhs.id < rhs.id;
-    }
-  };
-  set<InlineOrigin, OriginCompare> origins;
-  // Sort by origin id.
-  for (auto const& origin : inline_origins_)
-    origins.insert(origin.second);
-  for (auto o : origins) {
-    fprintf(output_, "INLINE_ORIGIN %d %ls\n", o.id, o.name.c_str());
+  // Inline origins' unique identifiers are assigned sequentially starting from
+  // zero. Make a reverse-mapping from ids to names, then print the names in
+  // order of id.
+  vector<const wstring*> names_by_id(inline_origins_.size());
+  for (const auto& origin : inline_origins_) {
+    names_by_id[origin.second] = &origin.first;
+  }
+  int id = 0;
+  for (const wstring* name : names_by_id) {
+    fprintf(output_, "INLINE_ORIGIN %d %ls\n", id++, name->c_str());
   }
 }
 
@@ -838,19 +859,7 @@ bool PDBSourceLineWriter::GetInlines(IDiaSymbol* block,
       }
       dia_line.Release();
     }
-    BSTR name;
-    callsite->get_name(&name);
-    if (SysStringLen(name) == 0) {
-      name = SysAllocString(L"<name omitted>");
-    }
-    auto iter = inline_origins_.find(name);
-    if (iter == inline_origins_.end()) {
-      InlineOrigin origin;
-      origin.id = inline_origins_.size();
-      origin.name = name;
-      inline_origins_[name] = origin;
-    }
-    new_inline->SetOriginId(inline_origins_[name].id);
+    new_inline->SetOriginId(GetCallsiteInlineOriginId(callsite));
     new_inline->SetCallSiteLine(call_site_line);
     new_inline->SetCallSiteFileId(file_id);
     // Go to next level.
