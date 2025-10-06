@@ -59,7 +59,6 @@ namespace google_breakpad {
 struct LineStateMachine;
 class Dwarf2Handler;
 class LineInfoHandler;
-class DwpReader;
 
 // This maps from a string naming a section to a pair containing a
 // the data for the section, and the size of the section.
@@ -412,6 +411,94 @@ class Dwarf2Handler {
   // ending the parent.
   virtual void EndDIE(uint64_t offset) { }
 
+};
+
+// A Reader for a .dwp file.  Supports the fetching of DWARF debug
+// info for a given dwo_id.
+//
+// There are two versions of .dwp files.  In both versions, the
+// .dwp file is an ELF file containing only debug sections.
+// In Version 1, the file contains many copies of each debug
+// section, one for each .dwo file that is packaged in the .dwp
+// file, and the .debug_cu_index section maps from the dwo_id
+// to a set of section indexes.  In Version 2, the file contains
+// one of each debug section, and the .debug_cu_index section
+// maps from the dwo_id to a set of offsets and lengths that
+// identify each .dwo file's contribution to the larger sections.
+
+class DwpReader {
+ public:
+  DwpReader(const ByteReader& byte_reader, ElfReader* elf_reader);
+
+  // Read the CU index and initialize data members.
+  void Initialize();
+
+  // Read the debug sections for the given dwo_id.
+  void ReadDebugSectionsForCU(uint64_t dwo_id, SectionMap* sections);
+
+ private:
+  // Search a v1 hash table for "dwo_id".  Returns the slot index
+  // where the dwo_id was found, or -1 if it was not found.
+  int LookupCU(uint64_t dwo_id);
+
+  // Search a v2 hash table for "dwo_id".  Returns the row index
+  // in the offsets and sizes tables, or 0 if it was not found.
+  uint32_t LookupCUv2(uint64_t dwo_id);
+
+  // The ELF reader for the .dwp file.
+  ElfReader* elf_reader_;
+
+  // The ByteReader for the .dwp file.
+  const ByteReader& byte_reader_;
+
+  // Pointer to the .debug_cu_index section.
+  const char* cu_index_;
+
+  // Size of the .debug_cu_index section.
+  size_t cu_index_size_;
+
+  // Pointer to the .debug_str.dwo section.
+  const char* string_buffer_;
+
+  // Size of the .debug_str.dwo section.
+  size_t string_buffer_size_;
+
+  // Version of the .dwp file.  We support versions 1 and 2 currently.
+  int version_;
+
+  // Number of columns in the section tables (version 2).
+  unsigned int ncolumns_;
+
+  // Number of units in the section tables (version 2).
+  unsigned int nunits_;
+
+  // Number of slots in the hash table.
+  unsigned int nslots_;
+
+  // Pointer to the beginning of the hash table.
+  const char* phash_;
+
+  // Pointer to the beginning of the index table.
+  const char* pindex_;
+
+  // Pointer to the beginning of the section index pool (version 1).
+  const char* shndx_pool_;
+
+  // Pointer to the beginning of the section offset table (version 2).
+  const char* offset_table_;
+
+  // Pointer to the beginning of the section size table (version 2).
+  const char* size_table_;
+
+  // Contents of the sections of interest (version 2).
+  const char* abbrev_data_;
+  size_t abbrev_size_;
+  const char* info_data_;
+  size_t info_size_;
+  const char* str_offsets_data_;
+  size_t str_offsets_size_;
+  const char* rnglist_data_;
+  size_t rnglist_size_;
 };
 
 // The base of DWARF2/3 debug info is a DIE (Debugging Information
@@ -779,94 +866,6 @@ class CompilationUnit {
   // The value of DW_AT_stmt_list attribute if any.
   bool has_source_line_info_;
   uint64_t source_line_offset_;
-};
-
-// A Reader for a .dwp file.  Supports the fetching of DWARF debug
-// info for a given dwo_id.
-//
-// There are two versions of .dwp files.  In both versions, the
-// .dwp file is an ELF file containing only debug sections.
-// In Version 1, the file contains many copies of each debug
-// section, one for each .dwo file that is packaged in the .dwp
-// file, and the .debug_cu_index section maps from the dwo_id
-// to a set of section indexes.  In Version 2, the file contains
-// one of each debug section, and the .debug_cu_index section
-// maps from the dwo_id to a set of offsets and lengths that
-// identify each .dwo file's contribution to the larger sections.
-
-class DwpReader {
- public:
-  DwpReader(const ByteReader& byte_reader, ElfReader* elf_reader);
-
-  // Read the CU index and initialize data members.
-  void Initialize();
-
-  // Read the debug sections for the given dwo_id.
-  void ReadDebugSectionsForCU(uint64_t dwo_id, SectionMap* sections);
-
- private:
-  // Search a v1 hash table for "dwo_id".  Returns the slot index
-  // where the dwo_id was found, or -1 if it was not found.
-  int LookupCU(uint64_t dwo_id);
-
-  // Search a v2 hash table for "dwo_id".  Returns the row index
-  // in the offsets and sizes tables, or 0 if it was not found.
-  uint32_t LookupCUv2(uint64_t dwo_id);
-
-  // The ELF reader for the .dwp file.
-  ElfReader* elf_reader_;
-
-  // The ByteReader for the .dwp file.
-  const ByteReader& byte_reader_;
-
-  // Pointer to the .debug_cu_index section.
-  const char* cu_index_;
-
-  // Size of the .debug_cu_index section.
-  size_t cu_index_size_;
-
-  // Pointer to the .debug_str.dwo section.
-  const char* string_buffer_;
-
-  // Size of the .debug_str.dwo section.
-  size_t string_buffer_size_;
-
-  // Version of the .dwp file.  We support versions 1 and 2 currently.
-  int version_;
-
-  // Number of columns in the section tables (version 2).
-  unsigned int ncolumns_;
-
-  // Number of units in the section tables (version 2).
-  unsigned int nunits_;
-
-  // Number of slots in the hash table.
-  unsigned int nslots_;
-
-  // Pointer to the beginning of the hash table.
-  const char* phash_;
-
-  // Pointer to the beginning of the index table.
-  const char* pindex_;
-
-  // Pointer to the beginning of the section index pool (version 1).
-  const char* shndx_pool_;
-
-  // Pointer to the beginning of the section offset table (version 2).
-  const char* offset_table_;
-
-  // Pointer to the beginning of the section size table (version 2).
-  const char* size_table_;
-
-  // Contents of the sections of interest (version 2).
-  const char* abbrev_data_;
-  size_t abbrev_size_;
-  const char* info_data_;
-  size_t info_size_;
-  const char* str_offsets_data_;
-  size_t str_offsets_size_;
-  const char* rnglist_data_;
-  size_t rnglist_size_;
 };
 
 // This class is a reader for DWARF's Call Frame Information.  CFI
