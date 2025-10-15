@@ -5918,8 +5918,25 @@ bool Minidump::GetPlatform(MDOSPlatform* platform) {
   if (!system_info) {
     return false;
   }
-  *platform = static_cast<MDOSPlatform>(system_info->platform_id);
-  return true;
+  switch (system_info->platform_id) {
+    case MD_OS_WIN32S:
+    case MD_OS_WIN32_WINDOWS:
+    case MD_OS_WIN32_NT:
+    case MD_OS_WIN32_CE:
+    case MD_OS_UNIX:
+    case MD_OS_MAC_OS_X:
+    case MD_OS_IOS:
+    case MD_OS_LINUX:
+    case MD_OS_SOLARIS:
+    case MD_OS_ANDROID:
+    case MD_OS_PS3:
+    case MD_OS_NACL:
+    case MD_OS_FUCHSIA:
+      *platform = static_cast<MDOSPlatform>(system_info->platform_id);
+      return true;
+    default:
+      return false;
+  }
 }
 
 MinidumpCrashpadInfo* Minidump::GetCrashpadInfo() {
