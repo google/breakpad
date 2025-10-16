@@ -49,7 +49,7 @@ extern int my_strncmp(const char* a, const char* b, size_t len);
 //   result: (output) the resulting non-negative integer
 //   s: a NUL terminated string
 // Return true iff successful.
-extern bool my_strtoui(int* result, const char* s);
+extern bool my_strtoi_nonneg(int* result, const char* s);
 
 // Return the length of the given unsigned integer when expressed in base 10.
 extern unsigned my_uint_len(uintmax_t i);

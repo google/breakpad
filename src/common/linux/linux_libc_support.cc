@@ -38,6 +38,8 @@
 
 #include <stddef.h>
 
+#include <limits>
+
 extern "C" {
 
 size_t my_strlen(const char* s) {
@@ -78,20 +80,24 @@ int my_strncmp(const char* a, const char* b, size_t len) {
 //   result: (output) the resulting non-negative integer
 //   s: a NUL terminated string
 // Return true iff successful.
-bool my_strtoui(int* result, const char* s) {
-  if (*s == 0)
+bool my_strtoi_nonneg(int* result, const char* s) {
+  if (*s == 0) {
     return false;
+  }
   int r = 0;
   for (;; s++) {
-    if (*s == 0)
+    if (*s == 0) {
       break;
-    const int old_r = r;
-    r *= 10;
-    if (*s < '0' || *s > '9')
+    }
+    if (*s < '0' || *s > '9') {
       return false;
-    r += *s - '0';
-    if (r < old_r)
+    }
+    if (r > std::numeric_limits<int>::max() / 10 ||
+        (r == std::numeric_limits<int>::max() / 10 &&
+         *s - '0' > std::numeric_limits<int>::max() % 10)) {
       return false;
+    }
+    r = r * 10 + (*s - '0');
   }
 
   *result = r;

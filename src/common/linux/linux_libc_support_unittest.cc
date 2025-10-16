@@ -74,22 +74,29 @@ TEST(LinuxLibcSupportTest, strcmp) {
 TEST(LinuxLibcSupportTest, strtoui) {
   int result;
 
-  ASSERT_FALSE(my_strtoui(&result, ""));
-  ASSERT_FALSE(my_strtoui(&result, "-1"));
-  ASSERT_FALSE(my_strtoui(&result, "-"));
-  ASSERT_FALSE(my_strtoui(&result, "a"));
-  ASSERT_FALSE(my_strtoui(&result, "23472893472938472987987398472398"));
+  ASSERT_FALSE(my_strtoi_nonneg(&result, ""));
+  ASSERT_FALSE(my_strtoi_nonneg(&result, "-1"));
+  ASSERT_FALSE(my_strtoi_nonneg(&result, "-"));
+  ASSERT_FALSE(my_strtoi_nonneg(&result, "a"));
+  ASSERT_FALSE(my_strtoi_nonneg(&result, "23472893472938472987987398472398"));
 
-  ASSERT_TRUE(my_strtoui(&result, "0"));
+  // Try with max int + 1.
+  ASSERT_FALSE(my_strtoi_nonneg(&result, "2147483648"));
+
+  ASSERT_TRUE(my_strtoi_nonneg(&result, "0"));
   ASSERT_EQ(result, 0);
-  ASSERT_TRUE(my_strtoui(&result, "1"));
+  ASSERT_TRUE(my_strtoi_nonneg(&result, "1"));
   ASSERT_EQ(result, 1);
-  ASSERT_TRUE(my_strtoui(&result, "12"));
+  ASSERT_TRUE(my_strtoi_nonneg(&result, "12"));
   ASSERT_EQ(result, 12);
-  ASSERT_TRUE(my_strtoui(&result, "123"));
+  ASSERT_TRUE(my_strtoi_nonneg(&result, "123"));
   ASSERT_EQ(result, 123);
-  ASSERT_TRUE(my_strtoui(&result, "0123"));
+  ASSERT_TRUE(my_strtoi_nonneg(&result, "0123"));
   ASSERT_EQ(result, 123);
+
+  // Try with max int.
+  ASSERT_TRUE(my_strtoi_nonneg(&result, "2147483647"));
+  ASSERT_EQ(result, 2147483647);
 }
 
 TEST(LinuxLibcSupportTest, uint_len) {

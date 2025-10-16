@@ -316,9 +316,9 @@ bool LinuxPtraceDumper::GetThreadInfoByIndex(size_t index, ThreadInfo* info) {
 
   while (line_reader->GetNextLine(&line, &line_len)) {
     if (my_strncmp("Tgid:\t", line, 6) == 0) {
-      my_strtoui(&info->tgid, line + 6);
+      my_strtoi_nonneg(&info->tgid, line + 6);
     } else if (my_strncmp("PPid:\t", line, 6) == 0) {
-      my_strtoui(&info->ppid, line + 6);
+      my_strtoi_nonneg(&info->ppid, line + 6);
     }
 
     line_reader->PopLine(line_len);
@@ -459,7 +459,7 @@ bool LinuxPtraceDumper::EnumerateThreads() {
     if (my_strcmp(dent_name, ".") &&
         my_strcmp(dent_name, "..")) {
       int tid = 0;
-      if (my_strtoui(&tid, dent_name) &&
+      if (my_strtoi_nonneg(&tid, dent_name) &&
           last_tid != tid) {
         last_tid = tid;
         threads_.push_back(tid);
