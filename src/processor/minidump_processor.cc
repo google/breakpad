@@ -1449,10 +1449,7 @@ std::string MinidumpProcessor::GetCrashReason(Minidump* dump, uint64_t* address,
           break;
         case MD_EXCEPTION_CODE_WIN_STACK_BUFFER_OVERRUN:
           if (raw_exception->exception_record.number_parameters >= 1) {
-            MDFastFailSubcodeTypeWin subcode =
-                static_cast<MDFastFailSubcodeTypeWin>(
-                    raw_exception->exception_record.exception_information[0]);
-            switch (subcode) {
+            switch (raw_exception->exception_record.exception_information[0]) {
               // Note - we skip the '0'/GS case as it exists for legacy reasons.
               case MD_FAST_FAIL_VTGUARD_CHECK_FAILURE:
                 reason = "FAST_FAIL_VTGUARD_CHECK_FAILURE";
