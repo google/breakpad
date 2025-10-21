@@ -1323,10 +1323,7 @@ std::string MinidumpProcessor::GetCrashReason(Minidump* dump, uint64_t* address,
           // This information is useful in addition to the code address, which
           // will be present in the crash thread's instruction field anyway.
           if (raw_exception->exception_record.number_parameters >= 1) {
-            MDAccessViolationTypeWin av_type =
-                static_cast<MDAccessViolationTypeWin>
-                (raw_exception->exception_record.exception_information[0]);
-            switch (av_type) {
+            switch (raw_exception->exception_record.exception_information[0]) {
               case MD_ACCESS_VIOLATION_WIN_READ:
                 reason = "EXCEPTION_ACCESS_VIOLATION_READ";
                 break;
@@ -1360,10 +1357,7 @@ std::string MinidumpProcessor::GetCrashReason(Minidump* dump, uint64_t* address,
           // This information is useful in addition to the code address, which
           // will be present in the crash thread's instruction field anyway.
           if (raw_exception->exception_record.number_parameters >= 1) {
-            MDInPageErrorTypeWin av_type =
-                static_cast<MDInPageErrorTypeWin>
-                (raw_exception->exception_record.exception_information[0]);
-            switch (av_type) {
+            switch (raw_exception->exception_record.exception_information[0]) {
               case MD_IN_PAGE_ERROR_WIN_READ:
                 reason = "EXCEPTION_IN_PAGE_ERROR_READ";
                 break;
