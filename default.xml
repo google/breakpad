@@ -25,11 +25,6 @@
            revision='refs/tags/v1.16.0'
            remote='github' />
 
-  <project path='src/src/third_party/protobuf/protobuf'
-           name='google/protobuf.git'
-           revision='cb6dd4ef5f82e41e06179dcd57d3b1d9246ad6ac'
-           remote='github' />
-
   <project path='src/src/third_party/lss'
            name='linux-syscall-support/'
            revision='ed31caa60f20a4f6569883b2d752ef7522de51e0'

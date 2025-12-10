@@ -38,11 +38,6 @@ deps = {
     "https://github.com/google/googletest.git" +
       "@v1.16.0",
 
-  # Protobuf.
-  "src/src/third_party/protobuf/protobuf":
-    "https://github.com/google/protobuf.git" +
-      "@cb6dd4ef5f82e41e06179dcd57d3b1d9246ad6ac",
-
   # Linux syscall support.
   "src/src/third_party/lss":
     "https://chromium.googlesource.com/linux-syscall-support/" +
