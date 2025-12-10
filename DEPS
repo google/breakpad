@@ -49,11 +49,3 @@ deps = {
     "https://chromium.googlesource.com/linux-syscall-support/" +
       "@29164a80da4d41134950d76d55199ea33fbb9613",
 }
-
-hooks = [
-  {
-    # Keep the manifest up to date.
-    "action": ["src/src/tools/python/deps-to-manifest.py",
-               "src/DEPS", "src/default.xml"],
-  },
-]
