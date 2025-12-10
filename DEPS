@@ -32,11 +32,17 @@
 # you can still use the hooks mechanism for generating project files by calling
 # 'gclient runhooks' rather than 'gclient sync'.
 
+# We expect all git dependencies specified in this file to be in sync with git
+# submodules (gitlinks).
+git_dependencies = "SYNC"
+
 deps = {
   # Testing libraries and utilities.
+  # NB: Submodules do not support git tags, so we have to use the commit that
+  # matches the tag we want to track.
   "src/src/testing":
     "https://github.com/google/googletest.git" +
-      "@v1.16.0",
+      "@6910c9d9165801d8827d628cb72eb7ea9dd538c5",
 
   # Linux syscall support.
   "src/src/third_party/lss":
