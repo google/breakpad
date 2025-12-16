@@ -212,6 +212,40 @@ void StripLlvmSuffixAndUndecorate(BSTR* name) {
   }
 }
 
+// Removes the `static` keyword and return type from `symbol` if present.
+void StripStaticAndReturnType(IDiaSymbol* function, BSTR* symbol) {
+  // Return if `symbol` is empty or doesn't start with the static keyword.
+  static constexpr wchar_t kStaticPrefix[] = L"static ";
+  if (wcsncmp(*symbol, kStaticPrefix, wcslen(kStaticPrefix)) != 0) {
+    return;
+  }
+
+  // `get_name()` returns the undecorated function name for private symbols and
+  // the decorated name for public symbols. `symbol` doesn't start with `?`, so
+  // it's private and `get_name()` can be used to get a readable function name.
+  CComBSTR function_name;
+  if (FAILED(function->get_name(&function_name)) ||
+      wcscmp(function_name, L"") == 0) {
+    return;
+  }
+
+  // Get the arguments from `symbol` by finding `function_name` followed by `(`.
+  CComBSTR function_name_with_parenthesis(function_name);
+  function_name_with_parenthesis.Append(L'(');
+  const wchar_t* args = wcsstr(*symbol, function_name_with_parenthesis);
+  if (!args) {
+    return;
+  }
+  args += ::SysStringLen(function_name_with_parenthesis) - 1;
+
+  // Replace `symbol` with `function_name` + `args`.
+  if (FAILED(function_name.Append(args))) {
+    return;
+  }
+  ::SysFreeString(*symbol);
+  *symbol = function_name.Detach();
+}
+
 // Prints the error message related to the error code as seen in
 // Microsoft's MSVS documentation for loadDataFromPdb and loadDataForExe.
 void PrintOpenError(HRESULT hr, const char* fn_name, const wchar_t* file) {
@@ -1248,6 +1282,11 @@ bool PDBSourceLineWriter::GetSymbolFunctionName(IDiaSymbol* function,
     // the name string.
   } else {
     StripLlvmSuffixAndUndecorate(name);
+
+    // DIA 14.24 and newer's `get_undecoratedNameEx()` prepends `static` and
+    // the return type to its output for functions with internal linkage.
+    // Remove these if present.
+    StripStaticAndReturnType(function, name);
 
     // C++ uses a bogus "void" argument for functions and methods that don't
     // take any parameters.  Take it out of the undecorated name because it's
