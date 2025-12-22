@@ -1613,10 +1613,9 @@ bool MinidumpMemoryRegion::GetMemoryAtAddressInternal(uint64_t address,
     return false;
   }
 
-  // If the CPU requires memory accesses to be aligned, this can crash.
-  // x86 and ppc are able to cope, though.
-  *value = *reinterpret_cast<const T*>(
-      &memory[address - descriptor_->start_of_memory_range]);
+  // Use memcpy to avoid misaligned-pointer-use errors.
+  memcpy(value, &memory[address - descriptor_->start_of_memory_range],
+         sizeof(T));
 
   if (minidump_->swap())
     Swap(value);
