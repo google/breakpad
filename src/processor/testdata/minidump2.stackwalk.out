@@ -8,6 +8,9 @@ GPU: UNKNOWN
 
 Crash reason:  EXCEPTION_ACCESS_VIOLATION_WRITE
 Crash address: 0x45
+Crash parameters:
+    value: 0x0000000000000001  description: 
+    value: 0x0000000000000045  description: 
 Process uptime: 0 seconds
 
 Thread 0 (crashed)

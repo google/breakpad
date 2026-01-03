@@ -1155,6 +1155,19 @@ void PrintProcessState(const ProcessState& process_state,
   if (process_state.crashed()) {
     printf("Crash reason:  %s\n", process_state.crash_reason().c_str());
     printf("Crash address: 0x%" PRIx64 "\n", process_state.crash_address());
+
+    if (process_state.exception_record()) {
+      const std::vector<ExceptionParameter>* exception_param_vec =
+          process_state.exception_record()->parameters();
+
+      if (!exception_param_vec->empty()) {
+        printf("Crash parameters:\n");
+        for (const auto& param : *exception_param_vec) {
+          printf("    value: 0x%016" PRIx64 "  description: %s\n", param.value(),
+                 param.description().c_str());
+        }
+      }
+    }
   } else {
     printf("No crash\n");
   }
