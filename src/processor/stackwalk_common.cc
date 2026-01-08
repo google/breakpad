@@ -1120,6 +1120,7 @@ static void PrintModulesMachineReadable(const CodeModules* modules) {
 void PrintProcessState(const ProcessState& process_state,
                        bool output_stack_contents,
                        bool output_requesting_thread_only,
+                       int output_thread_index,
                        SourceLineResolverInterface* resolver) {
   // Print OS and CPU information.
   std::string cpu = process_state.system_info()->cpu;
@@ -1201,6 +1202,24 @@ void PrintProcessState(const ProcessState& process_state,
                output_stack_contents,
                process_state.thread_memory_regions()->at(requesting_thread),
                process_state.modules(), resolver);
+  }
+
+  // If a specific thread index is requested, print it here and bail.
+  if (output_thread_index >= 0) {
+    if (process_state.threads()->size() <=
+        static_cast<size_t>(output_thread_index)) {
+      BPLOG(ERROR) << "Thread index " << output_thread_index
+                   << " is out of range";
+      return;
+    }
+    printf("\n");
+    printf("Thread %d\n", output_thread_index);
+
+    PrintStack(process_state.threads()->at(output_thread_index), cpu,
+               output_stack_contents,
+               process_state.thread_memory_regions()->at(output_thread_index),
+               process_state.modules(), resolver);
+    return;
   }
 
   if (!output_requesting_thread_only) {

@@ -61,6 +61,7 @@ struct Options {
   bool output_stack_contents;
   bool output_requesting_thread_only;
   bool brief;
+  int output_thread_index;
 
   std::string minidump_file;
   std::vector<std::string> symbol_paths;
@@ -117,7 +118,8 @@ bool PrintMinidumpProcess(const Options& options) {
     PrintRequestingThreadBrief(process_state);
   } else {
     PrintProcessState(process_state, options.output_stack_contents,
-                      options.output_requesting_thread_only, &resolver);
+                      options.output_requesting_thread_only,
+                      options.output_thread_index, &resolver);
   }
 
   return true;
@@ -136,6 +138,7 @@ static void Usage(int argc, const char *argv[], bool error) {
           "  -m         Output in machine-readable format\n"
           "  -s         Output stack contents\n"
           "  -c         Output thread that causes crash or dump only\n"
+          "  -t <index> Output thread with given index only\n"
           "  -b         Brief of the thread that causes crash or dump\n",
           google_breakpad::BaseName(argv[0]).c_str());
 }
@@ -147,8 +150,9 @@ static void SetupOptions(int argc, const char *argv[], Options* options) {
   options->output_stack_contents = false;
   options->output_requesting_thread_only = false;
   options->brief = false;
+  options->output_thread_index = -1;
 
-  while ((ch = getopt(argc, (char* const*)argv, "bchms")) != -1) {
+  while ((ch = getopt(argc, (char* const*)argv, "bchmst:")) != -1) {
     switch (ch) {
       case 'h':
         Usage(argc, argv, false);
@@ -167,12 +171,23 @@ static void SetupOptions(int argc, const char *argv[], Options* options) {
       case 's':
         options->output_stack_contents = true;
         break;
+      case 't':
+        options->output_thread_index = atoi(optarg);
+        break;
 
       case '?':
         Usage(argc, argv, true);
         exit(1);
         break;
     }
+  }
+
+  // Check for mutually exclusive flags -c and -t.
+  if (options->output_requesting_thread_only &&
+      options->output_thread_index != -1) {
+    fprintf(stderr, "%s: -c and -t cannot be used together.\n", argv[0]);
+    Usage(argc, argv, true);
+    exit(1);
   }
 
   if ((argc - optind) == 0) {

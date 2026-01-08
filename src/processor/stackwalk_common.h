@@ -42,6 +42,7 @@ void PrintProcessStateMachineReadable(const ProcessState& process_state);
 void PrintProcessState(const ProcessState& process_state,
                        bool output_stack_contents,
                        bool output_requesting_thread_only,
+                       int output_thread_index,
                        SourceLineResolverInterface* resolver);
 void PrintRequestingThreadBrief(const ProcessState& process_state);
 
