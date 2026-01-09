@@ -38,9 +38,11 @@
 #include "processor/stackwalk_common.h"
 
 #include <assert.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
+#include <algorithm>
 #include <string>
 #include <vector>
 
@@ -115,6 +117,118 @@ static std::string StripSeparator(const std::string& original) {
   return result;
 }
 
+// Returns the word length of the cpu.
+static int GetWordLength(const std::string& cpu) {
+  if (cpu == "x86" || cpu == "arm" || cpu == "riscv") {
+    return 4;
+  }
+  if (cpu == "amd64" || cpu == "arm64" || cpu == "riscv64") {
+    return 8;
+  }
+  return 0;
+}
+
+// Returns stack pointer from stack frame.
+static uint64_t GetStackPointer(const StackFrame* frame,
+                                const std::string& cpu) {
+  if (!frame) {
+    return 0;
+  }
+  if (cpu == "x86") {
+    const auto* f = static_cast<const StackFrameX86*>(frame);
+    if (f->context_validity & StackFrameX86::CONTEXT_VALID_ESP)
+      return f->context.esp;
+  } else if (cpu == "amd64") {
+    const auto* f = static_cast<const StackFrameAMD64*>(frame);
+    if (f->context_validity & StackFrameAMD64::CONTEXT_VALID_RSP)
+      return f->context.rsp;
+  } else if (cpu == "arm") {
+    const auto* f = static_cast<const StackFrameARM*>(frame);
+    if (f->context_validity & StackFrameARM::CONTEXT_VALID_SP)
+      return f->context.iregs[13];
+  } else if (cpu == "arm64") {
+    const auto* f = static_cast<const StackFrameARM64*>(frame);
+    if (f->context_validity & StackFrameARM64::CONTEXT_VALID_SP)
+      return f->context.iregs[31];
+  } else if (cpu == "riscv") {
+    const auto* f = static_cast<const StackFrameRISCV*>(frame);
+    if (f->context_validity & StackFrameRISCV::CONTEXT_VALID_SP)
+      return f->context.sp;
+  } else if (cpu == "riscv64") {
+    const auto* f = static_cast<const StackFrameRISCV64*>(frame);
+    if (f->context_validity & StackFrameRISCV64::CONTEXT_VALID_SP)
+      return f->context.sp;
+  }
+  return 0;
+}
+
+// Prints a single row of memory in hex and ASCII. The row starts at
+// |start_address| and attempts to print |bytes_per_row|.
+static void PrintMemoryRowHexAndAscii(const std::string& indent,
+                                      uint64_t start_address,
+                                      int bytes_per_row,
+                                      const MemoryRegion* memory) {
+  std::string data_as_string;
+  for (int i = 0; i < bytes_per_row; ++i) {
+    uint64_t current_address = start_address + i;
+    uint8_t value = 0;
+    if (memory->GetMemoryAtAddress(current_address, &value)) {
+      printf(" %02x", value);
+      data_as_string.push_back(isprint(value) ? value : '.');
+    } else {
+      printf("   ");
+      data_as_string.push_back(' ');
+    }
+  }
+  // Print data as string.
+  printf("  %s", data_as_string.c_str());
+}
+
+// Prints the function name and address information for a given frame.
+// If the address is part of the frame pointer chain, print the chain
+// part as well.
+static void PrintFunctionNameAndAddress(
+    StackFrame* frame, int word_length, uint64_t address,
+    uint64_t stack_begin, uint64_t stack_end, bool output_stack_contents,
+    const MemoryRegion* memory,
+    std::map<uint64_t, uint64_t>& frame_pointer_chain) {
+  if (word_length == 4) {
+    printf(" *(0x%08x) = 0x%08x", static_cast<uint32_t>(address),
+           static_cast<uint32_t>(frame->instruction));
+  } else {
+    printf(" *(0x%016" PRIx64 ") = 0x%016" PRIx64, address,
+           frame->instruction);
+  }
+  if (!frame->function_name.empty()) {
+    printf(" %s [%s : %d + 0x%" PRIx64 "]\n", frame->function_name.c_str(),
+           PathnameStripper::File(frame->source_file_name).c_str(),
+           frame->source_line, frame->instruction - frame->source_line_base);
+  } else if (frame->instruction >= stack_begin &&
+             frame->instruction < stack_end) {
+    // If the value represents a valid stack address, print
+    // " -- stack_address".
+    printf(" -- stack_address");
+    // If the address is part of the frame pointer chain, print the chain
+    // as well.
+    if (frame_pointer_chain.find(address) != frame_pointer_chain.end()) {
+      printf("  (part of a chain: 0x%016" PRIx64 " --> 0x%016" PRIx64 ")",
+             frame_pointer_chain[address], address);
+    }
+    // Push this address and value to the frame pointer chain map.
+    frame_pointer_chain[frame->instruction] = address;
+    printf("\n");
+  } else {
+    // Optionally, print data in hex and ASCII.
+    if (output_stack_contents) {
+      PrintMemoryRowHexAndAscii(
+          /*indent=*/"", address,
+          std::min(word_length, static_cast<int>(stack_end - address)),
+          memory);
+    }
+    printf("\n");
+  }
+}
+
 // PrintStackContents prints the stack contents of the current frame to stdout.
 static void PrintStackContents(const std::string& indent,
                                const StackFrame* frame,
@@ -124,109 +238,26 @@ static void PrintStackContents(const std::string& indent,
                                const CodeModules* modules,
                                SourceLineResolverInterface* resolver) {
   // Find stack range.
-  int word_length = 0;
-  uint64_t stack_begin = 0, stack_end = 0;
-  if (cpu == "x86") {
-    word_length = 4;
-    const StackFrameX86* frame_x86 = static_cast<const StackFrameX86*>(frame);
-    const StackFrameX86* prev_frame_x86 =
-        static_cast<const StackFrameX86*>(prev_frame);
-    if ((frame_x86->context_validity & StackFrameX86::CONTEXT_VALID_ESP) &&
-        (prev_frame_x86->context_validity & StackFrameX86::CONTEXT_VALID_ESP)) {
-      stack_begin = frame_x86->context.esp;
-      stack_end = prev_frame_x86->context.esp;
-    }
-  } else if (cpu == "amd64") {
-    word_length = 8;
-    const StackFrameAMD64* frame_amd64 =
-        static_cast<const StackFrameAMD64*>(frame);
-    const StackFrameAMD64* prev_frame_amd64 =
-        static_cast<const StackFrameAMD64*>(prev_frame);
-    if ((frame_amd64->context_validity & StackFrameAMD64::CONTEXT_VALID_RSP) &&
-        (prev_frame_amd64->context_validity &
-         StackFrameAMD64::CONTEXT_VALID_RSP)) {
-      stack_begin = frame_amd64->context.rsp;
-      stack_end = prev_frame_amd64->context.rsp;
-    }
-  } else if (cpu == "arm") {
-    word_length = 4;
-    const StackFrameARM* frame_arm = static_cast<const StackFrameARM*>(frame);
-    const StackFrameARM* prev_frame_arm =
-        static_cast<const StackFrameARM*>(prev_frame);
-    if ((frame_arm->context_validity &
-         StackFrameARM::CONTEXT_VALID_SP) &&
-        (prev_frame_arm->context_validity & StackFrameARM::CONTEXT_VALID_SP)) {
-      stack_begin = frame_arm->context.iregs[13];
-      stack_end = prev_frame_arm->context.iregs[13];
-    }
-  } else if (cpu == "arm64") {
-    word_length = 8;
-    const StackFrameARM64* frame_arm64 =
-        static_cast<const StackFrameARM64*>(frame);
-    const StackFrameARM64* prev_frame_arm64 =
-        static_cast<const StackFrameARM64*>(prev_frame);
-    if ((frame_arm64->context_validity &
-         StackFrameARM64::CONTEXT_VALID_SP) &&
-        (prev_frame_arm64->context_validity &
-         StackFrameARM64::CONTEXT_VALID_SP)) {
-      stack_begin = frame_arm64->context.iregs[31];
-      stack_end = prev_frame_arm64->context.iregs[31];
-    }
-  } else if (cpu == "riscv") {
-    word_length = 4;
-    const StackFrameRISCV* frame_riscv =
-        static_cast<const StackFrameRISCV*>(frame);
-    const StackFrameRISCV* prev_frame_riscv =
-        static_cast<const StackFrameRISCV*>(prev_frame);
-    if ((frame_riscv->context_validity &
-         StackFrameRISCV::CONTEXT_VALID_SP) &&
-        (prev_frame_riscv->context_validity &
-         StackFrameRISCV::CONTEXT_VALID_SP)) {
-      stack_begin = frame_riscv->context.sp;
-      stack_end = prev_frame_riscv->context.sp;
-    }
-  } else if (cpu == "riscv64") {
-    word_length = 8;
-    const StackFrameRISCV64* frame_riscv64 =
-        static_cast<const StackFrameRISCV64*>(frame);
-    const StackFrameRISCV64* prev_frame_riscv64 =
-        static_cast<const StackFrameRISCV64*>(prev_frame);
-    if ((frame_riscv64->context_validity &
-         StackFrameRISCV64::CONTEXT_VALID_SP) &&
-        (prev_frame_riscv64->context_validity &
-         StackFrameRISCV64::CONTEXT_VALID_SP)) {
-      stack_begin = frame_riscv64->context.sp;
-      stack_end = prev_frame_riscv64->context.sp;
-    }
-  }
+  int word_length = GetWordLength(cpu);
+  uint64_t stack_begin = GetStackPointer(frame, cpu);
+  uint64_t stack_end = GetStackPointer(prev_frame, cpu);
   if (!word_length || !stack_begin || !stack_end)
     return;
 
   // Print stack contents.
   printf("\n%sStack contents:", indent.c_str());
-  for(uint64_t address = stack_begin; address < stack_end; ) {
+  const int kBytesPerRow = 16;
+  for (uint64_t address = stack_begin; address < stack_end;
+       address += kBytesPerRow) {
     // Print the start address of this row.
     if (word_length == 4)
       printf("\n%s %08x", indent.c_str(), static_cast<uint32_t>(address));
     else
       printf("\n%s %016" PRIx64, indent.c_str(), address);
 
-    // Print data in hex.
+    // Print data in hex and ASCII.
     const int kBytesPerRow = 16;
-    std::string data_as_string;
-    for (int i = 0; i < kBytesPerRow; ++i, ++address) {
-      uint8_t value = 0;
-      if (address < stack_end &&
-          memory->GetMemoryAtAddress(address, &value)) {
-        printf(" %02x", value);
-        data_as_string.push_back(isprint(value) ? value : '.');
-      } else {
-        printf("   ");
-        data_as_string.push_back(' ');
-      }
-    }
-    // Print data as string.
-    printf("  %s", data_as_string.c_str());
+    PrintMemoryRowHexAndAscii(indent, address, kBytesPerRow, memory);
   }
 
   // Try to find instruction pointers from stack.
@@ -304,6 +335,90 @@ static void PrintFrameHeader(const StackFrame* frame, int frame_index) {
   }
 }
 
+static void DumpStackPointers(const CallStack* stack,
+                              const std::string& cpu,
+                              const MemoryRegion* memory,
+                              const CodeModules* modules,
+                              SourceLineResolverInterface* resolver,
+                              bool output_stack_contents) {
+  int frame_count = stack->frames()->size();
+  if (frame_count == 0) {
+    printf(" <no frames>\n");
+  }
+  if (!memory) {
+    printf(" <no stack memory>\n");
+    return;
+  }
+  const StackFrame* top_frame = nullptr;
+  for (int frame_index = 0; frame_index < frame_count; ++frame_index) {
+    top_frame = stack->frames()->at(frame_index);
+    // Inlined frames don't have registers info.
+    if (top_frame->trust == StackFrameAMD64::FRAME_TRUST_INLINE) {
+      continue;
+    }
+    break;  // We found a frame that is not an inlined frame.
+  }
+  // Print the raw stack begin and end addresses (starts from the base and
+  // usually grows backwards until reaching the end address).
+  printf("stack begin:    0x%016" PRIx64 "\n", memory->GetBase());
+  printf("stack end:      0x%016" PRIx64 "\n",
+         memory->GetBase() + memory->GetSize());
+
+  // Find stack range.
+  int word_length = GetWordLength(cpu);
+  uint64_t stack_begin = top_frame ? GetStackPointer(top_frame, cpu) : 0;
+  uint64_t stack_end = memory->GetBase() + memory->GetSize();
+  if (stack_begin == 0) {
+    stack_begin = memory->GetBase();
+  }
+  // Print the raw stack limit from register.
+  printf("stack pointer:  0x%016" PRIx64 "\n", stack_begin);
+
+  if (!word_length || !stack_begin || !stack_end) {
+    printf("\nUnable to identifiy stack range.\n");
+    return;
+  }
+  // Print the stack range to dump.
+  printf("\nStack range to dump: 0x%016" PRIx64 " - 0x%016" PRIx64 "\n",
+         stack_begin, stack_end);
+
+  // A map to store frame pointer chain.
+  // Key: previous frame pointer address
+  // Value: frame pointer address
+  std::map<uint64_t, uint64_t> frame_pointer_chain;
+  // Try to find instruction pointers from stack.
+  printf("\nPossible instruction pointers:\n");
+  for (uint64_t address = stack_begin; address < stack_end;
+       address += word_length) {
+    StackFrame pointee_frame;
+
+    // Read a word (possible instruction pointer) from stack.
+    if (word_length == 4) {
+      uint32_t data32 = 0;
+      memory->GetMemoryAtAddress(address, &data32);
+      pointee_frame.instruction = data32;
+    } else {
+      uint64_t data64 = 0;
+      memory->GetMemoryAtAddress(address, &data64);
+      pointee_frame.instruction = data64;
+    }
+    pointee_frame.module =
+        modules->GetModuleForAddress(pointee_frame.instruction);
+
+    // Try to look up the function name.
+    if (pointee_frame.module) {
+      resolver->FillSourceLineInfo(&pointee_frame, /*inlined_frames=*/nullptr);
+    }
+    // Print function name.
+    PrintFunctionNameAndAddress(&pointee_frame, word_length, address,
+                                stack_begin, stack_end, output_stack_contents,
+                                memory, frame_pointer_chain);
+    // No need to print inlined frames, since they are not on the stack, and
+    // the goal here is to find pointers to dump.
+  }
+  printf("\n");
+}
+
 // PrintStack prints the call stack in |stack| to stdout, in a reasonably
 // useful form.  Module, function, and source file names are displayed if
 // they are available.  The code offset to the base code address of the
@@ -314,9 +429,14 @@ static void PrintFrameHeader(const StackFrame* frame, int frame_index) {
 // If |cpu| is a recognized CPU name, relevant register state for each stack
 // frame printed is also output, if available.
 static void PrintStack(const CallStack* stack, const std::string& cpu,
-                       bool output_stack_contents, const MemoryRegion* memory,
-                       const CodeModules* modules,
+                       bool output_stack_contents, bool dump_stack_pointers,
+                       const MemoryRegion* memory, const CodeModules* modules,
                        SourceLineResolverInterface* resolver) {
+  if (dump_stack_pointers) {
+    DumpStackPointers(stack, cpu, memory, modules, resolver,
+                      output_stack_contents);
+    return;
+  }
   int frame_count = stack->frames()->size();
   if (frame_count == 0) {
     printf(" <no frames>\n");
@@ -1118,7 +1238,7 @@ static void PrintModulesMachineReadable(const CodeModules* modules) {
 }  // namespace
 
 void PrintProcessState(const ProcessState& process_state,
-                       bool output_stack_contents,
+                       bool output_stack_contents, bool dump_stack_pointers,
                        bool output_requesting_thread_only,
                        int output_thread_index,
                        SourceLineResolverInterface* resolver) {
@@ -1199,7 +1319,7 @@ void PrintProcessState(const ProcessState& process_state,
           process_state.crashed() ? "crashed" :
                                     "requested dump, did not crash");
     PrintStack(process_state.threads()->at(requesting_thread), cpu,
-               output_stack_contents,
+               output_stack_contents, dump_stack_pointers,
                process_state.thread_memory_regions()->at(requesting_thread),
                process_state.modules(), resolver);
   }
@@ -1216,7 +1336,7 @@ void PrintProcessState(const ProcessState& process_state,
     printf("Thread %d\n", output_thread_index);
 
     PrintStack(process_state.threads()->at(output_thread_index), cpu,
-               output_stack_contents,
+               output_stack_contents, dump_stack_pointers,
                process_state.thread_memory_regions()->at(output_thread_index),
                process_state.modules(), resolver);
     return;
@@ -1231,7 +1351,7 @@ void PrintProcessState(const ProcessState& process_state,
         printf("\n");
         printf("Thread %d\n", thread_index);
         PrintStack(process_state.threads()->at(thread_index), cpu,
-                  output_stack_contents,
+                  output_stack_contents, dump_stack_pointers,
                   process_state.thread_memory_regions()->at(thread_index),
                   process_state.modules(), resolver);
       }

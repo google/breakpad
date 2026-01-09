@@ -40,7 +40,7 @@ class SourceLineResolverInterface;
 
 void PrintProcessStateMachineReadable(const ProcessState& process_state);
 void PrintProcessState(const ProcessState& process_state,
-                       bool output_stack_contents,
+                       bool output_stack_contents, bool dump_stack_pointers,
                        bool output_requesting_thread_only,
                        int output_thread_index,
                        SourceLineResolverInterface* resolver);

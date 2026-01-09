@@ -36,7 +36,7 @@
 #endif
 
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 #include <limits>
@@ -62,6 +62,7 @@ struct Options {
   bool output_requesting_thread_only;
   bool brief;
   int output_thread_index;
+  bool dump_stack_pointers;
 
   std::string minidump_file;
   std::vector<std::string> symbol_paths;
@@ -118,6 +119,7 @@ bool PrintMinidumpProcess(const Options& options) {
     PrintRequestingThreadBrief(process_state);
   } else {
     PrintProcessState(process_state, options.output_stack_contents,
+                      options.dump_stack_pointers,
                       options.output_requesting_thread_only,
                       options.output_thread_index, &resolver);
   }
@@ -139,6 +141,7 @@ static void Usage(int argc, const char *argv[], bool error) {
           "  -s         Output stack contents\n"
           "  -c         Output thread that causes crash or dump only\n"
           "  -t <index> Output thread with given index only\n"
+          "  -d         Dump pointers on stack\n"
           "  -b         Brief of the thread that causes crash or dump\n",
           google_breakpad::BaseName(argv[0]).c_str());
 }
@@ -151,8 +154,9 @@ static void SetupOptions(int argc, const char *argv[], Options* options) {
   options->output_requesting_thread_only = false;
   options->brief = false;
   options->output_thread_index = -1;
+  options->dump_stack_pointers = false;
 
-  while ((ch = getopt(argc, (char* const*)argv, "bchmst:")) != -1) {
+  while ((ch = getopt(argc, (char* const*)argv, "bcdhmst:")) != -1) {
     switch (ch) {
       case 'h':
         Usage(argc, argv, false);
@@ -163,7 +167,15 @@ static void SetupOptions(int argc, const char *argv[], Options* options) {
         options->brief = true;
         break;
       case 'c':
+        if (options->output_thread_index != -1) {
+          fprintf(stderr, "%s: -c and -t cannot be used together.\n", argv[0]);
+          Usage(argc, argv, true);
+          exit(1);
+        }
         options->output_requesting_thread_only = true;
+        break;
+      case 'd':
+        options->dump_stack_pointers = true;
         break;
       case 'm':
         options->machine_readable = true;
@@ -172,6 +184,11 @@ static void SetupOptions(int argc, const char *argv[], Options* options) {
         options->output_stack_contents = true;
         break;
       case 't':
+        if (options->output_requesting_thread_only) {
+          fprintf(stderr, "%s: -c and -t cannot be used together.\n", argv[0]);
+          Usage(argc, argv, true);
+          exit(1);
+        }
         options->output_thread_index = atoi(optarg);
         break;
 
@@ -180,14 +197,6 @@ static void SetupOptions(int argc, const char *argv[], Options* options) {
         exit(1);
         break;
     }
-  }
-
-  // Check for mutually exclusive flags -c and -t.
-  if (options->output_requesting_thread_only &&
-      options->output_thread_index != -1) {
-    fprintf(stderr, "%s: -c and -t cannot be used together.\n", argv[0]);
-    Usage(argc, argv, true);
-    exit(1);
   }
 
   if ((argc - optind) == 0) {
