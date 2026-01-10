@@ -269,11 +269,15 @@ static void PrintStackContents(const std::string& indent,
     // Read a word (possible instruction pointer) from stack.
     if (word_length == 4) {
       uint32_t data32 = 0;
-      memory->GetMemoryAtAddress(address, &data32);
+      if (!memory->GetMemoryAtAddress(address, &data32)) {
+        continue;
+      }
       pointee_frame.instruction = data32;
     } else {
       uint64_t data64 = 0;
-      memory->GetMemoryAtAddress(address, &data64);
+      if (!memory->GetMemoryAtAddress(address, &data64)) {
+        continue;
+      }
       pointee_frame.instruction = data64;
     }
     pointee_frame.module =
@@ -395,11 +399,15 @@ static void DumpStackPointers(const CallStack* stack,
     // Read a word (possible instruction pointer) from stack.
     if (word_length == 4) {
       uint32_t data32 = 0;
-      memory->GetMemoryAtAddress(address, &data32);
+      if (!memory->GetMemoryAtAddress(address, &data32)) {
+        continue;
+      }
       pointee_frame.instruction = data32;
     } else {
       uint64_t data64 = 0;
-      memory->GetMemoryAtAddress(address, &data64);
+      if (!memory->GetMemoryAtAddress(address, &data64)) {
+        continue;
+      }
       pointee_frame.instruction = data64;
     }
     pointee_frame.module =
