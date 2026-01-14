@@ -52,9 +52,7 @@
 #include <stdio.h>
 #include <wininet.h>
 
-#include <fstream>
 #include <map>
-#include <sstream>
 #include <string>
 #include <vector>
 
@@ -91,8 +89,8 @@ static bool GetFileVersionString(const wchar_t* filename, wstring* version) {
 
   void* file_info_buffer = nullptr;
   unsigned int file_info_length;
-  if (!VerQueryValue(&version_info[0], L"\\", &file_info_buffer,
-                     &file_info_length)) {
+  if (!VerQueryValue(&version_info[0], L"\\",
+                     &file_info_buffer, &file_info_length)) {
     return false;
   }
 
@@ -100,11 +98,13 @@ static bool GetFileVersionString(const wchar_t* filename, wstring* version) {
   // so the max length is 24, including the terminating null.
   wchar_t ver_string[24];
   VS_FIXEDFILEINFO* file_info =
-      reinterpret_cast<VS_FIXEDFILEINFO*>(file_info_buffer);
-  swprintf(
-      ver_string, sizeof(ver_string) / sizeof(ver_string[0]), L"%d.%d.%d.%d",
-      file_info->dwFileVersionMS >> 16, file_info->dwFileVersionMS & 0xffff,
-      file_info->dwFileVersionLS >> 16, file_info->dwFileVersionLS & 0xffff);
+    reinterpret_cast<VS_FIXEDFILEINFO*>(file_info_buffer);
+  swprintf(ver_string, sizeof(ver_string) / sizeof(ver_string[0]),
+           L"%d.%d.%d.%d",
+           file_info->dwFileVersionMS >> 16,
+           file_info->dwFileVersionMS & 0xffff,
+           file_info->dwFileVersionLS >> 16,
+           file_info->dwFileVersionLS & 0xffff);
 
   // remove when VC++7.1 is no longer supported
   ver_string[sizeof(ver_string) / sizeof(ver_string[0]) - 1] = L'\0';
@@ -141,7 +141,7 @@ static bool DumpSymbolsToTempFile(const wchar_t* file,
   FILE* temp_file = nullptr;
 #if _MSC_VER >= 1400  // MSVC 2005/8
   if (_wfopen_s(&temp_file, temp_filename, L"w") != 0)
-#else   // _MSC_VER >= 1400
+#else  // _MSC_VER >= 1400
   // _wfopen_s was introduced in MSVC8.  Use _wfopen for earlier environments.
   // Don't use it with MSVC8 and later, because it's deprecated.
   if (!(temp_file = _wfopen(temp_filename, L"w")))
@@ -159,64 +159,25 @@ static bool DumpSymbolsToTempFile(const wchar_t* file,
 
   *temp_file_path = temp_filename;
 
-  return GetModuleInfoFromSymFile(temp_filename, pdb_info);
-}
-
-static bool GetModuleInfoFromSymFile(const wchar_t* sym_path,
-                                     PDBModuleInfo* pdb_info) {
-  std::ifstream f(sym_path);
-  if (!f.is_open()) {
-    return false;
-  }
-
-  std::string module_str, os_str, cpu_str, id_str, name_str;
-  f >> module_str >> os_str >> cpu_str >> id_str;
-  if (module_str != "MODULE") {
-    return false;
-  }
-
-  // The rest of the line is the filename.
-  // Skip whitespace between id and filename.
-  f >> std::ws;
-  std::getline(f, name_str);
-
-  // Trim trailing newline/carriage return.
-  size_t last = name_str.find_last_not_of("\r\n");
-  if (last == std::string::npos) {
-    name_str.clear();
-  } else {
-    name_str.erase(last + 1);
-  }
-
-  pdb_info->cpu = google_breakpad::WindowsStringUtils::UTF8ToWide(cpu_str);
-  pdb_info->debug_identifier =
-      google_breakpad::WindowsStringUtils::UTF8ToWide(id_str);
-  pdb_info->debug_file =
-      google_breakpad::WindowsStringUtils::UTF8ToWide(name_str);
-  return true;
+  return writer.GetModuleInfo(pdb_info);
 }
 
 __declspec(noreturn) void printUsageAndExit() {
-  wprintf(
-      L"Usage:\n\n"
-      L"    symupload [--i] [--timeout NN] [--product product_name] ^\n"
-      L"              <file.exe|file.dll|file.sym> <symbol upload URL> ^\n"
-      L"              [...<symbol upload URLs>]\n\n");
+  wprintf(L"Usage:\n\n"
+          L"    symupload [--i] [--timeout NN] [--product product_name] ^\n"
+          L"              <file.exe|file.dll> <symbol upload URL> ^\n"
+          L"              [...<symbol upload URLs>]\n\n");
   wprintf(L"  - i: Extract inline information from pdb.\n");
   wprintf(L"  - Timeout is in milliseconds, or can be 0 to be unlimited.\n");
-  wprintf(
-      L"  - product_name is an HTTP-friendly product name. It must only\n"
-      L"    contain an ascii subset: alphanumeric and punctuation.\n"
-      L"    This string is case-sensitive.\n\n");
-  wprintf(
-      L"Example:\n\n"
-      L"    symupload.exe --timeout 0 --product Chrome ^\n"
-      L"        chrome.dll http://no.free.symbol.server.for.you\n");
+  wprintf(L"  - product_name is an HTTP-friendly product name. It must only\n"
+          L"    contain an ascii subset: alphanumeric and punctuation.\n"
+          L"    This string is case-sensitive.\n\n");
+  wprintf(L"Example:\n\n"
+          L"    symupload.exe --timeout 0 --product Chrome ^\n"
+          L"        chrome.dll http://no.free.symbol.server.for.you\n");
   wprintf(L"\n");
-  wprintf(
-      L"sym-upload-v2 usage:\n"
-      L"    symupload -p [-f] <file.exe|file.dll|file.sym> <API-URL> "
-      L"<API-key>\n");
+  wprintf(L"sym-upload-v2 usage:\n"
+          L"    symupload -p [-f] <file.exe|file.dll> <API-URL> <API-key>\n");
   wprintf(L"\n");
   wprintf(L"sym_upload_v2 Options:\n");
   wprintf(L"    <API-URL> is the sym_upload_v2 API URL.\n");
@@ -273,19 +234,9 @@ int wmain(int argc, wchar_t* argv[]) {
 
   wstring symbol_file;
   PDBModuleInfo pdb_info;
-  bool symbol_file_is_temporary = false;
-
-  // Try to open the file as a symbol file first.
-  if (GetModuleInfoFromSymFile(module, &pdb_info)) {
-    symbol_file = module;
-  } else {
-    // If that failed, assume it's a module and try to dump its symbols.
-    if (!DumpSymbolsToTempFile(module, &symbol_file, &pdb_info,
-                               handle_inline)) {
-      fwprintf(stderr, L"Could not get symbol data from %s\n", module);
-      return 1;
-    }
-    symbol_file_is_temporary = true;
+  if (!DumpSymbolsToTempFile(module, &symbol_file, &pdb_info, handle_inline)) {
+    fwprintf(stderr, L"Could not get symbol data from %s\n", module);
+    return 1;
   }
 
   wstring code_file = WindowsStringUtils::GetBaseName(wstring(module));
@@ -316,8 +267,7 @@ int wmain(int argc, wchar_t* argv[]) {
     parameters[L"code_file"] = code_file;
     parameters[L"debug_file"] = pdb_info.debug_file;
     parameters[L"debug_identifier"] = pdb_info.debug_identifier;
-    parameters[L"os"] =
-        L"windows";  // This version of symupload is Windows-only
+    parameters[L"os"] = L"windows";  // This version of symupload is Windows-only
     parameters[L"cpu"] = pdb_info.cpu;
 
     map<wstring, wstring> files;
@@ -331,36 +281,36 @@ int wmain(int argc, wchar_t* argv[]) {
     // the server decide whether to reject files without product name.
     if (product) {
       parameters[L"product"] = product;
-    } else {
+    }
+    else {
       fwprintf(
-          stderr,
-          L"Warning: No product name (flag --product) was specified for %s\n",
-          module);
+        stderr,
+        L"Warning: No product name (flag --product) was specified for %s\n",
+        module);
     }
 
     while (currentarg < argc) {
       int response_code;
-      if (!HTTPUpload::SendMultipartPostRequest(
-              argv[currentarg], parameters, files,
-              timeout == -1 ? nullptr : &timeout, nullptr, &response_code)) {
+      if (!HTTPUpload::SendMultipartPostRequest(argv[currentarg], parameters, files,
+          timeout == -1 ? nullptr : &timeout,
+          nullptr, &response_code)) {
         success = false;
         fwprintf(stderr,
-                 L"Symbol file upload to %s failed. Response code = %ld\n",
-                 argv[currentarg], response_code);
+          L"Symbol file upload to %s failed. Response code = %ld\n",
+          argv[currentarg], response_code);
       }
       currentarg++;
     }
   }
 
-  if (symbol_file_is_temporary) {
-    _wunlink(symbol_file.c_str());
-  }
+  _wunlink(symbol_file.c_str());
 
   fwprintf(success ? stdout : stderr,
            L"%S breakpad symbols for windows-%s/%s/%s (%s %s)\n",
-           success ? "Uploaded" : "Failed to upload", pdb_info.cpu.c_str(),
-           pdb_info.debug_file.c_str(), pdb_info.debug_identifier.c_str(),
-           code_file.c_str(), file_version.c_str());
+           success ? "Uploaded" : "Failed to upload",
+           pdb_info.cpu.c_str(), pdb_info.debug_file.c_str(),
+           pdb_info.debug_identifier.c_str(), code_file.c_str(),
+           file_version.c_str());
 
   return success ? 0 : 1;
 }
