@@ -165,6 +165,8 @@ bool Stackwalker::Walk(
         break;
       case StackFrameSymbolizer::kNoError:
         break;
+      case StackFrameSymbolizer::kNonRetriableError:
+        break;
       default:
         assert(false);
         break;

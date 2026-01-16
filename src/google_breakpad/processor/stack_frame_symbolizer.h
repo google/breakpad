@@ -58,8 +58,8 @@ class StackFrameSymbolizer {
     // Symbol data was found and successfully loaded in resolver.
     // This does NOT guarantee source line info is found within symbol file.
     kNoError,
-    // This indicates non-critical error, such as, no code module found for
-    // frame's instruction, no symbol file, or resolver failed to load symbol.
+    // This indicates a symbol file is missing. Retrying may help if the file
+    // becomes available later.
     kError,
     // This indicates error for which stack walk should be interrupted
     // and retried in future.
@@ -67,6 +67,9 @@ class StackFrameSymbolizer {
     // Symbol data was found and loaded in resolver however some corruptions
     // were detected.
     kWarningCorruptSymbols,
+    // Other non-retriable errors, like missing debug_file or debug_id, or
+    // instruction outside of module range.
+    kNonRetriableError,
   };
 
   StackFrameSymbolizer(SymbolSupplier* supplier,

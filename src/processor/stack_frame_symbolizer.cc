@@ -71,13 +71,18 @@ StackFrameSymbolizer::SymbolizerResult StackFrameSymbolizer::FillSourceLineInfo(
     module = unloaded_modules->GetModuleForAddress(frame->instruction);
   }
 
-  if (!module) return kError;
+  if (!module) {
+    BPLOG(INFO) << "Unable to find module from instruction";
+    return kNonRetriableError;
+  }
   frame->module = module;
 
-  if (!resolver_) return kError;  // no resolver.
+  if (!resolver_) return kNonRetriableError;  // no resolver.
   // If module is known to have missing symbol file, return.
   if (no_symbol_modules_.find(module->code_file()) !=
       no_symbol_modules_.end()) {
+    BPLOG(INFO) << "module is known to have missing symbol file: "
+                << module->code_file();
     return kError;
   }
 
@@ -90,7 +95,7 @@ StackFrameSymbolizer::SymbolizerResult StackFrameSymbolizer::FillSourceLineInfo(
 
   // Module needs to fetch symbol file. First check to see if supplier exists.
   if (!supplier_) {
-    return kError;
+    return kNonRetriableError;
   }
 
   // Start fetching symbol from supplier.
@@ -116,8 +121,7 @@ StackFrameSymbolizer::SymbolizerResult StackFrameSymbolizer::FillSourceLineInfo(
             kWarningCorruptSymbols : kNoError;
       } else {
         BPLOG(ERROR) << "Failed to load symbol file in resolver.";
-        no_symbol_modules_.insert(module->code_file());
-        return kError;
+        return kNonRetriableError;
       }
     }
 
@@ -130,9 +134,8 @@ StackFrameSymbolizer::SymbolizerResult StackFrameSymbolizer::FillSourceLineInfo(
 
     default:
       BPLOG(ERROR) << "Unknown SymbolResult enum: " << symbol_result;
-      return kError;
   }
-  return kError;
+  return kNonRetriableError;
 }
 
 WindowsFrameInfo* StackFrameSymbolizer::FindWindowsFrameInfo(

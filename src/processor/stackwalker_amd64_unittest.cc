@@ -163,8 +163,7 @@ TEST_F(SanityCheck, NoResolver) {
   vector<const CodeModule*> modules_with_corrupt_symbols;
   ASSERT_TRUE(walker.Walk(&call_stack, &modules_without_symbols,
                           &modules_with_corrupt_symbols));
-  ASSERT_EQ(1U, modules_without_symbols.size());
-  ASSERT_EQ("module1", modules_without_symbols[0]->debug_file());
+  ASSERT_EQ(0U, modules_without_symbols.size());
   ASSERT_EQ(0U, modules_with_corrupt_symbols.size());
   frames = call_stack.frames();
   ASSERT_GE(1U, frames->size());
