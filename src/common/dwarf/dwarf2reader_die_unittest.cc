@@ -965,3 +965,151 @@ TEST(RangeList, Dwarf5ReadRangeList_sec_offset) {
   EXPECT_FALSE(range_list_reader.ReadRanges(DW_FORM_sec_offset,
                                             rnglists_contents.size()));
 }
+
+// Tests for split DWARF (DWO) compilation unit processing.
+// These verify that CompilationUnit::Start() correctly handles the case
+// where .debug_info_offset is absent (standalone .dwo files) vs present
+// (DWP files).
+
+class SplitDwarfDIE : public DIEFixture, public Test {};
+
+// Test that a split DWARF compilation unit can be parsed from a standalone
+// .dwo file, which does not have a .debug_info_offset section.
+TEST_F(SplitDwarfDIE, DwoFileWithoutDebugInfoOffset) {
+  Label abbrev_table = abbrevs.Here();
+  abbrevs.Abbrev(1, google_breakpad::DW_TAG_compile_unit,
+                 google_breakpad::DW_children_no)
+      .Attribute(google_breakpad::DW_AT_name, google_breakpad::DW_FORM_string)
+      .EndAbbrev()
+      .EndTable();
+
+  info.set_format_size(4);
+  info.set_endianness(kLittleEndian);
+  info.Header(5, abbrev_table, 8, google_breakpad::DW_UT_split_compile)
+      .D64(0x1234)                    // DWO id
+      .ULEB128(1)                     // abbrev code
+      .AppendCString("test.dwo");     // DW_AT_name
+  info.Finish();
+
+  {
+    InSequence s;
+    EXPECT_CALL(handler, StartCompilationUnit(0, 8, 4, _, 5))
+        .WillOnce(Return(true));
+    EXPECT_CALL(handler, StartDIE(_, google_breakpad::DW_TAG_compile_unit))
+        .WillOnce(Return(true));
+    EXPECT_CALL(handler, ProcessAttributeString(_, google_breakpad::DW_AT_name,
+                                                google_breakpad::DW_FORM_string,
+                                                "test.dwo"))
+        .WillOnce(Return());
+    EXPECT_CALL(handler, EndDIE(_))
+        .WillOnce(Return());
+  }
+
+  ByteReader byte_reader(ENDIANNESS_LITTLE);
+
+  // Build section map without .debug_info_offset (simulates a .dwo file).
+  const SectionMap& sections = MakeSectionMap();
+
+  CompilationUnit parser("", sections, 0, &byte_reader, &handler);
+  parser.SetSplitDwarf(0, 0x1234);
+  EXPECT_EQ(parser.Start(), info_contents.size());
+}
+
+// Test that a split DWARF compilation unit can be parsed when
+// .debug_info_offset is present (simulating a DWP file).
+TEST_F(SplitDwarfDIE, DwpFileWithDebugInfoOffset) {
+  Label abbrev_table = abbrevs.Here();
+  abbrevs.Abbrev(1, google_breakpad::DW_TAG_compile_unit,
+                 google_breakpad::DW_children_no)
+      .Attribute(google_breakpad::DW_AT_name, google_breakpad::DW_FORM_string)
+      .EndAbbrev()
+      .EndTable();
+
+  info.set_format_size(4);
+  info.set_endianness(kLittleEndian);
+  info.Header(5, abbrev_table, 8, google_breakpad::DW_UT_split_compile)
+      .D64(0x5678)                    // DWO id
+      .ULEB128(1)                     // abbrev code
+      .AppendCString("test.dwp");     // DW_AT_name
+  info.Finish();
+
+  {
+    InSequence s;
+    EXPECT_CALL(handler, StartCompilationUnit(0, 8, 4, _, 5))
+        .WillOnce(Return(true));
+    EXPECT_CALL(handler, StartDIE(_, google_breakpad::DW_TAG_compile_unit))
+        .WillOnce(Return(true));
+    EXPECT_CALL(handler, ProcessAttributeString(_, google_breakpad::DW_AT_name,
+                                                google_breakpad::DW_FORM_string,
+                                                "test.dwp"))
+        .WillOnce(Return());
+    EXPECT_CALL(handler, EndDIE(_))
+        .WillOnce(Return());
+  }
+
+  ByteReader byte_reader(ENDIANNESS_LITTLE);
+
+  // Build section map and add .debug_info_offset (simulates a DWP file).
+  const SectionMap& sections = MakeSectionMap();
+  // .debug_info_offset describes the CU's portion within the .debug_info
+  // section. For this test the CU spans the entire section.
+  section_map[".debug_info_offset"].first =
+      reinterpret_cast<const uint8_t*>(info_contents.data());
+  section_map[".debug_info_offset"].second = info_contents.size();
+
+  CompilationUnit parser("", sections, 0, &byte_reader, &handler);
+  parser.SetSplitDwarf(0, 0x5678);
+  EXPECT_EQ(parser.Start(), info_contents.size());
+}
+
+// Test that a split DWARF compilation unit at a non-zero offset within the
+// .debug_info section is parsed correctly. This exercises the subtraction
+// path: buffer_length_ = section_size - offset_from_section_start_.
+TEST_F(SplitDwarfDIE, DwoFileWithNonZeroOffset) {
+  Label abbrev_table = abbrevs.Here();
+  abbrevs.Abbrev(1, google_breakpad::DW_TAG_compile_unit,
+                 google_breakpad::DW_children_no)
+      .Attribute(google_breakpad::DW_AT_name, google_breakpad::DW_FORM_string)
+      .EndAbbrev()
+      .EndTable();
+
+  info.set_format_size(4);
+  info.set_endianness(kLittleEndian);
+  info.Header(5, abbrev_table, 8, google_breakpad::DW_UT_split_compile)
+      .D64(0xabcd)                    // DWO id
+      .ULEB128(1)                     // abbrev code
+      .AppendCString("test.dwo");     // DW_AT_name
+  info.Finish();
+
+  // Build the section map, then prepend padding to simulate a CU at a
+  // non-zero offset within the .debug_info section.
+  const SectionMap& sections = MakeSectionMap();
+  constexpr size_t kPaddingSize = 100;
+  const size_t cu_size = info_contents.size();
+  info_contents.insert(0, kPaddingSize, '\0');
+  // Update section map to reflect the padded section.
+  section_map[".debug_info"].first =
+      reinterpret_cast<const uint8_t*>(info_contents.data());
+  section_map[".debug_info"].second = info_contents.size();
+
+  {
+    InSequence s;
+    EXPECT_CALL(handler,
+                StartCompilationUnit(kPaddingSize, 8, 4, _, 5))
+        .WillOnce(Return(true));
+    EXPECT_CALL(handler, StartDIE(_, google_breakpad::DW_TAG_compile_unit))
+        .WillOnce(Return(true));
+    EXPECT_CALL(handler, ProcessAttributeString(_, google_breakpad::DW_AT_name,
+                                                google_breakpad::DW_FORM_string,
+                                                "test.dwo"))
+        .WillOnce(Return());
+    EXPECT_CALL(handler, EndDIE(_))
+        .WillOnce(Return());
+  }
+
+  ByteReader byte_reader(ENDIANNESS_LITTLE);
+
+  CompilationUnit parser("", sections, kPaddingSize, &byte_reader, &handler);
+  parser.SetSplitDwarf(0, 0xabcd);
+  EXPECT_EQ(parser.Start(), cu_size);
+}

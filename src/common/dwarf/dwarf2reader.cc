@@ -428,9 +428,17 @@ uint64_t CompilationUnit::Start() {
   // Set up our buffer
   buffer_ = iter->second.first + offset_from_section_start_;
   if (is_split_dwarf_) {
-    iter = GetSectionByName(sections_, ".debug_info_offset");
-    assert(iter != sections_.end());
-    buffer_length_ = iter->second.second;
+    // .debug_info_offset is a synthetic section created by DWPReader to
+    // describe the CU's portion within a DWP file's .debug_info section.
+    // For DWO files, this section does not exist and the entire .debug_info
+    // section belongs to the single CU.
+    SectionMap::const_iterator offset_iter =
+        GetSectionByName(sections_, ".debug_info_offset");
+    if (offset_iter != sections_.end()) {
+      buffer_length_ = offset_iter->second.second;
+    } else {
+      buffer_length_ = iter->second.second - offset_from_section_start_;
+    }
   } else {
     buffer_length_ = iter->second.second - offset_from_section_start_;
   }
