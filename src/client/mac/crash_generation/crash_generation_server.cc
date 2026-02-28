@@ -102,9 +102,9 @@ void* CrashGenerationServer::WaitForMessages(void* server) {
 
 bool CrashGenerationServer::WaitForOneMessage() {
   MachReceiveMessage message;
-  kern_return_t result = receive_port_.WaitForMessage(&message,
-                                                      MACH_MSG_TIMEOUT_NONE);
-  if (result == KERN_SUCCESS) {
+  kern_return_t kern_result =
+      receive_port_.WaitForMessage(&message, MACH_MSG_TIMEOUT_NONE);
+  if (kern_result == KERN_SUCCESS) {
     switch (message.GetMessageID()) {
       case kDumpRequestMessage: {
         ExceptionInfo& info = (ExceptionInfo&)*message.GetData();
@@ -160,7 +160,7 @@ bool CrashGenerationServer::WaitForOneMessage() {
       case kQuitMessage:
         return false;
     }
-  } else {  // result != KERN_SUCCESS
+  } else {  // kern_result != KERN_SUCCESS
     return false;
   }
   return true;

@@ -142,6 +142,18 @@ class MachMsgPortDescriptor : public mach_msg_port_descriptor_t {
   operator mach_port_t() const {
     return GetMachPort();
   }
+
+  // Assignment operator
+  MachMsgPortDescriptor& operator=(const MachMsgPortDescriptor& desc) {
+    if (this != &desc) {
+      name = desc.name;
+      pad1 = desc.pad1;
+      pad2 = desc.pad2;
+      disposition = desc.disposition;
+      type = desc.type;
+    }
+    return *this;
+  }
 };
 
 //==============================================================================
