@@ -75,9 +75,11 @@ bool MemoryMappedFile::Map(const char* path, size_t offset) {
    (defined(__riscv) && __riscv_xlen == 64)
 
   struct kernel_stat st;
+  __builtin_memset(&st, 0, sizeof(st));
   if (sys_fstat(fd, &st) == -1 || st.st_size < 0) {
 #else
   struct kernel_stat64 st;
+  __builtin_memset(&st, 0, sizeof(st));
   if (sys_fstat64(fd, &st) == -1 || st.st_size < 0) {
 #endif
     sys_close(fd);
