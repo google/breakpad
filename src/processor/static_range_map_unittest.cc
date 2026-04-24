@@ -248,9 +248,9 @@ void TestStaticRangeMap::RetrieveTest(TestMap* range_map,
           expected_result = !side;   // should succeed low and fail high.
       }
 
-      const EntryType* id;
-      AddressType retrieved_base;
-      AddressType retrieved_size;
+      const EntryType* id = nullptr;
+      AddressType retrieved_base = 0;
+      AddressType retrieved_size = 0;
       bool retrieved = range_map->RetrieveRange(address, id,
                                                 &retrieved_base,
                                                 &retrieved_size);
@@ -278,8 +278,8 @@ void TestStaticRangeMap::RetrieveTest(TestMap* range_map,
       if (!side && offset < 0)
         expected_nearest = false;
 
-      AddressType nearest_base;
-      AddressType nearest_size;
+      AddressType nearest_base = 0;
+      AddressType nearest_size = 0;
       bool retrieved_nearest = range_map->RetrieveNearestRange(address,
                                                                id,
                                                                &nearest_base,
@@ -317,10 +317,10 @@ void TestStaticRangeMap::RetrieveTest(TestMap* range_map,
 void TestStaticRangeMap::RetrieveIndexTest(const TestMap* range_map, int set) {
   AddressType last_base = 0;
   const EntryType* last_entry = 0;
-  const EntryType* entry;
+  const EntryType* entry = nullptr;
   int object_count = range_map->GetCount();
   for (int object_index = 0; object_index < object_count; ++object_index) {
-    AddressType base;
+    AddressType base = 0;
     ASSERT_TRUE(range_map->RetrieveRangeAtIndex(object_index,
                                                 entry,
                                                 &base,
