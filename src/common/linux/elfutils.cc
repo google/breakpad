@@ -68,6 +68,12 @@ void FindElfClassSection(const char* elf_base,
 
   const Shdr* sections =
     GetOffset<ElfClass, Shdr>(elf_header, elf_header->e_shoff);
+  if (elf_header->e_shstrndx == 0 ||
+      elf_header->e_shstrndx >= elf_header->e_shnum) {
+    *section_start = NULL;
+    *section_size = 0;
+    return;
+  }
   const Shdr* section_names = sections + elf_header->e_shstrndx;
   const char* names =
     GetOffset<ElfClass, char>(elf_header, section_names->sh_offset);

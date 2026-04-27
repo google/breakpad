@@ -32,6 +32,7 @@
 
 #include <assert.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "common/dwarf/bytereader-inl.h"
@@ -68,7 +69,13 @@ void ByteReader::SetAddressSize(uint8_t size) {
   }
 }
 
-uint64_t ByteReader::ReadInitialLength(const uint8_t* start, size_t* len) {
+uint64_t ByteReader::ReadInitialLength(const uint8_t* start, size_t* len,
+                                       const uint8_t* buffer_end) {
+  if (buffer_end && (buffer_end - start) < 4) {
+    fprintf(stderr, "ReadInitialLength: not enough data for initial length\n");
+    *len = 0;
+    return 0;
+  }
   const uint64_t initial_length = ReadFourBytes(start);
   start += 4;
 

@@ -180,7 +180,8 @@ class ByteReader {
   // - The 32-bit value 0xffffffff, followed by a 64-bit byte count,
   //   indicating that the data whose length is being measured uses
   //   the 64-bit DWARF format.
-  uint64_t ReadInitialLength(const uint8_t* start, size_t* len);
+  uint64_t ReadInitialLength(const uint8_t* start, size_t* len,
+                             const uint8_t* buffer_end = nullptr);
 
   // Read an offset from BUFFER and return it as an unsigned 64 bit
   // integer, respecting the ByteReader's endianness. In 32-bit DWARF, the

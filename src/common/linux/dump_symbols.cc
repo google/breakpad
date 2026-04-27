@@ -686,8 +686,16 @@ bool IsSameFile(const char* left_abspath, const std::string& right_path) {
 std::string ReadDebugLink(const uint8_t* debuglink, const size_t debuglink_size,
                           const bool big_endian, const std::string& obj_file,
                           const std::vector<std::string>& debug_dirs) {
+  // Use strnlen to avoid reading past the section boundary.
+  size_t name_len = strnlen(reinterpret_cast<const char*>(debuglink),
+                            debuglink_size);
+  if (name_len >= debuglink_size) {
+    fprintf(stderr, "ReadDebugLink: .gnu_debuglink section has no null "
+            "terminator\n");
+    return std::string();
+  }
   // Include '\0' + CRC32 (4 bytes).
-  size_t debuglink_len = strlen(reinterpret_cast<const char*>(debuglink)) + 5;
+  size_t debuglink_len = name_len + 5;
   debuglink_len = 4 * ((debuglink_len + 3) / 4);  // Round up to 4 bytes.
 
   // Sanity check.

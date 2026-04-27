@@ -35,6 +35,7 @@
 #include <config.h>  // Must come first
 #endif
 
+#include <limits>
 #include <stdio.h>
 
 #include <string>
@@ -75,9 +76,13 @@ void DwarfLineToModule::DefineDir(const std::string& name, uint32_t dir_num) {
 void DwarfLineToModule::DefineFile(const std::string& name, int32_t file_num,
                                    uint32_t dir_num, uint64_t mod_time,
                                    uint64_t length) {
-  if (file_num == -1)
+  if (file_num == -1) {
+    if (highest_file_number_ == std::numeric_limits<int32_t>::max()) {
+      fprintf(stderr, "DefineFile: file number overflow\n");
+      return;
+    }
     file_num = ++highest_file_number_;
-  else if (file_num > highest_file_number_)
+  } else if (file_num > highest_file_number_)
     highest_file_number_ = file_num;
 
   std::string dir_name;

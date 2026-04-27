@@ -371,7 +371,8 @@ void CompilationUnit::ReadHeader() {
 
   assert(headerptr + 4 < buffer_ + buffer_length_);
   const uint64_t initial_length
-    = reader_->ReadInitialLength(headerptr, &initial_length_size);
+    = reader_->ReadInitialLength(headerptr, &initial_length_size,
+                                 buffer_ + buffer_length_);
   headerptr += initial_length_size;
   header_.length = initial_length;
 
@@ -1544,7 +1545,8 @@ void LineInfo::ReadHeader() {
   size_t initial_length_size;
 
   const uint64_t initial_length
-    = reader_->ReadInitialLength(lineptr, &initial_length_size);
+    = reader_->ReadInitialLength(lineptr, &initial_length_size,
+                                 buffer_ + buffer_length_);
 
   lineptr += initial_length_size;
   header_.total_length = initial_length;
@@ -2970,7 +2972,8 @@ bool CallFrameInfo::ReadEntryPrologue(const uint8_t* cursor, Entry* entry) {
 
   // Read the initial length. This sets reader_'s offset size.
   size_t length_size;
-  uint64_t length = reader_->ReadInitialLength(cursor, &length_size);
+  uint64_t length = reader_->ReadInitialLength(cursor, &length_size,
+                                               buffer_end);
   if (length_size > size_t(buffer_end - cursor))
     return ReportIncomplete(entry);
   cursor += length_size;
