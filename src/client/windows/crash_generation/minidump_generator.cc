@@ -38,6 +38,7 @@
 #include <algorithm>
 #include <iterator>
 #include <list>
+#include <type_traits>
 #include <vector>
 
 #include "client/windows/common/auto_critical_section.h"
@@ -156,37 +157,33 @@ bool HandleTraceData::CollectHandleData(
   }
 
   // Now that |handle_| is initialized, purge all irrelevant operations.
-  std::list<AVRF_HANDLE_OPERATION>::iterator i = operations_.begin();
-  std::list<AVRF_HANDLE_OPERATION>::iterator i_end = operations_.end();
-  while (i != i_end) {
-    if (i->Handle == handle_) {
-      ++i;
-    } else {
-      i = operations_.erase(i);
-    }
-  }
+  std::erase_if(operations_, [this](const AVRF_HANDLE_OPERATION& operation) {
+    return operation.Handle != handle_;
+  });
 
   // Convert the list of recorded operations to a minidump stream.
-  stream_.resize(sizeof(MINIDUMP_HANDLE_OPERATION_LIST) +
-      sizeof(AVRF_HANDLE_OPERATION) * operations_.size());
+  static_assert(std::is_trivially_copyable_v<MINIDUMP_HANDLE_OPERATION_LIST>);
+  static_assert(std::is_trivially_copyable_v<AVRF_HANDLE_OPERATION>);
 
-  MINIDUMP_HANDLE_OPERATION_LIST* stream_data =
-      reinterpret_cast<MINIDUMP_HANDLE_OPERATION_LIST*>(
-          &stream_.front());
-  stream_data->SizeOfHeader = sizeof(MINIDUMP_HANDLE_OPERATION_LIST);
-  stream_data->SizeOfEntry = sizeof(AVRF_HANDLE_OPERATION);
-  stream_data->NumberOfEntries = static_cast<ULONG32>(operations_.size());
-  stream_data->Reserved = 0;
-  std::copy(operations_.begin(),
-            operations_.end(),
-#if defined(_MSC_VER) && !defined(_LIBCPP_STD_VER)
-            stdext::checked_array_iterator<AVRF_HANDLE_OPERATION*>(
-                reinterpret_cast<AVRF_HANDLE_OPERATION*>(stream_data + 1),
-                operations_.size())
-#else
-            reinterpret_cast<AVRF_HANDLE_OPERATION*>(stream_data + 1)
-#endif
-            );
+  const MINIDUMP_HANDLE_OPERATION_LIST header{
+      .SizeOfHeader = sizeof(MINIDUMP_HANDLE_OPERATION_LIST),
+      .SizeOfEntry = sizeof(AVRF_HANDLE_OPERATION),
+      .NumberOfEntries = static_cast<ULONG32>(operations_.size()),
+      .Reserved = 0,
+  };
+
+  stream_.clear();
+  stream_.reserve(sizeof(header) +
+                  sizeof(AVRF_HANDLE_OPERATION) * operations_.size());
+
+  auto header_raw = reinterpret_cast<const char*>(&header);
+  stream_.insert(stream_.end(), header_raw, header_raw + sizeof(header));
+  for (const auto& operation : operations_) {
+    auto operation_raw = reinterpret_cast<const char*>(&operation);
+    stream_.insert(stream_.end(),
+                   operation_raw,
+                   operation_raw + sizeof(operation));
+  }
 
   return true;
 }
