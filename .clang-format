@@ -6,4 +6,6 @@ BasedOnStyle: Chromium
 # 'vector<vector<int> >' in existing files gets formatted to
 # 'vector<vector<int>>'. ('Auto' means that clang-format will only use
 # 'int>>' if the file already contains at least one such instance.)
-Standard: Cpp11
+# This should maybe be set to the C++ standard currently used by
+# breakpad, but chromium uses Latest and the same is done here.
+Standard: Latest
