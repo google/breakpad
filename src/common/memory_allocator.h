@@ -36,6 +36,7 @@
 #include <sys/mman.h>
 #include <unistd.h>
 
+#include <cstddef>
 #include <memory>
 #include <vector>
 
