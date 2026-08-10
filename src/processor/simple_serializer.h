@@ -38,6 +38,7 @@
 #define PROCESSOR_SIMPLE_SERIALIZER_H__
 
 #include <stddef.h>
+#include <string.h>
 
 #include "google_breakpad/common/breakpad_types.h"
 
@@ -54,8 +55,9 @@ template<class Type> class SimpleSerializer {
   // Write 'item' to memory location 'dest', and return to the "end" address of
   // data written, i.e., the address after the final byte written.
   static char* Write(const Type& item, char* dest) {
-    new (dest) Type(item);
-    return dest + SizeOf(item);
+    const size_t size = SizeOf(item);
+    memcpy(dest, &item, size);
+    return dest + size;
   }
 };
 
