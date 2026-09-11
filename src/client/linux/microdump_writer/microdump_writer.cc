@@ -475,8 +475,10 @@ class MicrodumpWriter {
 
     // Copy as many bytes of |identifier| as will fit into a MDGUID
     MDGUID module_identifier = {0};
-    memcpy(&module_identifier, &identifier_bytes[0],
-           std::min(sizeof(MDGUID), identifier_bytes.size()));
+    if (!identifier_bytes.empty()) {
+      memcpy(&module_identifier, &identifier_bytes[0],
+             std::min(sizeof(MDGUID), identifier_bytes.size()));
+    }
 
     char file_name[NAME_MAX];
     char file_path[NAME_MAX];

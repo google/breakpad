@@ -455,3 +455,19 @@ TYPED_TEST(FileIDTest, ConvertIdentifierToString) {
   ASSERT_EQ(kExpected,
             FileID::ConvertIdentifierToString(identifier));
 }
+
+// A failed identification must leave the identifier EMPTY, so FillRawModule
+// writes no CV record at all. Leaving bytes behind turns "cannot identify
+// this module" into a valid-looking all-zero build id, which reads downstream
+// as a missing symbol upload rather than a broken minidump.
+TEST(FileIDTest, FailedIdentificationLeavesNoBytes) {
+  // Not an ELF: no build-id note to find, and no .text section to hash.
+  uint8_t not_an_elf[4096] = {};
+
+  PageAllocator allocator;
+  auto_wasteful_vector<uint8_t, kDefaultBuildIdSize> identifier(&allocator);
+
+  EXPECT_FALSE(
+      FileID::ElfFileIdentifierFromMappedFile(not_an_elf, identifier));
+  EXPECT_TRUE(identifier.empty());
+}
