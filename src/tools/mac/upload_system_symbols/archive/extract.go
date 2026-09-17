@@ -312,6 +312,10 @@ func (e *installAssistantExtractor) hasCryptexes(plistPath string) (bool, error)
 	}
 }
 
+// imagePatchManifestPath is where an installer's asset archive holds the manifest
+// describing its image patches, keyed by each patch's file name.
+const imagePatchManifestPath = "AssetData/image_patches.plist"
+
 // extractCachesFromZips extracts zips that contain dyld shared caches, and extracts the dyld shared caches from them.
 // The specifics depend on whether this installer uses cryptexes or payload files.
 func (e *installAssistantExtractor) extractCachesFromZips(zips []string, destination string, hasCryptexes bool) error {
@@ -324,10 +328,17 @@ func (e *installAssistantExtractor) extractCachesFromZips(zips []string, destina
 			return fmt.Errorf("couldn't extract caches from %v: %v", containerPath, err)
 		}
 	} else {
+		// The manifest goes somewhere other than `containerPath`, which
+		// extractCachesFromCryptexes reads expecting nothing but image patches.
+		manifestDir := path.Join(e.scratchDir, "image_patch_manifest")
+		if err := e.unarchiveZipsMatching(zips, manifestDir, imagePatchManifestPath); err != nil {
+			return err
+		}
 		if err := e.unarchiveZipsMatching(zips, containerPath, "AssetData/payloadv2/image_patches/cryptex-system-*"); err != nil {
 			return err
 		}
-		if err := e.extractCachesFromCryptexes(containerPath, destination); err != nil {
+		manifest := path.Join(manifestDir, path.Base(imagePatchManifestPath))
+		if err := e.extractCachesFromCryptexes(containerPath, manifest, destination); err != nil {
 			return fmt.Errorf("couldn't extract caches from %v: %v", containerPath, err)
 		}
 	}
@@ -428,8 +439,9 @@ func (e *installAssistantExtractor) copySharedCaches(from, to string) error {
 }
 
 // extractCachesFromCryptexes extracts disk images from any cryptexes at `cryptexesPath`, mounts them,
-// and extracts any dyld shared caches to `destination`.
-func (e *installAssistantExtractor) extractCachesFromCryptexes(cryptexesPath string, destination string) error {
+// and extracts any dyld shared caches to `destination`. `manifest` is the image patch manifest
+// describing those cryptexes.
+func (e *installAssistantExtractor) extractCachesFromCryptexes(cryptexesPath string, manifest string, destination string) error {
 	scratchDir, err := os.MkdirTemp(e.scratchDir, "cryptex_dmg")
 	if err != nil {
 		return err
@@ -446,10 +458,30 @@ func (e *installAssistantExtractor) extractCachesFromCryptexes(cryptexesPath str
 		e.vlog("Mounting %s at %s\n", cryptex, dmgPath)
 		e.mountDMG(dmgPath, cryptexMountpoint)
 		if err := e.copySharedCaches(cryptexMountpoint, destination); err != nil {
+			// A delta image patches another image rather than containing one, so it
+			// can't necessarily be turned into a disk image to take caches from. For now,
+			// ignore the failure and proceed to the next image cache extraction.
+			if e.isDeltaImage(manifest, f.Name()) {
+				e.vlog("Ignoring %v: %v. It patches another image rather than replacing it.\n",
+					cryptex, err)
+				continue
+			}
 			return err
 		}
 	}
 	return nil
+}
+
+// isDeltaImage returns true if the image contains "ImagePatchBaselineTag" in the plist file,
+// indicating that the image is a delta one, built on top of a baseline image.
+func (e *installAssistantExtractor) isDeltaImage(manifestPath string, imageName string) bool {
+	print_cmd := fmt.Sprintf("print :%s:ImagePatchBaselineTag", imageName)
+	baseline, err := exec.Command("/usr/libexec/PlistBuddy", "-c", print_cmd, manifestPath).Output()
+	if err != nil {
+		return false
+	}
+	e.vlog("%v patches %v\n", imageName, strings.TrimSpace(string(baseline)))
+	return true
 }
 
 // extractCryptexDMG extracts the cryptex at `cryptexPath` to `dmgPath` using libParallelCompression.
