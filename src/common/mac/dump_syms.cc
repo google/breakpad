@@ -483,7 +483,7 @@ void DumpSymbols::StartProcessSplitDwarf(
   }
 }
 
-void DumpSymbols::ReadDwarf(google_breakpad::Module* module,
+bool DumpSymbols::ReadDwarf(google_breakpad::Module* module,
                             const mach_o::Reader& macho_reader,
                             const mach_o::SectionMap& dwarf_sections,
                             bool handle_inter_cu_refs) const {
@@ -513,7 +513,7 @@ void DumpSymbols::ReadDwarf(google_breakpad::Module* module,
   if (debug_info_entry == file_context.section_map().end()) {
     fprintf(stderr, "%s: __DWARF segment of file has no __debug_info section\n",
             selected_object_name_.c_str());
-    return;
+    return true;
   }
   const std::pair<const uint8_t*, uint64_t>& debug_info_section =
       debug_info_entry->second;
@@ -550,13 +550,18 @@ void DumpSymbols::ReadDwarf(google_breakpad::Module* module,
                                                &byte_reader,
                                                &die_dispatcher);
     // Process the entire compilation unit; get the offset of the next.
-    offset += dwarf_reader.Start();
+    uint64_t result = dwarf_reader.Start();
+    if (result == 0) {
+      return false;
+    }
+    offset += result;
     // Start to process split dwarf file.
     if (dwarf_reader.ShouldProcessSplitDwarf()) {
       StartProcessSplitDwarf(&dwarf_reader, module, endianness,
                              handle_inter_cu_refs, handle_inline);
     }
   }
+  return true;
 }
 
 bool DumpSymbols::ReadCFI(google_breakpad::Module* module,
@@ -667,7 +672,10 @@ bool DumpSymbols::LoadCommandDumper::SegmentCommand(const Segment& segment) {
 
   if (segment.name == "__DWARF") {
     if ((symbol_data_ & SYMBOLS_AND_FILES) || (symbol_data_ & INLINES)) {
-      dumper_.ReadDwarf(module_, reader_, section_map, handle_inter_cu_refs_);
+      if (!dumper_.ReadDwarf(module_, reader_, section_map,
+                             handle_inter_cu_refs_)) {
+        return false;
+      }
     }
     if (symbol_data_ & CFI) {
       mach_o::SectionMap::const_iterator debug_frame

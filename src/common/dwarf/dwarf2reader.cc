@@ -1042,10 +1042,10 @@ bool CompilationUnit::ProcessDIEs() {
       continue;
     }
 
-    // Abbrev > abbrev_.size() indicates a corruption in the dwarf file.
-    if (abbrev_num > abbrevs_->size()) {
+    // Check for corruption in the dwarf file.
+    if (abbrev_num >= abbrevs_->size()) {
       fprintf(stderr, "An invalid abbrev was referenced %" PRIu64 " / %zu. "
-              "Stopped procesing following DIEs in this CU.", abbrev_num,
+              "Stopped procesing following DIEs in this CU.\n", abbrev_num,
               abbrevs_->size());
       return false;
     }
