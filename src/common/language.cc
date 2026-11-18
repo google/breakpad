@@ -52,6 +52,29 @@
 
 namespace {
 
+// Annotates a variable indicating that its storage should not be filled with a
+// fixed pattern when uninitialized.
+//
+// The `init_stack_vars` gn arg (enabled on most build configs) causes the
+// compiler to generate code that writes a fixed pattern into uninitialized
+// parts of all local variables, to mitigate security risks. In most cases, e.g.
+// when such memory is either never accessed or will be initialized later before
+// reading, the compiler is able to remove the additional stores, and any
+// remaining stores are unlikely to affect program performance.
+//
+// If hot code suffers unavoidable perf penalties, this can disable the
+// pattern-filling there. This should only be done when necessary, since reads
+// from uninitialized variables are not only UB, they can in practice allow
+// attackers to control logic by pre-filling the variable's memory with a
+// desirable value.
+#if __has_cpp_attribute(clang::uninitialized)
+#define STACK_UNINITIALIZED [[clang::uninitialized]]
+#elif __has_cpp_attribute(gnu::uninitialized)
+#define STACK_UNINITIALIZED [[gnu::uninitialized]]
+#else
+#define STACK_UNINITIALIZED
+#endif
+
 std::string MakeQualifiedNameWithSeparator(const std::string& parent_name,
                                            const char* separator,
                                            const std::string& name) {
@@ -227,7 +250,12 @@ class RustLanguage: public Language {
     // another layer of encoding.
     // If callers provide rustc-demangle, use that.
 #if defined(HAVE_RUSTC_DEMANGLE)
-    std::array<char, 1 * 1024 * 1024> rustc_demangled;
+    // DemangleName() is hot when dumping symbols, and profiling on a Linux
+    // Chrome build showed that automatic initialization of this 1 MiB buffer
+    // took ~6.8% of user CPU cycles because the compiler cannot optimize it out
+    // across the call to rustc_demangle(). Safe because rustc_demangle()
+    // NUL-terminates the buffer on success before it is read.
+    STACK_UNINITIALIZED std::array<char, 1 * 1024 * 1024> rustc_demangled;
     if (rustc_demangle(mangled.c_str(), rustc_demangled.data(),
                        rustc_demangled.size()) == 0) {
       return kDemangleFailure;
