@@ -384,7 +384,7 @@ void StartProcessSplitDwarf(google_breakpad::CompilationUnit* reader,
     return;
   DwarfCUToModule::FileContext file_context(split_file, module,
                                             handle_inter_cu_refs);
-  for (auto section : split_sections)
+  for (const auto& section : split_sections)
     file_context.AddSectionToSectionMap(section.first, section.second.first,
                                         section.second.second);
   // Because DWP/DWO file doesn't have .debug_addr/.debug_line/.debug_line_str,
