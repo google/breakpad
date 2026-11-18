@@ -265,8 +265,8 @@ class DumperRangesHandler : public DwarfCUToModule::RangesHandler {
 class DumperLineToModule: public DwarfCUToModule::LineToModuleHandler {
  public:
   // Create a line-to-module converter using BYTE_READER.
-  explicit DumperLineToModule(google_breakpad::ByteReader* byte_reader)
-      : byte_reader_(byte_reader) { }
+  DumperLineToModule(google_breakpad::ByteReader* byte_reader, bool verbose)
+      : byte_reader_(byte_reader), verbose_(verbose) {}
   void StartCompilationUnit(const std::string& compilation_dir) {
     compilation_dir_ = compilation_dir;
   }
@@ -279,7 +279,7 @@ class DumperLineToModule: public DwarfCUToModule::LineToModuleHandler {
                    Module* module,
                    std::vector<Module::Line>* lines,
                    std::map<uint32_t, Module::File*>* files) {
-    DwarfLineToModule handler(module, compilation_dir_, lines, files);
+    DwarfLineToModule handler(module, compilation_dir_, lines, files, verbose_);
     google_breakpad::LineInfo parser(program, length, byte_reader_,
                                   string_section, string_section_length,
                                   line_string_section,
@@ -289,7 +289,8 @@ class DumperLineToModule: public DwarfCUToModule::LineToModuleHandler {
   }
  private:
   std::string compilation_dir_;
-  google_breakpad::ByteReader* byte_reader_;
+  google_breakpad::ByteReader* const byte_reader_;
+  const bool verbose_;
 };
 
 template<typename ElfClass>
@@ -358,11 +359,22 @@ std::pair<uint8_t *, uint64_t> UncompressSectionContents(
   return std::make_pair(nullptr, 0);
 }
 
+std::unique_ptr<DwarfCUToModule::WarningReporter> MakeWarningReporter(
+    const std::string& filename, uint64_t cu_offset, bool verbose) {
+  if (verbose) {
+    return std::make_unique<DwarfCUToModule::WarningReporter>(filename,
+                                                              cu_offset);
+  }
+  return std::make_unique<DwarfCUToModule::NullWarningReporter>(filename,
+                                                                cu_offset);
+}
+
 void StartProcessSplitDwarf(google_breakpad::CompilationUnit* reader,
                             Module* module,
                             google_breakpad::Endianness endianness,
                             bool handle_inter_cu_refs,
-                            bool handle_inline) {
+                            bool handle_inline,
+                            bool verbose) {
   std::string split_file;
   google_breakpad::SectionMap split_sections;
   google_breakpad::ByteReader split_byte_reader(endianness);
@@ -392,10 +404,12 @@ void StartProcessSplitDwarf(google_breakpad::CompilationUnit* reader,
                                         reader->GetLineStrBufferLen());
 
   DumperRangesHandler ranges_handler(&split_byte_reader);
-  DumperLineToModule line_to_module(&split_byte_reader);
-  DwarfCUToModule::WarningReporter reporter(split_file, cu_offset);
+  DumperLineToModule line_to_module(&split_byte_reader, verbose);
+  std::unique_ptr<DwarfCUToModule::WarningReporter> reporter =
+      MakeWarningReporter(split_file, cu_offset, verbose);
   DwarfCUToModule root_handler(
-      &file_context, &line_to_module, &ranges_handler, &reporter, handle_inline,
+      &file_context, &line_to_module, &ranges_handler, reporter.get(),
+      handle_inline,
       reader->GetLowPC(), reader->GetAddrBase(), reader->HasSourceLineInfo(),
       reader->GetSourceLineOffset());
   google_breakpad::DIEDispatcher die_dispatcher(&root_handler);
@@ -408,14 +422,15 @@ void StartProcessSplitDwarf(google_breakpad::CompilationUnit* reader,
   // Normally, it won't happen unless we have transitive reference.
   if (split_reader.ShouldProcessSplitDwarf()) {
     StartProcessSplitDwarf(&split_reader, module, endianness,
-                           handle_inter_cu_refs, handle_inline);
+                           handle_inter_cu_refs, handle_inline, verbose);
   }
 }
 
 template <typename ElfClass>
 bool LoadDwarf(const std::string& dwarf_filename,
                const typename ElfClass::Ehdr* elf_header, const bool big_endian,
-               bool handle_inter_cu_refs, bool handle_inline, Module* module) {
+               bool handle_inter_cu_refs, bool handle_inline, bool verbose,
+               Module* module) {
   typedef typename ElfClass::Shdr Shdr;
 
   const google_breakpad::Endianness endianness = big_endian ?
@@ -470,7 +485,7 @@ bool LoadDwarf(const std::string& dwarf_filename,
   DumperRangesHandler ranges_handler(&byte_reader);
 
   // Parse all the compilation units in the .debug_info section.
-  DumperLineToModule line_to_module(&byte_reader);
+  DumperLineToModule line_to_module(&byte_reader, verbose);
   google_breakpad::SectionMap::const_iterator debug_info_entry =
       file_context.section_map().find(".debug_info");
   assert(debug_info_entry != file_context.section_map().end());
@@ -483,9 +498,11 @@ bool LoadDwarf(const std::string& dwarf_filename,
   for (uint64_t offset = 0; offset < debug_info_length;) {
     // Make a handler for the root DIE that populates MODULE with the
     // data that was found.
-    DwarfCUToModule::WarningReporter reporter(dwarf_filename, offset);
+    std::unique_ptr<DwarfCUToModule::WarningReporter> reporter =
+        MakeWarningReporter(dwarf_filename, offset, verbose);
     DwarfCUToModule root_handler(&file_context, &line_to_module,
-                                 &ranges_handler, &reporter, handle_inline);
+                                 &ranges_handler, reporter.get(),
+                                 handle_inline);
     // Make a Dwarf2Handler that drives the DIEHandler.
     google_breakpad::DIEDispatcher die_dispatcher(&root_handler);
     // Make a DWARF parser for the compilation unit at OFFSET.
@@ -503,7 +520,7 @@ bool LoadDwarf(const std::string& dwarf_filename,
     // Start to process split dwarf file.
     if (reader.ShouldProcessSplitDwarf()) {
       StartProcessSplitDwarf(&reader, module, endianness, handle_inter_cu_refs,
-                             handle_inline);
+                             handle_inline, verbose);
     }
   }
   return true;
@@ -541,6 +558,62 @@ bool DwarfCFIRegisterNames(const typename ElfClass::Ehdr* elf_header,
   }
 }
 
+class NullCFIReporter : public DwarfCFIToModule::Reporter {
+ public:
+  using DwarfCFIToModule::Reporter::Reporter;
+  void UnnamedRegister(size_t offset, int reg) override {}
+  void UndefinedNotSupported(size_t offset, const std::string& reg) override {}
+  void ExpressionsNotSupported(size_t offset,
+                               const std::string& reg) override {}
+};
+
+class NullCallFrameReporter : public google_breakpad::CallFrameInfo::Reporter {
+ public:
+  using google_breakpad::CallFrameInfo::Reporter::Reporter;
+  void Incomplete(uint64_t offset,
+                  google_breakpad::CallFrameInfo::EntryKind kind) override {}
+  void EarlyEHTerminator(uint64_t offset) override {}
+  void CIEPointerOutOfRange(uint64_t offset, uint64_t cie_offset) override {}
+  void BadCIEId(uint64_t offset, uint64_t cie_offset) override {}
+  void UnexpectedAddressSize(uint64_t offset, uint8_t address_size) override {}
+  void UnexpectedSegmentSize(uint64_t offset, uint8_t segment_size) override {}
+  void UnrecognizedVersion(uint64_t offset, int version) override {}
+  void UnrecognizedAugmentation(uint64_t offset,
+                                const std::string& augmentation) override {}
+  void InvalidPointerEncoding(uint64_t offset, uint8_t encoding) override {}
+  void UnusablePointerEncoding(uint64_t offset, uint8_t encoding) override {}
+  void RestoreInCIE(uint64_t offset, uint64_t insn_offset) override {}
+  void BadInstruction(uint64_t offset,
+                      google_breakpad::CallFrameInfo::EntryKind kind,
+                      uint64_t insn_offset) override {}
+  void NoCFARule(uint64_t offset,
+                 google_breakpad::CallFrameInfo::EntryKind kind,
+                 uint64_t insn_offset) override {}
+  void EmptyStateStack(uint64_t offset,
+                       google_breakpad::CallFrameInfo::EntryKind kind,
+                       uint64_t insn_offset) override {}
+  void ClearingCFARule(uint64_t offset,
+                       google_breakpad::CallFrameInfo::EntryKind kind,
+                       uint64_t insn_offset) override {}
+};
+
+std::unique_ptr<DwarfCFIToModule::Reporter> MakeCFIReporter(
+    const std::string& filename, const char* section_name, bool verbose) {
+  if (verbose) {
+    return std::make_unique<DwarfCFIToModule::Reporter>(filename, section_name);
+  }
+  return std::make_unique<NullCFIReporter>(filename, section_name);
+}
+
+std::unique_ptr<google_breakpad::CallFrameInfo::Reporter> MakeCallFrameReporter(
+    const std::string& filename, const char* section_name, bool verbose) {
+  if (verbose) {
+    return std::make_unique<google_breakpad::CallFrameInfo::Reporter>(
+        filename, section_name);
+  }
+  return std::make_unique<NullCallFrameReporter>(filename, section_name);
+}
+
 template <typename ElfClass>
 bool LoadDwarfCFI(const std::string& dwarf_filename,
                   const typename ElfClass::Ehdr* elf_header,
@@ -548,7 +621,7 @@ bool LoadDwarfCFI(const std::string& dwarf_filename,
                   const typename ElfClass::Shdr* section, const bool eh_frame,
                   const typename ElfClass::Shdr* got_section,
                   const typename ElfClass::Shdr* text_section,
-                  const bool big_endian, Module* module) {
+                  const bool big_endian, bool verbose, Module* module) {
   // Find the appropriate set of register names for this file's
   // architecture.
   std::vector<std::string> register_names;
@@ -568,8 +641,9 @@ bool LoadDwarfCFI(const std::string& dwarf_filename,
   size_t cfi_size = section->sh_size;
 
   // Plug together the parser, handler, and their entourages.
-  DwarfCFIToModule::Reporter module_reporter(dwarf_filename, section_name);
-  DwarfCFIToModule handler(module, register_names, &module_reporter);
+  std::unique_ptr<DwarfCFIToModule::Reporter> module_reporter =
+      MakeCFIReporter(dwarf_filename, section_name, verbose);
+  DwarfCFIToModule handler(module, register_names, module_reporter.get());
   google_breakpad::ByteReader byte_reader(endianness);
 
   byte_reader.SetAddressSize(ElfClass::kAddrSize);
@@ -582,12 +656,12 @@ bool LoadDwarfCFI(const std::string& dwarf_filename,
   if (text_section)
     byte_reader.SetTextBase(text_section->sh_addr);
 
-  google_breakpad::CallFrameInfo::Reporter dwarf_reporter(dwarf_filename,
-                                                       section_name);
+  std::unique_ptr<google_breakpad::CallFrameInfo::Reporter> dwarf_reporter =
+      MakeCallFrameReporter(dwarf_filename, section_name, verbose);
   if (!IsCompressedHeader<ElfClass>(section)) {
     google_breakpad::CallFrameInfo parser(cfi, cfi_size,
                                           &byte_reader, &handler,
-                                          &dwarf_reporter, eh_frame);
+                                          dwarf_reporter.get(), eh_frame);
     parser.Start();
     return true;
   }
@@ -618,8 +692,8 @@ bool LoadDwarfCFI(const std::string& dwarf_filename,
     return false;
   }
   google_breakpad::CallFrameInfo parser(uncompressed.first, uncompressed.second,
-                                        &byte_reader, &handler, &dwarf_reporter,
-                                        eh_frame);
+                                        &byte_reader, &handler,
+                                        dwarf_reporter.get(), eh_frame);
   parser.Start();
   return true;
 }
@@ -973,9 +1047,9 @@ bool LoadSymbols(const std::string& obj_file, const bool big_endian,
       found_debug_info_section = true;
       found_usable_info = true;
       info->LoadedSection(".debug_info");
-      bool result = LoadDwarf<ElfClass>(obj_file, elf_header, big_endian,
-                               options.handle_inter_cu_refs,
-                               options.symbol_data & INLINES, module);
+      bool result = LoadDwarf<ElfClass>(
+          obj_file, elf_header, big_endian, options.handle_inter_cu_refs,
+          options.symbol_data & INLINES, options.verbose, module);
       usable_info_parsed = usable_info_parsed || result;
       if (!result){
         fprintf(stderr, "%s: \".debug_info\" section found, but failed to load "
@@ -1006,10 +1080,9 @@ bool LoadSymbols(const std::string& obj_file, const bool big_endian,
       // information, the other debugging information could be perfectly
       // useful.
       info->LoadedSection(".debug_frame");
-      bool result =
-          LoadDwarfCFI<ElfClass>(obj_file, elf_header, ".debug_frame",
-                                 dwarf_cfi_section, false, 0, 0, big_endian,
-                                 module);
+      bool result = LoadDwarfCFI<ElfClass>(
+          obj_file, elf_header, ".debug_frame", dwarf_cfi_section, false, 0, 0,
+          big_endian, options.verbose, module);
       found_usable_info = found_usable_info || result;
     }
 
@@ -1032,18 +1105,19 @@ bool LoadSymbols(const std::string& obj_file, const bool big_endian,
                                          elf_header->e_shnum);
       info->LoadedSection(".eh_frame");
       // As above, ignore the return value of this function.
-      bool result =
-          LoadDwarfCFI<ElfClass>(obj_file, elf_header, ".eh_frame",
-                                 eh_frame_section, true,
-                                 got_section, text_section, big_endian, module);
+      bool result = LoadDwarfCFI<ElfClass>(
+          obj_file, elf_header, ".eh_frame", eh_frame_section, true,
+          got_section, text_section, big_endian, options.verbose, module);
       found_usable_info = found_usable_info || result;
     }
   }
 
   if (!found_debug_info_section) {
-    fprintf(stderr, "%s: file contains no debugging information"
-            " (no \".stab\" or \".debug_info\" sections)\n",
-            obj_file.c_str());
+    if (options.verbose || (!read_gnu_debug_link && !found_usable_info)) {
+      fprintf(stderr, "%s: file contains no debugging information"
+              " (no \".stab\" or \".debug_info\" sections)\n",
+              obj_file.c_str());
+    }
 
     // Failed, but maybe there's a .gnu_debuglink section?
     if (read_gnu_debug_link) {
@@ -1213,7 +1287,9 @@ bool ReadSymbolDataElfClass(const typename ElfClass::Ehdr* elf_header,
       return false;
 
     // Load debuglink ELF file.
-    fprintf(stderr, "Found debugging info in %s\n", debuglink_file.c_str());
+    if (options.verbose) {
+      fprintf(stderr, "Found debugging info in %s\n", debuglink_file.c_str());
+    }
     MmapWrapper debug_map_wrapper;
     Ehdr* debug_elf_header = nullptr;
     if (!LoadELF(debuglink_file, &debug_map_wrapper,

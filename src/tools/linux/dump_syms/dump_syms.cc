@@ -30,10 +30,8 @@
 #include <config.h>  // Must come first
 #endif
 
-#include <paths.h>
 #include <stdio.h>
 #include <string.h>
-#include <unistd.h>
 
 #include <iostream>
 #include <string>
@@ -128,14 +126,6 @@ int main(int argc, char** argv) {
   }
   if (arg_index == argc)
     return usage(argv[0]);
-  // Save stderr so it can be used below.
-  FILE* saved_stderr = fdopen(dup(fileno(stderr)), "w");
-  if (!log_to_stderr) {
-    if (freopen(_PATH_DEVNULL, "w", stderr)) {
-      // If it fails, not a lot we can (or should) do.
-      // Add this brace section to silence gcc warnings.
-    }
-  }
   const char* binary;
   std::vector<std::string> debug_dirs;
   binary = argv[arg_index];
@@ -150,17 +140,18 @@ int main(int argc, char** argv) {
 
   if (header_only) {
     if (!WriteSymbolFileHeader(binary, obj_name, obj_os, module_id, std::cout)) {
-      fprintf(saved_stderr, "Failed to process file.\n");
+      fprintf(stderr, "Failed to process file.\n");
       return 1;
     }
   } else {
     SymbolData symbol_data = (handle_inlines ? INLINES : NO_DATA) |
                              (cfi ? CFI : NO_DATA) | SYMBOLS_AND_FILES;
-    google_breakpad::DumpOptions options(symbol_data, handle_inter_cu_refs,
-                                         enable_multiple_field, preserve_load_address);
+    google_breakpad::DumpOptions options(
+        symbol_data, handle_inter_cu_refs, enable_multiple_field,
+        preserve_load_address, log_to_stderr);
     if (!WriteSymbolFile(binary, obj_name, obj_os, module_id, debug_dirs, options,
                          std::cout)) {
-      fprintf(saved_stderr, "Failed to write symbol file.\n");
+      fprintf(stderr, "Failed to write symbol file.\n");
       return 1;
     }
   }

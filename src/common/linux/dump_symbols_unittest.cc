@@ -94,7 +94,7 @@ TYPED_TEST(DumpSymbols, Invalid) {
   Elf32_Ehdr header;
   memset(&header, 0, sizeof(header));
   Module* module;
-  DumpOptions options(ALL_SYMBOL_DATA, true, false, false);
+  DumpOptions options(ALL_SYMBOL_DATA, true, false, false, /*verbose=*/true);
   EXPECT_FALSE(ReadSymbolDataInternal(reinterpret_cast<uint8_t*>(&header),
                                       "foo", "Linux", "", vector<std::string>(),
                                       options, &module));
@@ -128,7 +128,7 @@ TYPED_TEST(DumpSymbols, SimplePublic) {
   this->GetElfContents(elf);
 
   Module* module;
-  DumpOptions options(ALL_SYMBOL_DATA, true, false, false);
+  DumpOptions options(ALL_SYMBOL_DATA, true, false, false, /*verbose=*/true);
   EXPECT_TRUE(ReadSymbolDataInternal(this->elfdata, "foo", "Linux", "",
                                      vector<std::string>(), options, &module));
 
@@ -171,7 +171,7 @@ TYPED_TEST(DumpSymbols, ModuleIdOverride) {
   this->GetElfContents(elf);
 
   Module* module;
-  DumpOptions options(ALL_SYMBOL_DATA, true, false, false);
+  DumpOptions options(ALL_SYMBOL_DATA, true, false, false, /*verbose=*/true);
   EXPECT_TRUE(ReadSymbolDataInternal(this->elfdata, "foo", "Linux",
                                      "some_module_id", vector<std::string>(),
                                      options, &module));
@@ -225,7 +225,7 @@ TYPED_TEST(DumpSymbols, SimpleBuildID) {
   this->GetElfContents(elf);
 
   Module* module;
-  DumpOptions options(ALL_SYMBOL_DATA, true, false, false);
+  DumpOptions options(ALL_SYMBOL_DATA, true, false, false, /*verbose=*/true);
   EXPECT_TRUE(ReadSymbolDataInternal(this->elfdata, "foo", "Linux", "",
                                      vector<std::string>(), options, &module));
 

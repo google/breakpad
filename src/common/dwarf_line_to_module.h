@@ -118,15 +118,18 @@ class DwarfLineToModule: public LineInfoHandler {
   // end of the address space, we clip it. It's up to our client to
   // sort out which lines belong to which functions; we don't add them
   // to any particular function in MODULE ourselves.
-  DwarfLineToModule(Module* module, const std::string& compilation_dir,
+  DwarfLineToModule(Module* module,
+                    const std::string& compilation_dir,
                     vector<Module::Line>* lines,
-                    std::map<uint32_t, Module::File*>* files)
+                    std::map<uint32_t, Module::File*>* files,
+                    bool verbose)
       : module_(module),
         compilation_dir_(compilation_dir),
         lines_(lines),
         files_(files),
         highest_file_number_(-1),
         omitted_line_end_(0),
+        verbose_(verbose),
         warned_bad_file_number_(false),
         warned_bad_directory_number_(false) {}
 
@@ -175,6 +178,9 @@ class DwarfLineToModule: public LineInfoHandler {
   // didn't omit the previous line. It is zero before we have received any
   // AddLine calls.
   uint64_t omitted_line_end_;
+
+  // Whether to emit non-fatal warnings to stderr.
+  const bool verbose_;
 
   // True if we've warned about:
   bool warned_bad_file_number_; // bad file numbers

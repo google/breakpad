@@ -91,8 +91,10 @@ void DwarfLineToModule::DefineFile(const std::string& name, int32_t file_num,
       dir_name = directory_it->second;
     } else {
       if (!warned_bad_directory_number_) {
-        fprintf(stderr, "warning: DWARF line number data refers to undefined"
-                " directory numbers\n");
+        if (verbose_) {
+          fprintf(stderr, "warning: DWARF line number data refers to undefined"
+                  " directory numbers\n");
+        }
         warned_bad_directory_number_ = true;
       }
     }
@@ -127,8 +129,10 @@ void DwarfLineToModule::AddLine(uint64_t address, uint64_t length,
   Module::File *file = (*files_)[file_num];
   if (!file) {
     if (!warned_bad_file_number_) {
-      fprintf(stderr, "warning: DWARF line number data refers to "
-              "undefined file numbers\n");
+      if (verbose_) {
+        fprintf(stderr, "warning: DWARF line number data refers to "
+                "undefined file numbers\n");
+      }
       warned_bad_file_number_ = true;
     }
     return;

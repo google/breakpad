@@ -49,7 +49,7 @@ TEST(SimpleModule, One) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineFile("file1", 0x30bf0f27, 0, 0, 0);
   h.AddLine(0x6fd126fbf74f2680LL, 0x63c9a14cf556712bLL, 0x30bf0f27,
@@ -71,7 +71,7 @@ TEST(SimpleModule, Many) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineDir("directory1", 0x838299ab);
   h.DefineDir("directory2", 0xf85de023);
@@ -132,7 +132,7 @@ TEST(Filenames, Absolute) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineDir("directory1", 1);
   h.DefineFile("/absolute", 1, 1, 0, 0);
@@ -151,7 +151,7 @@ TEST(Filenames, Relative) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineDir("directory1", 1);
   h.DefineFile("relative", 1, 1, 0, 0);
@@ -170,7 +170,7 @@ TEST(Filenames, StrangeFile) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineDir("directory1", 1);
   h.DefineFile("", 1, 1, 0, 0);
@@ -184,7 +184,7 @@ TEST(Filenames, StrangeDirectory) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineDir("", 1);
   h.DefineFile("file1", 1, 1, 0, 0);
@@ -198,7 +198,7 @@ TEST(Filenames, StrangeDirectoryAndFile) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineDir("", 1);
   h.DefineFile("", 1, 1, 0, 0);
@@ -214,7 +214,7 @@ TEST(Filenames, DirectoryZeroFileIsRelativeToCompilationDir) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "src/build", &lines, &cu_files);
+  DwarfLineToModule h(&m, "src/build", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineDir("Dir", 1);
   h.DefineFile("File", 1, 0, 0, 0);
@@ -231,7 +231,7 @@ TEST(Filenames, IncludeDirectoryRelativeToDirectoryZero) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "src/build", &lines, &cu_files);
+  DwarfLineToModule h(&m, "src/build", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineDir("Dir", 1);
   h.DefineFile("File", 1, 1, 0, 0);
@@ -248,7 +248,7 @@ TEST(Filenames, IncludeDirectoryAbsolute) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "src/build", &lines, &cu_files);
+  DwarfLineToModule h(&m, "src/build", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineDir("/Dir", 1);
   h.DefineFile("File", 1, 1, 0, 0);
@@ -265,7 +265,7 @@ TEST(ModuleErrors, DirectoryZero) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineDir("directory0", 0); // should be ignored
   h.DefineFile("relative", 1, 0, 0, 0);
@@ -282,7 +282,7 @@ TEST(ModuleErrors, BadFileNumber) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineFile("relative", 1, 0, 0, 0);
   h.AddLine(1, 1, 2, 0, 0); // bad file number
@@ -297,7 +297,7 @@ TEST(ModuleErrors, BadDirectoryNumber) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineDir("directory1", 1);
   h.DefineFile("baddirnumber1", 1, 2, 0, 0); // bad directory number
@@ -313,7 +313,7 @@ TEST(ModuleErrors, EmptyLine) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineFile("filename1", 1, 0, 0, 0);
   h.AddLine(1, 0, 1, 0, 0);
@@ -327,7 +327,7 @@ TEST(ModuleErrors, BigLine) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineFile("filename1", 1, 0, 0, 0);
   h.AddLine(0xffffffffffffffffULL, 2, 1, 0, 0);
@@ -345,7 +345,7 @@ TEST(Omitted, DroppedThenGood) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineFile("filename1", 1, 0, 0, 0);
   h.AddLine(0,  10, 1, 83816211, 0);   // should be omitted
@@ -359,7 +359,7 @@ TEST(Omitted, GoodThenDropped) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineFile("filename1", 1, 0, 0, 0);
   h.AddLine(0x9dd6a372, 10, 1, 41454594, 0);   // should be recorded
@@ -373,7 +373,7 @@ TEST(Omitted, Mix1) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineFile("filename1", 1, 0, 0, 0);
   h.AddLine(0x679ed72f,  10,   1, 58932642, 0);   // should be recorded
@@ -395,7 +395,7 @@ TEST(Omitted, Mix2) {
   Module m("name", "os", "architecture", "id");
   vector<Module::Line> lines;
   std::map<uint32_t, Module::File*> cu_files;
-  DwarfLineToModule h(&m, "/", &lines, &cu_files);
+  DwarfLineToModule h(&m, "/", &lines, &cu_files, /*verbose=*/true);
 
   h.DefineFile("filename1", 1, 0, 0, 0);
   h.AddLine(0,           0xf2, 1, 58802211, 0);   // should be omitted
