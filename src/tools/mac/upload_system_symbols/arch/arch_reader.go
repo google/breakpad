@@ -40,16 +40,22 @@ import "C"
 
 // GetArchStringFromHeader takes a MachO FileHeader and returns a string that
 // represents the CPU type and subtype.
-// This function is a Go version of src/common/mac/arch_utilities.cc:BreakpadGetArchInfoFromCpuType().
+// This function is a Go version of src/common/mac/arch_utilities.cc:GetNameFromCPUType().
 func GetArchStringFromHeader(header macho.FileHeader) string {
+	// The high bits of the subtype are capability flags, for example the pointer
+	// authentication ABI version of arm64e binaries, so compare without them.
+	subCpu := header.SubCpu &^ cpuSubtypeMask
 	// TODO(rsesek): As of 10.9.4, OS X doesn't list these in /usr/include/mach/machine.h.
-	if header.Cpu == C.kCPU_TYPE_ARM64 && header.SubCpu == C.kCPU_SUBTYPE_ARM64_ALL {
+	if header.Cpu == C.kCPU_TYPE_ARM64 && subCpu == C.kCPU_SUBTYPE_ARM64_ALL {
 		return "arm64"
 	}
-	if header.Cpu == C.kCPU_TYPE_ARM64 && header.SubCpu == C.kCPU_SUBTYPE_ARM64_E {
+	if header.Cpu == C.kCPU_TYPE_ARM64 && subCpu == C.kCPU_SUBTYPE_ARM64_E {
 		return "arm64e"
 	}
-	if header.Cpu == C.kCPU_TYPE_ARM && header.SubCpu == C.kCPU_SUBTYPE_ARM_V7S {
+	if header.Cpu == C.kCPU_TYPE_ARM64 && subCpu == C.kCPU_SUBTYPE_ARM64E_X1 {
+		return "arm64e_x1"
+	}
+	if header.Cpu == C.kCPU_TYPE_ARM && subCpu == C.kCPU_SUBTYPE_ARM_V7S {
 		return "armv7s"
 	}
 
@@ -59,6 +65,10 @@ func GetArchStringFromHeader(header macho.FileHeader) string {
 	}
 	return C.GoString(cstr)
 }
+
+// cpuSubtypeMask is CPU_SUBTYPE_MASK from <mach/machine.h>: the bits of a CPU
+// subtype that hold capability flags rather than the subtype itself.
+const cpuSubtypeMask = 0xff000000
 
 const (
 	MachODylib    macho.Type = C.kMachHeaderFtypeDylib

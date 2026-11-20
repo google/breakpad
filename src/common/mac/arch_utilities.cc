@@ -55,6 +55,12 @@
 #endif
 #endif
 
+// The CPU subtype of arm64e_x1 binaries. SDKs older than macOS/iOS 27 don't
+// define it.
+#ifndef CPU_SUBTYPE_ARM64E_X1
+#define CPU_SUBTYPE_ARM64E_X1 (static_cast<cpu_subtype_t>(12))
+#endif
+
 namespace {
 
 enum Architecture {
@@ -64,6 +70,7 @@ enum Architecture {
   kArch_arm,
   kArch_arm64,
   kArch_arm64e,
+  kArch_arm64e_x1,
   kArch_ppc,
   // This must be last.
   kNumArchitectures
@@ -83,6 +90,7 @@ constexpr NamedArchInfo kKnownArchitectures[] = {
     {"arm", {CPU_TYPE_ARM, CPU_SUBTYPE_ARM_ALL}},
     {"arm64", {CPU_TYPE_ARM64, CPU_SUBTYPE_ARM64_ALL}},
     {"arm64e", {CPU_TYPE_ARM64, CPU_SUBTYPE_ARM64E}},
+    {"arm64e_x1", {CPU_TYPE_ARM64, CPU_SUBTYPE_ARM64E_X1}},
     {"ppc", {CPU_TYPE_POWERPC, CPU_SUBTYPE_POWERPC_ALL}}};
 
 }  // namespace
@@ -107,7 +115,11 @@ ArchInfo GetLocalArchInfo(void) {
 
 #ifdef __APPLE__
 
-std::optional<ArchInfo> GetArchInfoFromName(const char* arch_name) {
+namespace {
+
+// Returns the architecture info that the OS knows for `arch_name`, or
+// std::nullopt if the OS doesn't know it.
+std::optional<ArchInfo> GetSystemArchInfoFromName(const char* arch_name) {
 #if HAS_MACHO_UTILS
   if (__builtin_available(macOS 13.0, iOS 16.0, tvOS 16.0, *)) {
     cpu_type_t type;
@@ -128,22 +140,61 @@ std::optional<ArchInfo> GetArchInfoFromName(const char* arch_name) {
   return std::nullopt;
 }
 
-const char* GetNameFromCPUType(cpu_type_t cpu_type, cpu_subtype_t cpu_subtype) {
+// Returns the name that the OS knows for `cpu_type` and `cpu_subtype`, or
+// nullptr if the OS doesn't know it.
+const char* GetSystemNameFromCPUType(cpu_type_t cpu_type,
+                                     cpu_subtype_t cpu_subtype) {
 #if HAS_MACHO_UTILS
   if (__builtin_available(macOS 13.0, iOS 16.0, tvOS 16.0, *)) {
-    const char* name = macho_arch_name_for_cpu_type(cpu_type, cpu_subtype);
-    if (name) {
-      return name;
-    }
-    return kUnknownArchName;
+    return macho_arch_name_for_cpu_type(cpu_type, cpu_subtype);
   }
 #endif
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
   const NXArchInfo* info = NXGetArchInfoFromCpuType(cpu_type, cpu_subtype);
 #pragma clang diagnostic pop
-  if (info) {
-    return info->name;
+  return info ? info->name : nullptr;
+}
+
+// Returns the `kKnownArchitectures` entry that exactly matches `cpu_type` and
+// `cpu_subtype` (ignoring the capability bits of the subtype), or nullptr.
+const NamedArchInfo* FindKnownArchitecture(cpu_type_t cpu_type,
+                                           cpu_subtype_t cpu_subtype) {
+  for (const NamedArchInfo& known : kKnownArchitectures) {
+    if (known.info.cputype == cpu_type &&
+        (known.info.cpusubtype & ~CPU_SUBTYPE_MASK) ==
+            (cpu_subtype & ~CPU_SUBTYPE_MASK)) {
+      return &known;
+    }
+  }
+  return nullptr;
+}
+
+}  // namespace
+
+std::optional<ArchInfo> GetArchInfoFromName(const char* arch_name) {
+  if (std::optional<ArchInfo> info = GetSystemArchInfoFromName(arch_name)) {
+    return info;
+  }
+  // The OS doesn't know architectures that are newer than itself, for example
+  // arm64e_x1 on macOS releases that predate it, so fall back to
+  // `kKnownArchitectures`.
+  for (const NamedArchInfo& known : kKnownArchitectures) {
+    if (!strcmp(arch_name, known.name)) {
+      return known.info;
+    }
+  }
+  return std::nullopt;
+}
+
+const char* GetNameFromCPUType(cpu_type_t cpu_type, cpu_subtype_t cpu_subtype) {
+  if (const char* name = GetSystemNameFromCPUType(cpu_type, cpu_subtype)) {
+    return name;
+  }
+  // Same fallback as in GetArchInfoFromName().
+  if (const NamedArchInfo* known =
+          FindKnownArchitecture(cpu_type, cpu_subtype)) {
+    return known->name;
   }
   return kUnknownArchName;
 }
